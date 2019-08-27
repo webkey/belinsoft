@@ -1,0 +1,31 @@
+<!--HEADER-->
+<header class="header">
+  <div class="layout-page layout-page-spaces">
+    <div class="header-container">
+      <!--logo-->
+      <div class="logo">
+        @@if(context.currentItem === "Главная"){<span>Bel in soft</span>}
+        @@if(context.currentItem !== "Главная"){<a href="index.html" title="Go home">Bel in soft</a>}
+        <!--logo for a print version-->
+        <img style="display: none;" src="img/logo.svg" alt="Print version logotype">
+      </div>
+      <!--logo end-->
+
+      <!--navigation-->
+      <div class="nav-wrap">
+        <nav class="nav">
+          <ul class="nav__list">
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Products</a></li>
+            <li><a href="#">Solutions</a></li>
+            <li><a href="#">News</a></li>
+            <li><a href="#">Сooperation</a></li>
+            <li><a href="#">Contacts</a></li>
+          </ul>
+        </nav>
+      </div>
+      <!--navigation end-->
+    </div>
+  </div>
+</header>
+<!--HEADER end-->
