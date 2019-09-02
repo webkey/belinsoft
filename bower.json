@@ -24,7 +24,8 @@
     "include-media": "^1.4.9",
     "select2": "^4.0.3",
     "normalize-scss": "normalize.scss#^7.0.1",
-    "jquery-validation": "^1.17.0"
+    "jquery-validation": "^1.17.0",
+    "swiper": "^4.5.0"
   },
   "devDependencies": {
     "mathsass": "^0.9.5"

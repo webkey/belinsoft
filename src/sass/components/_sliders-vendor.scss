@@ -1,0 +1,100 @@
+@import "../utils/variables";
+@import "../utils/mixins";
+@import "../../libs/include-media/dist/include-media";
+
+/* swiper slider */
+
+// slider pagination
+// =================
+
+$swp-size: 1rem 1rem;
+$swp-int: round-float(nth($swp-size, 1) / 2, 1) round-float(nth($swp-size, 2) / 2, 1);
+$swp-space: 0.5rem 0.5rem 0.5rem;
+//--------------------------
+
+.swiper-pagination {
+  pointer-events: none;
+  line-height: 0;
+  text-align: left;
+  padding: 0 0.4rem;
+}
+
+.swiper-pagination-bullet {
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  height: nth($swp-size, 1);
+  width: nth($swp-size, 1);
+  border-radius: nth($swp-size, 1);
+  border: none;
+  margin: $swp-space;
+  opacity: 1;
+  pointer-events: auto;
+  background: none;
+  outline: none;
+
+  &::before,
+  &::after {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    background-color: #0071b0;
+  }
+
+  &::before {
+    height: nth($swp-size, 1);
+    width: nth($swp-size, 1);
+    margin: -#{nth($swp-int, 1)} 0 0 -#{nth($swp-int, 2)};
+    border-radius: nth($swp-size, 1);
+
+    transition: opacity $animation-speed, transform $animation-speed;
+
+    opacity: 0.5;
+  }
+
+  &::after {
+    height: nth($swp-size, 1) + 0.4;
+    width: nth($swp-size, 1) + 0.4;
+    margin: -#{nth($swp-int, 1) + 0.2} 0 0 -#{nth($swp-int, 2) + 0.2};
+    border-radius: nth($swp-size, 1) + 0.4;
+
+    transition: opacity $animation-speed, transform $animation-speed;
+
+    opacity: 0;
+    $scale: 0.5, 0.5;
+    transform: scale($scale);
+    transform: scale3d($scale, 1);
+  }
+
+  // hover
+  &:not(.swiper-pagination-bullet-active):hover {
+    &::before {
+      opacity: 1;
+    }
+  }
+
+  &.swiper-pagination-bullet-active {
+    cursor: default;
+
+    &::after {
+      opacity: 1;
+      $scale: 1, 1;
+      transform: scale($scale);
+      transform: scale3d($scale, 1);
+    }
+  }
+}
+
+.swiper-container-horizontal {
+  & > .swiper-pagination-bullets {
+    bottom: 0;
+
+    .swiper-pagination-bullet {
+      margin: $swp-space;
+    }
+  }
+}
+
+/* swiper slider end */

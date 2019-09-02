@@ -17,6 +17,51 @@ function addTouchClasses() {
 }
 
 /**
+ * !Initial full page scroll plugin
+ * */
+function fullPageInitial() {
+
+  var $fpSection = $('.main-sections-js');
+  if($fpSection.length) {
+    $fpSection.fullpage({
+      verticalCentered: false,
+      // anchors: ['firstPage', 'secondPage', 'thirdPage'],
+      // navigation: true,
+      // menu: '.fullpage-nav-js',
+      sectionSelector: '.fp-section-js',
+      // paddingTop: 100,
+      scrollingSpeed: 600,
+      recordHistory: true,
+      responsiveWidth: 1200, // and add css rule .fp-enabled
+      responsiveHeight: 400, // and add css rule .fp-enabled
+      // normalScrollElements: '.main-section--news',
+      // scrollOverflow: true,
+      // add .fp-noscroll for deactivate scroll
+      // scrollOverflowOptions: {
+      // 	scrollbars: 'custom'
+      // },
+
+      // dots navigation
+      navigation: true,
+      navigationPosition: null
+      // navigationTooltips: ['First', 'Second', 'Third', '4', 'foo'],
+      // showActiveTooltip: true
+      , onLeave: function (index, nextIndex, direction) {
+        $('html').toggleClass('scroll-is-bottom', (direction === "down" && index === 4))
+      }
+    });
+  }
+
+  $('.next-section-js').on('click', function (e) {
+    if($fpSection.length) {
+      $.fn.fullpage.moveSectionDown();
+    }
+    e.preventDefault();
+  });
+
+}
+
+/**
  * !Add placeholder for old browsers
  * */
 function placeholderInit() {
@@ -260,9 +305,25 @@ function toggleLang() {
 function menuEvents() {
   var $menu = $('.menu-js');
 
+  // Member default title
+  var $title = $menu.find('.menu-item__view-title');
+  $.each($title, function (i, el) {
+
+    var $curTitle = $(el);
+    $curTitle.data('text', $curTitle.text());
+  });
+
+  // baffleSetting
+  var baffleOptions = {
+    characters: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+  };
+
   if ($menu.length) {
     $menu.on('mouseenter', '.menu__item', function (e) {
       var $this = $(this);
+
+      if ($this.hasClass('active')) return;
+
       var id = $this.attr('data-for');
 
       $this.closest($menu).find('.menu__item-js').removeClass('active');
@@ -271,57 +332,57 @@ function menuEvents() {
       $this.closest($menu).find('.video-cover__item-js').removeClass('active');
       $('#' + id).addClass('active');
 
-      // $this.toggleClass('active', (e.handleObj.origType === "mouseenter"));
+      var $title = $this.find('.menu-item__view-title');
+      $title.text($title.data('text'));
 
-      e.preventDefault();
+      var bActive = baffle('.active .menu-item__view-title', baffleOptions);
+      bActive.reveal(1000);
+
+      // e.preventDefault();
     })
   }
 }
 
 /**
- * !Initial full page scroll plugin
- * */
-function fullPageInitial() {
+ * !Slider document photos
+ */
+function slidersInit() {
 
-  var $mainSections = $('.main-sections-js');
-  if($mainSections.length) {
-    $mainSections.fullpage({
-      verticalCentered: false,
-      // anchors: ['firstPage', 'secondPage', 'thirdPage'],
-      // navigation: true,
-      // menu: '.fullpage-nav-js',
-      sectionSelector: '.main-section-js',
-      // paddingTop: 100,
-      scrollingSpeed: 600,
-      recordHistory: true,
-      responsiveWidth: 1200, // and add css rule .fp-enabled
-      responsiveHeight: 400, // and add css rule .fp-enabled
-      // normalScrollElements: '.main-section--news',
-      // scrollOverflow: true,
-      // add .fp-noscroll for deactivate scroll
-      // scrollOverflowOptions: {
-      // 	scrollbars: 'custom'
-      // },
+  // news slider
+  var $newsSlider = $('.news-js');
 
-      // dots navigation
-      navigation: true,
-      navigationPosition: null
-      // navigationTooltips: ['First', 'Second', 'Third', '4', 'foo'],
-      // showActiveTooltip: true
-      , onLeave: function (index, nextIndex, direction) {
-        $('html').toggleClass('scroll-is-bottom', (direction === "down" && index === 4))
-      }
+  if($newsSlider.length){
+    $newsSlider.each(function () {
+      var $thisSlider = $(this),
+          $pagination = $thisSlider.find('.swiper-pagination');
+
+      var reviewsSlider = new Swiper ($thisSlider, {
+        init: false,
+        spaceBetween: 80,
+        slidesPerView: 2,
+        slidesPerGroup: 2,
+        loop: true,
+        watchSlidesVisibility: true,
+        pagination: {
+          el: $pagination,
+          type: 'bullets',
+          clickable: true
+        },
+        breakpoints: {
+          480: {
+            slidesPerView: 1,
+            slidesPerGroup: 1
+          },
+        }
+      });
+
+      reviewsSlider.on('init', function() {
+        $thisSlider.addClass('is-loaded');
+      });
+
+      reviewsSlider.init();
     });
   }
-
-  $('.move-next-section-js').on('click', function (e) {
-    e.preventDefault();
-
-    if($mainSections.length) {
-      $.fn.fullpage.moveSectionDown();
-    }
-  });
-
 }
 
 
@@ -377,13 +438,14 @@ function formValidation() {
 
 $(document).ready(function () {
   addTouchClasses();
+  fullPageInitial();
   placeholderInit();
   formElementState();
   customSelect();
   objectFitImages(); // object-fit-images initial
   toggleLang();
   menuEvents();
-  fullPageInitial();
+  slidersInit();
 
   formValidation();
 
@@ -391,5 +453,5 @@ $(document).ready(function () {
   $('.logo').on('click', function () {
     var $html = $('html');
     $html.toggleClass('logo-alt', !$html.hasClass('logo-alt'));
-  })
+  });
 });

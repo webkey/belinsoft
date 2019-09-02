@@ -37,7 +37,8 @@ var path = {
   // 'dist': 'version/full-video'
   // 'dist': 'version/no-video'
   // 'dist': 'version/section-video'
-  'dist': 'version/text-video'
+  // 'dist': 'version/text-video'
+  'dist': 'version/full-video'
 };
 
 /**
@@ -132,6 +133,7 @@ gulp.task('mergeCssLibs', function () {
     'src/css/temp/*.css' // Смотреть gulpfile-special.js
     , 'src/libs/select2/dist/css/select2.min.css'
     , 'src/libs/fullpage.js/dist/jquery.fullpage.min.css' // стили для плагина постраничной прокрутки
+    , 'src/libs/swiper/dist/css/swiper.min.css'
   ])
       .pipe(concatCss("src/css/libs.css", {
         rebaseUrls: false
@@ -165,6 +167,7 @@ gulp.task('copyLibsScriptsToJs', ['copyJqueryToJs'], function () {
     , 'src/libs/fullpage.js/vendors/scrolloverflow.min.js' // расширение для плагина постраничной прокрутки, позволяющее добавлять скролл внутри страницы
     , 'src/libs/fullpage.js/dist/jquery.fullpage.min.js' // скрипт для постраничной прокрутки
     , 'node_modules/baffle/dist/baffle.min.js' // скрипт для постраничной прокрутки
+    , 'src/libs/swiper/dist/js/swiper.min.js'
   ])
       .pipe(concat('libs.js'))
       .pipe(gulp.dest('src/js'))

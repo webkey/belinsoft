@@ -8,7 +8,7 @@
 <!--MAIN-->
 <main class="main">
   <div class="layout-page main-sections-js">
-    <section class="main-section main-section-js">
+    <section class="main-section fp-section-js">
       <div class="menu menu-js">
         <div class="video-cover">
           <div class="video-cover__item video-cover__item-js active" id="tactical">
@@ -99,9 +99,11 @@
       </div>
 
       <a href="#" class="to-news">Breaking news</a>
+
+      <a href="#" class="next-section next-section-js">Next section</a>
     </section>
 
-    <section class="about-section main-section-js">
+    <section class="about-section fp-section-js">
       <div class="bg-video">
         <video autoplay muted loop>
           <source src="video/about.mp4">
@@ -109,25 +111,94 @@
         </video>
       </div>
       <div class="about-section__content">
-        <h2>About a company</h2>
+        <h2>About company</h2>
         <p>We provide a full range of systems to ensure the security of state borders and perimeters. Our C4I solutions will allow you to plan, integrate and create unique border and perimeter protection systems with the management ability from a single Control Center.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis in iure labore provident quisquam recusandae sint voluptate. Consectetur cupiditate dolorum eaque earum hic incidunt ipsa, officia officiis ratione, rem, ut.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias aliquam commodi deleniti dolores eum, eveniet magnam minus nostrum quibusdam rerum! Aliquid at culpa cupiditate debitis dicta iure, laudantium magni nihil.</p>
       </div>
       <div class="bg-img"></div>
       <div class="widget"></div>
     </section>
 
-    <section class="about-section main-section-js">
-      <div class="about-section__content">
-        <h2>Products</h2>
-        <p>Our C4I solutions will allow you to plan, integrate and create unique border and perimeter protection systems with the management ability from a single Control Center. We provide a full range of systems to ensure the security of state borders and perimeters.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda blanditiis, doloremque excepturi fugiat quaerat ullam!</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos distinctio ducimus earum eius libero maiores quos reprehenderit repudiandae, soluta voluptatem. Consequuntur, excepturi maxime porro quas repellendus rerum suscipit ut veniam!</p>
+    <section class="m-news-section fp-section-js">
+      <div class="m-news-section__align">
+        <h2>News</h2>
+        <div class="m-news">
+          <div class="m-news__col m-news_main">
+            <h3>Corporate News</h3>
+            <div class="m-news-list">
+              <div class="m-news-list__item">
+                @@include("_tpl_m-news-el.html", {
+                "srcImg": "img/img-news-lg-01.jpg",
+                "title": "All You Need To Know About BEL IN SOFT",
+                "text": "By the decree No. 91 of the President of the Republic of Belarus joint close company BELINSOFT has the rights of a special exporter in the field of foreign trade, mediation for technical, cryptographic protection of information, means of undercover information obtaining related to specific"
+                })
+              </div>
+            </div>
+          </div>
+          <div class="m-news__col">
+            <h3>Belarus News</h3>
+            <div class="m-news-list">
+              <div class="m-news-list__item">
+                @@include("_tpl_m-news-el.html", {
+                "srcImg": "img/img-news-01.jpg",
+                "title": "All You Need To Know",
+                "text": "By the decree No. 91 of the President of the Republic of Belarus joint close company BELINSOFT has the rights of a special exporter in the field of foreign"
+                })
+              </div>
+              <div class="m-news-list__item">
+                @@include("_tpl_m-news-el.html", {
+                "srcImg": "img/img-news-02.jpg",
+                "title": "All You Need To Know About BEL IN SOFT",
+                "text": "By the decree No. 91 of the President of the Republic of Belarus joint close company BELINSOFT has the rights of a"
+                })
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section class="about-section main-section-js">
+    <section class="about-section fp-section-js">
+      <div class="news">
+        <div class="news__list">
+          <div class="news__item">
+            @@include("_tpl_news-el.html", {
+            "srcImg": "img/img-news-01.jpg",
+            "date": "22.06.2019",
+            "datetime": "2019-06-22",
+            "title": "C4I solutions will allow you to plan, integrate and create",
+            "text": "We provide a full range of systems to ensure the security of state borders and perimeters."
+            })
+          </div>
+          <div class="news__item">
+            @@include("_tpl_news-el.html", {
+            "srcImg": "img/img-news-02.jpg",
+            "date": "22.06.2019",
+            "datetime": "2019-06-22",
+            "title": "C4I solutions will allow you to plan, integrate and create",
+            "text": "We provide a full range of systems to ensure the security of state borders and perimeters."
+            })
+          </div>
+        </div>
+
+        <div class="swiper-container m-news__list news-js">
+          <div class="swiper-wrapper">
+            <div class="m-news__item swiper-slide">
+              {{slide 1}}
+            </div>
+            <div class="m-news__item swiper-slide">
+              {{slide 2}}
+            </div>
+            <div class="m-news__item swiper-slide">
+              {{slide 3}}
+            </div>
+          </div>
+
+          <div class="swiper-pagination"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="about-section fp-section-js">
       <div class="about-section__content">
         <h2>Solutions</h2>
         <p>We provide a full range of systems to ensure the security of state borders and perimeters.</p>

@@ -27,14 +27,14 @@
   <meta property="og:description" content="Описание">
   <meta property="og:site_name" content="Расширенное название">
   <!--Favicon-->
-  <link rel="shortcut icon" href="favicon.ico?rev=@@hash">
-  <link rel="icon" sizes="16x16 32x32 64x64" href="favicon.ico?rev=@@hash">
-  <link rel="apple-touch-icon" href="apple-touch-icon.png?rev=@@hash">
+  <link rel="shortcut icon" href="favicon.ico?rev=52a649ce67776b417c0926fd7f974e81">
+  <link rel="icon" sizes="16x16 32x32 64x64" href="favicon.ico?rev=6eff61eb4f43b3a052a5f7df8f2092f3">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png?rev=7e91672cb562513e8b00f37cb4a05404">
   <!--manifest-->
   <link rel="manifest" href="manifest.webmanifest">
   <!--Style-->
-  <link rel="stylesheet" href="css/libs.min.css?rev=@@hash">
-  <link rel="stylesheet" href="css/main.css?rev=@@hash">
+  <link rel="stylesheet" href="css/libs.min.css?rev=2fe473e425acb803062e7620bdb56d27">
+  <link rel="stylesheet" href="css/main.css?rev=051cc822a1e5e5408ddd987c063bfa35">
   <!--Modernizr-->
   <script src="js/modernizr.min.js"></script>
 </head>
@@ -96,7 +96,7 @@
   <!--MAIN-->
   <main class="main">
     <div class="layout-page main-sections-js">
-      <section class="main-section fp-section-js">
+      <section class="main-section main-section-js">
         <div class="menu menu-js">
           <div class="video-cover">
             <div class="video-cover__item video-cover__item-js active" id="tactical">
@@ -128,12 +128,14 @@
           <div class="menu__list">
             <div class="menu-item menu-item menu__item menu__item-js menu__item_tactical active" data-for="tactical">
               <div class="menu-item__bg-text">tactical</div>
-              <!--<div class="menu-item__bg">
-  <div class="menu-item__bg-video">...</div>
-  <div class="menu-item__bg-overlay"></div>
-  <div class="menu-item__bg-text-mask">tactical</div>
-  <div class="menu-item__bg-mask">tactical</div>
-</div>-->
+              <div class="menu-item__bg">
+                <!--<video autoplay muted loop>
+    <source src="video/bg-tactical.mp4">
+    <img src="video/bg-tactical.jpg" alt="">
+  </video>-->
+                <div class="menu-item__bg-mask"></div>
+                <div class="menu-item__bg-overlay"></div>
+              </div>
               <div class="menu-item__preview">
                 <div class="menu-item__preview-title">Tactical</div>
                 <div class="menu-item__preview-subtitle">Intelligence</div>
@@ -151,12 +153,14 @@
             </div>
             <div class="menu-item menu__item menu__item-js menu__item_strategical" data-for="strategical">
               <div class="menu-item__bg-text">strategical</div>
-              <!--<div class="menu-item__bg">
-  <div class="menu-item__bg-video">...</div>
-  <div class="menu-item__bg-overlay"></div>
-  <div class="menu-item__bg-text-mask">strategical</div>
-  <div class="menu-item__bg-mask">strategical</div>
-</div>-->
+              <div class="menu-item__bg">
+                <!--<video autoplay muted loop>
+    <source src="video/bg-strategical.mp4">
+    <img src="video/bg-tactical.jpg" alt="">
+  </video>-->
+                <div class="menu-item__bg-mask"></div>
+                <div class="menu-item__bg-overlay"></div>
+              </div>
               <div class="menu-item__preview">
                 <div class="menu-item__preview-title">Strategical</div>
                 <div class="menu-item__preview-subtitle">Intelligence</div>
@@ -174,12 +178,14 @@
             </div>
             <div class="menu-item menu__item menu__item-js menu__item_homeland" data-for="homeland">
               <div class="menu-item__bg-text">homeland</div>
-              <!--<div class="menu-item__bg">
-  <div class="menu-item__bg-video">...</div>
-  <div class="menu-item__bg-overlay"></div>
-  <div class="menu-item__bg-text-mask">homeland</div>
-  <div class="menu-item__bg-mask">homeland</div>
-</div>-->
+              <div class="menu-item__bg">
+                <!--<video autoplay muted loop>
+    <source src="video/bg-homeland.mp4">
+    <img src="video/bg-tactical.jpg" alt="">
+  </video>-->
+                <div class="menu-item__bg-mask"></div>
+                <div class="menu-item__bg-overlay"></div>
+              </div>
               <div class="menu-item__preview">
                 <div class="menu-item__preview-title">Homeland</div>
                 <div class="menu-item__preview-subtitle">Security</div>
@@ -197,12 +203,14 @@
             </div>
             <div class="menu-item menu__item menu__item-js menu__item_cyber" data-for="cyber">
               <div class="menu-item__bg-text">cyber</div>
-              <!--<div class="menu-item__bg">
-  <div class="menu-item__bg-video">...</div>
-  <div class="menu-item__bg-overlay"></div>
-  <div class="menu-item__bg-text-mask">cyber</div>
-  <div class="menu-item__bg-mask">cyber</div>
-</div>-->
+              <div class="menu-item__bg">
+                <!--<video autoplay muted loop>
+    <source src="video/bg-cyber.mp4">
+    <img src="video/bg-tactical.jpg" alt="">
+  </video>-->
+                <div class="menu-item__bg-mask"></div>
+                <div class="menu-item__bg-overlay"></div>
+              </div>
               <div class="menu-item__preview">
                 <div class="menu-item__preview-title">Cyber</div>
                 <div class="menu-item__preview-subtitle">Security</div>
@@ -220,6 +228,7 @@
             </div>
           </div>
         </div>
+
         <div class="widget-opener">
           <div class="widget-opener__icon">
             <svg width="19" height="13" viewBox="0 0 19 13" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -232,9 +241,9 @@
           <div class="widget-opener__time">23:00</div>
         </div>
         <a href="#" class="to-news">Breaking news</a>
-        <a href="#" class="next-section next-section-js">Next section</a>
       </section>
-      <section class="about-section fp-section-js">
+
+      <section class="about-section main-section-js">
         <div class="bg-video">
           <video autoplay muted loop>
             <source src="video/about.mp4">
@@ -242,103 +251,22 @@
           </video>
         </div>
         <div class="about-section__content">
-          <h2>About company</h2>
+          <h2>About a company</h2>
           <p>We provide a full range of systems to ensure the security of state borders and perimeters. Our C4I solutions will allow you to plan, integrate and create unique border and perimeter protection systems with the management ability from a single Control Center.</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis in iure labore provident quisquam recusandae sint voluptate. Consectetur cupiditate dolorum eaque earum hic incidunt ipsa, officia officiis ratione, rem, ut.</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias aliquam commodi deleniti dolores eum, eveniet magnam minus nostrum quibusdam rerum! Aliquid at culpa cupiditate debitis dicta iure, laudantium magni nihil.</p>
         </div>
-        <div class="bg-img"></div>
         <div class="widget"></div>
       </section>
-      <section class="m-news-section fp-section-js">
-        <div class="m-news-section__align">
-          <h2>News</h2>
-          <div class="m-news">
-            <div class="m-news__col m-news_main">
-              <h3>Corporate News</h3>
-              <div class="m-news-list">
-                <div class="m-news-list__item">
-                  <a href="#" class="m-news-el">
-                    <div class="m-news-el__figure">
-                      <img src="img/img-news-lg-01.jpg" alt="All You Need To Know About BEL IN SOFT" class="m-news-el__img" />
-                    </div>
-                    <div class="m-news-el__content">
-                      <div class="m-news-el__title">All You Need To Know About BEL IN SOFT</div>
-                      <div class="m-news-el__text">By the decree No. 91 of the President of the Republic of Belarus joint close company BELINSOFT has the rights of a special exporter in the field of foreign trade, mediation for technical, cryptographic protection of information, means of undercover information obtaining related to specific</div>
-                    </div>
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div class="m-news__col">
-              <h3>Belarus News</h3>
-              <div class="m-news-list">
-                <div class="m-news-list__item">
-                  <a href="#" class="m-news-el">
-                    <div class="m-news-el__figure">
-                      <img src="img/img-news-01.jpg" alt="All You Need To Know" class="m-news-el__img" />
-                    </div>
-                    <div class="m-news-el__content">
-                      <div class="m-news-el__title">All You Need To Know</div>
-                      <div class="m-news-el__text">By the decree No. 91 of the President of the Republic of Belarus joint close company BELINSOFT has the rights of a special exporter in the field of foreign</div>
-                    </div>
-                  </a>
-                </div>
-                <div class="m-news-list__item">
-                  <a href="#" class="m-news-el">
-                    <div class="m-news-el__figure">
-                      <img src="img/img-news-02.jpg" alt="All You Need To Know About BEL IN SOFT" class="m-news-el__img" />
-                    </div>
-                    <div class="m-news-el__content">
-                      <div class="m-news-el__title">All You Need To Know About BEL IN SOFT</div>
-                      <div class="m-news-el__text">By the decree No. 91 of the President of the Republic of Belarus joint close company BELINSOFT has the rights of a</div>
-                    </div>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
+      <section class="about-section main-section-js">
+        <div class="about-section__content">
+          <h2>Products</h2>
+          <p>Our C4I solutions will allow you to plan, integrate and create unique border and perimeter protection systems with the management ability from a single Control Center. We provide a full range of systems to ensure the security of state borders and perimeters.</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda blanditiis, doloremque excepturi fugiat quaerat ullam!</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos distinctio ducimus earum eius libero maiores quos reprehenderit repudiandae, soluta voluptatem. Consequuntur, excepturi maxime porro quas repellendus rerum suscipit ut veniam!</p>
         </div>
       </section>
-      <section class="about-section fp-section-js">
-        <div class="news">
-          <div class="news__list">
-            <div class="news__item">
-              <a href="news-inner.html" class="news-el">
-                <div class="news-el__figure">
-                  <img src="img/img-news-01.jpg" alt="C4I solutions will allow you to plan, integrate and create" class="news-el__img" />
-                </div>
-                <time class="news-el__date" datetime="2019-06-22">22.06.2019</time>
-                <div class="news-el__title">C4I solutions will allow you to plan, integrate and create</div>
-                <div class="news-el__text">We provide a full range of systems to ensure the security of state borders and perimeters.</div>
-              </a>
-            </div>
-            <div class="news__item">
-              <a href="news-inner.html" class="news-el">
-                <div class="news-el__figure">
-                  <img src="img/img-news-02.jpg" alt="C4I solutions will allow you to plan, integrate and create" class="news-el__img" />
-                </div>
-                <time class="news-el__date" datetime="2019-06-22">22.06.2019</time>
-                <div class="news-el__title">C4I solutions will allow you to plan, integrate and create</div>
-                <div class="news-el__text">We provide a full range of systems to ensure the security of state borders and perimeters.</div>
-              </a>
-            </div>
-          </div>
-          <div class="swiper-container m-news__list news-js">
-            <div class="swiper-wrapper">
-              <div class="m-news__item swiper-slide">
-                {{slide 1}}
-              </div>
-              <div class="m-news__item swiper-slide">
-                {{slide 2}}
-              </div>
-              <div class="m-news__item swiper-slide">
-                {{slide 3}}
-              </div>
-            </div>
-            <div class="swiper-pagination"></div>
-          </div>
-        </div>
-      </section>
-      <section class="about-section fp-section-js">
+      <section class="about-section main-section-js">
         <div class="about-section__content">
           <h2>Solutions</h2>
           <p>We provide a full range of systems to ensure the security of state borders and perimeters.</p>
@@ -348,10 +276,11 @@
       </section>
     </div>
   </main>
+
   <!--MAIN end-->
   <script src="js/jquery.min.js"></script>
   <script src="js/libs.min.js"></script>
-  <script src="js/common.js?rev=@@hash"></script>
+  <script src="js/common.js?rev=b07e3049bdc0f6d96915eb9e4b7d398e"></script>
 </body>
 
 </html>
