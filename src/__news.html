@@ -1,0 +1,70 @@
+@@include("_tpl_layout_head.html", {
+  "title": "News - Bel In Soft",
+  "pageClass": ""
+})
+@@include("_tpl_layout_header.html", { "currentItem": "News" })
+
+
+<!--MAIN-->
+<main class="main">
+  <div class="layout-page layout-page-spaces">
+    <div class="content layout-content">
+      <div class="caption">
+        <h1>News</h1>
+        <ul class="page-nav">
+          <li class="current"><a href="#">Belarus News</a></li>
+          <li><a href="#">Corporate News</a></li>
+          <li><a href="#">WORLD MEDIA</a></li>
+        </ul>
+      </div>
+
+      <div class="news">
+        <div class="news__list">
+          <div class="news__item">
+            @@include("_tpl_news-el.html", {
+            "srcImg": "img/img-news-01.jpg",
+            "date": "22.06.2019",
+            "datetime": "2019-06-22",
+            "title": "C4I solutions will allow you to plan, integrate and create",
+            "text": "We provide a full range of systems to ensure the security of state borders and perimeters."
+            })
+          </div>
+          <div class="news__item">
+            @@include("_tpl_news-el.html", {
+            "srcImg": "img/img-news-02.jpg",
+            "date": "22.06.2019",
+            "datetime": "2019-06-22",
+            "title": "C4I solutions will allow you to plan, integrate and create",
+            "text": "We provide a full range of systems to ensure the security of state borders and perimeters."
+            })
+          </div>
+          <div class="news__item">
+            @@include("_tpl_news-el.html", {
+            "srcImg": "img/img-news-01.jpg",
+            "date": "22.06.2019",
+            "datetime": "2019-06-22",
+            "title": "C4I solutions will allow you to plan, integrate and create",
+            "text": "We provide a full range of systems to ensure the security of state borders and perimeters."
+            })
+          </div>
+
+          <div class="news__item">
+            @@include("_tpl_news-el.html", {
+            "srcImg": "img/img-news-02.jpg",
+            "date": "22.06.2019",
+            "datetime": "2019-06-22",
+            "title": "C4I solutions will allow you to plan, integrate and create",
+            "text": "We provide a full range of systems to ensure the security of state borders and perimeters."
+            })
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+<!--MAIN end-->
+
+
+
+<!--@@include("_tpl_layout_footer.html")-->
+@@include("_tpl_layout_foot.html")

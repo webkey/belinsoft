@@ -6,7 +6,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Главная</title>
+  <title>Home - Bel In Soft</title>
   <!--Mobile optimized-->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0">
   <!--Theme color-->
@@ -39,10 +39,8 @@
   <script src="js/modernizr.min.js"></script>
 </head>
 
-<body>
-  <noscript>
-    <div class="no-js-warning">Для корректной работы сайта <b>включите JavaScript</b> в браузере</div>
-  </noscript>
+<body class="home-page">
+  <noscript><div class="no-js-warning">Для корректной работы сайта <b>включите JavaScript</b> в браузере</div></noscript>
   <!--[if lte IE 9]>
 <div class="browserupgrade"><p>You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p></div> <![endif]-->
   <!--HEADER-->
@@ -51,7 +49,7 @@
       <div class="header-container">
         <!--logo-->
         <div class="logo">
-          <span>Bel in soft</span>
+          <a href="index.html" title="Go home">Bel in soft</a>
           <!--logo for a print version-->
           <img style="display: none;" src="img/logo.svg" alt="Print version logotype">
         </div>
@@ -64,7 +62,7 @@
                 <li><a href="#">About Us</a></li>
                 <li><a href="#">Products</a></li>
                 <li><a href="#">Solutions</a></li>
-                <li><a href="#">News</a></li>
+                <li><a href="news.html">News</a></li>
                 <li><a href="#">Сooperation</a></li>
                 <li><a href="#">Contacts</a></li>
               </ul>
@@ -80,8 +78,8 @@
           <!--lang-->
           <div class="lang ms-drop__container-js">
             <a href="#" class="ms-drop__opener-js">
-              <span>En</span>
-            </a>
+            <span>En</span>
+          </a>
             <ul class="ms-drop__drop-js">
               <li class=""><a href="#ru"><span>Ru</span></a></li>
               <li class="active-item"><a href="#en"><span>En</span></a></li>
@@ -94,34 +92,34 @@
   </header>
   <!--HEADER end-->
   <!--MAIN-->
-  <main class="main">
-    <div class="layout-page main-sections-js">
+  <main class="h-main">
+    <div class="layout-page fp-sections-js">
       <section class="main-section fp-section-js">
         <div class="menu menu-js">
           <div class="video-cover">
             <div class="video-cover__item video-cover__item-js active" id="tactical">
-              <video autoplay muted loop>
-                <source src="video/bg-tactical.mp4">
-                <img src="video/bg-tactical.jpg" alt="">
-              </video>
+              <video autoplay muted loop data-autoplay>
+  <source src="video/bg-tactical.mp4">
+  <img src="video/bg-tactical.jpg" alt="">
+</video>
             </div>
             <div class="video-cover__item video-cover__item-js" id="strategical">
-              <video autoplay muted loop>
-                <source src="video/bg-strategical.mp4">
-                <img src="video/bg-tactical.jpg" alt="">
-              </video>
+              <video autoplay muted loop data-autoplay>
+  <source src="video/bg-strategical.mp4">
+  <img src="video/bg-tactical.jpg" alt="">
+</video>
             </div>
             <div class="video-cover__item video-cover__item-js" id="homeland">
-              <video autoplay muted loop>
-                <source src="video/bg-homeland.mp4">
-                <img src="video/bg-tactical.jpg" alt="">
-              </video>
+              <video autoplay muted loop data-autoplay>
+  <source src="video/bg-homeland.mp4">
+  <img src="video/bg-tactical.jpg" alt="">
+</video>
             </div>
             <div class="video-cover__item video-cover__item-js" id="cyber">
-              <video autoplay muted loop>
-                <source src="video/bg-cyber.mp4">
-                <img src="video/bg-tactical.jpg" alt="">
-              </video>
+              <video autoplay muted loop data-autoplay>
+  <source src="video/bg-cyber.mp4">
+  <img src="video/bg-tactical.jpg" alt="">
+</video>
             </div>
           </div>
           <div class="video-cover__overlay"></div>
@@ -146,7 +144,8 @@
                   <div class="menu-item__view-title">Tactical</div>
                   <a class="menu-item__view-more" href="#?1">Read more</a>
                 </div>
-                <div class="menu-item__view-text">We provide a full range of systems to ensure the security of state borders and perimeters. Our C4I solutions will allow you to plan, integrate and create unique border and perimeter protection systems with the management ability from a single Control Center.</div>
+                <div class="menu-item__view-text">We provide a full range of systems to ensure the security of state borders and perimeters. Our C4I solutions will allow you to plan, integrate and create unique border and perimeter protection systems with the management ability from a
+                  single Control Center.</div>
               </div>
             </div>
             <div class="menu-item menu__item menu__item-js menu__item_strategical" data-for="strategical">
@@ -169,7 +168,8 @@
                   <div class="menu-item__view-title">Strategical</div>
                   <a class="menu-item__view-more" href="#?2">Read more</a>
                 </div>
-                <div class="menu-item__view-text">We provide a full range of systems to ensure the security of state borders and perimeters. Our C4I solutions will allow you to plan, integrate and create unique border and perimeter protection systems with the management ability from a single Control Center.</div>
+                <div class="menu-item__view-text">We provide a full range of systems to ensure the security of state borders and perimeters. Our C4I solutions will allow you to plan, integrate and create unique border and perimeter protection systems with the management ability from a
+                  single Control Center.</div>
               </div>
             </div>
             <div class="menu-item menu__item menu__item-js menu__item_homeland" data-for="homeland">
@@ -192,7 +192,8 @@
                   <div class="menu-item__view-title">Homeland</div>
                   <a class="menu-item__view-more" href="#?3">Read more</a>
                 </div>
-                <div class="menu-item__view-text">We provide a full range of systems to ensure the security of state borders and perimeters. Our C4I solutions will allow you to plan, integrate and create unique border and perimeter protection systems with the management ability from a single Control Center.</div>
+                <div class="menu-item__view-text">We provide a full range of systems to ensure the security of state borders and perimeters. Our C4I solutions will allow you to plan, integrate and create unique border and perimeter protection systems with the management ability from a
+                  single Control Center.</div>
               </div>
             </div>
             <div class="menu-item menu__item menu__item-js menu__item_cyber" data-for="cyber">
@@ -215,7 +216,8 @@
                   <div class="menu-item__view-title">Cyber</div>
                   <a class="menu-item__view-more" href="#?4">Read more</a>
                 </div>
-                <div class="menu-item__view-text">We provide a full range of systems to ensure the security of state borders and perimeters. Our C4I solutions will allow you to plan, integrate and create unique border and perimeter protection systems with the management ability from a single Control Center.</div>
+                <div class="menu-item__view-text">We provide a full range of systems to ensure the security of state borders and perimeters. Our C4I solutions will allow you to plan, integrate and create unique border and perimeter protection systems with the management ability from a
+                  single Control Center.</div>
               </div>
             </div>
           </div>
@@ -223,27 +225,28 @@
         <div class="widget-opener">
           <div class="widget-opener__icon">
             <svg width="19" height="13" viewBox="0 0 19 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="2.10303" y="0.699341" width="16.8571" height="7.09563" rx="3.54782" fill="white" />
-              <path fill-rule="evenodd" clip-rule="evenodd" d="M3.65084 5.69934C1.69144 5.69934 0.103027 7.28775 0.103027 9.24716C0.103027 11.2066 1.69144 12.795 3.65084 12.795H13.4123C15.3717 12.795 16.9601 11.2066 16.9601 9.24716C16.9601 7.28775 15.3717 5.69934 13.4123 5.69934H3.65084Z" fill="white" />
-            </svg>
+<rect x="2.10303" y="0.699341" width="16.8571" height="7.09563" rx="3.54782" fill="white"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M3.65084 5.69934C1.69144 5.69934 0.103027 7.28775 0.103027 9.24716C0.103027 11.2066 1.69144 12.795 3.65084 12.795H13.4123C15.3717 12.795 16.9601 11.2066 16.9601 9.24716C16.9601 7.28775 15.3717 5.69934 13.4123 5.69934H3.65084Z" fill="white"/>
+</svg>
           </div>
           <div class="widget-opener__temp">15° С</div>
           <div class="widget-opener__city">Minsk</div>
           <div class="widget-opener__time">23:00</div>
         </div>
         <a href="#" class="to-news">Breaking news</a>
-        <a href="#" class="next-section next-section-js">Next section</a>
+        <a href="#" class="btn-next-section btn-next-section-js">Next section</a>
       </section>
       <section class="about-section fp-section-js">
         <div class="bg-video">
-          <video autoplay muted loop>
-            <source src="video/about.mp4">
-            <img src="video/bg-tactical.jpg" alt="">
-          </video>
+          <video autoplay muted loop data-autoplay>
+          <source src="video/about.mp4">
+          <img src="video/bg-tactical.jpg" alt="">
+        </video>
         </div>
         <div class="about-section__content">
           <h2>About company</h2>
-          <p>We provide a full range of systems to ensure the security of state borders and perimeters. Our C4I solutions will allow you to plan, integrate and create unique border and perimeter protection systems with the management ability from a single Control Center.</p>
+          <p>We provide a full range of systems to ensure the security of state borders and perimeters. Our C4I solutions will allow you to plan, integrate and create unique border and perimeter protection systems with the management ability from a single
+            Control Center.</p>
         </div>
         <div class="bg-img"></div>
         <div class="widget"></div>
@@ -262,7 +265,8 @@
                     </div>
                     <div class="m-news-el__content">
                       <div class="m-news-el__title">All You Need To Know About BEL IN SOFT</div>
-                      <div class="m-news-el__text">By the decree No. 91 of the President of the Republic of Belarus joint close company BELINSOFT has the rights of a special exporter in the field of foreign trade, mediation for technical, cryptographic protection of information, means of undercover information obtaining related to specific</div>
+                      <div class="m-news-el__text">By the decree No. 91 of the President of the Republic of Belarus joint close company BELINSOFT has the rights of a special exporter in the field of foreign trade, mediation for technical, cryptographic protection of information,
+                        means of undercover information obtaining related to specific</div>
                     </div>
                   </a>
                 </div>
@@ -298,40 +302,70 @@
           </div>
         </div>
       </section>
-      <section class="about-section fp-section-js">
-        <div class="news">
-          <div class="news__list">
-            <div class="news__item">
-              <a href="news-inner.html" class="news-el">
-                <div class="news-el__figure">
-                  <img src="img/img-news-01.jpg" alt="C4I solutions will allow you to plan, integrate and create" class="news-el__img" />
-                </div>
-                <time class="news-el__date" datetime="2019-06-22">22.06.2019</time>
-                <div class="news-el__title">C4I solutions will allow you to plan, integrate and create</div>
-                <div class="news-el__text">We provide a full range of systems to ensure the security of state borders and perimeters.</div>
-              </a>
-            </div>
-            <div class="news__item">
-              <a href="news-inner.html" class="news-el">
-                <div class="news-el__figure">
-                  <img src="img/img-news-02.jpg" alt="C4I solutions will allow you to plan, integrate and create" class="news-el__img" />
-                </div>
-                <time class="news-el__date" datetime="2019-06-22">22.06.2019</time>
-                <div class="news-el__title">C4I solutions will allow you to plan, integrate and create</div>
-                <div class="news-el__text">We provide a full range of systems to ensure the security of state borders and perimeters.</div>
-              </a>
-            </div>
-          </div>
-          <div class="swiper-container m-news__list news-js">
+      <section class="media-section fp-section-js">
+        <div class="media-section__align">
+          <h2>World Media</h2>
+          <div class="swiper-container news-slider news-slider-js">
             <div class="swiper-wrapper">
-              <div class="m-news__item swiper-slide">
-                {{slide 1}}
+              <div class="news-slider__item swiper-slide">
+                <a href="news-inner.html" class="news-el">
+                  <div class="news-el__figure">
+                    <img src="img/img-news-01.jpg" alt="C4I solutions will allow you to plan, integrate and create" class="news-el__img" />
+                  </div>
+                  <time class="news-el__date" datetime="2019-06-22">22.06.2019</time>
+                  <div class="news-el__title">C4I solutions will allow you to plan, integrate and create</div>
+                  <div class="news-el__text">We provide a full range of systems to ensure the security of state borders and perimeters.</div>
+                </a>
               </div>
-              <div class="m-news__item swiper-slide">
-                {{slide 2}}
+              <div class="news-slider__item swiper-slide">
+                <a href="news-inner.html" class="news-el">
+                  <div class="news-el__figure">
+                    <img src="img/img-news-02.jpg" alt="C4I solutions will allow you to plan, integrate and create" class="news-el__img" />
+                  </div>
+                  <time class="news-el__date" datetime="2019-06-22">22.06.2019</time>
+                  <div class="news-el__title">C4I solutions will allow you to plan, integrate and create</div>
+                  <div class="news-el__text">We provide a full range of systems to ensure the security of state borders and perimeters.</div>
+                </a>
               </div>
-              <div class="m-news__item swiper-slide">
-                {{slide 3}}
+              <div class="news-slider__item swiper-slide">
+                <a href="news-inner.html" class="news-el">
+                  <div class="news-el__figure">
+                    <img src="img/img-news-01.jpg" alt="C4I solutions will allow you to plan, integrate and create" class="news-el__img" />
+                  </div>
+                  <time class="news-el__date" datetime="2019-06-22">22.06.2019</time>
+                  <div class="news-el__title">C4I solutions will allow you to plan, integrate and create</div>
+                  <div class="news-el__text">We provide a full range of systems to ensure the security of state borders and perimeters.</div>
+                </a>
+              </div>
+              <div class="news-slider__item swiper-slide">
+                <a href="news-inner.html" class="news-el">
+                  <div class="news-el__figure">
+                    <img src="img/img-news-02.jpg" alt="C4I solutions will allow you to plan, integrate and create" class="news-el__img" />
+                  </div>
+                  <time class="news-el__date" datetime="2019-06-22">22.06.2019</time>
+                  <div class="news-el__title">C4I solutions will allow you to plan, integrate and create</div>
+                  <div class="news-el__text">We provide a full range of systems to ensure the security of state borders and perimeters.</div>
+                </a>
+              </div>
+              <div class="news-slider__item swiper-slide">
+                <a href="news-inner.html" class="news-el">
+                  <div class="news-el__figure">
+                    <img src="img/img-news-01.jpg" alt="C4I solutions will allow you to plan, integrate and create" class="news-el__img" />
+                  </div>
+                  <time class="news-el__date" datetime="2019-06-22">22.06.2019</time>
+                  <div class="news-el__title">C4I solutions will allow you to plan, integrate and create</div>
+                  <div class="news-el__text">We provide a full range of systems to ensure the security of state borders and perimeters.</div>
+                </a>
+              </div>
+              <div class="news-slider__item swiper-slide">
+                <a href="news-inner.html" class="news-el">
+                  <div class="news-el__figure">
+                    <img src="img/img-news-02.jpg" alt="C4I solutions will allow you to plan, integrate and create" class="news-el__img" />
+                  </div>
+                  <time class="news-el__date" datetime="2019-06-22">22.06.2019</time>
+                  <div class="news-el__title">C4I solutions will allow you to plan, integrate and create</div>
+                  <div class="news-el__text">We provide a full range of systems to ensure the security of state borders and perimeters.</div>
+                </a>
               </div>
             </div>
             <div class="swiper-pagination"></div>
@@ -340,11 +374,19 @@
       </section>
       <section class="about-section fp-section-js">
         <div class="about-section__content">
-          <h2>Solutions</h2>
-          <p>We provide a full range of systems to ensure the security of state borders and perimeters.</p>
-          <p>Our C4I solutions will allow you to plan, integrate and create unique border and perimeter protection systems with the management ability from a single Control Center.</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos distinctio ducimus earum eius libero maiores quos reprehenderit repudiandae, soluta voluptatem. Consequuntur, excepturi maxime porro quas repellendus rerum suscipit ut veniam!</p>
+          <h2>Partner</h2>
+          <p>We provide a full range of systems to ensure the security of state borders and perimeters. Our C4I solutions will allow you to plan, integrate and create unique border and perimeter protection systems with the management ability from a single
+            Control Center.</p>
         </div>
+        <div class="widget"></div>
+      </section>
+      <section class="about-section fp-section-js">
+        <div class="about-section__content">
+          <h2>Contact</h2>
+          <p> 38 Kolesnikova st., <br> Minsk, 220055, Republic of Belarus</p>
+          <p><a href="mailto:info@belinsoft.by">info@belinsoft.by</a></p>
+        </div>
+        <div class="widget"></div>
       </section>
     </div>
   </main>

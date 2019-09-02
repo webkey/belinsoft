@@ -21,9 +21,9 @@ function addTouchClasses() {
  * */
 function fullPageInitial() {
 
-  var $fpSection = $('.main-sections-js');
-  if($fpSection.length) {
-    $fpSection.fullpage({
+  var $fpSections = $('.fp-sections-js');
+  if($fpSections.length) {
+    $fpSections.fullpage({
       verticalCentered: false,
       // anchors: ['firstPage', 'secondPage', 'thirdPage'],
       // navigation: true,
@@ -52,8 +52,8 @@ function fullPageInitial() {
     });
   }
 
-  $('.next-section-js').on('click', function (e) {
-    if($fpSection.length) {
+  $('.btn-next-section-js').on('click', function (e) {
+    if($fpSections.length) {
       $.fn.fullpage.moveSectionDown();
     }
     e.preventDefault();
@@ -349,7 +349,7 @@ function menuEvents() {
 function slidersInit() {
 
   // news slider
-  var $newsSlider = $('.news-js');
+  var $newsSlider = $('.news-slider-js');
 
   if($newsSlider.length){
     $newsSlider.each(function () {
@@ -358,9 +358,9 @@ function slidersInit() {
 
       var reviewsSlider = new Swiper ($thisSlider, {
         init: false,
-        spaceBetween: 80,
-        slidesPerView: 2,
-        slidesPerGroup: 2,
+        spaceBetween: 20,
+        slidesPerView: 4,
+        slidesPerGroup: 4,
         loop: true,
         watchSlidesVisibility: true,
         pagination: {

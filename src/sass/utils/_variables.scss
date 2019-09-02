@@ -93,8 +93,8 @@ $line-height--mob: 2.0rem !default;
 
 // Heading h1
 // ====================================================
-$font-size-h1: 4.2rem !default;
-$line-height-h1: 5.2rem !default;
+$font-size-h1: 7.3rem !default;
+$line-height-h1: 7.3rem !default;
 $line-height-h1-kef: $line-height-h1 / $font-size-h1;
 // ------ tab -----------------------------------------
 $font-size-h1--tab: 3.4rem !default;
@@ -249,7 +249,7 @@ $text-color: #fff !default;
 $text-color-muted: #9f9f9f !default;
 $text-color-light: #ccc !default;
 // ----------------------------------------------------
-$title-color: #ee6e73 !default;
+$title-color: white !default;
 // ----------------------------------------------------
 $border-color: #ccc !default;
 // ----------------------------------------------------
@@ -266,6 +266,12 @@ $layout-page-max-width: none !default;
 // Отступы для всего сайта
 $layout-page-space: 3rem 6.8rem !default;
 $layout-page-space--mob: 2rem 1.5rem !default;
+
+
+// Layout content
+// ====================================================
+// Ширина текстового блока
+$layout-content-width: 75% !default;
 
 
 // Layout text
@@ -562,7 +568,8 @@ $animation-speed-mouseleave: 0.35s !default;
 
 // Header
 // ====================================================
-$header-height: 7rem;
+$nav-height: 7rem;
+$header-height: 18rem;
 
 
 // Footer

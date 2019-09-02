@@ -19,7 +19,9 @@
               <li><a href="#">About Us</a></li>
               <li><a href="#">Products</a></li>
               <li><a href="#">Solutions</a></li>
-              <li><a href="#">News</a></li>
+              @@if(context.currentItem == 'News'){<li class="current"><span>News</span></li>}
+              @@if(context.currentItem != 'News'){<li><a href="news.html">News</a></li>}
+
               <li><a href="#">Сooperation</a></li>
               <li><a href="#">Contacts</a></li>
             </ul>

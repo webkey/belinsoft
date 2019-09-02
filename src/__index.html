@@ -1,13 +1,13 @@
 @@include("_tpl_layout_head.html", {
-  "title": "Главная",
-  "pageClass": ""
+  "title": "Home - Bel In Soft",
+  "pageClass": "home-page"
 })
-@@include("_tpl_layout_header.html", { "currentItem": "Главная" })
+@@include("_tpl_layout_header.html", { "currentItem": "Home" })
 
 
 <!--MAIN-->
-<main class="main">
-  <div class="layout-page main-sections-js">
+<main class="h-main">
+  <div class="layout-page fp-sections-js">
     <section class="main-section fp-section-js">
       <div class="menu menu-js">
         <div class="video-cover">
@@ -100,12 +100,12 @@
 
       <a href="#" class="to-news">Breaking news</a>
 
-      <a href="#" class="next-section next-section-js">Next section</a>
+      <a href="#" class="btn-next-section btn-next-section-js">Next section</a>
     </section>
 
     <section class="about-section fp-section-js">
       <div class="bg-video">
-        <video autoplay muted loop>
+        <video autoplay muted loop data-autoplay>
           <source src="video/about.mp4">
           <img src="video/bg-tactical.jpg" alt="">
         </video>
@@ -157,39 +157,64 @@
       </div>
     </section>
 
-    <section class="about-section fp-section-js">
-      <div class="news">
-        <div class="news__list">
-          <div class="news__item">
-            @@include("_tpl_news-el.html", {
-            "srcImg": "img/img-news-01.jpg",
-            "date": "22.06.2019",
-            "datetime": "2019-06-22",
-            "title": "C4I solutions will allow you to plan, integrate and create",
-            "text": "We provide a full range of systems to ensure the security of state borders and perimeters."
-            })
-          </div>
-          <div class="news__item">
-            @@include("_tpl_news-el.html", {
-            "srcImg": "img/img-news-02.jpg",
-            "date": "22.06.2019",
-            "datetime": "2019-06-22",
-            "title": "C4I solutions will allow you to plan, integrate and create",
-            "text": "We provide a full range of systems to ensure the security of state borders and perimeters."
-            })
-          </div>
-        </div>
-
-        <div class="swiper-container m-news__list news-js">
+    <section class="media-section fp-section-js">
+      <div class="media-section__align">
+        <h2>World Media</h2>
+        <div class="swiper-container news-slider news-slider-js">
           <div class="swiper-wrapper">
-            <div class="m-news__item swiper-slide">
-              {{slide 1}}
+            <div class="news-slider__item swiper-slide">
+              @@include("_tpl_news-el.html", {
+              "srcImg": "img/img-news-01.jpg",
+              "date": "22.06.2019",
+              "datetime": "2019-06-22",
+              "title": "C4I solutions will allow you to plan, integrate and create",
+              "text": "We provide a full range of systems to ensure the security of state borders and perimeters."
+              })
             </div>
-            <div class="m-news__item swiper-slide">
-              {{slide 2}}
+            <div class="news-slider__item swiper-slide">
+              @@include("_tpl_news-el.html", {
+              "srcImg": "img/img-news-02.jpg",
+              "date": "22.06.2019",
+              "datetime": "2019-06-22",
+              "title": "C4I solutions will allow you to plan, integrate and create",
+              "text": "We provide a full range of systems to ensure the security of state borders and perimeters."
+              })
             </div>
-            <div class="m-news__item swiper-slide">
-              {{slide 3}}
+            <div class="news-slider__item swiper-slide">
+              @@include("_tpl_news-el.html", {
+              "srcImg": "img/img-news-01.jpg",
+              "date": "22.06.2019",
+              "datetime": "2019-06-22",
+              "title": "C4I solutions will allow you to plan, integrate and create",
+              "text": "We provide a full range of systems to ensure the security of state borders and perimeters."
+              })
+            </div>
+            <div class="news-slider__item swiper-slide">
+              @@include("_tpl_news-el.html", {
+              "srcImg": "img/img-news-02.jpg",
+              "date": "22.06.2019",
+              "datetime": "2019-06-22",
+              "title": "C4I solutions will allow you to plan, integrate and create",
+              "text": "We provide a full range of systems to ensure the security of state borders and perimeters."
+              })
+            </div>
+            <div class="news-slider__item swiper-slide">
+              @@include("_tpl_news-el.html", {
+              "srcImg": "img/img-news-01.jpg",
+              "date": "22.06.2019",
+              "datetime": "2019-06-22",
+              "title": "C4I solutions will allow you to plan, integrate and create",
+              "text": "We provide a full range of systems to ensure the security of state borders and perimeters."
+              })
+            </div>
+            <div class="news-slider__item swiper-slide">
+              @@include("_tpl_news-el.html", {
+              "srcImg": "img/img-news-02.jpg",
+              "date": "22.06.2019",
+              "datetime": "2019-06-22",
+              "title": "C4I solutions will allow you to plan, integrate and create",
+              "text": "We provide a full range of systems to ensure the security of state borders and perimeters."
+              })
             </div>
           </div>
 
@@ -200,11 +225,20 @@
 
     <section class="about-section fp-section-js">
       <div class="about-section__content">
-        <h2>Solutions</h2>
-        <p>We provide a full range of systems to ensure the security of state borders and perimeters.</p>
-        <p>Our C4I solutions will allow you to plan, integrate and create unique border and perimeter protection systems with the management ability from a single Control Center.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos distinctio ducimus earum eius libero maiores quos reprehenderit repudiandae, soluta voluptatem. Consequuntur, excepturi maxime porro quas repellendus rerum suscipit ut veniam!</p>
+        <h2>Partner</h2>
+        <p>We provide a full range of systems to ensure the security of state borders and perimeters. Our C4I solutions will allow you to plan, integrate and create unique border and perimeter protection systems with the management ability from a single Control Center.</p>
       </div>
+      <div class="widget"></div>
+    </section>
+
+    <section class="about-section fp-section-js">
+      <div class="about-section__content">
+        <h2>Contact</h2>
+        <p> 38 Kolesnikova st., <br>
+          Minsk, 220055, Republic of Belarus</p>
+        <p><a href="mailto:info@belinsoft.by">info@belinsoft.by</a></p>
+      </div>
+      <div class="widget"></div>
     </section>
   </div>
 </main>
