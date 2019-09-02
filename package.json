@@ -39,6 +39,7 @@
     "modernizr": "^3.7.1"
   },
   "dependencies": {
+    "baffle": "^0.3.6",
     "bower": "^1.8.8",
     "object-fit-images": "^3.2.3"
   }

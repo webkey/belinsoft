@@ -34,7 +34,10 @@ var gulp             = require('gulp'),
  * @type {{dist: string}}
  */
 var path = {
-  'dist': 'dist'
+  // 'dist': 'version/full-video'
+  // 'dist': 'version/no-video'
+  // 'dist': 'version/section-video'
+  'dist': 'version/text-video'
 };
 
 /**
@@ -128,6 +131,7 @@ gulp.task('mergeCssLibs', function () {
   return gulp.src([
     'src/css/temp/*.css' // Смотреть gulpfile-special.js
     , 'src/libs/select2/dist/css/select2.min.css'
+    , 'src/libs/fullpage.js/dist/jquery.fullpage.min.css' // стили для плагина постраничной прокрутки
   ])
       .pipe(concatCss("src/css/libs.css", {
         rebaseUrls: false
@@ -158,6 +162,9 @@ gulp.task('copyLibsScriptsToJs', ['copyJqueryToJs'], function () {
     , 'src/libs/select2/dist/js/select2.full.min.js' // кастомный селект
     , 'src/libs/select2/dist/js/i18n/ru.js' // локализация для кастомного селекта
     , 'node_modules/object-fit-images/dist/ofi.min.js' // object-fit fix for non-support browsers
+    , 'src/libs/fullpage.js/vendors/scrolloverflow.min.js' // расширение для плагина постраничной прокрутки, позволяющее добавлять скролл внутри страницы
+    , 'src/libs/fullpage.js/dist/jquery.fullpage.min.js' // скрипт для постраничной прокрутки
+    , 'node_modules/baffle/dist/baffle.min.js' // скрипт для постраничной прокрутки
   ])
       .pipe(concat('libs.js'))
       .pipe(gulp.dest('src/js'))

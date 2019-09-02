@@ -237,16 +237,16 @@ $light-color: #f8f9fa !default;
 $dark-color: #343a40 !default;
 // ----------------------------------------------------
 $base-color: #1e917c !default;
-$base-color-alt: invert($base-color) !default;
+$base-color-alt: darken($base-color, 20%) !default;
 // ----------------------------------------------------
-$highlight-color: #ee6e73 !default
-$highlight-color--hover: invert($base-color) !default
+$highlight-color: #1e917c !default
+$highlight-color--hover: darken($base-color, 10%) !default
 // ----------------------------------------------------
-$bg-color: #fff !default;
+$bg-color: #0d0d0d !default;
 $bg-color-alt: #f3f3f3 !default;
 // ----------------------------------------------------
-$text-color: #262626 !default;
-$text-color-muted: #6c757d !default;
+$text-color: #fff !default;
+$text-color-muted: #9f9f9f !default;
 $text-color-light: #ccc !default;
 // ----------------------------------------------------
 $title-color: #ee6e73 !default;
@@ -259,9 +259,10 @@ $mark-color: $info-color !default;
 // Layout page
 // ====================================================
 // Минимальная ширина сайта
-$layout-page-min-width: 32rem !default;
+$layout-page-min-width: 102.4rem !default;
 // Максимальная ширина сайта
-$layout-page-max-width: 192rem !default;
+//$layout-page-max-width: 192rem !default;
+$layout-page-max-width: none !default;
 // Отступы для всего сайта
 $layout-page-space: 3rem 5rem !default;
 
@@ -554,12 +555,13 @@ $validate-feedback-height: 2.2rem;
 
 // Animation
 // ====================================================
-$animation-speed: 0.2s !default;
+$animation-speed: 0.35s !default;
 $animation-speed-mouseleave: 0.35s !default;
 
 
 // Header
 // ====================================================
+$header-height: 7rem;
 
 
 // Footer

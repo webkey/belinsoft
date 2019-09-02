@@ -1,0 +1,25 @@
+{
+  "name": "Bel in soft",
+  "short_name": "Bel in soft",
+  "description": "Bel in soft",
+  "display": "standalone",
+  "background_color": "#131418",
+  "theme_color": "#1e917c",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "type": "image/png",
+      "sizes": "16x16"
+    },
+    {
+      "src": "apple-touch-icon.png",
+      "type": "image/png",
+      "sizes": "256x256"
+    },
+    {
+      "src": "share.jpg",
+      "type": "image/png",
+      "sizes": "1200x630"
+    }
+  ]
+}

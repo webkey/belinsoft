@@ -47,7 +47,7 @@
 <div class="browserupgrade"><p>You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p></div> <![endif]-->
   <!--HEADER-->
   <header class="header">
-    <div class="layout-page layout-page-spaces">
+    <div class="header-layout">
       <div class="header-container">
         <!--logo-->
         <div class="logo">
@@ -56,38 +56,235 @@
           <img style="display: none;" src="img/logo.svg" alt="Print version logotype">
         </div>
         <!--logo end-->
-        <!--navigation-->
-        <div class="nav-wrap">
-          <nav class="nav">
-            <ul class="nav__list">
-              <li><a href="#">About Us</a></li>
-              <li><a href="#">Products</a></li>
-              <li><a href="#">Solutions</a></li>
-              <li><a href="#">News</a></li>
-              <li><a href="#">Сooperation</a></li>
-              <li><a href="#">Contacts</a></li>
+        <div class="hc-right">
+          <!--navigation-->
+          <div class="nav-wrap">
+            <nav class="nav">
+              <ul class="nav__list">
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Products</a></li>
+                <li><a href="#">Solutions</a></li>
+                <li><a href="#">News</a></li>
+                <li><a href="#">Сooperation</a></li>
+                <li><a href="#">Contacts</a></li>
+              </ul>
+            </nav>
+          </div>
+          <!--navigation end-->
+          <!--search-->
+          <a href="#" class="h-search">Search</a>
+          <!--search end-->
+          <!--call-->
+          <a href="#" class="h-call">Call</a>
+          <!--call end-->
+          <!--lang-->
+          <div class="lang ms-drop__container-js">
+            <a href="#" class="ms-drop__opener-js">
+              <span>En</span>
+            </a>
+            <ul class="ms-drop__drop-js">
+              <li class=""><a href="#ru"><span>Ru</span></a></li>
+              <li class="active-item"><a href="#en"><span>En</span></a></li>
             </ul>
-          </nav>
+          </div>
+          <!--lang end-->
         </div>
-        <!--navigation end-->
       </div>
     </div>
   </header>
   <!--HEADER end-->
   <!--MAIN-->
   <main class="main">
-    <div class="layout-page layout-page-spaces">
-      <!--CONTENT-->
-      <div class="sect">
-        <div class="video-bg">
-          <video autoplay="" muted="" loop="">
-            <source src="video/mov_bbb.mp4">
-            <source src="video/mov_bbb.ogv" type="video/webm">
-            <img src="img/temp/temp-img_320x400_01.jpg" alt="">
+    <div class="layout-page main-sections-js">
+      <section class="main-section main-section-js">
+        <div class="menu menu-js">
+          <div class="video-cover">
+            <div class="video-cover__item video-cover__item-js active" id="tactical">
+              <video autoplay muted loop>
+                <source src="video/bg-tactical.mp4">
+                <img src="video/bg-tactical.jpg" alt="">
+              </video>
+            </div>
+            <div class="video-cover__item video-cover__item-js" id="strategical">
+              <video autoplay muted loop>
+                <source src="video/bg-strategical.mp4">
+                <img src="video/bg-tactical.jpg" alt="">
+              </video>
+            </div>
+            <div class="video-cover__item video-cover__item-js" id="homeland">
+              <video autoplay muted loop>
+                <source src="video/bg-homeland.mp4">
+                <img src="video/bg-tactical.jpg" alt="">
+              </video>
+            </div>
+            <div class="video-cover__item video-cover__item-js" id="cyber">
+              <video autoplay muted loop>
+                <source src="video/bg-cyber.mp4">
+                <img src="video/bg-tactical.jpg" alt="">
+              </video>
+            </div>
+          </div>
+          <div class="video-cover__overlay"></div>
+          <div class="menu__list">
+            <div class="menu-item menu-item menu__item menu__item-js menu__item_tactical active" data-for="tactical">
+              <div class="menu-item__bg-text">tactical</div>
+              <div class="menu-item__bg">
+                <div class="menu-item__bg-video">
+                  <video autoplay muted loop>
+                    <source src="video/bg-tactical.mp4">
+                    <img src="video/bg-tactical.jpg" alt="">
+                  </video>
+                </div>
+                <div class="menu-item__bg-overlay"></div>
+                <div class="menu-item__bg-text-mask">tactical</div>
+                <div class="menu-item__bg-mask">tactical</div>
+              </div>
+              <div class="menu-item__preview">
+                <div class="menu-item__preview-title">Tactical</div>
+                <div class="menu-item__preview-subtitle">Intelligence</div>
+                <div class="menu-item__preview-number">01</div>
+              </div>
+              <div class="menu-item__view">
+                <div class="menu-item__view-number">01</div>
+                <div class="menu-item__view-subtitle">Intelligence</div>
+                <div class="menu-item__view-heading">
+                  <div class="menu-item__view-title">Tactical</div>
+                  <a class="menu-item__view-more" href="#?1">Read more</a>
+                </div>
+                <div class="menu-item__view-text">We provide a full range of systems to ensure the security of state borders and perimeters. Our C4I solutions will allow you to plan, integrate and create unique border and perimeter protection systems with the management ability from a single Control Center.</div>
+              </div>
+            </div>
+            <div class="menu-item menu__item menu__item-js menu__item_strategical" data-for="strategical">
+              <div class="menu-item__bg-text">strategical</div>
+              <div class="menu-item__bg">
+                <div class="menu-item__bg-video">
+                  <video autoplay muted loop>
+                    <source src="video/bg-strategical.mp4">
+                    <img src="video/bg-tactical.jpg" alt="">
+                  </video>
+                </div>
+                <div class="menu-item__bg-overlay"></div>
+                <div class="menu-item__bg-text-mask">strategical</div>
+                <div class="menu-item__bg-mask">strategical</div>
+              </div>
+              <div class="menu-item__preview">
+                <div class="menu-item__preview-title">Strategical</div>
+                <div class="menu-item__preview-subtitle">Intelligence</div>
+                <div class="menu-item__preview-number">02</div>
+              </div>
+              <div class="menu-item__view">
+                <div class="menu-item__view-number">02</div>
+                <div class="menu-item__view-subtitle">Intelligence</div>
+                <div class="menu-item__view-heading">
+                  <div class="menu-item__view-title">Strategical</div>
+                  <a class="menu-item__view-more" href="#?2">Read more</a>
+                </div>
+                <div class="menu-item__view-text">We provide a full range of systems to ensure the security of state borders and perimeters. Our C4I solutions will allow you to plan, integrate and create unique border and perimeter protection systems with the management ability from a single Control Center.</div>
+              </div>
+            </div>
+            <div class="menu-item menu__item menu__item-js menu__item_homeland" data-for="homeland">
+              <div class="menu-item__bg-text">homeland</div>
+              <div class="menu-item__bg">
+                <div class="menu-item__bg-video">
+                  <video autoplay muted loop>
+                    <source src="video/bg-homeland.mp4">
+                    <img src="video/bg-tactical.jpg" alt="">
+                  </video>
+                </div>
+                <div class="menu-item__bg-overlay"></div>
+                <div class="menu-item__bg-text-mask">homeland</div>
+                <div class="menu-item__bg-mask">homeland</div>
+              </div>
+              <div class="menu-item__preview">
+                <div class="menu-item__preview-title">Homeland</div>
+                <div class="menu-item__preview-subtitle">Security</div>
+                <div class="menu-item__preview-number">03</div>
+              </div>
+              <div class="menu-item__view">
+                <div class="menu-item__view-number">03</div>
+                <div class="menu-item__view-subtitle">Security</div>
+                <div class="menu-item__view-heading">
+                  <div class="menu-item__view-title">Homeland</div>
+                  <a class="menu-item__view-more" href="#?3">Read more</a>
+                </div>
+                <div class="menu-item__view-text">We provide a full range of systems to ensure the security of state borders and perimeters. Our C4I solutions will allow you to plan, integrate and create unique border and perimeter protection systems with the management ability from a single Control Center.</div>
+              </div>
+            </div>
+            <div class="menu-item menu__item menu__item-js menu__item_cyber" data-for="cyber">
+              <div class="menu-item__bg-text">cyber</div>
+              <div class="menu-item__bg">
+                <div class="menu-item__bg-video">
+                  <video autoplay muted loop>
+                    <source src="video/bg-cyber.mp4">
+                    <img src="video/bg-tactical.jpg" alt="">
+                  </video>
+                </div>
+                <div class="menu-item__bg-overlay"></div>
+                <div class="menu-item__bg-text-mask">cyber</div>
+                <div class="menu-item__bg-mask">cyber</div>
+              </div>
+              <div class="menu-item__preview">
+                <div class="menu-item__preview-title">Cyber</div>
+                <div class="menu-item__preview-subtitle">Security</div>
+                <div class="menu-item__preview-number">04</div>
+              </div>
+              <div class="menu-item__view">
+                <div class="menu-item__view-number">04</div>
+                <div class="menu-item__view-subtitle">Security</div>
+                <div class="menu-item__view-heading">
+                  <div class="menu-item__view-title">Cyber</div>
+                  <a class="menu-item__view-more" href="#?4">Read more</a>
+                </div>
+                <div class="menu-item__view-text">We provide a full range of systems to ensure the security of state borders and perimeters. Our C4I solutions will allow you to plan, integrate and create unique border and perimeter protection systems with the management ability from a single Control Center.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="widget-opener">
+          <div class="widget-opener__icon">
+            <svg width="19" height="13" viewBox="0 0 19 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="2.10303" y="0.699341" width="16.8571" height="7.09563" rx="3.54782" fill="white" />
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M3.65084 5.69934C1.69144 5.69934 0.103027 7.28775 0.103027 9.24716C0.103027 11.2066 1.69144 12.795 3.65084 12.795H13.4123C15.3717 12.795 16.9601 11.2066 16.9601 9.24716C16.9601 7.28775 15.3717 5.69934 13.4123 5.69934H3.65084Z" fill="white" />
+            </svg>
+          </div>
+          <div class="widget-opener__temp">15° С</div>
+          <div class="widget-opener__city">Minsk</div>
+          <div class="widget-opener__time">23:00</div>
+        </div>
+        <a href="#" class="to-news">Breaking news</a>
+      </section>
+      <section class="about-section main-section-js">
+        <div class="bg-video">
+          <video autoplay muted loop>
+            <source src="video/about.mp4">
+            <img src="video/bg-tactical.jpg" alt="">
           </video>
         </div>
-      </div>
-      <!--CONTENT end-->
+        <div class="about-section__content">
+          <h2>About a company</h2>
+          <p>We provide a full range of systems to ensure the security of state borders and perimeters. Our C4I solutions will allow you to plan, integrate and create unique border and perimeter protection systems with the management ability from a single Control Center.</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis in iure labore provident quisquam recusandae sint voluptate. Consectetur cupiditate dolorum eaque earum hic incidunt ipsa, officia officiis ratione, rem, ut.</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias aliquam commodi deleniti dolores eum, eveniet magnam minus nostrum quibusdam rerum! Aliquid at culpa cupiditate debitis dicta iure, laudantium magni nihil.</p>
+        </div>
+        <div class="bg-img"></div>
+        <div class="widget"></div>
+      </section>
+      <section class="about-section main-section-js">
+        <div class="about-section__content">
+          <h2>Products</h2>
+          <p>Our C4I solutions will allow you to plan, integrate and create unique border and perimeter protection systems with the management ability from a single Control Center. We provide a full range of systems to ensure the security of state borders and perimeters.</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda blanditiis, doloremque excepturi fugiat quaerat ullam!</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos distinctio ducimus earum eius libero maiores quos reprehenderit repudiandae, soluta voluptatem. Consequuntur, excepturi maxime porro quas repellendus rerum suscipit ut veniam!</p>
+        </div>
+      </section>
+      <section class="about-section main-section-js">
+        <div class="about-section__content">
+          <h2>Solutions</h2>
+          <p>We provide a full range of systems to ensure the security of state borders and perimeters.</p>
+          <p>Our C4I solutions will allow you to plan, integrate and create unique border and perimeter protection systems with the management ability from a single Control Center.</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos distinctio ducimus earum eius libero maiores quos reprehenderit repudiandae, soluta voluptatem. Consequuntur, excepturi maxime porro quas repellendus rerum suscipit ut veniam!</p>
+        </div>
+      </section>
     </div>
   </main>
   <!--MAIN end-->
