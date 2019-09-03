@@ -360,7 +360,6 @@ function menuEvents() {
  * !Slider document photos
  */
 function slidersInit() {
-
   // news slider
   var $newsSlider = $('.news-slider-js');
 
@@ -387,6 +386,37 @@ function slidersInit() {
             slidesPerGroup: 1
           },
         }
+      });
+
+      reviewsSlider.on('init', function() {
+        $thisSlider.addClass('is-loaded');
+      });
+
+      reviewsSlider.init();
+    });
+  }
+
+  // widget slider
+  var $widgetSlider = $('.widget-slider-js');
+
+  if($widgetSlider.length){
+    $widgetSlider.each(function () {
+      var $thisSlider = $(this),
+          $nextEl = $thisSlider.find('.swiper-button-next'),
+          $prevEl = $thisSlider.find('.swiper-button-prev');
+
+      var reviewsSlider = new Swiper ($thisSlider, {
+        init: false,
+        spaceBetween: 0,
+        slidesPerView: 1,
+        slidesPerGroup: 1,
+        loop: true,
+        watchSlidesVisibility: true,
+        allowTouchMove: false,
+        navigation: {
+          nextEl: $nextEl,
+          prevEl: $prevEl,
+        },
       });
 
       reviewsSlider.on('init', function() {
