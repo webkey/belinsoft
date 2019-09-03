@@ -60,10 +60,6 @@ function fullPageInitial() {
       onLeave: function (index, nextIndex, direction) {
         var sectionHeight = $fpSection.eq(nextIndex - 1).outerHeight() * (nextIndex - 1) * parallaxValue;
 
-        console.log("nextIndex: ", nextIndex);
-        console.log("$fpSection.eq(nextIndex): ", $fpSection.eq(nextIndex - 1));
-        console.log("sectionHeight: ", sectionHeight);
-
         $word.css({
           'transform': 'translate(' + sectionHeight + 'px, 0px)',
           'transition': 'all ' + duration / 1000 + 's'
@@ -334,10 +330,6 @@ function menuEvents() {
   });
 
   // baffleSetting
-  var baffleOptions = {
-    characters: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-  };
-
   if ($menu.length) {
     $menu.on('mouseenter', '.menu__item', function (e) {
       var $this = $(this);
@@ -353,12 +345,13 @@ function menuEvents() {
       $('#' + id).addClass('active');
 
       var $title = $this.find('.menu-item__view-title');
-      $title.text($title.data('text'));
+      var titleText = $title.data('text');
 
-      var bActive = baffle('.active .menu-item__view-title', baffleOptions);
-      bActive.reveal(1000);
+      $title.text(titleText);
 
-      // e.preventDefault();
+      baffle('.active .menu-item__view-title', {
+        characters: titleText
+      }).start().reveal(2000, 300);
     })
   }
 }
