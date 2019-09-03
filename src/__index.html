@@ -13,25 +13,25 @@
         <div class="video-cover">
           <div class="video-cover__item video-cover__item-js active" id="tactical">
             @@include("_tpl_video-cover-item.html", {
-            "videoSrc": "video/bg-cyber.mp4",
+            "videoSrc": "video/bg-tactical.mp4?v2",
             "videoImg": "video/bg-tactical.jpg"
             })
           </div>
           <div class="video-cover__item video-cover__item-js" id="strategical">
             @@include("_tpl_video-cover-item.html", {
-            "videoSrc": "video/bg-tactical.mp4",
+            "videoSrc": "video/bg-strategical.mp4?v2",
             "videoImg": "video/bg-tactical.jpg"
             })
           </div>
           <div class="video-cover__item video-cover__item-js" id="homeland">
             @@include("_tpl_video-cover-item.html", {
-            "videoSrc": "video/bg-strategical.mp4",
+            "videoSrc": "video/bg-homeland.mp4?v2",
             "videoImg": "video/bg-tactical.jpg"
             })
           </div>
           <div class="video-cover__item video-cover__item-js" id="cyber">
             @@include("_tpl_video-cover-item.html", {
-            "videoSrc": "video/bg-homeland.mp4",
+            "videoSrc": "video/bg-cyber.mp4?v2",
             "videoImg": "video/bg-tactical.jpg"
             })
           </div>
@@ -89,15 +89,6 @@
         </div>
       </div>
 
-      <div class="widget-opener">
-        <div class="widget-opener__icon">
-          @@include("includes/svg/icon-open-widget.svg")
-        </div>
-        <div class="widget-opener__temp">15° С</div>
-        <div class="widget-opener__city">Minsk</div>
-        <div class="widget-opener__time">23:00</div>
-      </div>
-
       <a href="#" class="btn-to-news">Breaking news</a>
 
       <a href="#" class="btn-next-section btn-next-section-js">Next section</a>
@@ -112,10 +103,10 @@
       </div>
       <div class="about-section__content">
         <h2>About company</h2>
-        <p>We provide a full range of systems to ensure the security of state borders and perimeters. Our C4I solutions will allow you to plan, integrate and create unique border and perimeter protection systems with the management ability from a single Control Center.</p>
+        <p>By the decree No. 91 of the President of the Republic of Belarus joint close company BELINSOFT has the rights of a special exporter in the field of foreign trade, mediation for technical, cryptographic protection of information, means of undercover information obtaining related to specific goods (works, services). The main export products of the company are tactical and strategic data interception systems, cybersecurity products, security systems for critical national infrastructure.</p>
+        <p>The advantage of JCC «BELINSOFT» is to create individual integrated “turn-key” solutions in the field of national and public security.</p>
+        <p>The company's products are a new direction of military-technical cooperation, development and integration of high-end technologies in special areas of activity, organization of experimental design and research works.</p>
       </div>
-      <div class="bg-img"></div>
-      <div class="widget"></div>
     </section>
 
     <section class="m-news-section fp-section-js">
@@ -234,7 +225,6 @@
         <h2>Partner</h2>
         <p>We provide a full range of systems to ensure the security of state borders and perimeters. Our C4I solutions will allow you to plan, integrate and create unique border and perimeter protection systems with the management ability from a single Control Center.</p>
       </div>
-      <div class="widget"></div>
     </section>
 
     <section class="about-section fp-section-js">
@@ -244,8 +234,20 @@
           Minsk, 220055, Republic of Belarus</p>
         <p><a href="mailto:info@belinsoft.by">info@belinsoft.by</a></p>
       </div>
-      <div class="widget"></div>
     </section>
+  </div>
+
+  <div class="widget-opener widget-opener-js">
+    <div class="widget-opener__icon">
+      @@include("includes/svg/icon-open-widget.svg")
+    </div>
+    <div class="widget-opener__temp">15° С</div>
+    <div class="widget-opener__city">Minsk</div>
+    <div class="widget-opener__time">23:00</div>
+  </div>
+
+  <div class="widget widget-js">
+    <a href="#" class="widget-close widget-close-js">x</a>
   </div>
 </main>
 <!--MAIN end-->

@@ -10,3 +10,5 @@ node_modules
 /version/**/video
 
 /version/**/fonts
+
+/version/**/img

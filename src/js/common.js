@@ -467,4 +467,20 @@ $(document).ready(function () {
     var $html = $('html');
     $html.toggleClass('logo-alt', !$html.hasClass('logo-alt'));
   });
+
+  // Временно
+  $('.widget-opener-js').on('click', function (e) {
+    var $curOpener = $(this);
+    var $widget = $('.widget-js');
+    $curOpener.add($widget).toggleClass('active', !$curOpener.hasClass('active'));
+
+    e.preventDefault();
+  });
+
+  $('.widget-close-js').on('click', function (e) {
+    $('.widget-opener-js').add('.widget-js').removeClass('active');
+
+    e.preventDefault();
+  });
+
 });

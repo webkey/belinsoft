@@ -3051,7 +3051,6 @@ form .success + .select-arrow + .error-feedback + .success-feedback {
   min-height: 100vh;
   font-size: 1.6rem;
   line-height: 2.6rem;
-  text-transform: uppercase;
   color: #9f9f9f;
   padding: 3rem;
   display: -ms-flexbox;
@@ -3065,6 +3064,7 @@ form .success + .select-arrow + .error-feedback + .success-feedback {
   font-size: 7.3rem;
   line-height: 1;
   color: white;
+  text-transform: uppercase;
   margin-bottom: 3rem;
 }
 .about-section .bg-video {
@@ -3107,16 +3107,25 @@ form .success + .select-arrow + .error-feedback + .success-feedback {
   cursor: pointer;
 }
 .about-section .bg-img {
-  background: url(../img/dama-v-maske.png) no-repeat;
   position: absolute;
   left: 50%;
   top: 50%;
-  width: 56.9rem;
-  margin-left: -19vw;
-  -ms-transform: translate(0, -50%) rotate(0);
-      transform: translate(0, -50%) rotate(0);
-  transform: translate3d(0, -50%, 0) rotate3d(0, 0, 1);
+  width: 50rem;
+  margin-left: -15vw;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-image: url(../img/dama-v-maske.png);
+  background-size: contain;
+  -ms-transform: translate(0, -50%);
+  transform: translate(0, -50%);
+  transform: translate3d(0, -50%, 0);
   z-index: 12;
+}
+@media (max-width: 1599px) {
+  .about-section .bg-img {
+    width: 42rem;
+    margin-left: -8vw;
+  }
 }
 .about-section .bg-img::before {
   content: "";

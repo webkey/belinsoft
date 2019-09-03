@@ -1640,19 +1640,6 @@
     }
   }
 
-  // Временно
-  .widget {
-    position: absolute;
-    right: 0;
-    top: 50%;
-    background: url(../../img/temp/widget.png) no-repeat;
-    width: 336px;
-    height: 395px;
-    margin-top: -200px;
-    z-index: 15;
-    cursor: pointer;
-  }
-
   // dama-v-maske
   .bg-img {
     position: absolute;
@@ -1684,32 +1671,53 @@
 }
 
 .about-section__content {
-  width: 64rem;
-  max-width: 100%;
+  width: 92rem;
+  max-width: calc(100% - 42rem);
   z-index: 15;
 }
 /* about section */
 
 /* info widget */
 .widget-opener {
-  position: absolute;
-  //position: fixed;
+  //position: absolute;
+  position: fixed;
   right: 0;
   //top: 23%;
   top: 30%;
   width: 9.4rem;
   padding: 3rem 1.4rem 2.5rem;
+  margin: 0 -2.8rem;
   font-size: 1.4rem;
   line-height: 2.0rem;
   color: $text-color-muted;
   border-radius: 15px;
   background-color: #2e2e2e;
-  transform: translate(2.8rem, 0);
   cursor: pointer;
-  transition: background-color $animation-speed;
+  transition:  $animation-speed;
+  box-shadow: 0 5px 30px rgba(black, 0.3);
+
+  // transition
+  $prop: transform, opacity, background-color;
+  will-change: $prop;
+  transition: {
+    property: $prop;
+    duration: $animation-speed;
+    timing-function: ease-in-out;
+  }
+
+  $translate: 0, 0;
+  transform: translate($translate);
+  transform: translate3d($translate, 0);
 
   .no-touchevents &:hover {
     background-color: lighten(#2e2e2e, 10%);
+  }
+
+  &.active {
+    opacity: 0;
+    $translate: 100%, -2rem;
+    transform: translate($translate);
+    transform: translate3d($translate, 0);
   }
 }
 
@@ -1744,6 +1752,65 @@
 
   &:last-child {
     margin-bottom: 0;
+  }
+}
+
+// Временно
+.widget {
+  position: fixed;
+  right: 0;
+  top: 50%;
+  background: url(../../img/temp/widget.png) no-repeat;
+  width: 336px;
+  height: 395px;
+  margin-top: -200px;
+  z-index: 15;
+  opacity: 0;
+
+  // transition
+  $prop: transform, opacity, margin;
+  will-change: $prop;
+  transition: {
+    property: $prop;
+    duration: $animation-speed;
+    timing-function: ease-in-out;
+  }
+
+  $translate: 100%, 2rem;
+  transform: translate($translate);
+  transform: translate3d($translate, 0);
+
+  .fp-viewing-section1 & {
+    margin-top: -325px;
+  }
+
+  &.active {
+    opacity: 1;
+    $translate: 0, 0;
+    transform: translate($translate);
+    transform: translate3d($translate, 0);
+  }
+}
+
+.widget-close {
+  position: absolute;
+  $size: 2.4rem;
+  height: $size;
+  width: $size;
+  border-radius: $size;
+  line-height: $size;
+  background-color: $highlight-color;
+  @include font-bold;
+  font-size: 1.6rem;
+  color: white;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+
+  transition: background-color $animation-speed;
+
+  &:hover {
+    background-color: $highlight-color--hover;
   }
 }
 
@@ -2129,6 +2196,8 @@ $m-news-space: 4rem;
 .m-news-section__align {
   position: relative;
   z-index: 15;
+
+  max-width: calc(100% - 38rem);
 }
 
 /* multi news section end */
@@ -2427,8 +2496,9 @@ $m-news-space: 4rem;
 
 .media-section__align {
   position: relative;
-  max-width: 100%;
   z-index: 15;
+
+  max-width: calc(100% - 38rem);
 }
 
 /* media section end */
