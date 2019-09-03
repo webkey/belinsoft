@@ -21,17 +21,31 @@ function addTouchClasses() {
  * */
 function fullPageInitial() {
 
-  var $fpSections = $('.fp-sections-js');
+  var $fpSections = $('.fp-sections-js'),
+      fpSectionSelector = '.fp-section-js',
+      $fpSection = $(fpSectionSelector),
+      $word = $('.menu-item__bg-text', $fpSections).find('span'),
+      parallaxValue = 0.8,
+      duration = 600;
+
+  function historyAnchors() {
+    var anchors = [];
+
+    $.each($fpSection, function (i, el) {
+      anchors.push('section' + (i + 1));
+    });
+
+    return anchors;
+  }
+
   if($fpSections.length) {
     $fpSections.fullpage({
+      css3: true,
       verticalCentered: false,
-      // anchors: ['firstPage', 'secondPage', 'thirdPage'],
-      // navigation: true,
-      // menu: '.fullpage-nav-js',
-      sectionSelector: '.fp-section-js',
-      // paddingTop: 100,
-      scrollingSpeed: 600,
+      anchors: historyAnchors(),
       recordHistory: true,
+      scrollingSpeed: duration,
+      sectionSelector: fpSectionSelector,
       responsiveWidth: 1200, // and add css rule .fp-enabled
       responsiveHeight: 400, // and add css rule .fp-enabled
       // normalScrollElements: '.main-section--news',
@@ -42,13 +56,19 @@ function fullPageInitial() {
       // },
 
       // dots navigation
-      navigation: true,
-      navigationPosition: null
-      // navigationTooltips: ['First', 'Second', 'Third', '4', 'foo'],
-      // showActiveTooltip: true
-      , onLeave: function (index, nextIndex, direction) {
-        $('html').toggleClass('scroll-is-bottom', (direction === "down" && index === 4))
-      }
+      navigation: false,
+      onLeave: function (index, nextIndex, direction) {
+        var sectionHeight = $fpSection.eq(nextIndex - 1).outerHeight() * (nextIndex - 1) * parallaxValue;
+
+        console.log("nextIndex: ", nextIndex);
+        console.log("$fpSection.eq(nextIndex): ", $fpSection.eq(nextIndex - 1));
+        console.log("sectionHeight: ", sectionHeight);
+
+        $word.css({
+          'transform': 'translate(' + sectionHeight + 'px, 0px)',
+          'transition': 'all ' + duration / 1000 + 's'
+        });
+      },
     });
   }
 

@@ -2545,8 +2545,96 @@ form .success + .select-arrow + .error-feedback + .success-feedback {
   background-color: rgba(245, 245, 245, 0.8);
 }
 /* bg video */
-/*.video-bg {  overflow: hidden;  position: absolute;  right: 0;  bottom: 0;  min-width: 100%;  min-height: 100%;  height: auto;  width: auto;  background-color: #eb2b3a;  video, img {    position: absolute;    top: 0;    left: 0;    width: 100%;    height: 100%;    @include object-fit(cover)  }}*/
-/*.sect-text {  position: absolute;  left: 0;  top: 0;  height: 100%;  width: 100%;  @include font-extra-bold;  font-size: 20rem;  line-height: 1;  text-transform: uppercase;  .mask__shape {    fill: white;  }  .shape--fill {    fill: $bg-color;  }  .text--transparent {    fill: transparent;  }  .box-with-text {    position: absolute;    top: 0;    right: 0;    bottom: 0;    left: 0;    transform: rotate(90deg);  }  .text-fill {    position: absolute;    top: 50%;    left: 50%;    //padding-top: 35vw;    //padding-left: 100%;    height: 100%;    width: 100%;    margin: auto;    overflow: hidden;    transform: translate(-50%, -50%);  }  .video {    position: absolute;    top: 0;    left: 0;    width: 100%;    height: 100%;    @include object-fit(cover);  }  !*@media (min-aspect-ratio: 1 / 2) {    .text-fill {      padding-top: 35vw;    }  }  @media (min-aspect-ratio: 2 / 1) {    .text-fill {      padding-top: 70vh;      padding-left: 190vh;    }  }*!  !* Other styles *!  .svg-defs {    width: 0;    height: 0;  }  .svg-inverted-mask {    position: absolute;    width: 100%;    height: 100%;  }}*/
+/*
+.video-bg {
+  overflow: hidden;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  height: auto;
+  width: auto;
+  background-color: #eb2b3a;
+  video, img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    @include object-fit(cover)
+  }
+}
+*/
+/*.sect-text {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  @include font-extra-bold;
+  font-size: 20rem;
+  line-height: 1;
+  text-transform: uppercase;
+  .mask__shape {
+    fill: white;
+  }
+  .shape--fill {
+    fill: $bg-color;
+  }
+  .text--transparent {
+    fill: transparent;
+  }
+  .box-with-text {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transform: rotate(90deg);
+  }
+  .text-fill {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    //padding-top: 35vw;
+    //padding-left: 100%;
+    height: 100%;
+    width: 100%;
+    margin: auto;
+    overflow: hidden;
+    transform: translate(-50%, -50%);
+  }
+  .video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    @include object-fit(cover);
+  }
+  !*@media (min-aspect-ratio: 1 / 2) {
+    .text-fill {
+      padding-top: 35vw;
+    }
+  }
+  @media (min-aspect-ratio: 2 / 1) {
+    .text-fill {
+      padding-top: 70vh;
+      padding-left: 190vh;
+    }
+  }*!
+  !* Other styles *!
+  .svg-defs {
+    width: 0;
+    height: 0;
+  }
+  .svg-inverted-mask {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+}*/
 /* bg video end */
 /* menu */
 .menu-item {
@@ -3193,7 +3281,7 @@ form .success + .select-arrow + .error-feedback + .success-feedback {
 }
 /* info widget end */
 /* to news */
-.to-news {
+.btn-to-news {
   position: absolute;
   right: -9rem;
   bottom: 25rem;
@@ -3207,7 +3295,7 @@ form .success + .select-arrow + .error-feedback + .success-feedback {
   -ms-transform: rotate(90deg);
       transform: rotate(90deg);
 }
-.to-news::before {
+.btn-to-news::before {
   content: "";
   display: block;
   position: absolute;
@@ -3221,12 +3309,12 @@ form .success + .select-arrow + .error-feedback + .success-feedback {
   background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzciIGhlaWdodD0iMjEiIHZpZXdCb3g9IjAgMCAzNyAyMSIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTI1LjcwNTIgMEwyNS4wMDAyIDAuNzA5MjUyTDM0LjAzOTggOS42OTQxTDAuMDUxMjY5NSA5LjgxNTM3VjExTDM0LjA1MDMgMTAuNzE3MkwyNS40NzEyIDIwLjEzNjdMMjYuMTc4MyAyMC44NDM4TDM1LjU2NDIgMTAuNzE1MUwzNi4wMjIgMTAuMjU0NEwzNi4wMDU5IDEwLjIzODRMMzYuMDIyIDEwLjIyMDlMMzUuNTY3NSA5LjgwMjU3TDI1LjcwNTIgMFoiIGZpbGw9IiMwMEZGQzciLz48L3N2Zz4=);
   transition: transform 0.35s;
 }
-.no-touchevents .to-news:hover::before {
+.no-touchevents .btn-to-news:hover::before {
   -ms-transform: translate(-1rem, 0);
       transform: translate(-1rem, 0);
   transform: translate3d(-1rem, 0, 0);
 }
-.no-touchevents .to-news:active::before {
+.no-touchevents .btn-to-news:active::before {
   transition-duration: 0.175s;
   -ms-transform: translate(0, 0);
       transform: translate(0, 0);

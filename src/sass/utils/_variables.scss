@@ -237,7 +237,7 @@ $light-color: #f8f9fa !default;
 $dark-color: #343a40 !default;
 // ----------------------------------------------------
 $base-color: #1e917c !default;
-$base-color-alt: darken($base-color, 20%) !default;
+$base-color-alt: white !default;
 // ----------------------------------------------------
 $highlight-color: #1e917c !default
 $highlight-color--hover: darken($base-color, 10%) !default
@@ -569,7 +569,9 @@ $animation-speed-mouseleave: 0.35s !default;
 // Header
 // ====================================================
 $nav-height: 7rem;
+
 $header-height: 18rem;
+$header-height--lap: 13rem;
 
 
 // Footer

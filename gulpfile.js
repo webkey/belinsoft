@@ -38,7 +38,7 @@ var path = {
   // 'dist': 'version/no-video'
   // 'dist': 'version/section-video'
   // 'dist': 'version/text-video'
-  'dist': 'version/full-video'
+  'dist': 'full-video'
 };
 
 /**
