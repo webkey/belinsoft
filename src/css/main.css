@@ -3131,7 +3131,7 @@ form .success + .select-arrow + .error-feedback + .success-feedback {
 
 .menu-item__bg-text {
   position: absolute;
-  left: -0.22em;
+  left: -0.21em;
   top: -1em;
   font-family: "circe-extra-bold", Helvetica, Arial, sans-serif;
   font-weight: normal;
@@ -3150,7 +3150,7 @@ form .success + .select-arrow + .error-feedback + .success-feedback {
 
 @media (min-width: 1920px) {
   .menu-item__bg-text {
-    font-size: 51rem;
+    font-size: 49.5rem;
   }
 }
 
@@ -4406,6 +4406,120 @@ form .success + .select-arrow + .error-feedback + .success-feedback {
 }
 
 /* media section end */
+/* choose video */
+.t-choose-video {
+  position: absolute;
+  right: 8rem;
+  bottom: 0;
+  max-width: 72rem;
+  z-index: 20;
+  border-radius: 0.5rem 0.5rem 0 0;
+  color: #fff;
+  background-color: rgba(125, 125, 125, 0.5);
+  transition: background-color 0.35s opacity 0.35s;
+}
+
+.t-choose-video.is-open {
+  background-color: #1100b3;
+}
+
+@media (max-width: 1599px) {
+  .t-choose-video {
+    max-width: 64rem;
+  }
+}
+
+.t-choose-video__head {
+  position: relative;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+      align-items: center;
+  -ms-flex-pack: justify;
+      justify-content: space-between;
+  cursor: pointer;
+  padding: 2rem;
+  transition: color 0.35s;
+}
+
+.t-choose-video__head > strong {
+  display: block;
+  margin-right: 2rem;
+  font-family: "circe-regular", Helvetica, Arial, sans-serif;
+  font-size: 1.8rem;
+  line-height: 2.4rem;
+  letter-spacing: 0.05em;
+}
+
+.t-choose-video__head > em {
+  display: block;
+  height: 2.4rem;
+  width: 2.4rem;
+  -ms-flex-preferred-size: 2.4rem;
+      flex-basis: 2.4rem;
+  -ms-flex-negative: 1;
+      flex-shrink: 1;
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTciIGhlaWdodD0iMTAiIHZpZXdCb3g9IjAgMCAxNyAxMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMSAxLjIyMjY2TDguMjA5OTYgOC42MjEwOUwxNS40MTk5IDEuMjIyNjYiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz48L3N2Zz4=);
+  background-size: 16px;
+  -ms-transform: rotate(-180deg);
+      transform: rotate(-180deg);
+}
+
+.is-open .t-choose-video__head > em {
+  -ms-transform: rotate(0);
+      transform: rotate(0);
+}
+
+.t-choose-video__head:hover {
+  color: #1e917c;
+}
+
+.t-choose-video__body {
+  padding: 0 2rem 2rem;
+  display: none;
+}
+
+.is-open .t-choose-video__body {
+  display: block;
+}
+
+.t-choose-video__body table th, .t-choose-video__body table td {
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  font-size: 1.3rem;
+  line-height: 1.6rem;
+}
+
+.t-choose-video__body table td {
+  padding: 0;
+}
+
+.t-choose-video__body table th {
+  font-size: 1.4rem;
+  line-height: 1.8rem;
+  letter-spacing: 0.05em;
+  font-family: "circe-regular", Helvetica, Arial, sans-serif;
+  text-align: left;
+  text-transform: uppercase;
+  background-color: rgba(152, 152, 152, 0.3);
+  padding: 0.5rem 0.5rem 0.5rem 0.8rem;
+}
+
+.t-choose-video__body table label {
+  display: block;
+  padding: 0.5rem 0.5rem 0.5rem 0.8rem;
+  color: currentColor;
+  cursor: pointer;
+  font-size: inherit;
+}
+
+.t-choose-video__body table label > span::before,
+.t-choose-video__body table label input[type="radio"] ~ span::after {
+  border-color: currentColor;
+}
+
+/* choose video end */
 @media print {
   h1, h2, h3, h4, h5, h6,
   .h1, .h2, .h3, .h4, .h5, .h6,

@@ -975,7 +975,7 @@
 //.menu-item__bg-text-mask {
 .menu-item__bg-text {
   position: absolute;
-  left: -0.22em;
+  left: -0.21em;
   top: -1em;
   @include font-extra-bold;
   font-size: calc(36vw - 188px);
@@ -990,7 +990,7 @@
   transition: margin 1.6s, opacity $animation-speed * 1.5;
 
   @include media('>=desk') {
-    font-size: 51rem;
+    font-size: 49.5rem;
   }
 
   & > span {

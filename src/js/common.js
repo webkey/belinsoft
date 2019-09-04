@@ -513,4 +513,24 @@ $(document).ready(function () {
     e.preventDefault();
   });
 
+  // Добавить список переключателей видео
+  $('body').on('change', '.t-choose-video :radio', function () {
+    console.log("this: ", this);
+    var curRadio = $(this);
+
+    var videoSrc = curRadio.attr('data-src'),
+        id = curRadio.attr('name');
+
+    var $video = $('video', $('#' + id));
+
+    $video.attr('src', videoSrc);
+    $video[0].load();
+
+    // Переключить раздел меню
+    $('.menu__item-js').filter('[data-for=' + id + ']').trigger('mouseenter');
+
+  }).on('click', '.t-choose-video__head', function () {
+    var $container = $('.t-choose-video');
+    $container.toggleClass('is-open', !$container.hasClass('is-open'));
+  });
 });

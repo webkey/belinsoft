@@ -1,0 +1,114 @@
+@import "../utils/variables";
+@import "../utils/mixins";
+@import "../../libs/include-media/dist/include-media";
+
+/* choose video */
+.t-choose-video {
+  position: absolute;
+  right: 8rem;
+  bottom: 0;
+  max-width: 72rem;
+  z-index: 20;
+  border-radius: 0.5rem 0.5rem 0 0;
+  color: $text-color;
+  background-color: rgba(#7d7d7d, 0.5);
+  transition: background-color $animation-speed opacity $animation-speed;
+
+  &.is-open {
+    background-color: #1100b3;
+  }
+
+  @include media('<desk-s') {
+    max-width: 64rem;
+  }
+}
+
+.t-choose-video__head {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  padding: 2rem;
+  transition: color $animation-speed;
+
+  & > strong {
+    display: block;
+    margin-right: 2rem;
+    @include font-normal;
+    font-size: 1.8rem;
+    line-height: 2.4rem;
+    letter-spacing: 0.05em;
+  }
+
+  & > em {
+    display: block;
+    $size: 2.4rem;
+    height: $size;
+    width: $size;
+    flex-basis: $size;
+    flex-shrink: 1;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTciIGhlaWdodD0iMTAiIHZpZXdCb3g9IjAgMCAxNyAxMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMSAxLjIyMjY2TDguMjA5OTYgOC42MjEwOUwxNS40MTk5IDEuMjIyNjYiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz48L3N2Zz4=);
+    background-size: 16px;
+    transform: rotate(-180deg);
+
+    .is-open & {
+      transform: rotate(0);
+    }
+  }
+
+  // Hover
+  &:hover {
+    color: $highlight-color;
+  }
+}
+
+.t-choose-video__body {
+  padding: 0 2rem 2rem;
+  display: none;
+
+  .is-open & {
+    display: block;
+  }
+
+  table {
+    th, td {
+      border: 1px solid rgba(white, 0.5);
+      font-size: 1.3rem;
+      line-height: 1.6rem;
+      //background-color: rgba(#989898, 0.5);
+    }
+
+    td {
+      padding: 0;
+    }
+
+    th {
+      font-size: 1.4rem;
+      line-height: 1.8rem;
+      letter-spacing: 0.05em;
+      @include font-normal;
+      text-align: left;
+      text-transform: uppercase;
+      background-color: rgba(#989898, 0.3);
+      padding: 0.5rem 0.5rem 0.5rem 0.8rem;
+    }
+
+    label {
+      display: block;
+      padding: 0.5rem 0.5rem 0.5rem 0.8rem;
+      color: currentColor;
+      cursor: pointer;
+      font-size: inherit;
+
+      & > span::before,
+      input[type="radio"] ~ span::after {
+        border-color: currentColor;
+      }
+    }
+  }
+}
+
+/* choose video end */
