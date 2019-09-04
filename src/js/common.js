@@ -17,6 +17,69 @@ function addTouchClasses() {
 }
 
 /**
+ * !resize only width
+ * */
+var resizeByWidth = true;
+
+var prevWidth = -1;
+$(window).resize(function () {
+  var currentWidth = $('body').outerWidth();
+  resizeByWidth = prevWidth !== currentWidth;
+  if (resizeByWidth) {
+    $(window).trigger('resizeByWidth');
+    prevWidth = currentWidth;
+  }
+});
+
+/**
+ * !debouncedresize only width
+ * */
+var debouncedresizeByWidth = true;
+
+var debouncedPrevWidth = -1;
+$(window).on('debouncedresize', function () {
+  var currentWidth = $('body').outerWidth();
+  debouncedresizeByWidth = debouncedPrevWidth !== currentWidth;
+  if (resizeByWidth) {
+    $(window).trigger('debouncedresizeByWidth');
+    debouncedPrevWidth = currentWidth;
+  }
+});
+
+function animationElements() {
+  var title = 'h1';
+  baffle(title, {
+    characters: $(title).text()
+  }).start().reveal(1000, 500);
+}
+
+/**
+ * !Add class on scroll page
+ * */
+/**
+ * !Detect scroll page and transform header
+ */
+function detectScrollPage() {
+  var $page = $('html'),
+      $header = $('.header'),
+      minScrollTop = 130;
+
+  function toggleClassOnScroll(topPos) {
+    minScrollTop = $header.outerHeight();
+    $page.toggleClass('page-scrolled', (topPos > minScrollTop));
+  }
+
+
+  $(window).on('debouncedresizeByWidth scroll', function () {
+    var scrollTop = $(window).scrollTop();
+    toggleClassOnScroll(scrollTop);
+  });
+
+  var scrollTop = $(window).scrollTop();
+  toggleClassOnScroll(scrollTop);
+}
+
+/**
  * !Initial full page scroll plugin
  * */
 function fullPageInitial() {
@@ -57,8 +120,8 @@ function fullPageInitial() {
 
       // dots navigation
       navigation: false,
-      onLeave: function (index, nextIndex, direction) {
-        var sectionHeight = $fpSection.eq(nextIndex - 1).outerHeight() * (nextIndex - 1) * parallaxValue;
+      onLeave: function (origin, destination, direction) {
+        var sectionHeight = $fpSection.eq(destination.index - 1).outerHeight() * (destination.index - 1) * parallaxValue;
 
         $word.css({
           'transform': 'translate(' + sectionHeight + 'px, 0px)',
@@ -329,20 +392,20 @@ function menuEvents() {
     $curTitle.data('text', $curTitle.text());
   });
 
-  // baffleSetting
   if ($menu.length) {
     $menu.on('mouseenter', '.menu__item', function (e) {
       var $this = $(this);
 
-      if ($this.hasClass('active')) return;
+      var activeClass = 'item_active';
+      if ($this.hasClass(activeClass)) return;
 
       var id = $this.attr('data-for');
 
-      $this.closest($menu).find('.menu__item-js').removeClass('active');
-      $this.addClass('active');
+      $this.closest($menu).find('.menu__item-js').removeClass(activeClass);
+      $this.addClass(activeClass);
 
-      $this.closest($menu).find('.video-cover__item-js').removeClass('active');
-      $('#' + id).addClass('active');
+      $this.closest($menu).find('.video-cover__item-js').removeClass(activeClass);
+      $('#' + id).addClass(activeClass);
 
       var $title = $this.find('.menu-item__view-title');
       var titleText = $title.data('text');
@@ -428,6 +491,18 @@ function slidersInit() {
   }
 }
 
+/**
+ * Scroll Navigation
+ */
+function scrollNavigation() {
+  $('.scroll-nav-js a').mPageScroll2id({
+    scrollSpeed: 500,
+    forceSingleHighlight: true,
+    highlightSelector: '.scroll-nav-js a',
+    offset: $(".header"),
+  });
+}
+
 
 
 /**
@@ -480,7 +555,11 @@ function formValidation() {
  */
 
 $(document).ready(function () {
+  $('html').addClass('ready');
+
   addTouchClasses();
+  detectScrollPage();
+  // animationElements();
   fullPageInitial();
   placeholderInit();
   formElementState();
@@ -489,11 +568,12 @@ $(document).ready(function () {
   toggleLang();
   menuEvents();
   slidersInit();
+  scrollNavigation();
 
   formValidation();
 
   // Для тестирования. Временно
-  $('.logo').on('click', function () {
+  $('.home-page .logo').on('click', function () {
     var $html = $('html');
     $html.toggleClass('logo-alt', !$html.hasClass('logo-alt'));
   });
@@ -515,7 +595,6 @@ $(document).ready(function () {
 
   // Добавить список переключателей видео
   $('body').on('change', '.t-choose-video :radio', function () {
-    console.log("this: ", this);
     var curRadio = $(this);
 
     var videoSrc = curRadio.attr('data-src'),

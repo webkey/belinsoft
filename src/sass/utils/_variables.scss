@@ -96,6 +96,9 @@ $line-height--mob: 2.0rem !default;
 $font-size-h1: 7.3rem !default;
 $line-height-h1: 7.3rem !default;
 $line-height-h1-kef: $line-height-h1 / $font-size-h1;
+// ------ lap -----------------------------------------
+$font-size-h1--lap: 5.2rem !default;
+$line-height-h1--lap: round-float($font-size-h1--lap * $line-height-h1-kef, 1) !default; // Использовать рассчетное значение, если нет в дизайне
 // ------ tab -----------------------------------------
 $font-size-h1--tab: 3.4rem !default;
 $line-height-h1--tab: round-float($font-size-h1--tab * $line-height-h1-kef, 1) !default; // Использовать рассчетное значение, если нет в дизайне
@@ -106,6 +109,11 @@ $line-height-h1--mob: round-float($font-size-h1--mob * $line-height-h1-kef, 1) !
 @mixin font-h1() {
   font-size: $font-size-h1;
   line-height: $line-height-h1;
+
+  @include media("<desk-s") {
+    font-size: $font-size-h1--lap;
+    line-height: $line-height-h1--lap;
+  }
 
   @include media("<tab") {
     font-size: $font-size-h1--tab;
@@ -121,8 +129,8 @@ $line-height-h1--mob: round-float($font-size-h1--mob * $line-height-h1-kef, 1) !
 
 // Heading h2
 // ====================================================
-$font-size-h2: 3.0rem !default;
-$line-height-h2: 4.2rem !default;
+$font-size-h2: 3.6rem !default;
+$line-height-h2: 4.8rem !default;
 $line-height-h2-kef: $line-height-h2 / $font-size-h2;
 // ------ tab -----------------------------------------
 $font-size-h2--tab: 2.8rem !default;
@@ -219,10 +227,12 @@ $line-height-h6: round-float($line-height * 0.95, 1) !default;
 // Spaces
 // ====================================================
 $bottom-space: $line-height !default;
-$bottom-section: round-float($line-height * 1.5, 1) !default;
 // ------ mob -----------------------------------------
 $bottom-space--mob: $line-height--mob !default;
-$bottom-section--mob: round-float($line-height--mob * 1.5, 1) !default;
+
+$bottom-section: round-float($line-height * 3, 1) !default;
+// ------ mob -----------------------------------------
+$bottom-section--mob: round-float($line-height--mob * 3, 1) !default;
 
 
 // Colors

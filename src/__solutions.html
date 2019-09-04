@@ -15,102 +15,153 @@
   </div>
 
   <div class="layout-page layout-page-spaces">
+    <div class="caption">
+      <h1>Solutions</h1>
+      <ul class="page-nav scroll-nav-js">
+        <li><a href="#section1">Tactical Intelligence</a></li>
+        <li><a href="#section2">Strategical Intelligence</a></li>
+        <li><a href="#section3">Homeland Security</a></li>
+        <li><a href="#section4">Cyber Security</a></li>
+      </ul>
+    </div>
+
     <div class="content layout-content">
-      <div class="caption">
-        <h1>Solutions</h1>
-        <ul class="page-nav">
-          <li class="current"><a href="#">Intelligence Systems</a></li>
-          <li><a href="#">Homeland Security</a></li>
-          <li><a href="#">Cyber Security</a></li>
-        </ul>
-      </div>
-
-      <div class="news">
-        <div class="news__list">
-          <div class="news__item">
-            @@include("_tpl_news-el.html", {
-            "srcImg": "img/img-news-04.jpg",
-            "date": "2 сентября 2019, 19:04",
-            "datetime": "2019-09-02T19:04",
-            "title": "Microsoft пропатчила RDP-клиент для Android",
-            "text": "Разработчики устранили уязвимость, которую можно использовать для сбора системной информации и подготовки кибератак."
-            })
-          </div>
-          <div class="news__item">
-            @@include("_tpl_news-el.html", {
-            "srcImg": "img/img-news-05.jpg",
-            "date": "31 августа 2019, 11:33",
-            "datetime": "2019-08-31T11:33",
-            "title": "Разработчики Cisco закрыли 10-балльный баг в IOS XE",
-            "text": "Ошибка в службе Cisco REST API позволяет злоумышленнику перехватить токен авторизации текущего пользователя."
-            })
-          </div>
-          <div class="news__item">
-            @@include("_tpl_news-el.html", {
-            "srcImg": "img/img-news-06.jpg",
-            "date": "29 августа 2019, 19:09",
-            "datetime": "2019-08-31T11:33",
-            "title": "Microsoft: длина и сложность пароля больше не имеют значения",
-            "text": "Специалисты компании утверждают, что двухфакторная аутентификация защищает от 99,9% кибератак."
-            })
-          </div>
-          <div class="news__item">
-            @@include("_tpl_news-el.html", {
-            "srcImg": "img/img-news-07.jpg",
-            "date": "28 августа 2019, 20:37",
-            "datetime": "2019-08-28T20:37",
-            "title": "Hostinger сбросил 14 млн паролей из-за вероятной утечки",
-            "text": "В результате кибератаки злоумышленники могли получить адреса электронной почты, имена и логины клиентов хостинга."
-            })
-          </div>
-          <div class="news__item">
-            @@include("_tpl_news-el.html", {
-            "srcImg": "img/img-news-08.jpg",
-            "date": "26 августа 2019 , 13:00",
-            "datetime": "2019-08-26T13:00",
-            "title": "Разработчики Cisco пропатчили IMC Supervisor и UCS Director",
-            "text": "Комплект из 18 заплаток закрывает возможность удаленного выполнения кода, обхода авторизации и другие ошибки."
-            })
-          </div>
-          <div class="news__item">
-            @@include("_tpl_news-el.html", {
-            "srcImg": "img/img-news-01.jpg",
-            "date": "20.08.2019 11:33",
-            "datetime": "2019-08-20T11:33",
-            "title": "C4I solutions will allow you to plan, integrate and create",
-            "text": "We provide a full range of systems to ensure the security of state borders and perimeters."
-            })
-          </div>
-          <div class="news__item">
-            @@include("_tpl_news-el.html", {
-            "srcImg": "img/img-news-02.jpg",
-            "date": "20.08.2019 11:33",
-            "datetime": "2019-08-20T11:33",
-            "title": "C4I solutions will allow you to plan, integrate and create",
-            "text": "We provide a full range of systems to ensure the security of state borders and perimeters."
-            })
-          </div>
-          <div class="news__item">
-            @@include("_tpl_news-el.html", {
-            "srcImg": "img/img-news-03.jpg",
-            "date": "20.08.2019 11:33",
-            "datetime": "2019-08-20T11:33",
-            "title": "C4I solutions will allow you to plan, integrate and create",
-            "text": "We provide a full range of systems to ensure the security of state borders and perimeters."
-            })
-          </div>
-
-          <div class="news__item">
-            @@include("_tpl_news-el.html", {
-            "srcImg": "img/img-news-02.jpg",
-            "date": "20.08.2019 11:33",
-            "datetime": "2019-08-20T11:33",
-            "title": "C4I solutions will allow you to plan, integrate and create",
-            "text": "We provide a full range of systems to ensure the security of state borders and perimeters."
-            })
+      <section class="section" id="section1">
+        <h2>Tactical Intelligence</h2>
+        <div class="solutions">
+          <div class="solutions__list">
+            <div class="solutions__item">
+              @@include("_tpl_sol-el.html", {
+              "srcImg": "img/img-sol-01.jpg",
+              "title": "Tactical intelligence systems (sattelite/cellular/wi-fi)",
+              "text": "Tactical intelligence systems allow intelligence and law enforcement agencies get access to voice calls, text messages and location information of the target the from different sources (satellite /mobile/Wi-Fi)."
+              })
+            </div>
+            <div class="solutions__item">
+              @@include("_tpl_sol-el.html", {
+              "srcImg": "img/img-sol-02.jpg",
+              "title": "Monitoring Center (Lawful Interception)",
+              "text": "Monitoring center provides special and law enforcement agencies the ability to legally collect and process communications from the users. Mass and targeted data collection modes are supported ( IP, mobile and fixed phones)."
+              })
+            </div>
+            <div class="solutions__item">
+              @@include("_tpl_sol-el.html", {
+              "srcImg": "img/img-sol-03.jpg",
+              "title": "Web Intelligence Systems (OSINT)",
+              "text": "We provide comprehensive solutions for OSINT (Open Sources Intelligence). Such systems collect, analyze and correlate information from web-based Internet, DarkNet and DeepWeb surces (websites, forums, social networks, blogs, etc.) using advanced tools that allow you to visualize relationships between objects."
+              })
+            </div>
+            <div class="solutions__item">
+              @@include("_tpl_sol-el.html", {
+              "srcImg": "img/img-sol-04.jpg",
+              "title": "Discreet Surveillance Systems",
+              "text": "Professional equipment of Discreet Surveillance is ideal for unobtrusive monitoring . Concealed in an ordinary looking object the miniature video/audio recording device is practically invisible. We provide detection systems that allow you to detect the presence of “bugs” and spyware systems."
+              })
+            </div>
+            <div class="solutions__item">
+              @@include("_tpl_sol-el.html", {
+              "srcImg": "img/img-sol-05.jpg",
+              "title": "Geolocation systems",
+              "text": "Remote geolocation system we offer is an advanced solution based on the SS7 protocol, which allows intelligence and law enforcement agencies to secretly locate 2G/3G/4G subscribers practically anywhere in the world in real time."
+              })
+            </div>
           </div>
         </div>
-      </div>
+      </section>
+
+      <section class="section" id="section2">
+        <h2>Strategical Intelligence</h2>
+        <div class="solutions">
+          <div class="solutions__list">
+            <div class="solutions__item">
+              @@include("_tpl_sol-el.html", {
+              "srcImg": "img/img-sol-05.jpg",
+              "title": "Border and Perimiter Security Systems (C4I)",
+              "text": "We provide a full range of systems to ensure the security of state borders and perimeters. Our C4I solutions will allow you to plan, integrate and create unique border and perimeter protection systems with the management ability from a single Control Center."
+              })
+            </div>
+            <div class="solutions__item">
+              @@include("_tpl_sol-el.html", {
+              "srcImg": "img/img-sol-06.jpg",
+              "title": "Digital forensic security systems",
+              "text": "Digital forensics is a forensic industry encompassing the recovery and analyzing of daat found in digital devices. To accomplish these tasks, we offer a universal solution for law enforcement agencies, allowing them to extract and analyze important digital evidence from PCs, Android, iOS and other platforms."
+              })
+            </div>
+            <div class="solutions__item">
+              @@include("_tpl_sol-el.html", {
+              "srcImg": "img/img-sol-07.jpg",
+              "title": "«City» Systems",
+              "text": "Our «Safe City» complex ensures the protection of public order and public safety by organizing the interaction of electrical and water supply systems, transportation, telecommunications, as well as many others. The «City» system improves the efficiency of operational agencies, such as Ministry of Internal Affairs, Ministry of Emergency Situations, etc., by coordinating their actions."
+              })
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="section3">
+        <h2>Homeland Security</h2>
+        <div class="solutions">
+          <div class="solutions__list">
+            <div class="solutions__item">
+              @@include("_tpl_sol-el.html", {
+              "srcImg": "img/img-sol-03.jpg",
+              "title": "Web Intelligence Systems (OSINT)",
+              "text": "We provide comprehensive solutions for OSINT (Open Sources Intelligence). Such systems collect, analyze and correlate information from web-based Internet, DarkNet and DeepWeb surces (websites, forums, social networks, blogs, etc.) using advanced tools that allow you to visualize relationships between objects."
+              })
+            </div>
+            <div class="solutions__item">
+              @@include("_tpl_sol-el.html", {
+              "srcImg": "img/img-sol-04.jpg",
+              "title": "Discreet Surveillance Systems",
+              "text": "Professional equipment of Discreet Surveillance is ideal for unobtrusive monitoring . Concealed in an ordinary looking object the miniature video/audio recording device is practically invisible. We provide detection systems that allow you to detect the presence of “bugs” and spyware systems."
+              })
+            </div>
+            <div class="solutions__item">
+              @@include("_tpl_sol-el.html", {
+              "srcImg": "img/img-sol-09.png",
+              "title": "Cyber Threat Simulator and Cyber Security Training System",
+              "text": "Cyber Threat Simulator allows companies to test and validate large-scale cyber security solutions. Our platform - is a unique and highly effective method of learning cybersecurity, and it allows you to simulate infrastructure of a real objects (financial institution, telecom operator or energy company)."
+              })
+            </div>
+            <div class="solutions__item">
+              @@include("_tpl_sol-el.html", {
+              "srcImg": "img/img-sol-10.png",
+              "title": "Secure/Anonymous Communication Systems (Internet/Satellite)",
+              "text": "We offer customers a variety of solutions to ensure anonymity and security. Our hardware and software will help not only to create an efficient, secure and easily configurable working environment for highly sensitive projects, but also to securely transfer data even in public networks, ensuring your anonymity, security and protection from data leak."
+              })
+            </div>
+            <div class="solutions__item">
+              @@include("_tpl_sol-el.html", {
+              "srcImg": "img/img-sol-05.jpg",
+              "title": "Border and Perimiter Security Systems (C4I)",
+              "text": "We provide a full range of systems to ensure the security of state borders and perimeters. Our C4I solutions will allow you to plan, integrate and create unique border and perimeter protection systems with the management ability from a single Control Center."
+              })
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="section4">
+        <h2>Cyber Security</h2>
+        <div class="solutions">
+          <div class="solutions__list">
+            <div class="solutions__item">
+              @@include("_tpl_sol-el.html", {
+              "srcImg": "img/img-sol-09.png",
+              "title": "Cyber Threat Simulator and Cyber Security Training System",
+              "text": "Cyber Threat Simulator allows companies to test and validate large-scale cyber security solutions. Our platform - is a unique and highly effective method of learning cybersecurity, and it allows you to simulate infrastructure of a real objects (financial institution, telecom operator or energy company)."
+              })
+            </div>
+            <div class="solutions__item">
+              @@include("_tpl_sol-el.html", {
+              "srcImg": "img/img-sol-10.png",
+              "title": "Secure/Anonymous Communication Systems (Internet/Satellite)",
+              "text": "We offer customers a variety of solutions to ensure anonymity and security. Our hardware and software will help not only to create an efficient, secure and easily configurable working environment for highly sensitive projects, but also to securely transfer data even in public networks, ensuring your anonymity, security and protection from data leak."
+              })
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   </div>
 </main>

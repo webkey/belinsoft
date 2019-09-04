@@ -141,9 +141,25 @@
 }
 
 .hc-right {
+  position: relative;
   display: flex;
   align-items: center;
   min-height: $nav-height;
+  padding: 0 2rem;
+
+  &::before {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    @include linear-gradient(180deg, $bg-color 0%, rgba($bg-color, 0.5) 100%);
+    box-shadow: 0 5px 30px rgba($bg-color, 0.5);
+    opacity: 0.7;
+    border-radius: 0 0 5px 5px;
+  }
 }
 
 /* logo */
@@ -153,15 +169,24 @@
   overflow: hidden;
   width: 165px;
   margin: 0 2rem 0 0;
+  background-color: rgba($base-color, 0.5);
   background-repeat: no-repeat;
-  //background-image: url(../../img/logo.svg);
-  background-image: url(../../img/logo.png);
-  background-size: contain;
+  background-position: 50%;
+  background-image: url(../../img/logo.svg);
+  //background-size: contain;
+  background-size: 122px;
   text-indent: -9999px;
   z-index: 5;
 
+  transition: background $animation-speed;
+
   @include media('<desk-s') {
     width: 120px;
+    background-size: 100px;
+  }
+
+  .page-scrolled & {
+    background-size: 90px;
   }
 
   &::before {
@@ -170,6 +195,16 @@
     display: block;
     //@include ratio(165, 152);
     @include ratio(165, 142);
+
+    transition: all $animation-speed;
+
+    .page-scrolled & {
+      @include ratio(165, 70);
+
+      @include media('<desk-s') {
+        @include ratio(165, 100);
+      }
+    }
   }
 
   a, & > span {
@@ -304,6 +339,7 @@
 
 /* search */
 .h-search {
+  position: relative;
   display: inline-block;
   vertical-align: top;
   $size: 1.6rem;
@@ -322,6 +358,7 @@
 
 /* call */
 .h-call {
+  position: relative;
   display: inline-block;
   vertical-align: top;
   $size: 2.4rem;
@@ -342,6 +379,10 @@
 /* ==================================== */
 /* ============ NAVIGATION ============ */
 /* ==================================== */
+.nav-wrap {
+  position: relative;
+}
+
 .nav {
   position: relative;
 }
@@ -507,7 +548,24 @@
           height: 1.4em;
           background-color: rgba($highlight-color, 0.5);
 
+          will-change: transform, opacity;
+          transition: transform $animation-speed * 1.5, opacity $animation-speed * 1.5;
+          transform-origin: 3rem center;
+
+          opacity: 0.5;
+          $scale: 0, 1;
+          transform: scale($scale);
+          transform: scale3d($scale, 1);
+
           z-index: -1;
+
+          html.ready &,
+          html.no-js & {
+            opacity: 1;
+            $scale: 1, 1;
+            transform: scale($scale);
+            transform: scale3d($scale, 1);
+          }
         }
       }
     }
@@ -682,6 +740,18 @@
   //background-color: rgba(whitesmoke, 0.8);
 }
 
+.section {
+  margin-bottom: $bottom-section;
+
+  @include media('<mob') {
+    margin-bottom: $bottom-section--mob;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
 /* page navigation */
 .page-nav {
   display: flex;
@@ -707,7 +777,8 @@
   }
 
   li.current > a,
-  li > span {
+  li > span ,
+  a.mPS2id-highlight {
     cursor: default;
     color: $highlight-color;
   }
@@ -728,11 +799,19 @@
   h1, .h1 {
     margin-right: 4.5rem;
     margin-bottom: 3rem;
+
+    @include media('<desk-s') {
+      margin-right: 3rem;
+    }
   }
 
   .page-nav {
     margin-top: 4.5rem;
     margin-bottom: 3rem;
+
+    @include media('<desk-s') {
+      margin-top: 2.7rem;
+    }
   }
 }
 
@@ -918,7 +997,7 @@
 .menu-item {
   position: relative;
 
-  &.active {
+  &.item_active {
     z-index: 10;
   }
 }
@@ -1031,7 +1110,7 @@
 
   transition: opacity $animation-speed, transform $animation-speed;
 
-  .active & {
+  .item_active & {
     opacity: 0;
     transform: translate(0, -4rem);
   }
@@ -1089,7 +1168,7 @@
   cursor: default;
   //background-color: rgba(red, 0.2);
 
-  .active & {
+  .item_active & {
     opacity: 1;
   }
 
@@ -1106,11 +1185,11 @@
 
   transform: translate(0, 0);
 
-  .active & {
+  .item_active & {
     transform: translate(-15rem, 0);
   }
 
-  .menu__item.active:first-child & {
+  .menu__item.item_active:first-child & {
     transform: translate(-6rem, 0);
   }
 }
@@ -1191,7 +1270,7 @@
   }
 
   // Active
-  .active & {
+  .item_active & {
     transition-delay: $animation-speed * 1.5;
 
     opacity: 1;
@@ -1213,7 +1292,7 @@
 
   transform: translate(0, 1.5rem);
 
-  .active & {
+  .item_active & {
     transform: translate(0, 0);
   }
 }
@@ -1231,7 +1310,7 @@
 
   transform: translate(0, 1.5rem);
 
-  .active & {
+  .item_active & {
     transform: translate(0, 0);
   }
 }
@@ -1248,7 +1327,7 @@
 
   transform: translate(2rem, 0);
 
-  .active & {
+  .item_active & {
     transform: translate(0, 0);
   }
 
@@ -1338,7 +1417,7 @@
   //}
 
   // Active
-  &.active {
+  &.item_active {
     //.menu-item__bg-text-mask,
     .menu-item__bg-text {
       margin-top: -62vh;
@@ -1387,7 +1466,7 @@
   //}
 
   // Active
-  &.active {
+  &.item_active {
     //.menu-item__bg-text-mask,
     .menu-item__bg-text {
       margin-top: -72vh;
@@ -1435,7 +1514,7 @@
   //}
 
   // Active
-  &.active {
+  &.item_active {
     //.menu-item__bg-text-mask,
     .menu-item__bg-text {
       margin-top: -50vh;
@@ -1483,7 +1562,7 @@
   //}
 
   // Active
-  &.active {
+  &.item_active {
     //.menu-item__bg-text-mask,
     .menu-item__bg-text {
       margin-top: -35vh;
@@ -1559,7 +1638,7 @@
 
   transition: opacity $animation-speed;
 
-  &.active {
+  &.item_active {
     opacity: 1;
   }
 
@@ -2502,3 +2581,170 @@ $m-news-space: 4rem;
 }
 
 /* media section end */
+
+/* solutions element */
+.sol-el {
+  padding: 2rem 2.8rem 2.8rem 0;
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+
+  color: $text-color;
+  text-decoration: none;
+
+  &::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 3.4rem;
+    @include linear-gradient(180deg, #1d1d1d 0%, #111111 100%);
+    box-shadow: 0 2px 33px rgba(0, 0, 0, 0.5);
+    border-radius: 1px;
+    transition: transform $animation-speed;
+    transform-origin: left center;
+  }
+}
+
+.sol-el__figure {
+  position: relative;
+  flex-grow: 0;
+  flex-shrink: 1;
+  margin: 0 2.8rem 0 0;
+  $width: 23rem;
+  flex-basis: $width;
+  min-width: $width;
+  max-width: $width;
+  transition: transform $animation-speed;
+
+  &::after {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    $color: #0b2d51;
+    @include linear-gradient(to bottom, rgba($color, 0.5) 0%, rgba($color, 1) 100%);
+    opacity: 0.9;
+  }
+}
+
+.sol-el__content {
+  position: relative;
+  flex-grow: 0;
+}
+
+.sol-el__title {
+  @include font-extra-bold;
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+  color: $text-color;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+  transition: color $animation-speed;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.sol-el__text {
+  font-size: 15px;
+  line-height: 24px;
+  margin-bottom: 2rem;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.sol-el__btn {
+  display: inline-block;
+  vertical-align: top;
+  padding: 0.8rem 1.2rem;
+  border: 1px solid rgba(white, 0.3);
+  border-radius: 5px;
+  cursor: pointer;
+
+  transition: border-color $animation-speed;
+
+  &:hover {
+    border-color: $highlight-color;
+  }
+}
+
+// States
+.sol-el {
+  // Hover
+  .no-touchevents &:hover {
+    z-index: 5;
+
+    &::before {
+      $translate: 0, 0;
+      $scale: 1.1, 1.1;
+      transform: translate($translate) scale($scale);
+      transform: translate3d($translate, 1) scale3d($scale, 1);
+    }
+
+    .sol-el__figure {
+      $translate: -2rem, 0;
+      transform: translate($translate);
+      transform: translate3d($translate, 1);
+    }
+
+    .sol-el__title {
+      color: $highlight-color;
+    }
+  }
+}
+
+/* solutions element end */
+
+/* solutions list */
+.solutions {
+  position: relative;
+  margin-bottom: round-float($bottom-section * 0.75, 1);
+
+  @include media('<mob') {
+    margin-bottom: round-float($bottom-section--mob * 0.75, 1);
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.solutions__list {
+  margin: 0 -1.2rem -4rem;
+  display: flex;
+  flex-wrap: wrap;
+
+  @include media('<mob') {
+    margin: 0 -0.7rem -4rem;
+  }
+}
+
+.solutions__item {
+  padding: 0 1.2rem 4rem;
+  flex-grow: 1;
+  flex-shrink: 0;
+  $width: 50%;
+  flex-basis: $width;
+  max-width: $width;
+
+  @include media('<desk-s') {
+    $width: 100%;
+    flex-basis: $width;
+    max-width: $width;
+  }
+
+  @include media('<mob') {
+    padding: 0 0.7rem 4rem;
+  }
+}
+
+/* solutions list end */
