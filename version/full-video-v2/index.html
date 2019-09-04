@@ -27,14 +27,14 @@
   <meta property="og:description" content="Описание">
   <meta property="og:site_name" content="Расширенное название">
   <!--Favicon-->
-  <link rel="shortcut icon" href="favicon.ico?rev=5a10896d197533a571e43b0260f2d212">
-  <link rel="icon" sizes="16x16 32x32 64x64" href="favicon.ico?rev=f110ae797c7f2e26488da84d42a17546">
-  <link rel="apple-touch-icon" href="apple-touch-icon.png?rev=82d85619c2907b278e34dae63a9e0319">
+  <link rel="shortcut icon" href="favicon.ico?rev=35d5253c29b3518c9696844110df30e1">
+  <link rel="icon" sizes="16x16 32x32 64x64" href="favicon.ico?rev=33b7bfb2b234abf572e32e8720301c7f">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png?rev=bf66f1e93527a7803521c124aa1f9140">
   <!--manifest-->
   <link rel="manifest" href="manifest.webmanifest">
   <!--Style-->
-  <link rel="stylesheet" href="css/libs.min.css?rev=e2e2d023fe40710480fdaa756a299792">
-  <link rel="stylesheet" href="css/main.css?rev=c10f2b59ac9812000fbcbbd34a7f4293">
+  <link rel="stylesheet" href="css/libs.min.css?rev=4c02475231502e4ce49eb967d69c9420">
+  <link rel="stylesheet" href="css/main.css?rev=427652676bb536f5b8bc1cf5fb0c004c">
   <!--Modernizr-->
   <script src="js/modernizr.min.js"></script>
 </head>
@@ -51,7 +51,9 @@
       <div class="header-container">
         <!--logo-->
         <div class="logo">
-          <span>Bel in soft</span>
+          <a href="index.html" title="Go home">Bel in soft</a>
+          <!--logo for a print version-->
+          <img style="display: none;" src="img/logo.svg" alt="Print version logotype">
         </div>
         <!--logo end-->
         <div class="hc-right">
@@ -61,7 +63,7 @@
               <ul class="nav__list">
                 <li><a href="#">About Us</a></li>
                 <li><a href="#">Products</a></li>
-                <li><a href="solutions.html">Solutions</a></li>
+                <li><a href="#">Solutions</a></li>
                 <li><a href="news.html">News</a></li>
                 <li><a href="#">Сooperation</a></li>
                 <li><a href="#">Contacts</a></li>
@@ -99,25 +101,25 @@
           <div class="video-cover">
             <div class="video-cover__item video-cover__item-js active" id="tactical">
               <video autoplay muted loop data-autoplay>
-                <source src="video/bg-tactical.mp4?v3">
+                <source src="video/bg-tactical.mp4?v2">
                 <img src="video/bg-tactical.jpg" alt="">
               </video>
             </div>
             <div class="video-cover__item video-cover__item-js" id="strategical">
               <video autoplay muted loop data-autoplay>
-                <source src="video/bg-strategical.mp4?v3">
+                <source src="video/bg-strategical.mp4?v2">
                 <img src="video/bg-tactical.jpg" alt="">
               </video>
             </div>
             <div class="video-cover__item video-cover__item-js" id="homeland">
               <video autoplay muted loop data-autoplay>
-                <source src="video/bg-homeland.mp4?v3">
+                <source src="video/bg-homeland.mp4?v2">
                 <img src="video/bg-tactical.jpg" alt="">
               </video>
             </div>
             <div class="video-cover__item video-cover__item-js" id="cyber">
               <video autoplay muted loop data-autoplay>
-                <source src="video/bg-cyber.mp4?v3">
+                <source src="video/bg-cyber.mp4?v2">
                 <img src="video/bg-tactical.jpg" alt="">
               </video>
             </div>
@@ -220,236 +222,6 @@
         </div>
         <a href="#" class="btn-to-news">Breaking news</a>
         <a href="#" class="btn-next-section btn-next-section-js">Next section</a>
-        <div class="t-choose-video">
-          <div class="t-choose-video__head">
-            <strong>Выбрать видеоподложку:</strong>
-            <em></em>
-          </div>
-          <div class="t-choose-video__body">
-            <form action="#">
-              <table>
-                <thead>
-                  <tr>
-                    <th>Tactical</th>
-                    <th>Strategical</th>
-                    <th>Homeland</th>
-                    <th>Cyber</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>
-                      <label class="form-radiocheck">
-                        <input type="radio" name="tactical" data-src="video/bg-tactical.mp4" checked>
-                        <span>Зеленое. Дороги и машины</span>
-                      </label>
-                    </td>
-                    <td>
-                      <label class="form-radiocheck">
-                        <input type="radio" name="strategical" data-src="video/bg-tactical.mp4">
-                        <span>Зеленое. Дороги и машины</span>
-                      </label>
-                    </td>
-                    <td>
-                      <label class="form-radiocheck">
-                        <input type="radio" name="homeland" data-src="video/bg-tactical.mp4">
-                        <span>Зеленое. Дороги и машины</span>
-                      </label>
-                    </td>
-                    <td>
-                      <label class="form-radiocheck">
-                        <input type="radio" name="cyber" data-src="video/bg-tactical.mp4">
-                        <span>Зеленое. Дороги и машины</span>
-                      </label>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <label class="form-radiocheck">
-                        <input type="radio" name="tactical" data-src="video/bg-strategical.mp4">
-                        <span>Глобус</span>
-                      </label>
-                    </td>
-                    <td>
-                      <label class="form-radiocheck">
-                        <input type="radio" name="strategical" data-src="video/bg-strategical.mp4" checked>
-                        <span>Глобус</span>
-                      </label>
-                    </td>
-                    <td>
-                      <label class="form-radiocheck">
-                        <input type="radio" name="homeland" data-src="video/bg-strategical.mp4">
-                        <span>Глобус</span>
-                      </label>
-                    </td>
-                    <td>
-                      <label class="form-radiocheck">
-                        <input type="radio" name="cyber" data-src="video/bg-strategical.mp4">
-                        <span>Глобус</span>
-                      </label>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <label class="form-radiocheck">
-                        <input type="radio" name="tactical" data-src="video/bg-homeland.mp4">
-                        <span>Красное с треугольниками</span>
-                      </label>
-                    </td>
-                    <td>
-                      <label class="form-radiocheck">
-                        <input type="radio" name="strategical" data-src="video/bg-homeland.mp4">
-                        <span>Красное с треугольниками</span>
-                      </label>
-                    </td>
-                    <td>
-                      <label class="form-radiocheck">
-                        <input type="radio" name="homeland" data-src="video/bg-homeland.mp4" checked>
-                        <span>Красное с треугольниками</span>
-                      </label>
-                    </td>
-                    <td>
-                      <label class="form-radiocheck">
-                        <input type="radio" name="cyber" data-src="video/bg-homeland.mp4">
-                        <span>Красное с треугольниками</span>
-                      </label>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <label class="form-radiocheck">
-                        <input type="radio" name="tactical" data-src="video/bg-cyber.mp4">
-                        <span>Силуэт в капюшоне</span>
-                      </label>
-                    </td>
-                    <td>
-                      <label class="form-radiocheck">
-                        <input type="radio" name="strategical" data-src="video/bg-cyber.mp4">
-                        <span>Силуэт в капюшоне</span>
-                      </label>
-                    </td>
-                    <td>
-                      <label class="form-radiocheck">
-                        <input type="radio" name="homeland" data-src="video/bg-cyber.mp4">
-                        <span>Силуэт в капюшоне</span>
-                      </label>
-                    </td>
-                    <td>
-                      <label class="form-radiocheck">
-                        <input type="radio" name="cyber" data-src="video/bg-cyber.mp4" checked>
-                        <span>Силуэт в капюшоне</span>
-                      </label>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <label class="form-radiocheck">
-                        <input type="radio" name="tactical" data-src="video/bg-security-attack.mp4">
-                        <span>Security Attack</span>
-                      </label>
-                    </td>
-                    <td>
-                      <label class="form-radiocheck">
-                        <input type="radio" name="strategical" data-src="video/bg-security-attack.mp4">
-                        <span>Security Attack</span>
-                      </label>
-                    </td>
-                    <td>
-                      <label class="form-radiocheck">
-                        <input type="radio" name="homeland" data-src="video/bg-security-attack.mp4">
-                        <span>Security Attack</span>
-                      </label>
-                    </td>
-                    <td>
-                      <label class="form-radiocheck">
-                        <input type="radio" name="cyber" data-src="video/bg-security-attack.mp4">
-                        <span>Security Attack</span>
-                      </label>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <label class="form-radiocheck">
-                        <input type="radio" name="tactical" data-src="video/bg-monitoring-room.webm">
-                        <span>Monitoring Room</span>
-                      </label>
-                    </td>
-                    <td>
-                      <label class="form-radiocheck">
-                        <input type="radio" name="strategical" data-src="video/bg-monitoring-room.webm">
-                        <span>Monitoring Room</span>
-                      </label>
-                    </td>
-                    <td>
-                      <label class="form-radiocheck">
-                        <input type="radio" name="homeland" data-src="video/bg-monitoring-room.webm">
-                        <span>Monitoring Room</span>
-                      </label>
-                    </td>
-                    <td>
-                      <label class="form-radiocheck">
-                        <input type="radio" name="cyber" data-src="video/bg-monitoring-room.webm">
-                        <span>Monitoring Room</span>
-                      </label>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <label class="form-radiocheck">
-                        <input type="radio" name="tactical" data-src="video/bg-cyber-security.mp4">
-                        <span>Cyber Security</span>
-                      </label>
-                    </td>
-                    <td>
-                      <label class="form-radiocheck">
-                        <input type="radio" name="strategical" data-src="video/bg-cyber-security.mp4">
-                        <span>Cyber Security</span>
-                      </label>
-                    </td>
-                    <td>
-                      <label class="form-radiocheck">
-                        <input type="radio" name="homeland" data-src="video/bg-cyber-security.mp4">
-                        <span>Cyber Security</span>
-                      </label>
-                    </td>
-                    <td>
-                      <label class="form-radiocheck">
-                        <input type="radio" name="cyber" data-src="video/bg-cyber-security.mp4">
-                        <span>Cyber Security</span>
-                      </label>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <label class="form-radiocheck">
-                        <input type="radio" name="tactical" data-src="video/bg-server-warning.webm">
-                        <span>Server Warning</span>
-                      </label>
-                    </td>
-                    <td>
-                      <label class="form-radiocheck">
-                        <input type="radio" name="strategical" data-src="video/bg-server-warning.webm">
-                        <span>Server Warning</span>
-                      </label>
-                    </td>
-                    <td>
-                      <label class="form-radiocheck">
-                        <input type="radio" name="homeland" data-src="video/bg-server-warning.webm">
-                        <span>Server Warning</span>
-                      </label>
-                    </td>
-                    <td>
-                      <label class="form-radiocheck">
-                        <input type="radio" name="cyber" data-src="video/bg-server-warning.webm">
-                        <span>Server Warning</span>
-                      </label>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </form>
-          </div>
-        </div>
       </section>
       <section class="about-section fp-section-js">
         <div class="bg-video">
@@ -628,34 +400,12 @@
     </div>
     <div class="widget widget-js">
       <a href="#" class="widget-close widget-close-js">x</a>
-      <!-- Slider main container -->
-      <!--<div class="swiper-container widget-slider widget-slider-js">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide">
-          <a href="#">
-            <div class=""><img src="img/img-news-02.jpg" alt="image description" /></div>
-          </a>
-          <a href="#">
-            <div class=""><img src="img/img-news-03.jpg" alt="image description" /></div>
-          </a>
-          <a href="#">
-            <div class=""><img src="img/img-news-04.jpg" alt="image description" /></div>
-          </a>
-        </div>
-        <div class="swiper-slide">
-          <img src="img/img-news-03.jpg" alt="image description" />
-        </div>
-      </div>
-
-      <div class="swiper-button-prev"></div>
-      <div class="swiper-button-next"></div>
-    </div>-->
     </div>
   </main>
   <!--MAIN end-->
   <script src="js/jquery.min.js"></script>
   <script src="js/libs.min.js"></script>
-  <script src="js/common.js?rev=ad355e316574b021de5bda8ae41859ac"></script>
+  <script src="js/common.js?rev=b3ce3504f0434368e599c32f93add7f7"></script>
 </body>
 
 </html>

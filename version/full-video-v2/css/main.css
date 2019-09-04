@@ -2589,7 +2589,7 @@ form .success + .select-arrow + .error-feedback + .success-feedback {
 }
 .menu-item__bg-text {
   position: absolute;
-  left: -0.21em;
+  left: -0.22em;
   top: -1em;
   font-family: "circe-extra-bold", Helvetica, Arial, sans-serif;
   font-weight: normal;
@@ -2607,7 +2607,7 @@ form .success + .select-arrow + .error-feedback + .success-feedback {
 }
 @media (min-width: 1920px) {
   .menu-item__bg-text {
-    font-size: 49.5rem;
+    font-size: 51rem;
   }
 }
 .menu-item__bg-text > span {
@@ -3705,102 +3705,288 @@ form .success + .select-arrow + .error-feedback + .success-feedback {
   max-width: calc(100% - 38rem);
 }
 /* media section end */
-/* choose video */
-.t-choose-video {
-  position: absolute;
-  right: 8rem;
-  bottom: 0;
-  max-width: 72rem;
-  z-index: 20;
-  border-radius: 0.5rem 0.5rem 0 0;
-  color: #fff;
-  background-color: rgba(125, 125, 125, 0.5);
-  transition: background-color 0.35s opacity 0.35s;
-}
-.t-choose-video.is-open {
-  background-color: #1100b3;
-}
-@media (max-width: 1599px) {
-  .t-choose-video {
-    max-width: 64rem;
+@media print {
+  h1, h2, h3, h4, h5, h6,
+  .h1, .h2, .h3, .h4, .h5, .h6,
+  p, hr, div,
+  blockquote, q, cite, figure, figcaption,
+  header, footer, main, section, article, aside,
+  applet, object, iframe,
+  pre,
+  abbr, acronym, address, big, code,
+  del, dfn, ins, kbd, s, samp,
+  tt,
+  dl, dt, dd,
+  fieldset, form, legend, caption,
+  canvas, details, embed,
+  menu, nav, output, ruby, summary,
+  audio, video,
+  .full-reset {
+    display: block !important;
+    float: none !important;
+    position: relative !important;
+    overflow: visible !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    width: auto !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    left: auto !important;
+    top: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    -ms-transform: none !important;
+        transform: none !important;
+    text-align: left !important;
+    border: none !important;
+    box-shadow: none !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    font-size: inherit !important;
+    line-height: inherit !important;
+    z-index: auto !important;
+  }
+  ul, ol, li,
+  a, span, i, em, strong, b, u, mark, time, label,
+  small, strike, sub, sup, var,
+  table, table td, table th,
+  img, svg {
+    float: none !important;
+    position: relative !important;
+    overflow: visible !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    width: auto !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    left: auto !important;
+    top: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    -ms-transform: none !important;
+        transform: none !important;
+    text-align: left !important;
+    border: none !important;
+    box-shadow: none !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    font-size: inherit !important;
+    line-height: inherit !important;
+    z-index: auto !important;
+  }
+  a, span, i, em, strong, b, u, mark, time, label,
+  small, strike, sub, sup, var {
+    display: inline !important;
+  }
+  img, svg {
+    display: inline-block !important;
+  }
+  ul, ol {
+    display: block !important;
+    padding-left: 40px !important;
+    list-style: initial !important;
+  }
+  ul li, ol li {
+    display: list-item !important;
+  }
+  ul li::before, ol li::before {
+    display: none !important;
+  }
+  table {
+    display: table !important;
+  }
+  thead {
+    display: table-header-group !important;
+  }
+  div::before, div::after, ul::before, ul::after, li::before, li::after {
+    content: none !important;
+  }
+  body {
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-size: 10pt !important;
+    line-height: 1.5 !important;
+    font-size: initial !important;
+    line-height: initial !important;
+    min-width: 1024px !important;
+  }
+  *,
+  *::before,
+  *::after {
+    background: transparent !important;
+    color: black !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+  a, a:visited {
+    text-decoration: underline !important;
+  }
+  a[href^=http]::after {
+    content: " <" attr(href) "> " !important;
+  }
+  a[href]::after {
+    content: " (" attr(href) ")" !important;
+  }
+  abbr[title]::after {
+    content: " (" attr(title) ")" !important;
+  }
+  a[href^="#"]::after, a[href^="javascript:"]::after {
+    content: "" !important;
+  }
+  pre, blockquote {
+    page-break-inside: avoid;
+  }
+  tr, img {
+    page-break-inside: avoid;
+  }
+  p, h2, h3 {
+    orphans: 3;
+    widows: 3;
+  }
+  h2, h3 {
+    page-break-after: avoid;
+  }
+  h1, h2, h3, h4, h5, h6,
+  b, strong, th, i, em,
+  blockquote, q, cite,
+  table td, table th, table {
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-weight: normal !important;
+    font-style: normal !important;
+  }
+  h1, h2, h3, h4, h5, h6,
+  .h1, .h2, .h3, .h4, .h5, .h6,
+  b, strong, th {
+    font-weight: bold !important;
+  }
+  i, em, figcaption, cite {
+    font-style: italic !important;
+  }
+  i b, i strong, em b, em strong,
+  b i, b em, strong i, strong em {
+    font-weight: bold !important;
+    font-style: italic !important;
+  }
+  table {
+    width: 100% !important;
+  }
+  table td, table th, table {
+    border: 1px solid black !important;
+    font-size: 9pt !important;
+    line-height: 1.6 !important;
+    color: black !important;
+    padding: 3pt !important;
+  }
+  table td > *, table th > *, table > * {
+    padding: 0 !important;
+  }
+  blockquote {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    max-width: calc(100% - 2cm) !important;
+  }
+  blockquote q {
+    text-align: center !important;
+  }
+  blockquote q::before, blockquote q::after {
+    position: static !important;
+    display: inline-block !important;
+    vertical-align: baseline !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    font-size: 1em !important;
+  }
+  blockquote cite {
+    text-align: right !important;
+  }
+  hr {
+    border-color: black;
+  }
+  svg {
+    height: 1cm !important;
+    width: 1cm !important;
+  }
+  img {
+    max-width: 8cm !important;
+    margin-top: 0 !important;
+    margin-bottom: 0.5cm !important;
+    padding-bottom: 0 !important;
+  }
+  h1, .h1,
+  .title-text {
+    font-size: 26pt !important;
+    line-height: 1.3 !important;
+  }
+  h2, .h2,
+  .sub-title-text {
+    font-size: 22pt !important;
+    line-height: 1.4 !important;
+  }
+  h3, .h3,
+  .entry-text {
+    font-size: 18pt !important;
+    line-height: 1.5 !important;
+  }
+  h4, .h4,
+  blockquote q,
+  .caption-text {
+    font-size: 14pt !important;
+    line-height: 1.5 !important;
+  }
+  h5, .h5,
+  blockquote cite,
+  .mark-text {
+    font-size: 12pt !important;
+    line-height: 1.6 !important;
+  }
+  h6, .h6,
+  .small-title {
+    font-size: 8pt !important;
+    line-height: 1.8 !important;
+  }
+  .sidebar, .aside, .footer, .spacer,
+  .print-hidden, .view-print,
+  .nav, .nav-list,
+  .breadcrumbs, .breadcrumbs__list,
+  [class*="btn-"],
+  form {
+    display: none !important;
+  }
+  h1, h2, h3, h4, h5, h6,
+  .h1, .h2, .h3, .h4, .h5, .h6,
+  p, ul, ol, blockquote, q,
+  .table-auto, table,
+  figure,
+  .imgl, .imgr, .imgc {
+    margin-top: 0 !important;
+    margin-bottom: 0.5cm !important;
+    padding-bottom: 0 !important;
+  }
+  .header,
+  .blockquote, blockquote,
+  hr {
+    margin-top: 0 !important;
+    margin-bottom: 1cm !important;
+    padding-bottom: 0 !important;
+  }
+  .header {
+    padding: 0.3cm 0 !important;
+    border-bottom: 1px solid black !important;
+  }
+  .logo {
+    background: none !important;
+  }
+  .logo > * {
+    display: none !important;
+  }
+  .logo > img {
+    display: block !important;
+    float: left !important;
+    margin: 0 !important;
   }
 }
-.t-choose-video__head {
-  position: relative;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-align: center;
-      align-items: center;
-  -ms-flex-pack: justify;
-      justify-content: space-between;
-  cursor: pointer;
-  padding: 2rem;
-  transition: color 0.35s;
-}
-.t-choose-video__head > strong {
-  display: block;
-  margin-right: 2rem;
-  font-family: "circe-regular", Helvetica, Arial, sans-serif;
-  font-size: 1.8rem;
-  line-height: 2.4rem;
-  letter-spacing: 0.05em;
-}
-.t-choose-video__head > em {
-  display: block;
-  height: 2.4rem;
-  width: 2.4rem;
-  -ms-flex-preferred-size: 2.4rem;
-      flex-basis: 2.4rem;
-  -ms-flex-negative: 1;
-      flex-shrink: 1;
-  background-position: 50%;
-  background-repeat: no-repeat;
-  background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTciIGhlaWdodD0iMTAiIHZpZXdCb3g9IjAgMCAxNyAxMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMSAxLjIyMjY2TDguMjA5OTYgOC42MjEwOUwxNS40MTk5IDEuMjIyNjYiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz48L3N2Zz4=);
-  background-size: 16px;
-  -ms-transform: rotate(-180deg);
-      transform: rotate(-180deg);
-}
-.is-open .t-choose-video__head > em {
-  -ms-transform: rotate(0);
-      transform: rotate(0);
-}
-.t-choose-video__head:hover {
-  color: #1e917c;
-}
-.t-choose-video__body {
-  padding: 0 2rem 2rem;
-  display: none;
-}
-.is-open .t-choose-video__body {
-  display: block;
-}
-.t-choose-video__body table th, .t-choose-video__body table td {
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  font-size: 1.3rem;
-  line-height: 1.6rem;
-}
-.t-choose-video__body table td {
-  padding: 0;
-}
-.t-choose-video__body table th {
-  font-size: 1.4rem;
-  line-height: 1.8rem;
-  letter-spacing: 0.05em;
-  font-family: "circe-regular", Helvetica, Arial, sans-serif;
-  text-align: left;
-  text-transform: uppercase;
-  background-color: rgba(152, 152, 152, 0.3);
-  padding: 0.5rem 0.5rem 0.5rem 0.8rem;
-}
-.t-choose-video__body table label {
-  display: block;
-  padding: 0.5rem 0.5rem 0.5rem 0.8rem;
-  color: currentColor;
-  cursor: pointer;
-  font-size: inherit;
-}
-.t-choose-video__body table label > span::before,
-.t-choose-video__body table label input[type="radio"] ~ span::after {
-  border-color: currentColor;
-}
-/* choose video end */
