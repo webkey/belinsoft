@@ -3073,7 +3073,7 @@ form .success + .select-arrow + .error-feedback + .success-feedback {
 .about-section .bg-video {
   display: none;
 }
-.about-section .widget {
+.about-section .i-widget {
   position: absolute;
   right: 0;
   top: 50%;
@@ -3129,24 +3129,24 @@ form .success + .select-arrow + .error-feedback + .success-feedback {
 .no-touchevents .widget-opener:hover {
   background-color: #484848;
 }
-.widget-opener__icon {
+.weather-icon {
   margin-bottom: 0.2rem;
   color: white;
 }
-.widget-opener__icon svg {
+.weather-icon svg {
   display: inline-block;
   vertical-align: top;
 }
-.widget-opener__icon svg path, .widget-opener__icon svg rect {
+.weather-icon svg path, .weather-icon svg rect {
   fill: currentColor;
 }
-.widget-opener__temp {
+.weather-temp {
   font-size: 1.7rem;
   line-height: 2.5rem;
   color: white;
   margin-bottom: 1.9rem;
 }
-.widget-opener__temp:last-child {
+.weather-temp:last-child {
   margin-bottom: 0;
 }
 .widget-opener__time,

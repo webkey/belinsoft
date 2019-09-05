@@ -2521,7 +2521,7 @@ form .success + .select-arrow + .error-feedback + .success-feedback {
 }
 /* caption end */
 /* words */
-.words {
+.wbg {
   overflow: hidden;
   position: absolute;
   left: 0;
@@ -2531,7 +2531,7 @@ form .success + .select-arrow + .error-feedback + .success-feedback {
   width: 142.3rem;
   z-index: -1;
 }
-.words__item {
+.wbg__item {
   position: absolute;
   left: 0;
   top: 0;
@@ -2550,35 +2550,123 @@ form .success + .select-arrow + .error-feedback + .success-feedback {
   pointer-events: none;
   transition: margin 1.6s, opacity 0.525s;
 }
-.words__item:nth-child(1) {
+.wbg__item:nth-child(1) {
   margin-left: calc(1 * (1em - 0.22em));
   opacity: 0.05;
   margin-top: -5rem;
 }
-.words__item:nth-child(2) {
+.wbg__item:nth-child(2) {
   margin-left: calc(2 * (1em - 0.26em));
   opacity: 0.03;
   margin-top: -10vh;
 }
-.words__item:nth-child(3) {
+.wbg__item:nth-child(3) {
   margin-left: calc(3 * (1em - 0.27em));
   opacity: 0.02;
   margin-top: -20vh;
 }
-.words__item:nth-child(4) {
+.wbg__item:nth-child(4) {
   margin-left: calc(4 * (1em - 0.28em));
   opacity: 0.01;
   margin-top: -15vh;
 }
-.words__item > span {
+.wbg__item > span {
   display: block;
   position: relative;
   will-change: transform;
 }
 /* words end */
 /* bg video */
-/*.video-bg {  overflow: hidden;  position: absolute;  right: 0;  bottom: 0;  min-width: 100%;  min-height: 100%;  height: auto;  width: auto;  background-color: #eb2b3a;  video, img {    position: absolute;    top: 0;    left: 0;    width: 100%;    height: 100%;    @include object-fit(cover)  }}*/
-/*.sect-text {  position: absolute;  left: 0;  top: 0;  height: 100%;  width: 100%;  @include font-extra-bold;  font-size: 20rem;  line-height: 1;  text-transform: uppercase;  .mask__shape {    fill: $text-color;  }  .shape--fill {    fill: $bg-color;  }  .text--transparent {    fill: transparent;  }  .box-with-text {    position: absolute;    top: 0;    right: 0;    bottom: 0;    left: 0;    transform: rotate(90deg);  }  .text-fill {    position: absolute;    top: 50%;    left: 50%;    //padding-top: 35vw;    //padding-left: 100%;    height: 100%;    width: 100%;    margin: auto;    overflow: hidden;    transform: translate(-50%, -50%);  }  .video {    position: absolute;    top: 0;    left: 0;    width: 100%;    height: 100%;    @include object-fit(cover);  }  !*@media (min-aspect-ratio: 1 / 2) {    .text-fill {      padding-top: 35vw;    }  }  @media (min-aspect-ratio: 2 / 1) {    .text-fill {      padding-top: 70vh;      padding-left: 190vh;    }  }*!  !* Other styles *!  .svg-defs {    width: 0;    height: 0;  }  .svg-inverted-mask {    position: absolute;    width: 100%;    height: 100%;  }}*/
+/*
+.video-bg {
+  overflow: hidden;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  height: auto;
+  width: auto;
+  background-color: #eb2b3a;
+  video, img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    @include object-fit(cover)
+  }
+}
+*/
+/*.sect-text {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  @include font-extra-bold;
+  font-size: 20rem;
+  line-height: 1;
+  text-transform: uppercase;
+  .mask__shape {
+    fill: $text-color;
+  }
+  .shape--fill {
+    fill: $bg-color;
+  }
+  .text--transparent {
+    fill: transparent;
+  }
+  .box-with-text {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transform: rotate(90deg);
+  }
+  .text-fill {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    //padding-top: 35vw;
+    //padding-left: 100%;
+    height: 100%;
+    width: 100%;
+    margin: auto;
+    overflow: hidden;
+    transform: translate(-50%, -50%);
+  }
+  .video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    @include object-fit(cover);
+  }
+  !*@media (min-aspect-ratio: 1 / 2) {
+    .text-fill {
+      padding-top: 35vw;
+    }
+  }
+  @media (min-aspect-ratio: 2 / 1) {
+    .text-fill {
+      padding-top: 70vh;
+      padding-left: 190vh;
+    }
+  }*!
+  !* Other styles *!
+  .svg-defs {
+    width: 0;
+    height: 0;
+  }
+  .svg-inverted-mask {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+}*/
 /* bg video end */
 /* menu */
 .menu-item {
@@ -3045,24 +3133,24 @@ form .success + .select-arrow + .error-feedback + .success-feedback {
       transform: translate(100%, -2rem);
   transform: translate3d(100%, -2rem, 0);
 }
-.widget-opener__icon {
+.weather-icon {
   margin-bottom: 0.2rem;
   color: #fff;
 }
-.widget-opener__icon svg {
+.weather-icon svg {
   display: inline-block;
   vertical-align: top;
 }
-.widget-opener__icon svg path, .widget-opener__icon svg rect {
+.weather-icon svg path, .weather-icon svg rect {
   fill: currentColor;
 }
-.widget-opener__temp {
+.weather-temp {
   font-size: 1.7rem;
   line-height: 2.5rem;
   color: #fff;
   margin-bottom: 1.9rem;
 }
-.widget-opener__temp:last-child {
+.weather-temp:last-child {
   margin-bottom: 0;
 }
 .widget-opener__time,
@@ -3073,7 +3161,7 @@ form .success + .select-arrow + .error-feedback + .success-feedback {
 .widget-opener__city:last-child {
   margin-bottom: 0;
 }
-.widget {
+.i-widget {
   position: fixed;
   right: 0;
   top: 50%;
@@ -3091,16 +3179,16 @@ form .success + .select-arrow + .error-feedback + .success-feedback {
       transform: translate(100%, 2rem);
   transform: translate3d(100%, 2rem, 0);
 }
-.fp-viewing-section1 .widget {
+.fp-viewing-section1 .i-widget {
   margin-top: -325px;
 }
-.widget.active {
+.i-widget.active {
   opacity: 1;
   -ms-transform: translate(0, 0);
       transform: translate(0, 0);
   transform: translate3d(0, 0, 0);
 }
-.widget-close {
+.btn-widget-close {
   position: absolute;
   height: 2.4rem;
   width: 2.4rem;
@@ -3116,7 +3204,7 @@ form .success + .select-arrow + .error-feedback + .success-feedback {
   cursor: pointer;
   transition: background-color 0.35s;
 }
-.widget-close:hover {
+.btn-widget-close:hover {
   background-color: #156758;
 }
 /* info widget end */

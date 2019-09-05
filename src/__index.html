@@ -367,7 +367,7 @@
                 "date": "20.08.2019 11:33",
                 "datetime": "2019-08-20T11:33",
                 "title": "All You Need To Know",
-                "text": "By the decree No. 91 of the President of the Republic of Belarus joint close company BELINSOFT has the rights of a special exporter in the field of foreign"
+                "text": "By the decree No. 91 of the President of the Republic of Belarus joint close company BELINSOFT has the rights"
                 })
               </div>
               <div class="m-news-list__item">
@@ -468,40 +468,48 @@
     </section>
   </div>
 
-  <div class="widget-opener widget-opener-js">
-    <div class="widget-opener__icon">
-      @@include("includes/svg/icon-open-widget.svg")
+  <div class="i-widget i-widget-js">
+    <div class="i-widget__bg"></div>
+
+    <div class="weather-icon">
+      @@include("includes/svg/icon-cloud.svg")
     </div>
-    <div class="widget-opener__temp">15° С</div>
-    <div class="widget-opener__city">Minsk</div>
-    <div class="widget-opener__time">23:00</div>
-  </div>
+    <div class="weather-temp">15° С</div>
+    <div class="weather-city">Minsk</div>
+    <div class="weather-time">23:00</div>
 
-  <div class="widget widget-js">
-    <a href="#" class="widget-close widget-close-js">x</a>
-
-    <!-- Slider main container -->
-    <!--<div class="swiper-container widget-slider widget-slider-js">
+    <div class="swiper-container i-widget-slider i-widget-slider-js">
       <div class="swiper-wrapper">
         <div class="swiper-slide">
-          <a href="#">
-            <div class=""><img src="img/img-news-02.jpg" alt="image description" /></div>
-          </a>
-          <a href="#">
-            <div class=""><img src="img/img-news-03.jpg" alt="image description" /></div>
-          </a>
-          <a href="#">
-            <div class=""><img src="img/img-news-04.jpg" alt="image description" /></div>
-          </a>
+          @@include("_tpl_widget-slider-el.html", {
+          "srcImg": "img/img-news-02.jpg",
+          "title": "Startup Bel in Soft",
+          "text": "Platform for the launch of technological IT projects"
+          })
         </div>
         <div class="swiper-slide">
-          <img src="img/img-news-03.jpg" alt="image description" />
+          @@include("_tpl_widget-slider-el.html", {
+          "srcImg": "img/img-news-03.jpg",
+          "title": "Platform for the launch",
+          "text": "The company's products are a new direction of military-technical"
+          })
+        </div>
+        <div class="swiper-slide">
+          @@include("_tpl_widget-slider-el.html", {
+          "srcImg": "img/img-news-04.jpg",
+          "title": "Our C4I solutions will allow",
+          "text": "Platform for the launch of technological IT projects of systems..."
+          })
         </div>
       </div>
 
       <div class="swiper-button-prev"></div>
       <div class="swiper-button-next"></div>
-    </div>-->
+    </div>
+
+    <a href="#" class="btn-widget-opener widget-opener-js"></a>
+
+    <a href="#" class="btn-widget-close widget-close-js">x</a>
   </div>
 </main>
 <!--MAIN end-->

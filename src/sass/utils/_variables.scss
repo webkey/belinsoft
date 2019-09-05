@@ -274,9 +274,9 @@ $layout-page-min-width: 102.4rem !default;
 //$layout-page-max-width: 192rem !default;
 $layout-page-max-width: none !default;
 // Отступы для всего сайта
-$layout-page-space: 3rem 6.8rem !default;
+$layout-page-space: 19rem 6.8rem 5rem !default;
+$layout-page-space--lap: 14rem 5rem 5rem !default;
 $layout-page-space--mob: 2rem 1.5rem !default;
-
 
 // Layout content
 // ====================================================
@@ -579,9 +579,6 @@ $animation-speed-mouseleave: 0.35s !default;
 // Header
 // ====================================================
 $nav-height: 7rem;
-
-$header-height: 18rem;
-$header-height--lap: 13rem;
 
 
 // Footer

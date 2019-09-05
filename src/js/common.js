@@ -1,4 +1,11 @@
 /**
+ * Constants
+ */
+var $WINDOW = $(window),
+    $HTML = $('html'),
+    $BODY = $('body');
+
+/**
  * !Detects overlay scrollbars (when scrollbars on overflowed blocks are visible).
  * This is found most commonly on mobile and OS X.
  * */
@@ -22,11 +29,11 @@ function addTouchClasses() {
 var resizeByWidth = true;
 
 var prevWidth = -1;
-$(window).resize(function () {
-  var currentWidth = $('body').outerWidth();
+$WINDOW.resize(function () {
+  var currentWidth = $BODY.outerWidth();
   resizeByWidth = prevWidth !== currentWidth;
   if (resizeByWidth) {
-    $(window).trigger('resizeByWidth');
+    $WINDOW.trigger('resizeByWidth');
     prevWidth = currentWidth;
   }
 });
@@ -37,11 +44,11 @@ $(window).resize(function () {
 var debouncedresizeByWidth = true;
 
 var debouncedPrevWidth = -1;
-$(window).on('debouncedresize', function () {
-  var currentWidth = $('body').outerWidth();
+$WINDOW.on('debouncedresize', function () {
+  var currentWidth = $BODY.outerWidth();
   debouncedresizeByWidth = debouncedPrevWidth !== currentWidth;
   if (resizeByWidth) {
-    $(window).trigger('debouncedresizeByWidth');
+    $WINDOW.trigger('debouncedresizeByWidth');
     debouncedPrevWidth = currentWidth;
   }
 });
@@ -54,29 +61,43 @@ function animationElements() {
 }
 
 /**
- * !Add class on scroll page
- * */
-/**
  * !Detect scroll page and transform header
  */
-function detectScrollPage() {
-  var $page = $('html'),
-      $header = $('.header'),
+function eventsScrollPage() {
+  var $header = $('.header'),
+      $words = $('.words-scroll-js'),
+      wordsScrollDur = 0,
       minScrollTop = 130;
 
+  // Add scroll class
   function toggleClassOnScroll(topPos) {
     minScrollTop = $header.outerHeight();
-    $page.toggleClass('page-scrolled', (topPos > minScrollTop));
+    $HTML.toggleClass('page-scrolled', (topPos > minScrollTop));
   }
 
+  // Parallax scroll background
+  function scrollBgWords(scrollTop) {
+    $words.css({
+      'transform': 'translate3d(0px, ' + Math.round(scrollTop * 0.8) + 'px, 0px)',
+      'transition': 'all ' + wordsScrollDur / 1000 + 's'
+    });
+  }
 
-  $(window).on('debouncedresizeByWidth scroll', function () {
-    var scrollTop = $(window).scrollTop();
-    toggleClassOnScroll(scrollTop);
-  });
+  // Ready document
+  var scrollTop = $WINDOW.scrollTop();
 
-  var scrollTop = $(window).scrollTop();
   toggleClassOnScroll(scrollTop);
+
+  scrollBgWords(scrollTop);
+
+  // Resize and Scroll
+  $WINDOW.on('debouncedresizeByWidth scroll', function () {
+    var scrollTop = $WINDOW.scrollTop();
+
+    toggleClassOnScroll(scrollTop);
+
+    scrollBgWords(scrollTop);
+  });
 }
 
 /**
@@ -121,10 +142,10 @@ function fullPageInitial() {
       // dots navigation
       navigation: false,
       onLeave: function (origin, destination, direction) {
-        var sectionHeight = $fpSection.eq(destination.index - 1).outerHeight() * (destination.index - 1) * parallaxValue;
+        var scrollValue = $fpSection.eq(destination.index - 1).outerHeight() * destination.index * parallaxValue;
 
         $word.css({
-          'transform': 'translate(' + sectionHeight + 'px, 0px)',
+          'transform': 'translate3d(' + scrollValue + 'px, 0px, 0px)',
           'transition': 'all ' + duration / 1000 + 's'
         });
       },
@@ -460,19 +481,36 @@ function slidersInit() {
   }
 
   // widget slider
-  var $widgetSlider = $('.widget-slider-js');
+  var $widgetSlider = $('.i-widget-slider-js');
 
   if($widgetSlider.length){
     $widgetSlider.each(function () {
-      var $thisSlider = $(this),
-          $nextEl = $thisSlider.find('.swiper-button-next'),
-          $prevEl = $thisSlider.find('.swiper-button-prev');
-
-      var reviewsSlider = new Swiper ($thisSlider, {
+      var $curSlider = $(this),
+          $nextEl = $curSlider.find('.swiper-button-next'),
+          $prevEl = $curSlider.find('.swiper-button-prev');
+      
+      var $thisSliderSlide = $curSlider.find('.swiper-slide').first(),
+          $coverflowStretch = $thisSliderSlide.outerHeight() - 43;
+      
+      var reviewsSlider = new Swiper ($curSlider, {
         init: false,
+        speed: 700,
+        loopedSlides: 10,
+        direction: 'vertical',
+        effect: 'coverflow',
+        coverflowEffect: {
+          rotate: 0,
+          stretch: $coverflowStretch,
+          // stretch: 100,
+          depth: 0,
+          modifier: 1,
+          slideShadows : false,
+        },
+        parallax:true,
         spaceBetween: 0,
-        slidesPerView: 1,
-        slidesPerGroup: 1,
+        // slidesPerView: 1,
+        slidesPerView: 'auto',
+        // slidesPerGroup: 1,
         loop: true,
         watchSlidesVisibility: true,
         allowTouchMove: false,
@@ -483,7 +521,7 @@ function slidersInit() {
       });
 
       reviewsSlider.on('init', function() {
-        $thisSlider.addClass('is-loaded');
+        $curSlider.addClass('is-loaded');
       });
 
       reviewsSlider.init();
@@ -520,7 +558,6 @@ function formValidation() {
 
   if ($form.length) {
     var changeClasses = function (elem, remove, add) {
-      // console.log('changeClasses');
       elem
           .removeClass(remove).addClass(add);
       elem
@@ -555,10 +592,10 @@ function formValidation() {
  */
 
 $(document).ready(function () {
-  $('html').addClass('ready');
+  $HTML.addClass('ready');
 
   addTouchClasses();
-  detectScrollPage();
+  eventsScrollPage();
   // animationElements();
   fullPageInitial();
   placeholderInit();
@@ -574,27 +611,26 @@ $(document).ready(function () {
 
   // Для тестирования. Временно
   $('.home-page .logo').on('click', function () {
-    var $html = $('html');
-    $html.toggleClass('logo-alt', !$html.hasClass('logo-alt'));
+    $HTML.toggleClass('logo-alt', !$HTML.hasClass('logo-alt'));
   });
 
   // Временно
   $('.widget-opener-js').on('click', function (e) {
     var $curOpener = $(this);
-    var $widget = $('.widget-js');
-    $curOpener.add($widget).toggleClass('active', !$curOpener.hasClass('active'));
+    var $widget = $('.i-widget-js');
+    $curOpener.add($widget).toggleClass('widget_active', !$curOpener.hasClass('widget_active'));
 
     e.preventDefault();
   });
 
   $('.widget-close-js').on('click', function (e) {
-    $('.widget-opener-js').add('.widget-js').removeClass('active');
+    $('.widget-opener-js').add('.i-widget-js').removeClass('widget_active');
 
     e.preventDefault();
   });
 
   // Добавить список переключателей видео
-  $('body').on('change', '.t-choose-video :radio', function () {
+  $BODY.on('change', '.t-choose-video :radio', function () {
     var curRadio = $(this);
 
     var videoSrc = curRadio.attr('data-src'),
