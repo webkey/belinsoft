@@ -155,10 +155,13 @@ function fullPageInitial() {
 
         // Открывать автоматически виджет над секциех О КОМПАНИИ
         if ($infoWidget.length) {
-          if (!$infoWidget.data('is-active')) {
+          var dataIsActive = $infoWidget.data('is-active');
+
+          if (dataIsActive === undefined) {
             $infoWidget.removeClass('widget_active');
           }
-          if (destination.index === 1) {
+
+          if (dataIsActive === undefined && destination.index >= 1) {
             $infoWidget.addClass('widget_active');
           }
         }

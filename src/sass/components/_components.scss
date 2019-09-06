@@ -863,19 +863,19 @@
   }
 
   &:nth-child(2) {
-    margin-left: calc(2 * (1em - 0.26em));
+    margin-left: calc(2 * (1em - 0.25em));
     opacity: 0.05;
     margin-top: -10vh;
   }
 
   &:nth-child(3) {
-    margin-left: calc(3 * (1em - 0.27em));
+    margin-left: calc(3 * (1em - 0.26em));
     opacity: 0.03;
     margin-top: -20vh;
   }
 
   &:nth-child(4) {
-    margin-left: calc(4 * (1em - 0.28em));
+    margin-left: calc(4 * (1em - 0.27em));
     opacity: 0.02;
     margin-top: -15vh;
   }
@@ -1642,11 +1642,10 @@ $i-widget-space: 4rem;
 
 // Weather
 .weather-icon {
+  line-height: 0;
   position: absolute;
   left: 386px;
   top: 151px;
-  margin-bottom: 0.2rem;
-  color: $text-color;
 
   svg {
     display: inline-block;
@@ -1664,12 +1663,6 @@ $i-widget-space: 4rem;
   top: 168px;
   font-size: 1.7rem;
   line-height: 2.5rem;
-  color: $text-color;
-  margin-bottom: 1.9rem;
-
-  &:last-child {
-    margin-bottom: 0;
-  }
 }
 
 .weather-city {
