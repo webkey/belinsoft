@@ -11,13 +11,13 @@
     <section class="main-section fp-section-js">
       <div class="menu menu-js">
         <div class="video-cover">
-          <div class="video-cover__item video-cover__item-js item_active" id="tactical">
+          <div class="video-cover__item video-cover__item-js item_active" id="strategical">
             @@include("_tpl_video-cover-item.html", {
             "videoSrc": "video/bg-tactical.mp4?v3",
             "videoImg": "video/bg-tactical.jpg"
             })
           </div>
-          <div class="video-cover__item video-cover__item-js" id="strategical">
+          <div class="video-cover__item video-cover__item-js" id="tactical">
             @@include("_tpl_video-cover-item.html", {
             "videoSrc": "video/bg-strategical.mp4?v3",
             "videoImg": "video/bg-tactical.jpg"
@@ -38,18 +38,6 @@
         </div>
         <div class="video-cover__overlay"></div>
         <div class="menu__list">
-          <div class="menu-item menu-item menu__item menu__item-js menu__item_tactical item_active" data-for="tactical">
-            @@include("_tpl_menu-item.html", {
-            "class": "tactical",
-            "href": "#?1",
-            "videoSrc": "video/bg-tactical.mp4",
-            "videoImg": "video/bg-tactical.jpg",
-            "number": "01",
-            "title": "Tactical",
-            "subTitle": "Intelligence",
-            "text": "We provide a full range of systems to ensure the security of state borders and perimeters. Our C4I solutions will allow you to plan, integrate and create unique border and perimeter protection systems with the management ability from a single Control Center."
-            })
-          </div>
           <div class="menu-item menu__item menu__item-js menu__item_strategical" data-for="strategical">
             @@include("_tpl_menu-item.html", {
             "class": "strategical",
@@ -58,6 +46,18 @@
             "videoImg": "video/bg-tactical.jpg",
             "number": "02",
             "title": "Strategical",
+            "subTitle": "Intelligence",
+            "text": "We provide a full range of systems to ensure the security of state borders and perimeters. Our C4I solutions will allow you to plan, integrate and create unique border and perimeter protection systems with the management ability from a single Control Center."
+            })
+          </div>
+          <div class="menu-item menu-item menu__item menu__item-js menu__item_tactical item_active" data-for="tactical">
+            @@include("_tpl_menu-item.html", {
+            "class": "tactical",
+            "href": "#?1",
+            "videoSrc": "video/bg-tactical.mp4",
+            "videoImg": "video/bg-tactical.jpg",
+            "number": "01",
+            "title": "Tactical",
             "subTitle": "Intelligence",
             "text": "We provide a full range of systems to ensure the security of state borders and perimeters. Our C4I solutions will allow you to plan, integrate and create unique border and perimeter protection systems with the management ability from a single Control Center."
             })
@@ -337,6 +337,9 @@
         <p>By the decree No. 91 of the President of the Republic of Belarus joint close company BELINSOFT has the rights of a special exporter in the field of foreign trade, mediation for technical, cryptographic protection of information, means of undercover information obtaining related to specific goods (works, services). The main export products of the company are tactical and strategic data interception systems, cybersecurity products, security systems for critical national infrastructure.</p>
         <p>The advantage of JCC «BELINSOFT» is to create individual integrated “turn-key” solutions in the field of national and public security.</p>
         <p>The company's products are a new direction of military-technical cooperation, development and integration of high-end technologies in special areas of activity, organization of experimental design and research works.</p>
+        <div class="about-section__footer">
+          <a href="inner.html" class="btn-def">Read more</a>
+        </div>
       </div>
     </section>
 
@@ -376,7 +379,7 @@
                 "date": "20.08.2019 11:33",
                 "datetime": "2019-08-20T11:33",
                 "title": "All You Need To Know About BEL IN SOFT",
-                "text": "By the decree No. 91 of the President of the Republic of Belarus joint close company BELINSOFT has the rights of a"
+                "text": "By the decree No. 91 of the President of the Republic of Belarus joint close company BELINSOFT has the rights"
                 })
               </div>
             </div>
@@ -448,6 +451,19 @@
 
           <div class="swiper-pagination"></div>
         </div>
+        <div class="subscribe">
+          <form action="#" method="post" class="subs validate-js">
+            <div class="subs-container">
+              <label for="subs" class="sub-label">Subscription</label>
+              <div class="subs-row">
+                <input id="subs" class="form-def field-js subs-input" placeholder="Enter your e-mail" type="email" required="">
+                <button class="subs-btn">Subscribe</button>
+                <div class="subs-success subs-success-js">You are subscribed!</div>
+                <div class="subs-error">Please, type valid email</div>
+              </div>
+            </div>
+          </form>
+        </div>
       </div>
     </section>
 
@@ -466,17 +482,14 @@
         <p><a href="mailto:info@belinsoft.by">info@belinsoft.by</a></p>
       </div>
     </section>
+
+    @@include("_tpl_layout_footer.html", {
+    "addClass": "fp-section-js"
+    })
   </div>
 
   <div class="i-widget i-widget-js">
     <div class="i-widget__bg"></div>
-
-    <div class="weather-icon">
-      @@include("includes/svg/icon-cloud.svg")
-    </div>
-    <div class="weather-temp">15° С</div>
-    <div class="weather-city">Minsk</div>
-    <div class="weather-time">23:00</div>
 
     <div class="swiper-container i-widget-slider i-widget-slider-js">
       <div class="swiper-wrapper">
@@ -507,6 +520,13 @@
       <div class="swiper-button-next"></div>
     </div>
 
+    <div class="weather-icon">
+      @@include("includes/svg/icon-cloud.svg")
+    </div>
+    <div class="weather-temp">15° С</div>
+    <div class="weather-city">Minsk</div>
+    <div class="weather-time">23:00</div>
+
     <a href="#" class="btn-widget-opener widget-opener-js"></a>
 
     <a href="#" class="btn-widget-close widget-close-js">x</a>
@@ -516,5 +536,4 @@
 
 
 
-<!--@@include("_tpl_layout_footer.html")-->
 @@include("_tpl_layout_foot.html")

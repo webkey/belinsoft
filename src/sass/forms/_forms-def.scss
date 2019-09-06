@@ -34,7 +34,6 @@ label {
   @include input-common;
   @include input-font;
   @include form-def-space;
-  transition: color $animation-speed, border $animation-speed;
 
   // ------ mob -----------------------------------------
   @include media($form-media--mob) {
@@ -185,9 +184,9 @@ label {
     @include form-success;
 
     // Placeholder
-    @include placeholder {
-      color: $form-success-color;
-    }
+    //@include placeholder {
+    //  color: $form-success-color;
+    //}
   }
 
   // Error

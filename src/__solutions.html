@@ -13,15 +13,43 @@
     <div class="caption">
       <h1>Solutions</h1>
       <ul class="page-nav scroll-nav-js">
-        <li><a href="#section1">Tactical Intelligence</a></li>
-        <li><a href="#section2">Strategical Intelligence</a></li>
-        <li><a href="#section3">Homeland Security</a></li>
-        <li><a href="#section4">Cyber Security</a></li>
+        <li><a href="#strategical">Strategical Intelligence</a></li>
+        <li><a href="#tactical">Tactical Intelligence</a></li>
+        <li><a href="#homeland">Homeland Security</a></li>
+        <li><a href="#cyber">Cyber Security</a></li>
       </ul>
     </div>
 
     <div class="content layout-content">
-      <section class="section" id="section1">
+      <section class="section" id="strategical">
+        <h2>Strategical Intelligence</h2>
+        <div class="solutions">
+          <div class="solutions__list">
+            <div class="solutions__item">
+              @@include("_tpl_sol-el.html", {
+              "srcImg": "img/img-sol-05.jpg",
+              "title": "Border and Perimiter Security Systems (C4I)",
+              "text": "We provide a full range of systems to ensure the security of state borders and perimeters. Our C4I solutions will allow you to plan, integrate and create unique border and perimeter protection systems with the management ability from a single Control Center."
+              })
+            </div>
+            <div class="solutions__item">
+              @@include("_tpl_sol-el.html", {
+              "srcImg": "img/img-sol-06.jpg",
+              "title": "Digital forensic security systems",
+              "text": "Digital forensics is a forensic industry encompassing the recovery and analyzing of daat found in digital devices. To accomplish these tasks, we offer a universal solution for law enforcement agencies, allowing them to extract and analyze important digital evidence from PCs, Android, iOS and other platforms."
+              })
+            </div>
+            <div class="solutions__item">
+              @@include("_tpl_sol-el.html", {
+              "srcImg": "img/img-sol-07.jpg",
+              "title": "«City» Systems",
+              "text": "Our «Safe City» complex ensures the protection of public order and public safety by organizing the interaction of electrical and water supply systems, transportation, telecommunications, as well as many others. The «City» system improves the efficiency of operational agencies, such as Ministry of Internal Affairs, Ministry of Emergency Situations, etc., by coordinating their actions."
+              })
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="section" id="tactical">
         <h2>Tactical Intelligence</h2>
         <div class="solutions">
           <div class="solutions__list">
@@ -63,37 +91,7 @@
           </div>
         </div>
       </section>
-
-      <section class="section" id="section2">
-        <h2>Strategical Intelligence</h2>
-        <div class="solutions">
-          <div class="solutions__list">
-            <div class="solutions__item">
-              @@include("_tpl_sol-el.html", {
-              "srcImg": "img/img-sol-05.jpg",
-              "title": "Border and Perimiter Security Systems (C4I)",
-              "text": "We provide a full range of systems to ensure the security of state borders and perimeters. Our C4I solutions will allow you to plan, integrate and create unique border and perimeter protection systems with the management ability from a single Control Center."
-              })
-            </div>
-            <div class="solutions__item">
-              @@include("_tpl_sol-el.html", {
-              "srcImg": "img/img-sol-06.jpg",
-              "title": "Digital forensic security systems",
-              "text": "Digital forensics is a forensic industry encompassing the recovery and analyzing of daat found in digital devices. To accomplish these tasks, we offer a universal solution for law enforcement agencies, allowing them to extract and analyze important digital evidence from PCs, Android, iOS and other platforms."
-              })
-            </div>
-            <div class="solutions__item">
-              @@include("_tpl_sol-el.html", {
-              "srcImg": "img/img-sol-07.jpg",
-              "title": "«City» Systems",
-              "text": "Our «Safe City» complex ensures the protection of public order and public safety by organizing the interaction of electrical and water supply systems, transportation, telecommunications, as well as many others. The «City» system improves the efficiency of operational agencies, such as Ministry of Internal Affairs, Ministry of Emergency Situations, etc., by coordinating their actions."
-              })
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section" id="section3">
+      <section class="section" id="homeland">
         <h2>Homeland Security</h2>
         <div class="solutions">
           <div class="solutions__list">
@@ -135,8 +133,7 @@
           </div>
         </div>
       </section>
-
-      <section class="section" id="section4">
+      <section class="section" id="cyber">
         <h2>Cyber Security</h2>
         <div class="solutions">
           <div class="solutions__list">
@@ -164,5 +161,5 @@
 
 
 
-<!--@@include("_tpl_layout_footer.html")-->
+@@include("_tpl_layout_footer.html")
 @@include("_tpl_layout_foot.html")

@@ -29,9 +29,9 @@
   form .error + &,
   form .error + .select2 + &,
   form .error + .select-arrow + &,
-  form .success + .success-feedback + &,
-  form .success + .select2 + .success-feedback + &,
-  form .success + .select-arrow + .success-feedback + & {
+  form .error + .success-feedback + &,
+  form .error + .select2 + .success-feedback + &,
+  form .error + .select-arrow + .success-feedback + & {
     display: block;
   }
 }
@@ -46,6 +46,6 @@
   form .success + .error-feedback + &,
   form .success + .select2 + .error-feedback + &,
   form .success + .select-arrow + .error-feedback + & {
-    display: block;
+    //display: block;
   }
 }

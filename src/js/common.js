@@ -112,6 +112,9 @@ function fullPageInitial() {
       parallaxValue = 0.8,
       duration = 600;
 
+  // Information widget
+  var $infoWidget = $('.i-widget-js');
+
   function historyAnchors() {
     var anchors = [];
 
@@ -142,12 +145,23 @@ function fullPageInitial() {
       // dots navigation
       navigation: false,
       onLeave: function (origin, destination, direction) {
-        var scrollValue = $fpSection.eq(destination.index - 1).outerHeight() * destination.index * parallaxValue;
+        var $spaceTop = destination.item.offsetTop + destination.item.clientHeight - window.innerHeight;
+        var scrollValue = $spaceTop * parallaxValue;
 
         $word.css({
           'transform': 'translate3d(' + scrollValue + 'px, 0px, 0px)',
           'transition': 'all ' + duration / 1000 + 's'
         });
+
+        // Открывать автоматически виджет над секциех О КОМПАНИИ
+        if ($infoWidget.length) {
+          if (!$infoWidget.data('is-active')) {
+            $infoWidget.removeClass('widget_active');
+          }
+          if (destination.index === 1) {
+            $infoWidget.addClass('widget_active');
+          }
+        }
       },
     });
   }
@@ -541,6 +555,34 @@ function scrollNavigation() {
   });
 }
 
+/**
+ * Toggle Information widget
+ */
+function toggleWidget() {
+  $('.widget-opener-js').on('click', function (e) {
+    var $curOpener = $(this);
+    var $widget = $curOpener.closest('.i-widget-js');
+
+    if ($widget.hasClass('widget_active')) {
+      $widget.removeClass('widget_active');
+      $widget.data('is-active', false);
+    } else {
+      $widget.addClass('widget_active');
+      $widget.data('is-active', true);
+    }
+
+    e.preventDefault();
+  });
+
+  $('.widget-close-js').on('click', function (e) {
+    var $widget = $(this).closest('.i-widget-js');
+
+    $widget.removeClass('widget_active');
+    $widget.data('is-active', false);
+
+    e.preventDefault();
+  });
+}
 
 
 /**
@@ -548,7 +590,16 @@ function scrollNavigation() {
  * */
 function formValidation() {
   $.validator.setDefaults({
-    submitHandler: function() {
+    submitHandler: function(form, e) {
+      var $form = $(form);
+      if($form.hasClass('subs')) {
+        setTimeout(function () {
+          $form.addClass('completed');
+        }, 500);
+
+        return;
+      }
+
       alert('Форма находится в тестовом режиме. Чтобы закрыть окно, нажмите ОК.');
       return false;
     }
@@ -606,27 +657,13 @@ $(document).ready(function () {
   menuEvents();
   slidersInit();
   scrollNavigation();
+  toggleWidget();
 
   formValidation();
 
   // Для тестирования. Временно
   $('.home-page .logo').on('click', function () {
     $HTML.toggleClass('logo-alt', !$HTML.hasClass('logo-alt'));
-  });
-
-  // Временно
-  $('.widget-opener-js').on('click', function (e) {
-    var $curOpener = $(this);
-    var $widget = $('.i-widget-js');
-    $curOpener.add($widget).toggleClass('widget_active', !$curOpener.hasClass('widget_active'));
-
-    e.preventDefault();
-  });
-
-  $('.widget-close-js').on('click', function (e) {
-    $('.widget-opener-js').add('.i-widget-js').removeClass('widget_active');
-
-    e.preventDefault();
   });
 
   // Добавить список переключателей видео

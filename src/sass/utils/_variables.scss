@@ -231,13 +231,15 @@ $bottom-space: $line-height !default;
 $bottom-space--mob: $line-height--mob !default;
 
 $bottom-section: round-float($line-height * 3, 1) !default;
+// ------ lap -----------------------------------------
+$bottom-section--lap: round-float($line-height * 3, 1) !default;
 // ------ mob -----------------------------------------
 $bottom-section--mob: round-float($line-height--mob * 3, 1) !default;
 
 
 // Colors
 // ====================================================
-$link-color: #007bff !default;
+$link-color: #1e917c !default;
 $focus-color: #0080ff !default;
 $success-color: #28a745 !default;
 $error-color: #dc3545 !default;
@@ -253,11 +255,12 @@ $highlight-color: #1e917c !default
 $highlight-color--hover: darken($base-color, 10%) !default
 // ----------------------------------------------------
 $bg-color: #0d0d0d !default;
-$bg-color-alt: #f3f3f3 !default;
+$bg-color-alt: #232323 !default;
 // ----------------------------------------------------
 $text-color: #fff !default;
-$text-color-muted: #9f9f9f !default;
-$text-color-light: #ccc !default;
+//$text-color-muted: #9f9f9f !default;
+$text-color-muted: #c5c5c5 !default;
+$text-color-light: #c5c5c5 !default;
 // ----------------------------------------------------
 $title-color: white !default;
 // ----------------------------------------------------
@@ -303,8 +306,8 @@ $grid-space: 2.8rem 3rem !default;
 // Buttons
 // ====================================================
 $btn-height: 5rem !default;
-$btn-bg-color: $base-color !default;
-$btn-bg-hover-color: invert($base-color) !default;
+$btn-bg-color: $highlight-color !default;
+$btn-bg-hover-color: $highlight-color--hover !default;
 $btn-text-color: white !default;
 $btn-disabled-color: #ced4da !default;
 
@@ -351,19 +354,20 @@ $form-bottom-space--mob: 2.5rem !default;
 
 // Form elements colors scheme
 // ====================================================
-$form-def-text-color: $text-color !default;
-$form-def-placeholder-color: lighten($form-def-text-color, 65%) !default;
-$form-def-bg-color: #fff !default;
-$form-def-border-color: lighten($form-def-text-color, 70%) !default;
+$form-def-text-color: $text-color-muted !default;
+$form-def-placeholder-color: rgba($text-color-muted, 0.5) !default;
+$form-def-bg-color: rgba($bg-color-alt, 0.7) !default;
+$form-def-bg-color--focus: rgba($bg-color-alt, 0.9) !default;
+$form-def-border-color: transparent !default;
 // ----------------------------------------------------
-$form-def-border-color--focus: darken($form-def-border-color, 20%) !default;
+$form-def-border-color--focus: transparent !default;
 // ----------------------------------------------------
 $form-error-color: $error-color !default;
 $form-success-color: $success-color !default;
 // ----------------------------------------------------
-$form-text-color--disabled: #ced4da !default;
-$form-bg-color--disabled: #e9ecef !default;
-$form-border-color--disabled: #ced4da !default;
+$form-text-color--disabled: rgba(#ced4da, 0.1) !default;
+$form-bg-color--disabled: rgba($bg-color-alt, 0.3) !default;
+$form-border-color--disabled: transparent !default;
 
 
 // Form elements disabled mixin
@@ -416,6 +420,7 @@ $form-def-border-radius--mob: 5px !default;
   width: 100%;
   padding: $form-def-space-vt $form-def-space-h $form-def-space-vb $form-def-space-h;
   background-color: $form-def-bg-color;
+  transition: background-color $animation-speed, color $animation-speed, opacity $animation-speed;
   box-shadow: none;
   @if $form-def-border-width {
     border: $form-def-border-width solid $form-def-border-color;
@@ -544,22 +549,21 @@ $select-arrow-width--mob: 4.0rem !default;
 // FORM STATES
 // ====================================================
 @mixin form-success {
-  color: $form-success-color;
-  border-color: $form-success-color;
+  //color: $form-success-color;
+  //border-color: $form-success-color;
 }
 
 @mixin form-error {
   color: $form-error-color;
-  border-color: $form-error-color;
+  //border-color: $form-error-color;
 }
 
 @mixin filled {
-  color: slateblue;
-  border-color: slateblue;
+  background-color: $form-def-bg-color--focus;
 }
 
 @mixin focused {
-  border-color: $form-def-border-color--focus;
+  background-color: $form-def-bg-color--focus;
 }
 
 

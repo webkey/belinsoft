@@ -8,8 +8,8 @@
 $checkbox-size: 18px !default;
 $checkbox-check-size: 6px 10px !default;
 $radio-check-size: 10px !default;
-$checkbox-color: $base-color !default;
-$checkbox-color-hover: $base-color-alt !default;
+$checkbox-color: $text-color !default;
+$checkbox-color-hover: $highlight-color !default;
 
 .form-radiocheck {
   display: inline-block;
@@ -17,7 +17,7 @@ $checkbox-color-hover: $base-color-alt !default;
   margin-bottom: 0;
   font-size: 1.4rem;
   line-height: 2rem;
-  color: #777;
+  color: $text-color;
   user-select: none;
   -webkit-tap-highlight-color: transparent;
 
@@ -30,18 +30,18 @@ $checkbox-color-hover: $base-color-alt !default;
     display: none;
 
     &:disabled {
-      color: #bdbdbd !important;
+      color: $form-text-color--disabled !important;
 
       & + span {
         cursor: default !important;
-        color: #d6d6d6 !important;
+        color: $form-text-color--disabled !important;
 
         &::before, &::after {
           border-color: currentColor !important;
         }
 
         &::before {
-          background-color: #f3f3f3 !important;
+          background-color: $form-bg-color--disabled !important;
         }
       }
     }
