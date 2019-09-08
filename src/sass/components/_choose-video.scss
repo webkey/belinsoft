@@ -12,7 +12,7 @@
   border-radius: 0.5rem 0.5rem 0 0;
   color: $text-color;
   background-color: rgba(#7d7d7d, 0.5);
-  transition: background-color $animation-speed opacity $animation-speed;
+  transition: background-color $animation-speed, opacity $animation-speed;
 
   &.is-open {
     background-color: #1100b3;
@@ -20,6 +20,10 @@
 
   @include media('<desk-s') {
     max-width: 64rem;
+  }
+
+  @include media('<lap-l') {
+    display: none;
   }
 }
 

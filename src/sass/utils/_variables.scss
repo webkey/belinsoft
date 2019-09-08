@@ -132,8 +132,11 @@ $line-height-h1--mob: round-float($font-size-h1--mob * $line-height-h1-kef, 1) !
 $font-size-h2: 2.7rem !default;
 $line-height-h2: 4.0rem !default;
 $line-height-h2-kef: $line-height-h2 / $font-size-h2;
+// ------ lap -----------------------------------------
+$font-size-h2--lap: 2.2rem !default;
+$line-height-h2--lap: 3.0rem !default; // Использовать рассчетное значение, если нет в дизайне
 // ------ tab -----------------------------------------
-$font-size-h2--tab: 2.8rem !default;
+$font-size-h2--tab: 2.0rem !default;
 $line-height-h2--tab: round-float($font-size-h2--tab * $line-height-h2-kef, 1) !default; // Использовать рассчетное значение, если нет в дизайне
 // ------ mob -----------------------------------------
 $font-size-h2--mob: 2.4rem !default;
@@ -272,13 +275,15 @@ $mark-color: $info-color !default;
 // Layout page
 // ====================================================
 // Минимальная ширина сайта
-$layout-page-min-width: 102.4rem !default;
+$layout-page-min-width: 32rem !default;
 // Максимальная ширина сайта
 //$layout-page-max-width: 192rem !default;
 $layout-page-max-width: none !default;
 // Отступы для всего сайта
 $layout-page-space: 19rem 6.8rem 5rem !default;
 $layout-page-space--lap: 14rem 5rem 5rem !default;
+$layout-page-space--net: 10rem 3rem 5rem !default;
+$layout-page-space--tab: 4rem 3rem 4rem !default;
 $layout-page-space--mob: 2rem 1.5rem !default;
 
 // Layout content

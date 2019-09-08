@@ -118,6 +118,22 @@
 
 /* breadcrumbs end */
 
+.fp-section {
+  padding: $layout-page-space;
+
+  @include media('<desk-s') {
+    padding: $layout-page-space--lap;
+  }
+
+  @include media('<lap-l') {
+    padding: $layout-page-space--net;
+  }
+
+  @include media('<tab') {
+    padding: $layout-page-space--tab;
+  }
+}
+
 /* ==================================== */
 /* ============== HEADER ============== */
 /* ==================================== */
@@ -148,6 +164,10 @@
   @include media('<desk-s') {
     padding-left: nth($layout-page-space--lap, 2);
   }
+
+  @include media('<lap-l') {
+    padding-left: nth($layout-page-space--net, 2);
+  }
 }
 
 .header-container {
@@ -161,7 +181,6 @@
   display: flex;
   align-items: center;
   min-height: $nav-height;
-  padding: 0 2rem;
 }
 
 /* logo */
@@ -205,12 +224,20 @@
       background-size: 100px;
     }
 
+    @include media('<lap-l') {
+      @include ratio(165, 110);
+    }
+
     .page-scrolled & {
       @include ratio(165, 70);
       opacity: 0;
 
       @include media('<desk-s') {
         @include ratio(165, 100);
+      }
+
+      @include media('<lap-l') {
+        @include ratio(165, 80);
       }
     }
   }
@@ -310,6 +337,10 @@
 
   margin-left: 4rem;
 
+  @include media('<lap-s') {
+    margin-left: 2rem;
+  }
+
   .active-item {
     color: white;
 
@@ -399,7 +430,16 @@
   background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBmaWxsPSIjZmZmIiBkPSJNMjMuODA5IDIxLjY0NmwtNi4yMDUtNi4yMDVjMS4xNjctMS42MDUgMS44NTctMy41NzkgMS44NTctNS43MTEgMC01LjM2NS00LjM2NS05LjczLTkuNzMxLTkuNzMtNS4zNjUgMC05LjczIDQuMzY1LTkuNzMgOS43MyAwIDUuMzY2IDQuMzY1IDkuNzMgOS43MyA5LjczIDIuMDM0IDAgMy45MjMtLjYyNyA1LjQ4Ny0xLjY5OGw2LjIzOCA2LjIzOCAyLjM1NC0yLjM1NHptLTIwLjk1NS0xMS45MTZjMC0zLjc5MiAzLjA4NS02Ljg3NyA2Ljg3Ny02Ljg3N3M2Ljg3NyAzLjA4NSA2Ljg3NyA2Ljg3Ny0zLjA4NSA2Ljg3Ny02Ljg3NyA2Ljg3N2MtMy43OTMgMC02Ljg3Ny0zLjA4NS02Ljg3Ny02Ljg3N3oiPjwvcGF0aD48L3N2Zz4=);
 
   margin-left: 7.3rem;
+
+  @include media('<desk-s') {
+    margin-left: 5.5rem;
+  }
+
+  @include media('<lap-s') {
+    margin-left: 4rem;
+  }
 }
+
 /* search end */
 
 /* call */
@@ -427,39 +467,194 @@
 /* ==================================== */
 .nav-wrap {
   position: relative;
+  // Поднять над контентом
+  z-index: 50;
+
+  // ------ бутерброд -----------------------------------------
+  @include media("<tab") {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 48rem;
+    max-width: 100%;
+    background-color: $base-color;
+    z-index: 999;
+    transition: {
+      property: opacity, visibility, transform;
+      duration: $animation-speed;
+    };
+
+    // hide
+    opacity: 0;
+    $translate: -100%, 0;
+    transform: translate($translate);
+    transform: translate3d($translate, 0);
+  }
+
+  &.is-open {
+    // ------ бутерброд -----------------------------------------
+    @include media("<tab") {
+      opacity: 1;
+      $translate: 0, 0;
+      transform: translate($translate);
+      transform: translate3d($translate, 0);
+    }
+  }
 }
 
+// Overlay
+.nav-overlay {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(#000, 0.5);
+  z-index: 998;
+  transition: opacity $animation-speed;
+
+  opacity: 0;
+  pointer-events: none;
+
+  display: none;
+
+  // ------ бутерброд -----------------------------------------
+  @include media("<tab") {
+    display: block;
+  }
+}
+
+.nav-wrap.is-open ~ .nav-overlay {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+// Navigation opener
+.nav-opener {
+  display: block;
+  position: relative;
+  height: 40px;
+  width: 40px;
+  font-size: 0;
+  line-height: 0;
+  cursor: pointer;
+
+  display: none;
+
+  &::before,
+  &::after {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-repeat: no-repeat;
+    background-position: 50%;
+  }
+
+  &::before {
+    height: 17px;
+    width: 26px;
+    background-image: url(data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMWU5MTdjIiB3aWR0aD0iMjYiIGhlaWdodD0iMTciIHZpZXdCb3g9IjAgMCAyNiAxNyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMjYiIGhlaWdodD0iMyIgcng9IjEuNSI+PC9yZWN0PjxyZWN0IHk9IjciIHdpZHRoPSIyNiIgaGVpZ2h0PSIzIiByeD0iMS41Ij48L3JlY3Q+PHJlY3QgeT0iMTQiIHdpZHRoPSIyNiIgaGVpZ2h0PSIzIiByeD0iMS41Ij48L3JlY3Q+PC9zdmc+);
+  }
+
+  &::after {
+    height: 25px;
+    width: 27px;
+    background-image: url(data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMWU5MTdjIiB3aWR0aD0iMjciIGhlaWdodD0iMjUiIHZpZXdCb3g9IjAgMCAyNyAyNSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB4PSIwLjQ0NjUzMyIgeT0iMTIuNCIgd2lkdGg9IjE3IiBoZWlnaHQ9IjMiIHJ4PSIxLjUiIHRyYW5zZm9ybT0icm90YXRlKC00NCAwLjQ0NjUzMyAxMi40KSI+PC9yZWN0PjxyZWN0IHg9IjEiIHk9IjExIiB3aWR0aD0iMjYiIGhlaWdodD0iMyIgcng9IjEuNSI+PC9yZWN0PjxyZWN0IHg9IjIuNTgwMzIiIHk9IjEwLjQyODUiIHdpZHRoPSIxNyIgaGVpZ2h0PSIzIiByeD0iMS41IiB0cmFuc2Zvcm09InJvdGF0ZSg0NSAyLjU4MDMyIDEwLjQyODUpIj48L3JlY3Q+PC9zdmc+);
+    display: none;
+  }
+
+  @include media('<tab') {
+    display: block;
+  }
+
+  &.is-open {
+    &::before {
+      display: none;
+    }
+    &::after {
+      display: block;
+    }
+  }
+}
+
+// Navigation
 .nav {
   position: relative;
+
+  // ------ бутерброд -----------------------------------------
+  @include media("<tab") {
+    padding: 0;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
 }
 
 .nav__list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  font-size: 1.4rem;
-  line-height: 1.8rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  @include clear;
+  $nav-inner-space: 1.5rem 2rem;
+  $nav-arrow-size: 4rem;
+  $nav-item-space: 1em 1.5rem;
+  $nav-item-indent: 0.4;
 
-  li {
-    position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  cursor: default;
+
+  // Все ul
+  &, & ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-size: 1.4rem;
+    line-height: 1.8rem;
   }
 
+  // ------ бутерброд -----------------------------------------
+  @include media("<tab") {
+    display: block;
+  }
+
+  // Все li,
+  // кроме li первого уровня (для них стили ниже)
+  li {
+    position: relative;
+
+    // ------ бутерброд -----------------------------------------
+    @include media("<tab") {
+      // Слева текст, справа стрелка
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+
+  // Все "a" и "span"
+  // "a" заменять на "span" в пункте текущей страницы
   a, li > span {
-    overflow: hidden;
+    //display: block;
     display: inline-block;
     vertical-align: top;
     position: relative;
+    overflow: hidden;
     padding: 0.5rem;
-    transition: color $animation-speed;
+
+    // ------ бутерброд -----------------------------------------
+    @include media("<tab") {
+      padding: 0 1rem 0 0;
+    }
   }
 
+  // Все "a"
   a {
     $animation: 0.3s;
 
-    color: $text-color;
+    color: inherit;
     text-decoration: none;
 
     &::before {
@@ -532,54 +727,301 @@
         timing-function: cubic-bezier(0.65, 0.05, 0.36, 1);
       }
     }
+  }
 
-    // Hover
-    .no-touchevents &:hover {
-      //color: $highlight-color;
+  // Пункты, в которых есть подменю
+  li.has-sub {
+    & > a,
+    & > span {
+      padding-right: $nav-arrow-size;
 
-      &::before {
-        transform-origin: 0 100%;
+      // ------ бутерброд -----------------------------------------
+      @include media("<tab") {
+        padding-right: 1rem;
 
-        $scale: 1, 1;
-        transform: scale($scale);
-        transform: scale3d($scale, 1);
-      }
-
-      &::after {
-        opacity: 1;
-
-        transition-delay: $animation * 0.5;
-        transition-duration: $animation * 2;
-
-        margin-left: calc(100% + 25px);
-
-        $scale: 1, 1;
-        transform: scale($scale);
-        transform: scale3d($scale, 1);
-
-        //$translate: 10rem, 0;
-        //transform: translate($translate);
-        //transform: translate3d($translate, 1);
+        // Если в пункте есть стрелка,
+        // то нужно ограничить максимальную ширину "a"
+        max-width: calc(100% - #{$nav-arrow-size});
       }
     }
   }
 
-  // Первый уровень
+  // Вложенные ul (sub menu)
+  ul {
+    position: relative;
+    flex-shrink: 0;
+    width: 100%;
+    flex-basis: 100%;
+
+    display: none;
+
+    // transition
+    transition: opacity $animation-speed, visibility $animation-speed;
+
+    // Important!
+    // Для разрешений выше планшетных
+    @include media(">=tab") {
+      display: block !important; // Важно! Перебить инлайновые стили установленные скпиптом
+      position: absolute;
+      left: 0;
+      top: 100%;
+      width: 28rem;
+      padding: 1.5rem 0;
+      //background-color: #fff;
+      //box-shadow: 0 5px 10px rgba(#000, 0.2);
+
+      opacity: 0;
+      visibility: hidden; // При переводе фокуса табом, элементы внутри скрытого дропа игнорируются
+      pointer-events: none; // На это ствойство не добавлять анимацию
+    }
+
+    &::before {
+      $intend: 1rem -0.5rem;
+      content: "";
+      display: block;
+      position: absolute;
+      top: #{nth($intend, 1)};
+      left: #{nth($intend, 2)};
+      height: calc(100% - #{nth($intend, 1)} * 2);
+      width: calc(100% - #{nth($intend, 2)} * 2);
+      border: 1px solid rgba(white, 0.5);
+      border-radius: 5px;
+
+      // ------ бутерброд -----------------------------------------
+      @include media("<tab") {
+        content: none;
+      }
+    }
+
+    // Позицирование подменю
+    // ВТОРОГО и глубже уровней
+    ul {
+      left: 100%;
+      top: -0.5rem;
+      text-transform: none;
+
+      // ------ бутерброд -----------------------------------------
+      @include media("<tab") {
+        left: auto;
+        top: auto;
+      }
+    }
+
+    // Пункты ВТОРГО уровня и глубще
+    li {
+      margin: 0.5rem 0 0;
+
+      // ------ бутерброд -----------------------------------------
+      @include media("<tab") {
+        margin: 0;
+        padding: #{nth($nav-item-space, 1)} 0 0 #{nth($nav-item-space, 2)};
+      }
+
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+  }
+
+  // Показать подменю
+  // Класс .hover добавляется скриптом
+  // Если отключены скрипты,
+  // Показывать через :hover
+  li.hover > ul,
+  .no-js & li:hover > ul {
+    // Для разрешений выше планшетных
+    @include media(">=tab") {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      z-index: 5;
+    }
+  }
+
+  // Стрелка для разворачивания подменю
+  li > em {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 0;
+    line-height: 0;
+    height: $nav-arrow-size;
+    width: $nav-arrow-size;
+    margin-top: -#{round-float($nav-arrow-size / 2, 1)};
+    padding: 0;
+    text-align: center;
+    cursor: pointer;
+    color: $text-color;
+    transform: rotate(-90deg);
+    transition: color $animation-speed;
+    -webkit-tap-highlight-color: transparent;
+    pointer-events: none;
+    user-select: none;
+    outline: none;
+
+    &.jsNav__arrow_on {
+      pointer-events: auto;
+    }
+
+    &::before {
+      content: "";
+      display: block;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      $size: 1.2rem;
+      height: $size;
+      width: $size;
+      margin: -#{round-float($size / 2, 1)} 0 0 -#{round-float($size / 2, 1)};
+      background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTciIGhlaWdodD0iMTAiIHZpZXdCb3g9IjAgMCAxNyAxMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMSAxLjIyMjY2TDguMjA5OTYgOC42MjEwOUwxNS40MTk5IDEuMjIyNjYiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz48L3N2Zz4=);
+      background-color: #1e917c;
+      background-repeat: no-repeat;
+      background-position: 50%;
+      background-size: contain;
+    }
+
+    &:hover {
+      &::after {
+        @include linear-gradient(to bottom, lighten($base-color, 10%) 0%, $base-color 100%)
+      }
+    }
+
+    @at-root {
+      @include media("<tab") {
+        li.is-open > em {
+          transform: rotate(180deg);
+        }
+      }
+    }
+
+    // ------ бутерброд -----------------------------------------
+    @include media("<tab") {
+      position: relative;
+      top: auto;
+      right: auto;
+      margin: -1rem -1.5rem -1rem 0;
+      transform: rotate(0);
+      pointer-events: auto;
+    }
+
+    // Open, Hover
+    @at-root {
+      li.hover > em {
+        transform: rotate(90deg);
+      }
+
+      @include media("<tab") {
+        li.is-open > em {
+          transform: rotate(180deg);
+        }
+      }
+    }
+  }
+
+  // Пункт для текущей страницы
+  // Current
+  li {
+    &.current {
+      // no styles
+    }
+  }
+
+  // Hover
+  li {
+    // Класс .hover добавляется скриптом
+    &.hover,
+    .no-js &:hover {
+      & > a {
+        $animation: 0.3s;
+
+        &::before {
+          transform-origin: 0 100%;
+
+          $scale: 1, 1;
+          transform: scale($scale);
+          transform: scale3d($scale, 1);
+        }
+
+        &::after {
+          opacity: 1;
+
+          transition-delay: $animation * 0.5;
+          transition-duration: $animation * 2;
+
+          margin-left: calc(100% + 25px);
+
+          $scale: 1, 1;
+          transform: scale($scale);
+          transform: scale3d($scale, 1);
+
+          //$translate: 10rem, 0;
+          //transform: translate($translate);
+          //transform: translate3d($translate, 1);
+        }
+      }
+    }
+  }
+
+  // li ПЕРВОГО уровня
   & > li {
-    float: left;
     margin-right: 3rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
 
     @include media('<desk-s') {
       margin-right: 2rem;
     }
 
+    // ------ бутерброд -----------------------------------------
+    @include media("<tab") {
+      padding: $nav-item-space;
+      border-top: 1px solid rgba($text-color, 0.5);
+      margin: 0;
+    }
+
+    &:first-child {
+      // ------ бутерброд -----------------------------------------
+      @include media("<tab") {
+        border-top: none;
+      }
+    }
+
+    &:last-child {
+      margin-right: 0;
+
+      // ------ бутерброд -----------------------------------------
+      @include media("<tab") {
+        // no styles
+      }
+    }
+
+    // Все "a" и "span" первого уровня
+    // "a" заменять на "span" в пункте текущей страницы
+    & > a, & > span {
+      // no styles
+    }
+
+    // Стрелка для разворачивания подменю
+    & > em {
+      // Если стили стрелок первого уровня навигаци отличаются, от остальных
+      display: none;
+
+      // ------ бутерброд -----------------------------------------
+      @include media("<tab") {
+        display: block;
+      }
+    }
+
     // Current
     &.current {
-      a, & > span {
-        position: relative;
+      & > a, & > span {
         overflow: visible;
-        z-index: 1;
         cursor: default;
+        z-index: 1;
 
         &::before {
           content: none;
@@ -623,6 +1065,7 @@
 /* ==================================== */
 .footer {
   position: relative;
+  padding: 0;
   border-top: 1px solid rgba($text-color-muted, 0.1);
   box-shadow: 0 -2px 33px rgba(0, 0, 0, 0.5);
 
@@ -731,6 +1174,16 @@
 
   @include media('<desk-s') {
     padding-top: nth($layout-page-space--lap, 1);
+  }
+
+  @include media('<lap-l') {
+    padding-top: nth($layout-page-space--net, 1);
+  }
+}
+
+.h-main {
+  @include media('<tab') {
+    overflow: hidden;
   }
 }
 
@@ -1076,6 +1529,10 @@
     font-size: 49.5rem;
   }
 
+  @include media('<lap-s') {
+    font-size: calc(35.5vw - 109px);
+  }
+
   & > span {
     display: block;
     position: relative;
@@ -1120,7 +1577,15 @@
   }
 
   .menu__item:first-child & {
-    left: 5rem;
+    left: nth($layout-page-space, 2);
+
+    @include media('<desk-s') {
+      left: nth($layout-page-space--lap, 2);
+    }
+
+    @include media('<lap-l') {
+      left: nth($layout-page-space--net, 2);
+    }
   }
 }
 
@@ -1173,13 +1638,27 @@
   pointer-events: none;
   //background-color: rgba(red, 0.2);
 
+  @include media('<lap-l') {
+    top: 23%;
+    width: 55rem;
+    left: 3rem;
+  }
+
   .item_active & {
     opacity: 1;
     pointer-events: auto;
   }
 
   .menu__item:first-child & {
-    left: 11rem;
+    left: #{nth($layout-page-space, 2) + 4.2};
+
+    @include media('<desk-s') {
+      left: #{nth($layout-page-space--lap, 2) + 4.2};
+    }
+
+    @include media('<lap-l') {
+      left: #{nth($layout-page-space--net, 2) + 4.2};
+    }
   }
 }
 
@@ -1187,27 +1666,38 @@
   display: flex;
   align-items: center;
   margin-bottom: 2rem;
-  transition: transform $animation-speed * 1.5;
-
   transform: translate(0, 0);
+  transition: transform $animation-speed * 1.5;
 
   .item_active & {
     transform: translate(-15rem, 0);
+
+    @include media('<lap-l') {
+      transform: translate(-8rem, 0);
+    }
   }
 
   .menu__item.item_active:first-child & {
     transform: translate(-6rem, 0);
+
+    @include media('<lap-l') {
+      transform: translate(-5rem, 0);
+    }
   }
 }
 
 .menu-item__view-title {
   position: relative;
   @include font-extra-bold;
-  font-size: 7.3rem;
+  font-size: $font-size-h1;
   line-height: 1;
   color: #fff;
   text-transform: uppercase;
   margin: 0 3rem 1rem 0;
+
+  @include media('<lap-l') {
+    font-size: $font-size-h1--lap;
+  }
 }
 
 .menu-item__view-more {
@@ -1333,61 +1823,23 @@
 
   transform: translate(2rem, 0);
 
-  .item_active & {
-    transform: translate(0, 0);
-  }
-
   @include media('<desk-s') {
     font-size: 1.6rem;
     line-height: 2.6rem;
   }
-}
 
-//.menu-item__bg-overlay {
-//  position: absolute;
-//  left: 0;
-//  top: 0;
-//  height: 100%;
-//  width: 100%;
-//
-//  &::before,
-//  &::after {
-//    content: "";
-//    display: block;
-//    position: absolute;
-//    left: 0;
-//    top: 0;
-//    height: 100%;
-//    width: 100%;
-//
-//    transition: opacity $animation-speed * 1.5;
-//  }
-//
-//  &::before {
-//    //background-color: $bg-color;
-//    opacity: 0.1;
-//
-//    //@include linear-gradient(to bottom, rgba(black, 0.8) 0%, rgba(black, 0.5) 80%, rgba(black, 0) 100%);
-//    @include linear-gradient(to bottom, rgba(black, 1) 0%, rgba(black, 0.7) 80%, rgba(black, 0) 100%);
-//  }
-//
-//  &::after {
-//    background-image: url(../../img/pattern-carbon.png);
-//    background-size: 15px 15px;
-//    opacity: 0.5;
-//  }
-//
-//  //.active & {
-//  .fp-active .active & {
-//    &::before {
-//      opacity: 0.1;
-//    }
-//
-//    &::after {
-//      opacity: 0;
-//    }
-//  }
-//}
+  @include media('<lap-l') {
+    width: 40rem;
+  }
+
+  @include media('<lap-s') {
+    width: 34rem;
+  }
+
+  .item_active & {
+    transform: translate(0, 0);
+  }
+}
 
 // strategical
 .menu__item_strategical {
@@ -1461,6 +1913,10 @@
   height: 100%;
   max-width: calc(100% - 48rem);
   width: 142.3rem; // Примерный размер
+  
+  @include media('<lap-s') {
+    max-width: calc(100% - 28rem);
+  }
 }
 
 .menu__item {
@@ -1544,7 +2000,6 @@
   font-size: 2.0rem;
   line-height: 3.2rem;
   color: $text-color-muted;
-  padding: 3rem nth($layout-page-space, 2);
 
   display: flex;
   align-items: center;
@@ -1552,18 +2007,27 @@
   @include media('<desk-s') {
     font-size: 1.6rem;
     line-height: 2.6rem;
-    $space: nth($layout-page-space--lap, 2);
-    padding-left: $space;
-    padding-right: $space;
+  }
+
+  @include media('<tab') {
+    height: auto !important;
+    min-height: 0;
+    @include linear-gradient(to bottom, $bg-color 0%, $bg-color-alt 100%);
   }
 
   h2 {
     @include font-extra-bold;
-    font-size: 7.3rem;
-    line-height: 1;
+    font-size: $font-size-h1;
+    line-height: $line-height-h1;
     color: $text-color;
     text-transform: uppercase;
     margin-bottom: 3rem;
+
+    @include media('<lap-l') {
+      font-size: $font-size-h1--lap;
+      line-height: $line-height-h1--lap;
+      margin-bottom: 2rem;
+    }
   }
 
   .bg-video {
@@ -1581,6 +2045,10 @@
       width: 100%;
       height: 100%;
       @include object-fit(cover);
+
+      @include media('<tab') {
+        display: none;
+      }
     }
 
     &::after {
@@ -1591,7 +2059,11 @@
       height: 100%;
       width: 100%;
       //background-color: rgba($bg-color, 0.5);
-      @include linear-gradient(to right, rgba(black, 0.8) 0%, rgba(black, 0.5) 80%, rgba(black, 0) 100%)
+      @include linear-gradient(to right, rgba(black, 0.8) 0%, rgba(black, 0.5) 80%, rgba(black, 0) 100%);
+
+      @include media('<tab') {
+        display: none;
+      }
     }
   }
 
@@ -1625,14 +2097,35 @@
   }
 }
 
-.about-section__content {
+.about-section__align {
+  position: relative;
   width: 92rem;
-  max-width: calc(100% - 42rem);
+  max-width: calc(100% - 34rem);
   z-index: 15;
 }
 
-.about-section__footer {
-  margin-top: $bottom-section;
+.about-section__content {
+  margin-bottom: 5rem;
+
+  @include media('<lap-l') {
+    margin-bottom: 3rem;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  p {
+    margin-bottom: 1.5rem;
+
+    @include media('<lap-l') {
+      margin-bottom: 1.2rem;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
 }
 
 /* about section */
@@ -1887,10 +2380,20 @@ $i-widget-space: 4rem;
   z-index: 25;
   transition: transform $animation-speed;
 
+  @include media('<tab') {
+    display: none;
+  }
+
   .fp-viewing-section1 & {
     $translate: 0, -12.5rem;
     transform: translate($translate);
     transform: translate3d($translate, 0);
+
+    @include media('<lap-l') {
+      $translate: 0, -2.5rem;
+      transform: translate($translate);
+      transform: translate3d($translate, 0);
+    }
   }
 
   &::before {
@@ -1942,7 +2445,7 @@ $i-widget-space: 4rem;
   }
 
   .i-widget-slider {
-    $translate: 40rem, 0;
+    $translate: 43rem, 0;
     transform: translate($translate);
     transform: translate3d($translate, 0);
     z-index: 2;
@@ -2044,6 +2547,14 @@ $i-widget-space: 4rem;
     bottom: 15rem;
   }
 
+  @include media('<lap-l') {
+    font-size: 1.2rem;
+    letter-spacing: 0.2em;
+    bottom: 10rem;
+    right: -5rem;
+    padding-right: 4.5rem;
+  }
+
   &::before {
     content: "";
     display: block;
@@ -2086,6 +2597,7 @@ $i-widget-space: 4rem;
 .main-section {
   min-height: 100vh;
   position: relative;
+  padding: 0;
   //z-index: 5;
   //overflow-y: hidden; // Обрезать виджет
 }
@@ -2111,6 +2623,10 @@ $i-widget-space: 4rem;
   line-height: 0;
 
   transition: background-color $animation-speed;
+
+  @include media('<tab') {
+    display: none;
+  }
 
   &:hover {
     background-color: $highlight-color--hover;
@@ -2138,6 +2654,10 @@ $i-widget-space: 4rem;
   color: $text-color;
   text-decoration: none;
 
+  @include media('<lap-l') {
+    padding-bottom: 2rem;
+  }
+
   &::before {
     content: "";
     display: block;
@@ -2145,12 +2665,16 @@ $i-widget-space: 4rem;
     top: 0;
     right: 0;
     bottom: 0;
-    left: 3.4rem;
+    left: 4rem;
     will-change: transform;
     transform-origin: left center;
     transition: transform $animation-speed;
 
     @include news-plate-bg;
+
+    @include media('<lap-l') {
+      left: 2rem;
+    }
   }
 }
 
@@ -2171,6 +2695,14 @@ $i-widget-space: 4rem;
     min-width: $width;
     max-width: $width;
   }
+
+  @include media('<lap-l') {
+    margin-right: 2rem;
+    $width: 15rem;
+    flex-basis: $width;
+    min-width: $width;
+    max-width: $width;
+  }
 }
 
 .m-news-el__content {
@@ -2185,6 +2717,10 @@ $i-widget-space: 4rem;
   letter-spacing: 0.13em;
   color: $text-color-muted;
   margin-bottom: 2rem;
+
+  @include media('<lap-l') {
+    margin-bottom: 1.2rem;
+  }
 
   &:last-child {
     margin-bottom: 0;
@@ -2203,6 +2739,10 @@ $i-widget-space: 4rem;
   @include media('<desk-s') {
     font-size: 1.5rem;
     line-height: 2.0rem;
+  }
+
+  @include media('<lap-l') {
+    margin-bottom: 1.2rem;
   }
 
   &:last-child {
@@ -2231,16 +2771,27 @@ $i-widget-space: 4rem;
   // Hover
   .no-touchevents &:hover {
     &::before {
-      $translate: 0, 0;
       $scale: 1.1, 1.1;
-      transform: translate($translate) scale($scale);
-      transform: translate3d($translate, 1) scale3d($scale, 1);
+      transform: scale($scale);
+      transform: scale3d($scale, 1);
+
+      @include media('<lap-l') {
+        $scale: 1.05, 1.05;
+        transform: scale($scale);
+        transform: scale3d($scale, 1);
+      }
     }
 
     .m-news-el__figure {
       $translate: -2rem, 0;
       transform: translate($translate);
-      transform: translate3d($translate, 1);
+      transform: translate3d($translate, 0);
+
+      @include media('<lap-l') {
+        $translate: -1rem, 0;
+        transform: translate($translate);
+        transform: translate3d($translate, 0);
+      }
     }
 
     .m-news-el__title {
@@ -2280,6 +2831,13 @@ $i-widget-space: 4rem;
       margin-right: $intend;
     }
 
+    @include media('<lap-l') {
+      $intend: -1.5rem;
+      margin-left: $intend;
+      margin-right: $intend;
+      margin-bottom: -9.2rem;
+    }
+
     &::before, &::after {
       content: "";
       position: absolute;
@@ -2313,12 +2871,14 @@ $i-widget-space: 4rem;
   }
 
   .m-news-el__title {
-    font-size: 2.7rem;
-    line-height: 4.0rem;
-    margin-bottom: 2rem;
+    font-size: $font-size-h2;
+    line-height: $line-height-h2;
+    min-height: $line-height-h2;
 
-    &:last-child {
-      margin-bottom: 0;
+    @include media('<lap') {
+      font-size: $font-size-h2--lap;
+      line-height: $line-height-h2--lap;
+      min-height: $line-height-h2--lap * 2;
     }
   }
 
@@ -2339,10 +2899,15 @@ $i-widget-space: 4rem;
 
 /* multi news */
 $m-news-space: 4rem;
+$m-news-space--net: 2rem;
 
 .m-news {
   display: flex;
-  margin: 0 -#{$m-news-space} $bottom-section;
+  margin: 0 -#{$m-news-space} #{$m-news-space};
+
+  @include media('<lap-l') {
+    margin: 0 -#{$m-news-space--net} -#{$m-news-space--net};
+  }
 
   &:last-child {
     margin-bottom: 0;
@@ -2355,7 +2920,11 @@ $m-news-space: 4rem;
   $width: 50%;
   flex-basis: $width;
   max-width: $width;
-  padding: 0 #{$m-news-space} $bottom-section;
+  padding: 0 #{$m-news-space} #{$m-news-space};
+
+  @include media('<lap-l') {
+    padding: 0 #{$m-news-space--net} #{$m-news-space--net};
+  }
 
   h3, .h3 {
     position: relative;
@@ -2378,6 +2947,25 @@ $m-news-space: 4rem;
       border-right: 5px solid $base-color;
     }
   }
+
+  // Новостные блоки специально для гловной
+  @include media('<lap-s', '>=tab') {
+    .m-news-el {
+      display: block;
+      padding: 0 0 2rem;
+
+      &::before {
+        top: 2rem;
+        left: -1.5rem;
+        right: -1.5rem;
+      }
+    }
+
+    .m-news-el__figure {
+      margin-right: 0;
+      margin-bottom: 1.5rem;
+    }
+  }
 }
 
 /* multi news end */
@@ -2394,6 +2982,10 @@ $m-news-space: 4rem;
 .m-news-list__item {
   margin-bottom: 3.8rem;
 
+  @include media('<lap-l') {
+    margin-bottom: 2.5rem;
+  }
+
   &:last-child {
     margin-bottom: 0;
   }
@@ -2408,7 +3000,6 @@ $m-news-space: 4rem;
   font-size: 2.0rem;
   line-height: 3.2rem;
   color: $text-color-muted;
-  padding: $layout-page-space;
 
   display: flex;
   align-items: flex-start;
@@ -2416,24 +3007,41 @@ $m-news-space: 4rem;
   @include media('<desk-s') {
     font-size: 1.6rem;
     line-height: 2.6rem;
-    padding: $layout-page-space--lap;
+  }
+
+  @include media('<tab') {
+    display: block;
+    height: auto !important;
+    min-height: 0;
+    @include linear-gradient(to bottom, $bg-color 0%, $bg-color-alt 100%);
   }
 
   h2 {
     @include font-extra-bold;
-    font-size: 7.3rem;
-    line-height: 1;
+    font-size: $font-size-h1;
+    line-height: $line-height-h1;
     color: $text-color;
     text-transform: uppercase;
     margin-bottom: 3rem;
+
+    @include media('<lap-l') {
+      font-size: $font-size-h1--lap;
+      line-height: $line-height-h1--lap;
+      margin-bottom: 2rem;
+    }
   }
 }
 
 .m-news-section__align {
   position: relative;
   z-index: 15;
+  width: 140rem;
+  max-width: calc(100% - 32rem);
 
-  max-width: calc(100% - 38rem);
+  @include media('<tab') {
+    max-width: none;
+    width: auto;
+  }
 }
 
 /* multi news section end */
@@ -2447,6 +3055,10 @@ $m-news-space: 4rem;
   line-height: 2.4rem;
   color: inherit;
   text-decoration: none;
+
+  @include media('<lap-l') {
+    padding: 0 2rem 3rem;
+  }
 
   &::before {
     content: "";
@@ -2471,6 +3083,11 @@ $m-news-space: 4rem;
   box-shadow: 0 23px 42px rgba(0, 0, 0, 0.20);
   will-change: transform;
   transition: transform $animation-speed;
+
+  @include media('<lap-l') {
+    margin-bottom: 2rem;
+    max-width: 18rem;
+  }
 
   &::after {
     @include img-mask;
@@ -2499,6 +3116,10 @@ $m-news-space: 4rem;
   color: $text-color-muted;
   margin-bottom: 2rem;
 
+  @include media('<lap-l') {
+    margin-bottom: 1.5rem;
+  }
+
   &:last-child {
     margin-bottom: 0;
   }
@@ -2515,6 +3136,10 @@ $m-news-space: 4rem;
   @include media('<desk') {
     font-size: 1.5rem;
     line-height: 2.0rem;
+  }
+
+  @include media('<lap-l') {
+    margin-bottom: 1.5rem;
   }
 
   &:last-child {
@@ -2539,10 +3164,15 @@ $m-news-space: 4rem;
     z-index: 1;
 
     &::before {
-      $translate: 0, 0;
       $scale: 1.1, 1.1;
-      transform: translate($translate) scale($scale);
-      transform: translate3d($translate, 1) scale3d($scale, 1);
+      transform: scale($scale);
+      transform: scale3d($scale, 1);
+
+      @include media('<lap-l') {
+        $scale: 1.05, 1.05;
+        transform: scale($scale);
+        transform: scale3d($scale, 1);
+      }
     }
 
     .news-el__title {
@@ -2667,6 +3297,16 @@ $m-news-space: 4rem;
     margin: -6rem -#{$intend} 0;
   }
 
+  @include media('<lap-l') {
+    $intend: nth($layout-page-space--net, 2);
+    padding: 6rem #{$intend - 2.5} 3rem;
+    margin: -6rem -#{$intend} -2rem;
+  }
+
+  @include media('<net') {
+    margin-bottom: 0;
+  }
+
   .js &:not(.is-loaded) {
     opacity: 0;
     pointer-events: none;
@@ -2688,6 +3328,10 @@ $m-news-space: 4rem;
     @include media('<desk-s') {
       right: #{nth($layout-page-space--lap, 2) - 0.5};
     }
+
+    @include media('<lap-l') {
+      right: #{nth($layout-page-space--net, 2) - 0.5};
+    }
   }
 }
 
@@ -2708,7 +3352,6 @@ $m-news-space: 4rem;
 .media-section {
   position: relative;
   min-height: 100vh;
-  padding: $layout-page-space;
   font-size: 2.0rem;
   line-height: 3.2rem;
 
@@ -2716,26 +3359,43 @@ $m-news-space: 4rem;
   align-items: flex-start;
 
   @include media('<desk-s') {
-    padding: $layout-page-space--lap;
     font-size: 1.6rem;
     line-height: 2.6rem;
   }
 
+  @include media('<tab') {
+    display: block;
+    height: auto !important;
+    min-height: 0;
+    @include linear-gradient(to bottom, $bg-color 0%, $bg-color-alt 100%);
+  }
+
   h2 {
     @include font-extra-bold;
-    font-size: 7.3rem;
-    line-height: 1;
+    font-size: $font-size-h1;
+    line-height: $line-height-h1;
     color: $text-color;
     text-transform: uppercase;
     margin-bottom: 3rem;
+
+    @include media('<lap-l') {
+      font-size: $font-size-h1--lap;
+      line-height: $line-height-h1--lap;
+      margin-bottom: 2rem;
+    }
   }
 }
 
 .media-section__align {
   position: relative;
   z-index: 15;
+  width: 140rem;
+  max-width: calc(100% - 32rem);
 
-  max-width: calc(100% - 38rem);
+  @include media('<tab') {
+    width: auto;
+    max-width: none;
+  }
 }
 
 /* media section end */
@@ -2837,13 +3497,13 @@ $m-news-space: 4rem;
       $translate: 0, 0;
       $scale: 1.1, 1.1;
       transform: translate($translate) scale($scale);
-      transform: translate3d($translate, 1) scale3d($scale, 1);
+      transform: translate3d($translate, 0) scale3d($scale, 1);
     }
 
     .sol-el__figure {
       $translate: -2rem, 0;
       transform: translate($translate);
-      transform: translate3d($translate, 1);
+      transform: translate3d($translate, 0);
     }
 
     .sol-el__title {
@@ -2903,10 +3563,12 @@ $m-news-space: 4rem;
 $subs-btn-width: 4.5rem;
 
 .subscribe {
+  position: relative;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  z-index: 15;
 }
 
 .subs-container {

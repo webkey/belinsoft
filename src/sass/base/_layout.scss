@@ -37,6 +37,10 @@ body {
     @include media('<desk-s') {
       @include padding-horizontal(nth($layout-page-space--lap, 2));
     }
+
+    @include media('<lap-l') {
+      @include padding-horizontal(nth($layout-page-space--net, 2));
+    }
   }
 }
 
