@@ -83,12 +83,12 @@ $font-alt: Georgia, serif !default;
 
 // Base font size
 // ====================================================
-$font-size: 1.6rem !default;
-$line-height: 2.4rem !default;
+$font-size: 2.1rem !default;
+$line-height: 3.3rem !default;
 $letter-spacing: normal !default;
 // ------ mob -----------------------------------------
-$font-size--mob: 1.4rem !default;
-$line-height--mob: 2.0rem !default;
+$font-size--mob: 1.8rem !default;
+$line-height--mob: 2.8rem !default;
 
 
 // Heading h1
@@ -237,7 +237,7 @@ $bottom-section: round-float($line-height * 3, 1) !default;
 // ------ lap -----------------------------------------
 $bottom-section--lap: round-float($line-height * 3, 1) !default;
 // ------ mob -----------------------------------------
-$bottom-section--mob: round-float($line-height--mob * 3, 1) !default;
+$bottom-section--mob: round-float($line-height--mob * 2, 1) !default;
 
 
 // Colors
@@ -296,7 +296,7 @@ $layout-page-space--mob: 3rem 1.5rem 3rem !default;
 // Layout content
 // ====================================================
 // Ширина текстового блока
-$layout-content-width: 75% !default;
+$layout-content-width: calc(100% - 34rem) !default;
 
 
 // Layout text

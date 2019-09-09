@@ -1,0 +1,43 @@
+<div class="i-widget i-widget-js">
+  <div class="i-widget__bg"></div>
+
+  <div class="swiper-container i-widget-slider i-widget-slider-js">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        @@include("_tpl_widget-slider-el.html", {
+        "srcImg": "img/img-news-02.jpg",
+        "title": "Startup Bel in Soft",
+        "text": "Platform for the launch of technological IT projects"
+        })
+      </div>
+      <div class="swiper-slide">
+        @@include("_tpl_widget-slider-el.html", {
+        "srcImg": "img/img-news-03.jpg",
+        "title": "Platform for the launch",
+        "text": "The company's products are a new direction of military-technical"
+        })
+      </div>
+      <div class="swiper-slide">
+        @@include("_tpl_widget-slider-el.html", {
+        "srcImg": "img/img-news-04.jpg",
+        "title": "Our C4I solutions will allow",
+        "text": "Platform for the launch of technological IT projects of systems..."
+        })
+      </div>
+    </div>
+
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+  </div>
+
+  <div class="weather-icon">
+    @@include("includes/svg/icon-cloud.svg")
+  </div>
+  <div class="weather-temp">15° С</div>
+  <div class="weather-city">Minsk</div>
+  <div class="weather-time">23:00</div>
+
+  <a href="#" class="btn-widget-opener widget-opener-js"></a>
+
+  <a href="#" class="btn-widget-close widget-close-js">x</a>
+</div>

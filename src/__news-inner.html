@@ -1,0 +1,107 @@
+@@include("_tpl_layout_head.html", {
+  "title": "News article - Bel In Soft",
+  "pageClass": "news-page"
+})
+
+@@include("_tpl_layout_header.html", { "currentItem": "News" })
+
+<!--MAIN-->
+<main class="main">
+  <div class="layout-page layout-page-spaces">
+    <div class="caption">
+      <div class="h1"><a href="news.html">News</a></div>
+      <ul class="page-nav">
+        <li class="current"><a href="news.html">Belarus News</a></li>
+        <li><a href="news.html">Corporate News</a></li>
+        <li><a href="news.html">WORLD MEDIA</a></li>
+      </ul>
+    </div>
+
+    <div class="content layout-content">
+      <header class="news-meta">
+        <time datetime="2019-08-21T15:40">21 августа 2019 , 15:40</time>
+      </header>
+
+      <div class="news-content typography">
+        <h1>Microsoft пропатчила RDP-клиент для Android</h1>
+
+        <p>Разработчики Microsoft <a href="#">обновили</a> Android-приложение для удаленного доступа к Windows, устранив уязвимость RDP-подключения (<a href="#">CVE-2019-1108</a>). Ошибка ПО позволяла злоумышленникам получить системную информацию, пригодную для дальнейшего развития атаки.</p>
+        <p>Ранее аналогичный баг закрыли в десктопном RDP-клиенте Microsoft — заплатка вошла в <a href="#">июльский пакет патчей</a>. Как пояснили специалисты, проблема крылась в некорректной обработке программной памяти, из-за чего технические данные попадали в открытый доступ.</p>
+        <h2>Microsoft прогнозирует атаки на&nbsp;уязвимые системы</h2>
+        <p>По мнению разработчиков, эксплойты на базе этой уязвимости могут появиться уже в ближайшее время. Чтобы воспользоваться дырой, злоумышленникам необходимо подключиться к целевой машине и запустить на ней стороннее ПО.</p>
+        <figure>
+          <img src='img/img-news-lg-04.jpg' alt='image description'>
+          <figcaption><a href='index.html'>Microsoft пропатчила RDP-клиент для Android</a></figcaption>
+        </figure>
+        <p>«Ранее мы уже видели, как подобные баги получают применение в кибератаках, — поясняют эксперты. — Обнаруженная дыра наверняка вызовет интерес у злоумышленников, так что пользователям следует как можно скорее установить обновление».</p>
+        <p>Специалисты Microsoft также уточнили, что других способов защиты от CVE-2019-1108 не существует.</p>
+        <h2>Взломщики активно атакуют RDP-подключения</h2>
+        <p>Баги удаленного подключения традиционно привлекают внимание злоумышленников. Как показало недавнее исследование, атаки на небезопасный RDP-хост начинаются уже через полторы минуты после его подключения к Сети. Эксперты фиксировали по десять попыток взлома в минуту; в 2012 году число таких инцидентов не превышало двух в час.</p>
+        <blockquote>
+          <q>Жертвы атак через удаленное соединение рискуют получить на компьютер зловред-шифровальщик, стать частью ботнета или лишиться своих данных.</q>
+        </blockquote>
+        <p>Проблему усугубляют и уязвимости ПО, которые постоянно находят в RDP-системах и службах терминального доступа. Именно к этому типу относится опубликованный в мае <a href="#">баг BlueKeep</a>, который угрожает выполнением стороннего кода с возможностью быстрого масштабирования атак. Позднее разработчики Microsoft устранили в своих продуктах<a href="#">две схожие уязвимости</a>, которые позволяли отправлять компьютерам на базе Windows несанкционированные команды.</p>
+      </div>
+
+      <div class="news-source"><a href="https://threatpost.ru/microsoft-patches-rdp-for-android-aug-19/33839/" target="_blank">Threat Post</a></div>
+
+      <footer class="news-thumbs">
+        <div class="news-thumbs__item news-thumbs__item_prev">
+          <a href="news-inner.html" class="news-thumb news-thumb_prev">
+            <div class="news-thumb__date">31 августа 2019, 11:33</div>
+            <div class="news-thumb__title">Разработчики Cisco закрыли 10-балльный баг в IOS XE</div>
+          </a>
+        </div>
+        <div class="news-thumbs__item news-thumbs__item_next">
+          <a href="news-inner.html" class="news-thumb news-thumb_next">
+            <div class="news-thumb__date">28 августа 2019, 20:37</div>
+            <div class="news-thumb__title">Hostinger сбросил 14 млн паролей из-за вероятной утечки</div>
+          </a>
+        </div>
+      </footer>
+    </div>
+
+    <div class="similar-news layout-content">
+      <div class="similar-news__title">More From Bel In Soft</div>
+      <div class="similar-news__list">
+        <div class="similar-news__item">
+          <div class="similar-news__category"><a href="news.html">Belarus News</a></div>
+          @@include("_tpl_news-el.html", {
+          "srcImg": "img/img-news-04.jpg",
+          "date": "2 сентября 2019, 19:04",
+          "datetime": "2019-09-02T19:04",
+          "title": "Microsoft пропатчила RDP-клиент для Android",
+          "text": "Разработчики устранили уязвимость, которую можно использовать для сбора системной информации и подготовки кибератак."
+          })
+        </div>
+        <div class="similar-news__item">
+          <div class="similar-news__category"><a href="news.html">Corporate News</a></div>
+          @@include("_tpl_news-el.html", {
+          "srcImg": "img/img-news-05.jpg",
+          "date": "31 августа 2019, 11:33",
+          "datetime": "2019-08-31T11:33",
+          "title": "Разработчики Cisco закрыли 10-балльный баг в IOS XE",
+          "text": "Ошибка в службе Cisco REST API позволяет злоумышленнику перехватить токен авторизации текущего пользователя."
+          })
+        </div>
+        <div class="similar-news__item">
+          <div class="similar-news__category"><a href="news.html">World Media</a></div>
+          @@include("_tpl_news-el.html", {
+          "srcImg": "img/img-news-06.jpg",
+          "date": "29 августа 2019, 19:09",
+          "datetime": "2019-08-31T11:33",
+          "title": "Microsoft: длина и сложность пароля больше не имеют значения",
+          "text": "Специалисты компании утверждают, что двухфакторная аутентификация защищает от 99,9% кибератак."
+          })
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+<!--MAIN end-->
+
+@@include("_tpl_widget_inner-page.html")
+
+@@include("_tpl_layout_footer.html")
+
+@@include("_tpl_layout_foot.html")

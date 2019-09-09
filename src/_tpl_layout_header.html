@@ -29,9 +29,9 @@
               @@if(context.currentItem != 'News'){<li><a href="news.html">News</a>}
                 <em class="nav__arrow-js">&#9660;</em>
                 <ul>
-                  <li><a href="#">News inner 1</a></li>
-                  <li><a href="#">News inner 2</a></li>
-                  <li><a href="#">News inner 3</a></li>
+                  <li><a href="news.html">News inner 1</a></li>
+                  <li><a href="news.html">News inner 2</a></li>
+                  <li><a href="news.html">News inner 3</a></li>
                 </ul>
               </li>
 
@@ -67,3 +67,5 @@
   </div>
 </header>
 <!--HEADER end-->
+
+@@if(context.currentItem != "Home") {@@include("_tpl_bg-words.html")}

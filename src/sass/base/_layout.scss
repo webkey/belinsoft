@@ -20,12 +20,16 @@ html {
 
 body {
   min-width: $layout-page-min-width;
-
   @include font-normal;
-  @include font-size($font-size, $line-height);
-
+  font-size: $font-size;
+  line-height: $line-height;
   color: $text-color;
   background: $bg-color url(../../img/empty.png) no-repeat left top fixed;
+
+  @include media('<mob') {
+    font-size: $font-size--mob;
+    line-height: $line-height--mob;
+  }
 }
 
 // Отступы по бокам страницы
@@ -79,11 +83,11 @@ body {
 // Выравнивание текстовых элементов и их максимальная ширина
 .layout-content {
   max-width: $layout-content-width;
-  box-sizing: content-box;
+  width: 140rem;
 
-  @include media('<lap-l') {
-    width: 99.2rem;
-    max-width: 100%;
+  @include media('<tab') {
+    width: 100%;
+    max-width: none;
   }
 }
 

@@ -78,7 +78,7 @@ function eventsScrollPage() {
   // Parallax scroll background
   function scrollBgWords(scrollTop) {
     $words.css({
-      'transform': 'translate3d(0px, ' + Math.round(scrollTop * 0.8) + 'px, 0px)',
+      'transform': 'translate3d(0px, -' + Math.round(scrollTop * 0.2) + 'px, 0px)',
       'transition': 'all ' + wordsScrollDur / 1000 + 's'
     });
   }
