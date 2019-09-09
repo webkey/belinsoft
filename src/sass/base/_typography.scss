@@ -265,6 +265,10 @@ table {
   & > h6, & > .h6 {
     margin-top: round-float(2.6 * $bottom-space, 1);
 
+    @include media('<mob') {
+      margin-top: round-float(2 * $bottom-space--mob, 1);
+    }
+
     &:first-child {
       margin-top: 0;
     }
@@ -333,9 +337,14 @@ table {
     padding: 1.2rem 2.4rem;
     margin: 0;
     font-style: normal;
-    color: $text-color-light;
+    color: $text-color-muted;
     text-align: center;
     z-index: 5;
+
+    @include media('<mob') {
+      font-size: $font-size--mob;
+      line-height: $line-height--mob;
+    }
 
     a {
       color: inherit;

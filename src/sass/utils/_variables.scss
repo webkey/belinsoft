@@ -100,7 +100,7 @@ $line-height-h1-kef: $line-height-h1 / $font-size-h1;
 $font-size-h1--lap: 5.2rem !default;
 $line-height-h1--lap: round-float($font-size-h1--lap * $line-height-h1-kef, 1) !default; // Использовать рассчетное значение, если нет в дизайне
 // ------ tab -----------------------------------------
-$font-size-h1--tab: 3.4rem !default;
+$font-size-h1--tab: 4.8rem !default;
 $line-height-h1--tab: round-float($font-size-h1--tab * $line-height-h1-kef, 1) !default; // Использовать рассчетное значение, если нет в дизайне
 // ------ mob -----------------------------------------
 $font-size-h1--mob: 3.8rem !default;
@@ -139,7 +139,7 @@ $line-height-h2--lap: 3.0rem !default; // Использовать рассче�
 $font-size-h2--tab: 2.0rem !default;
 $line-height-h2--tab: round-float($font-size-h2--tab * $line-height-h2-kef, 1) !default; // Использовать рассчетное значение, если нет в дизайне
 // ------ mob -----------------------------------------
-$font-size-h2--mob: 2.4rem !default;
+$font-size-h2--mob: 2.0rem !default;
 $line-height-h2--mob: round-float($font-size-h2--mob * $line-height-h2-kef, 1) !default; // Использовать рассчетное значение, если нет в дизайне
 // ----------------------------------------------------
 @mixin font-h2() {
@@ -282,8 +282,8 @@ $layout-page-max-width: none !default;
 // Верхний отступ страницы с учетом фиксированной шапки
 $layout-page-top-space: 19rem !default;
 $layout-page-top-space--lap: 14rem !default;
-$layout-page-top-space--net: 10rem !default;
-$layout-page-top-space--tab: 10rem !default;
+$layout-page-top-space--net: 12rem !default;
+$layout-page-top-space--tab: 12rem !default;
 $layout-page-top-space--mob: 7rem !default;
 // Отступы для всего сайта
 $layout-page-space: 5rem 6.8rem 5rem !default;

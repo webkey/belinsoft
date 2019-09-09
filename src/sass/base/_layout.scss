@@ -80,6 +80,11 @@ body {
 .layout-content {
   max-width: $layout-content-width;
   box-sizing: content-box;
+
+  @include media('<lap-l') {
+    width: 99.2rem;
+    max-width: 100%;
+  }
 }
 
 // Выравнивание элементов выходящих за пределы текста

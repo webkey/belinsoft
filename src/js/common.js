@@ -1575,7 +1575,7 @@ function scrollNavigation() {
     scrollSpeed: 500,
     forceSingleHighlight: true,
     highlightSelector: '.scroll-nav-js a',
-    offset: $(".header"),
+    offset: $(".header").innerHeight() + 30,
   });
 }
 

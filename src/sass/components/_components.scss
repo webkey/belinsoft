@@ -528,7 +528,7 @@
     height: 100%;
     width: 48rem;
     max-width: 100%;
-    background-color: $base-color;
+    background-color: rgba($base-color, 0.9);
     z-index: 999;
     transition: {
       property: opacity, visibility, transform;
@@ -547,7 +547,7 @@
   }
 
   @include media('<mob-s') {
-    width: 100%;
+    width: 24rem;
   }
 
   &.is-open {
@@ -646,7 +646,7 @@
   position: relative;
   display: flex;
   align-items: center;
-  padding: 0 1.5rem;
+  padding: 0 0 0 1.5rem;
   border-bottom: 1px solid rgba(white, 0.5);
 
   display: none;
@@ -1262,7 +1262,7 @@
   color: $text-color;
 
   li {
-    margin: 0 3.5rem 1rem 0;
+    margin: 0 3.5rem 1.5rem 0;
   }
 
   a {
@@ -1291,6 +1291,10 @@
   display: flex;
   align-items: flex-start;
 
+  @include media('<lap-l') {
+    display: block;
+  }
+
   h1, .h1 {
     margin-right: 4.5rem;
     margin-bottom: 3rem;
@@ -1306,6 +1310,10 @@
 
     @include media('<desk-s') {
       margin-top: 2.7rem;
+    }
+
+    @include media('<lap-l') {
+      margin-top: 0;
     }
   }
 }
@@ -2874,7 +2882,6 @@ $i-widget-space: 4rem;
     will-change: transform;
     transform-origin: left center;
     transition: transform $animation-speed;
-
     @include bg-news;
 
     @include media('<lap-l') {
@@ -3504,6 +3511,9 @@ $m-news-space--net: 2rem;
 
   @include media('<mob') {
     padding: 0 0.7rem 4rem;
+    $width: 100%;
+    flex-basis: $width;
+    max-width: $width;
   }
 
   // Transform to slider
@@ -3666,6 +3676,15 @@ $m-news-space--net: 2rem;
   color: $text-color;
   text-decoration: none;
 
+  @include media('<lap-l') {
+    padding-bottom: 2rem;
+  }
+
+  @include media('<mob-s') {
+    display: block;
+    padding: 0 0 2rem;
+  }
+
   &::before {
     content: "";
     display: block;
@@ -3677,8 +3696,17 @@ $m-news-space--net: 2rem;
     will-change: transform;
     transition: transform $animation-speed;
     transform-origin: left center;
-
     @include bg-news;
+
+    @include media('<lap-l') {
+      left: 2rem;
+    }
+
+    @include media('<mob-s') {
+      top: 2rem;
+      left: -#{nth($layout-page-space--mob, 2)};
+      right: -#{nth($layout-page-space--mob, 2)};
+    }
   }
 }
 
@@ -3692,6 +3720,22 @@ $m-news-space--net: 2rem;
   min-width: $width;
   max-width: $width;
   transition: transform $animation-speed;
+
+  @include media('<mob') {
+    margin-right: 2rem;
+    $width: 18rem;
+    flex-basis: $width;
+    min-width: $width;
+    max-width: $width;
+  }
+
+  @include media('<mob-s') {
+    margin: 0 0 2rem;
+    $width: 24rem;
+    flex-basis: $width;
+    min-width: $width;
+    max-width: $width;
+  }
 
   &::after {
     @include img-mask;
@@ -3712,6 +3756,15 @@ $m-news-space--net: 2rem;
   margin-bottom: 2rem;
   transition: color $animation-speed;
 
+  @include media('<desk-s') {
+    font-size: 1.5rem;
+    line-height: 2.0rem;
+  }
+
+  @include media('<lap-l') {
+    margin-bottom: 1.2rem;
+  }
+
   &:last-child {
     margin-bottom: 0;
   }
@@ -3722,6 +3775,11 @@ $m-news-space--net: 2rem;
   line-height: 24px;
   margin-bottom: 2rem;
   color: $text-color-muted;
+
+  @include media('<desk-s') {
+    font-size: 1.4rem;
+    line-height: 2.0rem;
+  }
 
   &:last-child {
     margin-bottom: 0;
