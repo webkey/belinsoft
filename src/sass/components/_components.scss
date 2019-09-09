@@ -307,31 +307,31 @@
 }
 
 /* Временно !!! */
-.logo-alt {
-  .logo {
-    width: 369px;
-    background-image: url(../../img/temp/logo2.png);
-    background-size: auto;
-
-    &::before {
-      content: "";
-      position: relative;
-      display: block;
-      background: none;
-      @include ratio(369, 75);
-    }
-
-    &::after {
-      content: none;
-    }
-  }
-
-  .h-search,
-  .h-call,
-  .lang {
-    display: none !important;
-  }
-}
+//.logo-alt {
+//  .logo {
+//    width: 369px;
+//    background-image: url(../../img/temp/logo2.png);
+//    background-size: auto;
+//
+//    &::before {
+//      content: "";
+//      position: relative;
+//      display: block;
+//      background: none;
+//      @include ratio(369, 75);
+//    }
+//
+//    &::after {
+//      content: none;
+//    }
+//  }
+//
+//  .h-search,
+//  .h-call,
+//  .lang {
+//    display: none !important;
+//  }
+//}
 
 .home-page {
   .logo {

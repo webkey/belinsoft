@@ -1686,11 +1686,6 @@ $(document).ready(function () {
 
   formValidation();
 
-  // Для тестирования. Временно
-  $('.home-page .logo').on('click', function () {
-    $HTML.toggleClass('logo-alt', !$HTML.hasClass('logo-alt'));
-  });
-
   // Добавить список переключателей видео
   $BODY.on('change', '.t-choose-video :radio', function () {
     var curRadio = $(this);

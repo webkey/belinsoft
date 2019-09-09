@@ -2717,30 +2717,6 @@ form .error + .select-arrow + .success-feedback + .error-feedback {
 }
 
 /* Временно !!! */
-.logo-alt .logo {
-  width: 369px;
-  background-image: url(../img/temp/logo2.png);
-  background-size: auto;
-}
-
-.logo-alt .logo::before {
-  content: "";
-  position: relative;
-  display: block;
-  background: none;
-  padding-top: 20.33%;
-}
-
-.logo-alt .logo::after {
-  content: none;
-}
-
-.logo-alt .h-search,
-.logo-alt .h-call,
-.logo-alt .lang {
-  display: none !important;
-}
-
 .home-page .logo {
   transition: none;
 }
