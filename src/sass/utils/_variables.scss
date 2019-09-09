@@ -103,7 +103,7 @@ $line-height-h1--lap: round-float($font-size-h1--lap * $line-height-h1-kef, 1) !
 $font-size-h1--tab: 3.4rem !default;
 $line-height-h1--tab: round-float($font-size-h1--tab * $line-height-h1-kef, 1) !default; // Использовать рассчетное значение, если нет в дизайне
 // ------ mob -----------------------------------------
-$font-size-h1--mob: 3.0rem !default;
+$font-size-h1--mob: 3.8rem !default;
 $line-height-h1--mob: round-float($font-size-h1--mob * $line-height-h1-kef, 1) !default; // Использовать рассчетное значение, если нет в дизайне
 // ----------------------------------------------------
 @mixin font-h1() {
@@ -263,7 +263,7 @@ $bg-color-alt: #232323 !default;
 $text-color: #fff !default;
 //$text-color-muted: #9f9f9f !default;
 $text-color-muted: #c5c5c5 !default;
-$text-color-light: #c5c5c5 !default;
+$text-color-light: #9d9d9d !default;
 // ----------------------------------------------------
 $title-color: white !default;
 // ----------------------------------------------------
@@ -279,12 +279,19 @@ $layout-page-min-width: 32rem !default;
 // Максимальная ширина сайта
 //$layout-page-max-width: 192rem !default;
 $layout-page-max-width: none !default;
+// Верхний отступ страницы с учетом фиксированной шапки
+$layout-page-top-space: 19rem !default;
+$layout-page-top-space--lap: 14rem !default;
+$layout-page-top-space--net: 10rem !default;
+$layout-page-top-space--tab: 10rem !default;
+$layout-page-top-space--mob: 7rem !default;
 // Отступы для всего сайта
-$layout-page-space: 19rem 6.8rem 5rem !default;
-$layout-page-space--lap: 14rem 5rem 5rem !default;
-$layout-page-space--net: 10rem 3rem 5rem !default;
-$layout-page-space--tab: 4rem 3rem 4rem !default;
-$layout-page-space--mob: 2rem 1.5rem !default;
+$layout-page-space: 5rem 6.8rem 5rem !default;
+$layout-page-space--lap: 5rem 5rem 5rem !default;
+$layout-page-space--net: 5rem 3rem 5rem !default;
+$layout-page-space--tab: 4rem 2.5rem 4rem !default;
+$layout-page-space--mob: 3rem 1.5rem 3rem !default;
+
 
 // Layout content
 // ====================================================
@@ -588,6 +595,7 @@ $animation-speed-mouseleave: 0.35s !default;
 // Header
 // ====================================================
 $nav-height: 7rem;
+$nav-height--mob: 6rem;
 
 
 // Footer

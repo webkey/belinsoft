@@ -119,18 +119,26 @@
 /* breadcrumbs end */
 
 .fp-section {
-  padding: $layout-page-space;
+  padding: #{$layout-page-top-space} #{nth($layout-page-space, 2)} #{nth($layout-page-space, 3)};
 
   @include media('<desk-s') {
-    padding: $layout-page-space--lap;
+    padding: #{$layout-page-top-space--lap} #{nth($layout-page-space--lap, 2)} #{nth($layout-page-space--lap, 3)};
   }
 
   @include media('<lap-l') {
-    padding: $layout-page-space--net;
+    padding: #{$layout-page-top-space--net} #{nth($layout-page-space--net, 2)} #{nth($layout-page-space--net, 3)};
   }
 
   @include media('<tab') {
-    padding: $layout-page-space--tab;
+    display: block;
+    height: auto !important;
+    min-height: 0;
+    padding: #{nth($layout-page-space--tab, 1)} #{nth($layout-page-space--tab, 2)} #{nth($layout-page-space--tab, 3)};
+    @include linear-gradient(to bottom, $bg-color-alt 0%, $bg-color 100%);
+  }
+
+  @include media('<mob') {
+    padding: #{nth($layout-page-space--mob, 1)} #{nth($layout-page-space--mob, 2)} #{nth($layout-page-space--mob, 3)};
   }
 }
 
@@ -168,6 +176,14 @@
   @include media('<lap-l') {
     padding-left: nth($layout-page-space--net, 2);
   }
+
+  @include media('<tab') {
+    padding-left: nth($layout-page-space--tab, 2);
+  }
+
+  @include media('<mob') {
+    padding-left: nth($layout-page-space--mob, 2);
+  }
 }
 
 .header-container {
@@ -181,6 +197,10 @@
   display: flex;
   align-items: center;
   min-height: $nav-height;
+
+  @include media('<mob') {
+    min-height: $nav-height--mob;
+  }
 }
 
 /* logo */
@@ -201,6 +221,10 @@
 
   @include media('<desk-s') {
     width: 120px;
+  }
+
+  @include media('<mob') {
+    width: $nav-height--mob;
   }
 
   &::before,
@@ -228,18 +252,25 @@
       @include ratio(165, 110);
     }
 
-    .page-scrolled & {
-      @include ratio(165, 70);
-      opacity: 0;
-
-      @include media('<desk-s') {
-        @include ratio(165, 100);
-      }
-
-      @include media('<lap-l') {
-        @include ratio(165, 80);
-      }
+    @include media('<mob') {
+      @include ratio(1, 1);
+      background-image: url(../../img/logo-mob.svg);
+      background-size: 3.2rem;
     }
+
+    // Изменить вид лого при скролле.
+    //.page-scrolled & {
+    //  @include ratio(165, 70);
+    //  opacity: 0;
+    //
+    //  @include media('<desk-s') {
+    //    @include ratio(165, 100);
+    //  }
+    //
+    //  @include media('<lap-l') {
+    //    @include ratio(165, 80);
+    //  }
+    //}
   }
 
   &::after {
@@ -257,9 +288,10 @@
       background-size: 100px;
     }
 
-    .page-scrolled & {
-      opacity: 1;
-    }
+    // Изменить вид лого при скролле.
+    //.page-scrolled & {
+    //  opacity: 1;
+    //}
   }
 
   a, & > span {
@@ -332,80 +364,98 @@
   width: 6rem;
   @include font-bold;
   font-size: 2rem;
-  line-height: 2.4rem;
+  line-height: 2rem;
   letter-spacing: 0.023em;
-
+  text-align: center;
   margin-left: 4rem;
 
   @include media('<lap-s') {
     margin-left: 2rem;
   }
 
-  .active-item {
-    color: white;
-
-    a {
-      text-decoration: none;
-    }
-  }
-
   a {
-    display: block;
-    color: inherit;
-    text-align: center;
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    padding: 0.3rem 0.5rem;
+    color: white;
     text-decoration: none;
-    transition: color $animation-speed;
+
+    &::before {
+      content: "";
+      display: block;
+      position: absolute;
+      bottom: 0;
+      left: 4px;
+      width: calc(100% - 8px);
+      height: 2px;
+      border-radius: 50%;
+      background-color: $text-color;
+      box-shadow: 0 0 3px rgba($text-color, 1);
+
+      transform-origin: 100% 100%;
+      $scale: 0, 1;
+      transform: scale($scale);
+      transform: scale3d($scale, 1);
+
+      // transition
+      backface-visibility: hidden;
+      $prop: transform, opacity;
+      will-change: $prop;
+      transition: {
+        property: $prop;
+        duration: $animation-speed;
+        timing-function: cubic-bezier(0.65, 0.05, 0.36, 1);
+      }
+    }
 
     // Hover
     .no-touchevents &:hover {
-      color: $highlight-color--hover;
+      &::before {
+        transform-origin: 0 100%;
+
+        $scale: 1, 1;
+        transform: scale($scale);
+        transform: scale3d($scale, 1);
+      }
     }
   }
 
-  & > a {
-    display: block;
-    position: relative;
-    text-decoration: none;
-
-    //&::before {
-    //  content: "";
-    //  display: block;
-    //  position: absolute;
-    //  right: 0;
-    //  top: 50%;
-    //  @include triangle("bottom", currentColor, 6px, 1);
-    //  margin: -3px 0 0;
-    //}
-  }
-
-  //&.is-open > a:before {
-  //  border-top: none;
-  //  @include triangle("top", currentColor, 6px, 1);
-  //}
-
   ul {
-    overflow: hidden;
     position: absolute;
     left: 0;
     top: 100%;
     width: 100%;
     margin: 0;
-    padding: 0.5rem 0;
-    box-shadow: inset 0 0 0 1px rgba(#979797, 0.1);
-    border-radius: 5px;
+    padding: 1.5rem 0;
 
-    a {
-      color: #9f9f9f;
+    &::before {
+      $intend: 1rem -0.5rem;
+      content: "";
+      display: block;
+      position: absolute;
+      top: #{nth($intend, 1)};
+      left: #{nth($intend, 2)};
+      height: calc(100% - #{nth($intend, 1)} * 2);
+      width: calc(100% - #{nth($intend, 2)} * 2);
+      @include bg-news;
+    }
+
+    li {
+      margin-top: 0.5rem;
+
+      &:first-child {
+        margin-top: 0;
+      }
     }
 
     .active-item {
-      a {
-        color: $text-color;
+      a, .no-touchevents a:hover {
+        color: $text-color-muted;
         cursor: default;
 
-        // Hover
-        .no-touchevents &:hover {
-          color: $text-color;
+        &::before {
+          content: none;
         }
       }
     }
@@ -492,6 +542,14 @@
     transform: translate3d($translate, 0);
   }
 
+  @include media('<tab-s') {
+    width: 32rem;
+  }
+
+  @include media('<mob-s') {
+    width: 100%;
+  }
+
   &.is-open {
     // ------ бутерброд -----------------------------------------
     @include media("<tab") {
@@ -534,8 +592,9 @@
 .nav-opener {
   display: block;
   position: relative;
-  height: 40px;
-  width: 40px;
+  $size: 4rem;
+  height: $size;
+  width: $size;
   font-size: 0;
   line-height: 0;
   cursor: pointer;
@@ -555,15 +614,15 @@
   }
 
   &::before {
-    height: 17px;
-    width: 26px;
-    background-image: url(data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMWU5MTdjIiB3aWR0aD0iMjYiIGhlaWdodD0iMTciIHZpZXdCb3g9IjAgMCAyNiAxNyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMjYiIGhlaWdodD0iMyIgcng9IjEuNSI+PC9yZWN0PjxyZWN0IHk9IjciIHdpZHRoPSIyNiIgaGVpZ2h0PSIzIiByeD0iMS41Ij48L3JlY3Q+PHJlY3QgeT0iMTQiIHdpZHRoPSIyNiIgaGVpZ2h0PSIzIiByeD0iMS41Ij48L3JlY3Q+PC9zdmc+);
+    height: 1.7rem;
+    width: 2.6rem;
+    background-image: url(data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZmZmIiB3aWR0aD0iMjYiIGhlaWdodD0iMTciIHZpZXdCb3g9IjAgMCAyNiAxNyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMjYiIGhlaWdodD0iMyIgcng9IjEuNSI+PC9yZWN0PjxyZWN0IHk9IjciIHdpZHRoPSIyNiIgaGVpZ2h0PSIzIiByeD0iMS41Ij48L3JlY3Q+PHJlY3QgeT0iMTQiIHdpZHRoPSIyNiIgaGVpZ2h0PSIzIiByeD0iMS41Ij48L3JlY3Q+PC9zdmc+);
   }
 
   &::after {
-    height: 25px;
-    width: 27px;
-    background-image: url(data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMWU5MTdjIiB3aWR0aD0iMjciIGhlaWdodD0iMjUiIHZpZXdCb3g9IjAgMCAyNyAyNSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB4PSIwLjQ0NjUzMyIgeT0iMTIuNCIgd2lkdGg9IjE3IiBoZWlnaHQ9IjMiIHJ4PSIxLjUiIHRyYW5zZm9ybT0icm90YXRlKC00NCAwLjQ0NjUzMyAxMi40KSI+PC9yZWN0PjxyZWN0IHg9IjEiIHk9IjExIiB3aWR0aD0iMjYiIGhlaWdodD0iMyIgcng9IjEuNSI+PC9yZWN0PjxyZWN0IHg9IjIuNTgwMzIiIHk9IjEwLjQyODUiIHdpZHRoPSIxNyIgaGVpZ2h0PSIzIiByeD0iMS41IiB0cmFuc2Zvcm09InJvdGF0ZSg0NSAyLjU4MDMyIDEwLjQyODUpIj48L3JlY3Q+PC9zdmc+);
+    height: 2.5rem;
+    width: 2.7rem;
+    background-image: url(data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZmZmIiB3aWR0aD0iMjciIGhlaWdodD0iMjUiIHZpZXdCb3g9IjAgMCAyNyAyNSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB4PSIwLjQ0NjUzMyIgeT0iMTIuNCIgd2lkdGg9IjE3IiBoZWlnaHQ9IjMiIHJ4PSIxLjUiIHRyYW5zZm9ybT0icm90YXRlKC00NCAwLjQ0NjUzMyAxMi40KSI+PC9yZWN0PjxyZWN0IHg9IjEiIHk9IjExIiB3aWR0aD0iMjYiIGhlaWdodD0iMyIgcng9IjEuNSI+PC9yZWN0PjxyZWN0IHg9IjIuNTgwMzIiIHk9IjEwLjQyODUiIHdpZHRoPSIxNyIgaGVpZ2h0PSIzIiByeD0iMS41IiB0cmFuc2Zvcm09InJvdGF0ZSg0NSAyLjU4MDMyIDEwLjQyODUpIj48L3JlY3Q+PC9zdmc+);
     display: none;
   }
 
@@ -575,9 +634,52 @@
     &::before {
       display: none;
     }
+
     &::after {
       display: block;
     }
+  }
+}
+
+// Navigation header (for mobile)
+.nav-header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 0 1.5rem;
+  border-bottom: 1px solid rgba(white, 0.5);
+
+  display: none;
+
+  @include media('<tab') {
+    display: block;
+  }
+
+
+}
+
+// Navigation close button
+.nav-close-btn {
+  position: relative;
+  display: block;
+  $size: 4rem;
+  height: $size;
+  width: $size;
+  margin-left: auto;
+
+  &::before {
+    content: "";
+    display: block;
+    $size: 2.4rem;
+    height: $size;
+    width: $size;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSIjZmZmIj48cGF0aCBkPSJNMjMuOTU0IDIxLjAzbC05LjE4NC05LjA5NSA5LjA5Mi05LjE3NC0yLjgzMi0yLjgwNy05LjA5IDkuMTc5LTkuMTc2LTkuMDg4LTIuODEgMi44MSA5LjE4NiA5LjEwNS05LjA5NSA5LjE4NCAyLjgxIDIuODEgOS4xMTItOS4xOTIgOS4xOCA5LjF6Ii8+PC9zdmc+);
   }
 }
 
@@ -652,8 +754,6 @@
 
   // Все "a"
   a {
-    $animation: 0.3s;
-
     color: inherit;
     text-decoration: none;
 
@@ -685,44 +785,7 @@
       will-change: $prop;
       transition: {
         property: $prop;
-        duration: $animation;
-        //timing-function: ease-in-out;
-        timing-function: cubic-bezier(0.65, 0.05, 0.36, 1);
-      }
-    }
-
-    &::after {
-      //content: "";
-      display: block;
-
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      margin-left: -25px;
-      height: 6px;
-      width: 10px;
-      border-radius: 50% 1px 1px 50%;
-
-      background-color: #fff;
-
-      //opacity: 0;
-      box-shadow: 0 0 10px rgba($text-color, 1);
-
-      //$translate: 0, 0;
-      //transform: translate($translate);
-      //transform: translate3d($translate, 1);
-
-      $scale: 0.5, 0.5;
-      transform: scale($scale);
-      transform: scale3d($scale, 1);
-
-      // transition
-      backface-visibility: hidden;
-      $prop: transform, opacity, margin;
-      will-change: $prop;
-      transition: {
-        property: $prop;
-        duration: 0s;
+        duration: $animation-speed;
         //timing-function: ease-in-out;
         timing-function: cubic-bezier(0.65, 0.05, 0.36, 1);
       }
@@ -784,8 +847,7 @@
       left: #{nth($intend, 2)};
       height: calc(100% - #{nth($intend, 1)} * 2);
       width: calc(100% - #{nth($intend, 2)} * 2);
-      border: 1px solid rgba(white, 0.5);
-      border-radius: 5px;
+      @include bg-news;
 
       // ------ бутерброд -----------------------------------------
       @include media("<tab") {
@@ -823,10 +885,9 @@
     }
   }
 
-  // Показать подменю
-  // Класс .hover добавляется скриптом
-  // Если отключены скрипты,
-  // Показывать через :hover
+  // Показать подменю.
+  // Класс .hover добавляется скриптом.
+  // Если отключены скрипты, Показывать через :hover.
   li.hover > ul,
   .no-js & li:hover > ul {
     // Для разрешений выше планшетных
@@ -838,7 +899,7 @@
     }
   }
 
-  // Стрелка для разворачивания подменю
+  // Стрелка для разворачивания подменю.
   li > em {
     position: absolute;
     top: 50%;
@@ -936,31 +997,12 @@
     &.hover,
     .no-js &:hover {
       & > a {
-        $animation: 0.3s;
-
         &::before {
           transform-origin: 0 100%;
 
           $scale: 1, 1;
           transform: scale($scale);
           transform: scale3d($scale, 1);
-        }
-
-        &::after {
-          opacity: 1;
-
-          transition-delay: $animation * 0.5;
-          transition-duration: $animation * 2;
-
-          margin-left: calc(100% + 25px);
-
-          $scale: 1, 1;
-          transform: scale($scale);
-          transform: scale3d($scale, 1);
-
-          //$translate: 10rem, 0;
-          //transform: translate($translate);
-          //transform: translate3d($translate, 1);
         }
       }
     }
@@ -1069,12 +1111,12 @@
   border-top: 1px solid rgba($text-color-muted, 0.1);
   box-shadow: 0 -2px 33px rgba(0, 0, 0, 0.5);
 
-
-  //z-index: 5
-
   padding-top: 2rem;
   padding-bottom: 2rem;
-  //background-color: rgba(lightgreen, 0.8);
+
+  @include media('<tab') {
+    background: $bg-color-alt;
+  }
 
   &.fp-section-js {
     height: auto !important;
@@ -1096,29 +1138,27 @@
   position: relative;
   display: flex;
   align-items: center;
-  //flex-wrap: wrap;
-
   @include margin-horizontal(-#{round(nth($grid-space, 2) / 2)});
-
   margin-bottom: -#{round(nth($grid-space, 1) / 2)};
+
+  @include media('<mob') {
+    display: block;
+    margin-bottom: -2rem;
+  }
 }
 
 .footer-bottom__col {
   text-align: center;
-
   @include padding-horizontal(round(nth($grid-space, 2) / 2));
-
   margin-bottom: #{round(nth($grid-space, 1) / 2)};
+  $width: 33.33%;
+  flex: 0 1 #{$width};
+  max-width: $width;
 
-  // для браузеров не поддерживающих display: flex
-  display: inline-block;
-  vertical-align: top;
-  width: calc(33.33% - 5px);
-
-  @include media("<mob") {
-    min-width: 100%;
+  @include media('<mob') {
+    max-width: none;
+    margin-bottom: 2rem;
   }
-
 
   &:first-child {
     @include media(">=mob") {
@@ -1169,15 +1209,19 @@
 /* ==================================== */
 .main {
   position: relative;
-  padding-top: nth($layout-page-space, 1);
+  padding-top: $layout-page-top-space;
   padding-bottom: 5rem;
 
   @include media('<desk-s') {
-    padding-top: nth($layout-page-space--lap, 1);
+    padding-top: $layout-page-top-space--lap;
   }
 
   @include media('<lap-l') {
-    padding-top: nth($layout-page-space--net, 1);
+    padding-top: $layout-page-top-space--net;
+  }
+
+  @include media('<lap-l') {
+    padding-top: $layout-page-top-space--tab;
   }
 }
 
@@ -1453,62 +1497,57 @@
 // menu item
 .menu-item {
   position: relative;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-size: cover;
+
+  @include media('>=tab') {
+    background: none !important;
+  }
+
+  @include media('<tab') {
+    padding: $layout-page-space--tab;
+  }
+
+  @include media('<mob') {
+    padding: $layout-page-space--mob;
+  }
+
+  &:first-child {
+    @include media('<tab') {
+      padding-top: $layout-page-top-space--tab;
+    }
+
+    @include media('<mob') {
+      padding-top: $layout-page-top-space--mob;
+    }
+  }
+
+  &::after {
+    content: "";
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    @include linear-gradient(to top, rgba($bg-color, 0.7) 0%, rgba($bg-color, 0.5) 50%, rgba($bg-color, 0.3) 100%);
+
+    @include media('<tab') {
+      display: block;
+    }
+  }
 
   &.item_active {
     z-index: 10;
+
+    @include media('<tab') {
+      z-index: auto;
+    }
   }
 }
 
-//.menu-item__bg {
-//  position: absolute;
-//  left: 0;
-//  top: 0;
-//  height: 100%; // Если видео появляется вместо текста
-//  width: 100%;
-//  transition: transform $animation-speed;
-//
-//  user-select: none;
-//  pointer-events: none;
-//}
-
-// Видео на фоне текста
-//.menu-item__bg-video {
-//  overflow: hidden;
-//  position: absolute;
-//  top: 0;
-//  left: 0;
-//  width: 100%;
-//  height: 100%;
-//
-//  video, img {
-//    position: absolute;
-//    top: 0;
-//    left: 0;
-//    width: calc(100% - 4px);
-//    height: 100%;
-//    @include object-fit(cover);
-//
-//    opacity: 0;
-//    //$scale: 1.4, 1.4;
-//    //transform: scale3d($scale, 1);
-//    //transform: scale($scale);
-//    will-change: transform, opacity;
-//
-//    transition: opacity $animation-speed * 1.5, transform $animation-speed * 10;
-//
-//    // Active
-//    //.active & {
-//    .fp-active .active & {
-//      opacity: 1;
-//      //$scale: 1, 1;
-//      //transform: scale3d($scale, 1);
-//      //transform: scale($scale);
-//    }
-//  }
-//}
-
 // Текст на фон
-//.menu-item__bg-text-mask {
 .menu-item__bg-text {
   position: absolute;
   left: -0.21em;
@@ -1533,33 +1572,20 @@
     font-size: calc(35.5vw - 109px);
   }
 
+  @include media('<tab') {
+    transform: rotate(0);
+    font-size: 40rem;
+    left: auto;
+    top: auto;
+    transition: none;
+  }
+
   & > span {
     display: block;
     position: relative;
     will-change: transform;
   }
 }
-
-//.menu-item__bg-mask {
-//  position: relative;
-//  overflow: hidden;
-//  font-size: 0;
-//  line-height: 0;
-//  //width: calc(100% + 4px); // Удалить артифакт, который появляется, если ширина видео не попадает в пиксельную сетку
-//  //left: -2px;
-//  width: 100%;
-//  background-repeat: no-repeat;
-//  background-position: 0 0;
-//  background-size: 100% 100%;
-//
-//  //display: none;
-//
-//  &::before {
-//    content: "";
-//    display: block;
-//    pointer-events: none;
-//  }
-//}
 
 // preview
 .menu-item__preview {
@@ -1570,6 +1596,10 @@
   cursor: default;
 
   transition: opacity $animation-speed, transform $animation-speed;
+
+  @include media('<tab') {
+    display: none;
+  }
 
   .item_active & {
     opacity: 0;
@@ -1632,16 +1662,25 @@
   width: 68rem;
   padding: 4rem 0 0;
   z-index: 5;
-  opacity: 0;
   transition: opacity $animation-speed;
   cursor: default;
+
+  opacity: 0;
   pointer-events: none;
-  //background-color: rgba(red, 0.2);
 
   @include media('<lap-l') {
     top: 23%;
     width: 55rem;
     left: 3rem;
+  }
+
+  @include media('<tab') {
+    position: relative;
+    left: auto;
+    top: auto;
+    width: auto;
+    opacity: 1;
+    pointer-events: auto;
   }
 
   .item_active & {
@@ -1659,6 +1698,10 @@
     @include media('<lap-l') {
       left: #{nth($layout-page-space--net, 2) + 4.2};
     }
+
+    @include media('<tab') {
+      left: auto;
+    }
   }
 }
 
@@ -1666,37 +1709,74 @@
   display: flex;
   align-items: center;
   margin-bottom: 2rem;
-  transform: translate(0, 0);
   transition: transform $animation-speed * 1.5;
+  will-change: transform;
+  $translate: 0, 0;
+  transform: translate($translate);
+  transform: translate3d($translate, 0);
+
+  @include media('<tab') {
+    margin-bottom: 1rem;
+  }
+
+  @include media('<mob') {
+    display: block;
+  }
 
   .item_active & {
-    transform: translate(-15rem, 0);
+    $translate: -15rem, 0;
+    transform: translate($translate);
+    transform: translate3d($translate, 0);
 
     @include media('<lap-l') {
-      transform: translate(-8rem, 0);
+      $translate: -8rem, 0;
+      transform: translate($translate);
+      transform: translate3d($translate, 0);
+    }
+
+    @include media('<tab') {
+      $translate: 0, 0;
+      transform: translate($translate);
+      transform: translate3d($translate, 0);
     }
   }
 
   .menu__item.item_active:first-child & {
-    transform: translate(-6rem, 0);
+    $translate: -6rem, 0;
+    transform: translate($translate);
+    transform: translate3d($translate, 0);
 
     @include media('<lap-l') {
-      transform: translate(-5rem, 0);
+      $translate: -5rem, 0;
+      transform: translate($translate);
+      transform: translate3d($translate, 0);
+    }
+
+    @include media('<tab') {
+      $translate: 0, 0;
+      transform: translate($translate);
+      transform: translate3d($translate, 0);
     }
   }
 }
 
 .menu-item__view-title {
+  display: block;
   position: relative;
   @include font-extra-bold;
   font-size: $font-size-h1;
   line-height: 1;
-  color: #fff;
+  color: $title-color;
   text-transform: uppercase;
   margin: 0 3rem 1rem 0;
+  text-decoration: none;
 
   @include media('<lap-l') {
     font-size: $font-size-h1--lap;
+  }
+
+  @include media('<mob') {
+    font-size: $font-size-h1--mob;
   }
 }
 
@@ -1728,6 +1808,17 @@
     property: $prop;
     delay: 0s;
     duration: $animation-speed;
+  }
+
+  @include media('<tab') {
+    opacity: 1;
+    $translate: 0, 0;
+    transform: translate($translate);
+    transform: translate3d($translate, 0);
+  }
+
+  @include media('<mob') {
+    display: none;
   }
 
   &::before {
@@ -1788,6 +1879,11 @@
 
   transform: translate(0, 1.5rem);
 
+  @include media('<tab') {
+    transform: translate(0, 0);
+    color: rgba($text-color-muted, 0.5);
+  }
+
   .item_active & {
     transform: translate(0, 0);
   }
@@ -1806,6 +1902,13 @@
 
   transform: translate(0, 1.5rem);
 
+  @include media('<tab') {
+    left: 8rem;
+    font-size: 1.8rem;
+    color: $base-color;
+    transform: translate(0, 0);
+  }
+
   .item_active & {
     transform: translate(0, 0);
   }
@@ -1820,8 +1923,10 @@
   width: 48rem;
   max-width: 100%;
   transition: transform $animation-speed * 2.5;
-
-  transform: translate(2rem, 0);
+  will-change: transform;
+  $translate: 2rem, 0;
+  transform: translate($translate);
+  transform: translate3d($translate, 0);
 
   @include media('<desk-s') {
     font-size: 1.6rem;
@@ -1836,8 +1941,18 @@
     width: 34rem;
   }
 
+  @include media('<tab') {
+    width: 64rem;
+    color: $text-color-muted;
+    $translate: 0, 0;
+    transform: translate($translate);
+    transform: translate3d($translate, 0);
+  }
+
   .item_active & {
-    transform: translate(0, 0);
+    $translate: 0, 0;
+    transform: translate($translate);
+    transform: translate3d($translate, 0);
   }
 }
 
@@ -1846,12 +1961,21 @@
   .menu-item__bg-text {
     margin-top: 8vh;
     opacity: 0.08;
+
+    @include media('<tab') {
+      margin-top: 0;
+      opacity: 0.2;
+    }
   }
 
   // Active
   &.item_active {
     .menu-item__bg-text {
       margin-top: -62vh;
+
+      @include media('<tab') {
+        margin-top: 0;
+      }
     }
   }
 }
@@ -1861,12 +1985,22 @@
   .menu-item__bg-text {
     margin-top: -2vh;
     opacity: 0.06;
+
+    @include media('<tab') {
+      margin-top: 0;
+      opacity: 0.2;
+    }
   }
 
   // Active
   &.item_active {
     .menu-item__bg-text {
       margin-top: -72vh;
+
+      @include media('<tab') {
+        margin-top: 0;
+        opacity: 0.2;
+      }
     }
   }
 }
@@ -1876,12 +2010,21 @@
   .menu-item__bg-text {
     margin-top: 20vh;
     opacity: 0.04;
+
+    @include media('<tab') {
+      margin-top: 0;
+      opacity: 0.2;
+    }
   }
 
   // Active
   &.item_active {
     .menu-item__bg-text {
       margin-top: -50vh;
+
+      @include media('<tab') {
+        margin-top: 0;
+      }
     }
   }
 }
@@ -1891,12 +2034,21 @@
   .menu-item__bg-text {
     margin-top: 35vh;
     opacity: 0.03;
+
+    @include media('<tab') {
+      margin-top: 0;
+      opacity: 0.2;
+    }
   }
 
   // Active
   &.item_active {
     .menu-item__bg-text {
       margin-top: -35vh;
+
+      @include media('<tab') {
+        margin-top: 0;
+      }
     }
   }
 }
@@ -1905,7 +2057,10 @@
 .menu {
   position: relative;
   height: 100vh;
-  //max-width: calc(100% - 36rem);
+
+  @include media('<tab') {
+    height: auto;
+  }
 }
 
 .menu__list {
@@ -1916,6 +2071,13 @@
   
   @include media('<lap-s') {
     max-width: calc(100% - 28rem);
+  }
+
+  @include media('<tab') {
+    display: block;
+    height: auto;
+    max-width: none;
+    width: auto;
   }
 }
 
@@ -1929,6 +2091,11 @@
   flex-basis: $width;
   max-width: $width;
 
+  @include media('<tab') {
+    height: auto;
+    max-width: none;
+  }
+
   &::before {
     content: "";
     display: block;
@@ -1940,6 +2107,10 @@
     border-left: 1px solid #252525;
     //border-left: 1px solid #464646;
     z-index: 2;
+
+    @include media('<tab') {
+      display: none;
+    }
   }
 }
 
@@ -1953,6 +2124,10 @@
   height: 100%;
   width: 100%;
   z-index: -2;
+
+  @include media('<tab') {
+    display: none;
+  }
 }
 
 .video-cover__item {
@@ -1989,6 +2164,10 @@
   z-index: -1;
   background-color: $bg-color;
   opacity: 0.5;
+
+  @include media('<tab') {
+    display: none;
+  }
 }
 
 /* video cover end */
@@ -2012,7 +2191,6 @@
   @include media('<tab') {
     height: auto !important;
     min-height: 0;
-    @include linear-gradient(to bottom, $bg-color 0%, $bg-color-alt 100%);
   }
 
   h2 {
@@ -2027,6 +2205,11 @@
       font-size: $font-size-h1--lap;
       line-height: $line-height-h1--lap;
       margin-bottom: 2rem;
+    }
+
+    @include media('<mob') {
+      font-size: $font-size-h1--mob;
+      line-height: $line-height-h1--mob;
     }
   }
 
@@ -2102,6 +2285,11 @@
   width: 92rem;
   max-width: calc(100% - 34rem);
   z-index: 15;
+
+  @include media('<tab') {
+    max-width: none;
+    width: auto;
+  }
 }
 
 .about-section__content {
@@ -2555,6 +2743,10 @@ $i-widget-space: 4rem;
     padding-right: 4.5rem;
   }
 
+  @include media('<tab') {
+    display: none;
+  }
+
   &::before {
     content: "";
     display: block;
@@ -2600,6 +2792,15 @@ $i-widget-space: 4rem;
   padding: 0;
   //z-index: 5;
   //overflow-y: hidden; // Обрезать виджет
+
+  @include media('<tab') {
+    min-height: 0;
+    padding: 0;
+  }
+
+  @include media('<mob') {
+    padding: 0;
+  }
 }
 
 .btn-next-section {
@@ -2647,15 +2848,19 @@ $i-widget-space: 4rem;
 /* multi news element */
 .m-news-el {
   padding: 2rem 2.8rem 2.8rem 0;
-
   position: relative;
   display: flex;
-
+  align-items: flex-start;
   color: $text-color;
   text-decoration: none;
 
   @include media('<lap-l') {
     padding-bottom: 2rem;
+  }
+
+  @include media('<mob-s') {
+    display: block;
+    padding: 0 0 2rem;
   }
 
   &::before {
@@ -2670,10 +2875,16 @@ $i-widget-space: 4rem;
     transform-origin: left center;
     transition: transform $animation-speed;
 
-    @include news-plate-bg;
+    @include bg-news;
 
     @include media('<lap-l') {
       left: 2rem;
+    }
+
+    @include media('<mob-s') {
+      top: 2rem;
+      left: -#{nth($layout-page-space--mob, 2)};
+      right: -#{nth($layout-page-space--mob, 2)};
     }
   }
 }
@@ -2703,6 +2914,14 @@ $i-widget-space: 4rem;
     min-width: $width;
     max-width: $width;
   }
+
+  @include media('<mob-s') {
+    margin: 0 0 1.5rem;
+    $width: 24rem;
+    flex-basis: $width;
+    min-width: $width;
+    max-width: $width;
+  }
 }
 
 .m-news-el__content {
@@ -2720,6 +2939,10 @@ $i-widget-space: 4rem;
 
   @include media('<lap-l') {
     margin-bottom: 1.2rem;
+  }
+
+  @include media('<tab-s') {
+    color: white;
   }
 
   &:last-child {
@@ -2909,6 +3132,10 @@ $m-news-space--net: 2rem;
     margin: 0 -#{$m-news-space--net} -#{$m-news-space--net};
   }
 
+  @include media('<tab-s') {
+    display: block;
+  }
+
   &:last-child {
     margin-bottom: 0;
   }
@@ -2924,6 +3151,17 @@ $m-news-space--net: 2rem;
 
   @include media('<lap-l') {
     padding: 0 #{$m-news-space--net} #{$m-news-space--net};
+  }
+
+  @include media('<tab-s') {
+    max-width: none;
+    padding-bottom: 4rem;
+  }
+
+  &:last-child {
+    @include media('<tab-s') {
+      padding-bottom: 0;
+    }
   }
 
   h3, .h3 {
@@ -3013,7 +3251,6 @@ $m-news-space--net: 2rem;
     display: block;
     height: auto !important;
     min-height: 0;
-    @include linear-gradient(to bottom, $bg-color 0%, $bg-color-alt 100%);
   }
 
   h2 {
@@ -3028,6 +3265,11 @@ $m-news-space--net: 2rem;
       font-size: $font-size-h1--lap;
       line-height: $line-height-h1--lap;
       margin-bottom: 2rem;
+    }
+
+    @include media('<mob') {
+      font-size: $font-size-h1--mob;
+      line-height: $line-height-h1--mob;
     }
   }
 }
@@ -3073,7 +3315,7 @@ $m-news-space--net: 2rem;
     transition: transform $animation-speed;
     transform-origin: top center;
 
-    @include news-plate-bg;
+    @include bg-news;
   }
 }
 
@@ -3299,12 +3541,17 @@ $m-news-space--net: 2rem;
 
   @include media('<lap-l') {
     $intend: nth($layout-page-space--net, 2);
-    padding: 6rem #{$intend - 2.5} 3rem;
+    padding: 6rem #{$intend - 2} 3rem;
     margin: -6rem -#{$intend} -2rem;
   }
 
   @include media('<net') {
     margin-bottom: 0;
+  }
+
+  @include media('<tab-s') {
+    padding-bottom: 4rem;
+    margin-bottom: 3rem;
   }
 
   .js &:not(.is-loaded) {
@@ -3331,6 +3578,11 @@ $m-news-space--net: 2rem;
 
     @include media('<lap-l') {
       right: #{nth($layout-page-space--net, 2) - 0.5};
+    }
+
+    @include media('<tab-s') {
+      top: auto;
+      bottom: 0;
     }
   }
 }
@@ -3367,7 +3619,6 @@ $m-news-space--net: 2rem;
     display: block;
     height: auto !important;
     min-height: 0;
-    @include linear-gradient(to bottom, $bg-color 0%, $bg-color-alt 100%);
   }
 
   h2 {
@@ -3382,6 +3633,11 @@ $m-news-space--net: 2rem;
       font-size: $font-size-h1--lap;
       line-height: $line-height-h1--lap;
       margin-bottom: 2rem;
+    }
+
+    @include media('<mob') {
+      font-size: $font-size-h1--mob;
+      line-height: $line-height-h1--mob;
     }
   }
 }
@@ -3422,7 +3678,7 @@ $m-news-space--net: 2rem;
     transition: transform $animation-speed;
     transform-origin: left center;
 
-    @include news-plate-bg;
+    @include bg-news;
   }
 }
 
@@ -3569,6 +3825,10 @@ $subs-btn-width: 4.5rem;
   align-items: center;
   justify-content: flex-end;
   z-index: 15;
+
+  @include media('<mob') {
+    justify-content: flex-start;
+  }
 }
 
 .subs-container {
@@ -3628,6 +3888,10 @@ $subs-btn-width: 4.5rem;
 .subs-row {
   position: relative;
   width: 32rem;
+
+  @include media('<mob-xs') {
+    width: 26rem;
+  }
 
   .subs-success {
     display: block;

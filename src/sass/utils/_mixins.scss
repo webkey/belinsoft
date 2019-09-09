@@ -941,11 +941,11 @@
 // Additional
 // =============================================================================
 /// Color background plate under news etc.
-@mixin news-plate-bg {
+@mixin bg-news {
   //@include linear-gradient(180deg, #1d1d1d 0%, #111111 100%);
   @include linear-gradient(180deg, #3c3c3c 0%, #101010 100%);
   box-shadow: 0 2px 33px rgba(0, 0, 0, 0.5);
-  border-radius: 1px;
+  border-radius: 2px;
 }
 
 /// Color image mask for news etc.

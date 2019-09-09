@@ -41,6 +41,14 @@ body {
     @include media('<lap-l') {
       @include padding-horizontal(nth($layout-page-space--net, 2));
     }
+
+    @include media('<tab') {
+      @include padding-horizontal(nth($layout-page-space--tab, 2));
+    }
+
+    @include media('<mob') {
+      @include padding-horizontal(nth($layout-page-space--mob, 2));
+    }
   }
 }
 

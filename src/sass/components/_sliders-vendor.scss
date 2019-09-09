@@ -10,7 +10,10 @@
 $swp-size: 0.4rem 4rem;
 $swp-int: round-float(nth($swp-size, 1) / 2, 1) round-float(nth($swp-size, 2) / 2, 1);
 $swp-space: 1rem;
-//--------------------------
+// ------ mob -----------------------------------------
+$swp-size--mob: 0.8rem 2rem;
+$swp-int--mob: round-float(nth($swp-size--mob, 1) / 2, 1) round-float(nth($swp-size--mob, 2) / 2, 1);
+$swp-space--mob: 0.8rem;
 
 .swiper-pagination {
   pointer-events: none;
@@ -34,6 +37,12 @@ $swp-space: 1rem;
   background: none;
   outline: none;
 
+  @include media('<mob') {
+    height: nth($swp-size--mob, 1);
+    width: nth($swp-size--mob, 2);
+    margin: $swp-space--mob;
+  }
+
   &::before,
   &::after {
     content: "";
@@ -48,30 +57,32 @@ $swp-space: 1rem;
   &::before {
     height: nth($swp-size, 1);
     width: nth($swp-size, 2);
-    //margin: -#{nth($swp-int, 1)} 0 0 -#{nth($swp-int, 2)};
     border-radius: 0;
     background-color: #d8d8d8;
 
     transition: opacity $animation-speed, transform $animation-speed;
 
     opacity: 0.2;
+
+    @include media('<mob') {
+      height: nth($swp-size--mob, 1);
+      width: nth($swp-size--mob, 2);
+    }
   }
 
   &::after {
     height: nth($swp-size, 1);
     width: nth($swp-size, 2);
-    //height: nth($swp-size, 1) + 0.4;
-    //width: nth($swp-size, 2) + 0.4;
-    //margin: -#{nth($swp-int, 1) + 0.2} 0 0 -#{nth($swp-int, 2) + 0.2};
     border-radius: 0;
     background-color: $base-color;
-
     transition: opacity $animation-speed, transform $animation-speed;
 
     opacity: 0;
-    //$scale: 0.5, 0.5;
-    //transform: scale($scale);
-    //transform: scale3d($scale, 1);
+
+    @include media('<mob') {
+      height: nth($swp-size--mob, 1);
+      width: nth($swp-size--mob, 2);
+    }
   }
 
   // hover
@@ -99,6 +110,10 @@ $swp-space: 1rem;
 
     .swiper-pagination-bullet {
       margin: $swp-space;
+
+      @include media('<mob') {
+        margin: $swp-space--mob;
+      }
     }
   }
 }
