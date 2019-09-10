@@ -35,8 +35,10 @@
                 </ul>
               </li>
 
-              <li><a href="#">Сooperation</a></li>
-              <li><a href="#">Contacts</a></li>
+              <li><a href="inner.html">Сooperation</a></li>
+
+              @@if(context.currentItem == 'Contacts'){<li class="current"><span>Contacts</span></li>}
+              @@if(context.currentItem != 'Contacts'){<li><a href="contacts.html">Contacts</a></li>}
             </ul>
           </nav>
         </div>

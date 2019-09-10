@@ -31,6 +31,9 @@
   <link rel="manifest" href="manifest.webmanifest">
   <!--Style-->
   <link rel="stylesheet" href="css/libs.min.css?rev=@@hash">
+  @@if(context.hasMap){
+  <link href="https://api.tiles.mapbox.com/mapbox-gl-js/v1.3.1/mapbox-gl.css" rel="stylesheet" />
+  }
   <link rel="stylesheet" href="css/main.css?rev=@@hash">
   <!--Modernizr-->
   <script src="js/modernizr.min.js"></script>

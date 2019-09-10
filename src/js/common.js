@@ -86,17 +86,21 @@ function eventsScrollPage() {
   // Ready document
   var scrollTop = $WINDOW.scrollTop();
 
-  toggleClassOnScroll(scrollTop);
+  // toggleClassOnScroll(scrollTop);
 
-  scrollBgWords(scrollTop);
+  if (!$('.nav-opener-js').is(':visible')) {
+    scrollBgWords(scrollTop);
+  }
 
   // Resize and Scroll
   $WINDOW.on('debouncedresizeByWidth scroll', function () {
     var scrollTop = $WINDOW.scrollTop();
 
-    toggleClassOnScroll(scrollTop);
+    // toggleClassOnScroll(scrollTop);
 
-    scrollBgWords(scrollTop);
+    if (!$('.nav-opener-js').is(':visible')) {
+      scrollBgWords(scrollTop);
+    }
   });
 }
 
@@ -380,7 +384,6 @@ function customSelect() {
         },
         togglePanel = function () {
           $(config.switcher).on('click', function (event) {
-
             // Если в настройках указанно условые отключения аккордеона,
             // то при выполнении этого условия дальнеейшее выполнение функции прекратить
             if (config.destroy) {
@@ -429,9 +432,12 @@ function customSelect() {
         },
         init = function () {
           // Развернуть ВИДИМЫЕ ПАНЕЛИ без анимации
-          $(config.panel, $element).filter(':visible')
-              .show()
-              .data('active', true).attr('data-active', true).end()
+          var $visibleDrop = $(config.panel, $element);
+
+          $visibleDrop.filter(':visible')
+              .show().data('active', true).attr('data-active', true);
+
+          $visibleDrop.filter(':visible')
               .closest(config.block).addClass(config.modifiers.activeClass);
 
           // Добавить внутренние классы на:
@@ -447,7 +453,7 @@ function customSelect() {
             $switcher.addClass(CONST_CLASSES.switcher);
 
             // Панель
-            $(config.panel, $element).addClass(CONST_CLASSES.panel);
+            $visibleDrop.addClass(CONST_CLASSES.panel);
           }
 
           // Добавить tabindex на переключатели
@@ -1208,12 +1214,14 @@ function mainNavigation() {
   }
 }
 
-$('.nav-opener-js').on('click', function () {
+$('.nav-opener-js').on('click', function (e) {
   var $curBtn = $(this);
 
   $curBtn.add($($curBtn.attr('href'))).addClass('is-open');
 
   $HTML.addClass('css-scroll-fixed open-only-mob');
+
+  e.preventDefault();
 });
 
 function hideNav() {
@@ -1227,7 +1235,7 @@ $('.nav-close-btn-js').on('click', function (e) {
   e.preventDefault();
 });
 
-$('.nav-close-btn').on('click', function () {
+$('.nav-overlay').on('click', function () {
   hideNav();
 });
 
@@ -1605,6 +1613,66 @@ function toggleWidget() {
   });
 }
 
+/**
+ * Contacts map
+ */
+function map() {
+  var container = 'map';
+
+  if ($('#' + container).length) {
+    mapboxgl.accessToken = "pk.eyJ1IjoibWFyMmdpbiIsImEiOiJjazBkcnFzbnowYWFxM2NscXJ1MWk0ZWRtIn0.nq6yC_YGtDtpX_Vyo-PjYg";
+
+    /* Map: This represents the map on the page. */
+    var map = new mapboxgl.Map({
+      container: container,
+      style: "mapbox://styles/mapbox/dark-v10",
+      zoom: 10,
+      center: [27.4441,53.9277]
+    });
+
+    map.on("load", function () {
+      /* Image: An image is loaded and added to the map. */
+      // map.loadImage("https://i.imgur.com/MK4NUzI.png", function(error, image) {
+      map.loadImage("../img/pin.png", function(error, image) {
+        if (error) throw error;
+        map.addImage("custom-marker", image);
+        /* Style layer: A style layer ties together the source and image and specifies how they are displayed on the map. */
+        map.addLayer({
+          id: "markers",
+          type: "symbol",
+          /* Source: A data source specifies the geographic coordinate where the image marker gets placed. */
+          source: {
+            type: "geojson",
+            data: {
+              type: 'FeatureCollection',
+              features: [
+                {
+                  type: 'Feature',
+                  properties: {},
+                  geometry: {
+                    type: "Point",
+                    coordinates: [27.4440792, 53.9276985]
+                  }
+                }
+              ]
+            }
+          },
+          layout: {
+            "icon-image": "custom-marker",
+            "icon-size": 0.5
+          }
+        });
+      });
+
+      // disable map zoom when using scroll
+      map.scrollZoom.disable();
+
+      // Add zoom and rotation controls to the map.
+      map.addControl(new mapboxgl.NavigationControl());
+    });
+  }
+}
+
 
 /**
  * !Form validation
@@ -1680,6 +1748,7 @@ $(document).ready(function () {
   slidersInit();
   scrollNavigation();
   toggleWidget();
+  map();
 
   formValidation();
 });

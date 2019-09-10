@@ -259,7 +259,7 @@ table {
   & > h2, & > .h2,
   & > h3, & > .h3 {
     position: relative;
-    padding-left: 2.1rem;
+    padding-left: 1.8em;
     text-transform: uppercase;
     
     &::before {
@@ -268,8 +268,9 @@ table {
       position: absolute;
       left: 0;
       top: 0.2em;
-      bottom: 0.4rem;
-      border-left: 0.2em solid $base-color;
+      height: 1em;
+      width: 1em;
+      background-color: $base-color;
     }
   }
 

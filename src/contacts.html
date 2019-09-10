@@ -6,7 +6,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Error 404</title>
+  <title>Contacts - Bel In Soft</title>
   <!--Mobile optimized-->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0">
   <!--Theme color-->
@@ -34,12 +34,13 @@
   <link rel="manifest" href="manifest.webmanifest">
   <!--Style-->
   <link rel="stylesheet" href="css/libs.min.css?rev=@@hash">
+  <link href="https://api.tiles.mapbox.com/mapbox-gl-js/v1.3.1/mapbox-gl.css" rel="stylesheet" />
   <link rel="stylesheet" href="css/main.css?rev=@@hash">
   <!--Modernizr-->
   <script src="js/modernizr.min.js"></script>
 </head>
 
-<body>
+<body class="contacts-page">
   <noscript>
     <div class="no-js-warning">Для корректной работы сайта <b>включите JavaScript</b> в браузере</div>
   </noscript>
@@ -74,7 +75,7 @@
                   </ul>
                 </li>
                 <li><a href="inner.html">Сooperation</a></li>
-                <li><a href="contacts.html">Contacts</a></li>
+                <li class="current"><span>Contacts</span></li>
               </ul>
             </nav>
           </div>
@@ -113,13 +114,45 @@
   <!--MAIN-->
   <main class="main">
     <div class="layout-page layout-page-spaces">
-      <!--CONTENT-->
-      <div class="article-content typography">
-        <h1>Page Not Found</h1>
-        <p>Sorry, but the page you were trying to view does not exist.</p>
-        <p><a href="index.html">Home page</a></p>
+      <h1>Contacts</h1>
+      <div class="content layout-content">
+        <div class="contacts">
+          <div class="adr">
+            <address>
+              38 Kolesnikova st.,<br>
+              Minsk, 220055, Republic of Belarus
+            </address>
+            <a href="mailto:info@belinsoft.by">info@belinsoft.by</a>
+          </div>
+          <h2>Information Request Form</h2>
+          <div class="contacts-form">
+            <form action="#" class="validate-js">
+              <label for="contactFormFullName">Full name*</label>
+              <input class="form-def field-js" id="contactFormFullName" name="contactFormFullName" type="text" placeholder="Full name" required />
+              <span class="error-feedback">Error feedback</span>
+              <span class="success-feedback">Success feedback</span>
+              <label for="contactFormEmail">Your email*</label>
+              <input class="form-def field-js" id="contactFormEmail" name="contactFormEmail" type="email" placeholder="Your email*" required />
+              <span class="error-feedback">Error feedback</span>
+              <span class="success-feedback">Success feedback</span>
+              <label for="contactFormPhone">Your phone*</label>
+              <input class="form-def field-js" id="contactFormPhone" name="contactFormPhone" type="text" placeholder="Your phone*" required />
+              <span class="error-feedback">Error feedback</span>
+              <span class="success-feedback">Success feedback</span>
+              <label for="contactFormTopic">Topic*</label>
+              <input class="form-def field-js" id="contactFormTopic" name="contactFormTopic" type="text" placeholder="Topic*" required />
+              <span class="error-feedback">Error feedback</span>
+              <span class="success-feedback">Success feedback</span>
+              <label for="contactFormYourRequest">Your request*</label>
+              <textarea class="form-def field-js" id="contactFormYourRequest" name="contactFormYourRequest" placeholder="Your request*" required></textarea>
+              <span class="error-feedback">Error feedback</span>
+              <span class="success-feedback">Success feedback</span>
+              <button class="btn-def">SEND NOW</button>
+            </form>
+          </div>
+        </div>
+        <div id="map"></div>
       </div>
-      <!--CONTENT end-->
     </div>
   </main>
   <!--MAIN end-->
@@ -153,6 +186,7 @@
   <!--FOOTER end-->
   <script src="js/jquery.min.js"></script>
   <script src="js/libs.min.js"></script>
+  <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v1.3.1/mapbox-gl.js"></script>
   <script src="js/common.js?rev=@@hash"></script>
 </body>
 

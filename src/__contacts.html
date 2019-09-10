@@ -1,0 +1,82 @@
+@@include("_tpl_layout_head.html", {
+  "title": "Contacts - Bel In Soft",
+  "pageClass": "contacts-page",
+  "hasMap": "true"
+})
+
+@@include("_tpl_layout_header.html", { "currentItem": "Contacts" })
+
+<!--MAIN-->
+<main class="main">
+  <div class="layout-page layout-page-spaces">
+    <h1>Contacts</h1>
+    <div class="content layout-content">
+      <div class="contacts">
+        <div class="adr">
+          <address>
+            38 Kolesnikova st.,<br>
+            Minsk, 220055, Republic of Belarus
+          </address>
+          <a href="mailto:info@belinsoft.by">info@belinsoft.by</a>
+        </div>
+
+        <h2>Information Request Form</h2>
+        <div class="contacts-form">
+          <form action="#" class="validate-js">
+            @@include("includes/tpl/_tpl_forms_input.html", {
+            "label": "Full name*",
+            "id": "contactFormFullName",
+            "placeholder": "Full name",
+            "type": "text"
+            })
+            @@include("includes/tpl/_tpl_forms_valid.html")
+
+            @@include("includes/tpl/_tpl_forms_input.html", {
+            "label": "Your email*",
+            "id": "contactFormEmail",
+            "placeholder": "Your email*",
+            "type": "email"
+            })
+            @@include("includes/tpl/_tpl_forms_valid.html")
+
+            @@include("includes/tpl/_tpl_forms_input.html", {
+            "label": "Your phone*",
+            "id": "contactFormPhone",
+            "placeholder": "Your phone*",
+            "type": "text"
+            })
+            @@include("includes/tpl/_tpl_forms_valid.html")
+
+            @@include("includes/tpl/_tpl_forms_input.html", {
+            "label": "Topic*",
+            "id": "contactFormTopic",
+            "placeholder": "Topic*",
+            "type": "text"
+            })
+            @@include("includes/tpl/_tpl_forms_valid.html")
+
+            @@include("includes/tpl/_tpl_forms_textarea.html", {
+            "label": "Your request*",
+            "id": "contactFormYourRequest",
+            "placeholder": "Your request*"
+            })
+            @@include("includes/tpl/_tpl_forms_valid.html")
+
+            <button class="btn-def">SEND NOW</button>
+          </form>
+        </div>
+      </div>
+
+      <div id="map"></div>
+    </div>
+  </div>
+</main>
+<!--MAIN end-->
+
+
+
+@@include("_tpl_layout_footer.html")
+
+@@include("_tpl_layout_foot.html", {
+  "hasMap": "true"
+})

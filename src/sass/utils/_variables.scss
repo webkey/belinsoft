@@ -158,10 +158,10 @@ $font-size-h3: 2.0rem !default;
 $line-height-h3: 2.9rem !default;
 $line-height-h3-kef: $line-height-h3 / $font-size-h3;
 // ------ tab -----------------------------------------
-$font-size-h3--tab: 2.2rem !default;
+$font-size-h3--tab: 1.8rem !default;
 $line-height-h3--tab: round-float($font-size-h3--tab * $line-height-h3-kef, 1) !default; // Использовать рассчетное значение, если нет в дизайне
 // ------ mob -----------------------------------------
-$font-size-h3--mob: 1.8rem !default;
+$font-size-h3--mob: 1.6rem !default;
 $line-height-h3--mob: round-float($font-size-h3--mob * $line-height-h3-kef, 1) !default; // Использовать рассчетное значение, если нет в дизайне
 // ----------------------------------------------------
 @mixin font-h3() {
@@ -229,7 +229,7 @@ $bottom-space--mob: $line-height--mob !default;
 
 $bottom-section: round-float($line-height * 3, 1) !default;
 // ------ lap -----------------------------------------
-$bottom-section--lap: round-float($line-height * 3, 1) !default;
+$bottom-section--lap: round-float($line-height * 2, 1) !default;
 // ------ mob -----------------------------------------
 $bottom-section--mob: round-float($line-height--mob * 2, 1) !default;
 
@@ -275,16 +275,16 @@ $layout-page-min-width: 32rem !default;
 $layout-page-max-width: none !default;
 // Верхний отступ страницы с учетом фиксированной шапки
 $layout-page-top-space: 19rem !default;
-$layout-page-top-space--lap: 14rem !default;
-$layout-page-top-space--net: 12rem !default;
-$layout-page-top-space--tab: 12rem !default;
-$layout-page-top-space--mob: 7rem !default;
+$layout-page-top-space--lap: 14rem !default; // media('<desk-s')
+$layout-page-top-space--net: 12rem !default; // media('<lap-l')
+$layout-page-top-space--tab: 12rem !default; // media('<tab')
+$layout-page-top-space--mob: 9rem !default; // media('<mob')
 // Отступы для всего сайта
 $layout-page-space: 5rem 6.8rem 5rem !default;
-$layout-page-space--lap: 5rem 5rem 5rem !default;
-$layout-page-space--net: 5rem 3rem 5rem !default;
-$layout-page-space--tab: 4rem 2.5rem 4rem !default;
-$layout-page-space--mob: 3rem 1.5rem 3rem !default;
+$layout-page-space--lap: 5rem 5rem 5rem !default; // media('<desk-s')
+$layout-page-space--net: 5rem 3rem 5rem !default; // media('<lap-l')
+$layout-page-space--tab: 4rem 2.5rem 4rem !default; // media('<tab')
+$layout-page-space--mob: 3rem 1.5rem 3rem !default; // media('<mob')
 
 
 // Layout content
@@ -588,9 +588,18 @@ $animation-speed-mouseleave: 0.35s !default;
 
 // Header
 // ====================================================
-$nav-height: 7rem;
-$nav-height--mob: 6rem;
+$nav-height: 7rem !default;
+$nav-height--mob: 6rem !default;
 
 
 // Footer
 // ====================================================
+
+
+// Contacts page
+// ====================================================
+$contacts-layout: 64rem !default;
+$contacts-layout--lap: 60rem !default; // media('<desk-s')
+$contacts-layout--net: 44rem !default; // media('<lap-l')
+$contacts-layout--tab: 64rem !default; // media('<tab')
+$contacts-layout--mob: 64rem !default; // media('<mob')

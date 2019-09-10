@@ -502,7 +502,7 @@
   top: 0;
   height: 100%;
   width: 100%;
-  background-color: rgba(#000, 0.5);
+  background-color: rgba(#000, 0.8);
   z-index: 998;
   transition: opacity $animation-speed;
 
@@ -1177,18 +1177,26 @@
 .main {
   position: relative;
   padding-top: $layout-page-top-space;
-  padding-bottom: 5rem;
+  padding-bottom: nth($layout-page-space, 3);
 
   @include media('<desk-s') {
     padding-top: $layout-page-top-space--lap;
+    padding-bottom: nth($layout-page-space--lap, 3);
   }
 
   @include media('<lap-l') {
     padding-top: $layout-page-top-space--net;
+    padding-bottom: nth($layout-page-space--net, 3);
   }
 
-  @include media('<lap-l') {
+  @include media('<tab') {
     padding-top: $layout-page-top-space--tab;
+    padding-bottom: nth($layout-page-space--tab, 3);
+  }
+
+  @include media('<mob') {
+    padding-top: $layout-page-top-space--mob;
+    padding-bottom: nth($layout-page-space--mob, 3);
   }
 }
 
@@ -1295,9 +1303,14 @@
   left: 0;
   top: 0;
   height: 100%;
-  max-width: calc(100% - 48rem);
-  width: 142.3rem; // Примерный размер
+  width: 100%;
+  //max-width: calc(100% - 48rem);
+  //width: 142.3rem; // Примерный размер
   z-index: -1;
+
+  @include media('<tab') {
+    opacity: 0.5;
+  }
 }
 
 .wbg__list {
@@ -1310,12 +1323,9 @@
   position: absolute;
   left: 0;
   top: 0;
-  //left: -0.22em;
-  //top: -1em;
   @include font-extra-bold;
   font-size: calc(30vw - 170px);
   line-height: 1;
-  //color: #252525;
   color: #fff;
   white-space: nowrap;
   cursor: default;
@@ -1325,9 +1335,21 @@
   pointer-events: none;
   transition: margin 1.6s, opacity $animation-speed * 1.5;
 
-  //@include media('>=desk') {
-  //  font-size: 51rem;
-  //}
+  @include media('>=desk') {
+    font-size: 47rem;
+  }
+
+  @include media('<lap-l') {
+    font-size: calc(30vw - 100px);
+  }
+
+  @include media('<tab') {
+    font-size: calc(30vw - 60px);
+  }
+
+  @include media('<mob') {
+    font-size: calc(25vw);
+  }
 
   &:nth-child(1) {
     margin-left: calc(1 * (1em - 0.22em));
@@ -1578,7 +1600,7 @@
   position: absolute;
   top: 70%;
   left: 0;
-  padding: 0 2rem;
+  padding: 0 2rem 0 3rem;
   cursor: default;
 
   transition: opacity $animation-speed, transform $animation-speed;
@@ -1617,10 +1639,11 @@
     content: "";
     display: block;
     position: absolute;
-    top: 0.2em;
-    left: -1.4rem;
-    border-left: 1px solid $base-color;
-    height: 1.5rem;
+    top: 0.1em;
+    left: -1.5em;
+    background-color: $base-color;
+    height: 1em;
+    width: 1em;
   }
 }
 
@@ -3529,7 +3552,7 @@ $m-news-space--net: 2rem;
   font-size: $font-size-h2;
   line-height: $line-height-h2;
   margin: 0 0 #{round-float($bottom-space * 1.2, 1)};
-  padding-left: 2.1rem;
+  padding-left: 1.8em;
   text-transform: uppercase;
 
   &::before {
@@ -3538,8 +3561,9 @@ $m-news-space--net: 2rem;
     position: absolute;
     left: 0;
     top: 0.2em;
-    bottom: 0.4rem;
-    border-left: 0.2em solid $base-color;
+    height: 1em;
+    width: 1em;
+    background-color: $base-color;
   }
 
   @include media("<tab") {
@@ -3626,7 +3650,7 @@ $m-news-space--net: 2rem;
 
 .similar-news__category {
   position: relative;
-  padding: 0 0 0 2.1rem;
+  padding: 0 0 0 1.8em;
   margin-bottom: 2rem;
   @include font-bold;
   font-size: 1.4rem;
@@ -3643,9 +3667,10 @@ $m-news-space--net: 2rem;
     display: block;
     position: absolute;
     left: 0;
-    top: 0.2em;
-    bottom: 0.4rem;
-    border-left: 0.2em solid $base-color;
+    top: 0;
+    height: 1em;
+    width: 1em;
+    background-color: $base-color;
   }
 
   a {
@@ -4392,6 +4417,170 @@ $subs-btn-width: 4.5rem;
   text-align: right;
 }
 
-
-
 /* news article end */
+
+/* address */
+.adr {
+  margin-bottom: $bottom-section;
+
+  @include media('<desk-s') {
+    margin-bottom: $bottom-section--lap;
+  }
+
+  @include media('<mob') {
+    margin-bottom: $bottom-section--mob;
+  }
+
+  address {
+    display: block;
+    margin-bottom: $bottom-space;
+    @include font-normal;
+    font-style: normal;
+  }
+}
+
+/* address end */
+
+/* contacts form */
+.contacts-form {
+  padding: $grid-space;
+  margin-left: -#{nth($grid-space, 2)};
+  border-radius: 5px;
+  background-color: rgba($bg-color, 0.9);
+
+  @include media('<tab') {
+    padding: 2rem #{nth($layout-page-space--tab, 2)};
+    margin: -#{nth($layout-page-space--tab, 2)};
+  }
+
+  @include media('<mob') {
+    padding: 2rem #{nth($layout-page-space--mob, 2)};
+    margin: -#{nth($layout-page-space--mob, 2)};
+  }
+
+  textarea {
+    $lines: 6;
+    $height: round-float($form-def-line-height * $lines, 1) + $form-def-space-vt + $form-def-space-vb + round-float(px-to-rem($form-def-border-width) * 2, 1);
+
+    min-height: $height;
+    height: $height;
+
+    // ------ mob -----------------------------------------
+    @include media($form-media--mob) {
+      $lines: 6;
+      $height: round($form-def-line-height--mob * $lines) + $form-def-space-vt--mob + $form-def-space-vb--mob + round(px-to-rem($form-def-border-width--mob) * 2);
+
+      min-height: $height;
+      height: $height;
+    }
+  }
+}
+
+/* contacts form end */
+
+/* contacts */
+.contacts {
+  position: relative;
+  width: $contacts-layout;
+  z-index: 1;
+
+  @include media('<desk-s') {
+    width: $contacts-layout--lap;
+  }
+
+  @include media('<lap-l') {
+    width: $contacts-layout--net;
+  }
+
+  @include media('<tab') {
+    width: auto;
+    margin-bottom: $bottom-section--lap;
+  }
+
+  @include media('<mob') {
+    margin-bottom: $bottom-section--mob;
+  }
+
+  h2 {
+    position: relative;
+    padding-left: 1.8em;
+    text-transform: uppercase;
+
+    &::before {
+      content: "";
+      display: block;
+      position: absolute;
+      left: 0;
+      top: 0.2em;
+      height: 1em;
+      width: 1em;
+      background-color: $base-color;
+    }
+  }
+}
+
+/* contacts end */
+
+/* contacts map */
+#map {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: calc(100% - #{$contacts-layout} - #{nth($layout-page-space, 2)} * 2);
+  height: calc(100% + 2rem);
+
+  @include media('<desk-s') {
+    width: calc(100% - #{$contacts-layout--lap} - #{nth($layout-page-space--lap, 2)} * 2);
+  }
+
+  @include media('<lap-l') {
+    width: calc(100% - #{$contacts-layout--net} - #{nth($layout-page-space--net, 2)} * 2);
+  }
+
+  @include media('<tab') {
+    position: relative;
+    top: auto;
+    right: auto;
+    width: auto;
+    height: 40rem;
+    margin: 0 -#{nth($layout-page-space--tab, 2)} -#{nth($layout-page-space--tab, 3)};
+  }
+
+  @include media('<mob') {
+    height: 24rem;
+    margin: 0 -#{nth($layout-page-space--mob, 2)} -#{nth($layout-page-space--mob, 3)};
+  }
+}
+
+.mapboxgl-ctrl-top-right {
+  opacity: 0;
+  transition: opacity $animation-speed;
+
+  #map:hover & {
+    opacity: 1;
+  }
+
+  .touchevents & {
+    display: none;
+  }
+
+  top: $layout-page-top-space;
+
+  @include media('<desk-s') {
+    top: $layout-page-top-space--lap;
+  }
+
+  @include media('<lap-l') {
+    top: $layout-page-top-space--net;
+  }
+
+  @include media('<tab') {
+    top: $layout-page-top-space--tab;
+  }
+
+  @include media('<mob') {
+    top: $layout-page-top-space--mob;
+  }
+}
+
+/* contacts map end */
