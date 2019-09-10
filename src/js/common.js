@@ -132,19 +132,11 @@ function fullPageInitial() {
       css3: true,
       verticalCentered: false,
       anchors: historyAnchors(),
-      recordHistory: true,
+      recordHistory: false,
       scrollingSpeed: duration,
       sectionSelector: fpSectionSelector,
       responsiveWidth: breakpointWidth, // and add css rule .fp-enabled
       responsiveHeight: breakpointHeight, // and add css rule .fp-enabled
-      // normalScrollElements: '.main-section--news',
-      // scrollOverflow: true,
-      // add .fp-noscroll for deactivate scroll
-      // scrollOverflowOptions: {
-      // 	scrollbars: 'custom'
-      // },
-
-      // dots navigation
       navigation: false,
       onLeave: function (origin, destination, direction) {
         if (window.innerWidth >= breakpointWidth && window.innerHeight >= breakpointHeight) {
@@ -436,8 +428,13 @@ function customSelect() {
           });
         },
         init = function () {
-          // Добавить внутренние классы на:
+          // Развернуть ВИДИМЫЕ ПАНЕЛИ без анимации
+          $(config.panel, $element).filter(':visible')
+              .show()
+              .data('active', true).attr('data-active', true).end()
+              .closest(config.block).addClass(config.modifiers.activeClass);
 
+          // Добавить внутренние классы на:
           if (config.pluginClasses) {
             // Контейнер аккордеона
             $element.addClass(CONST_CLASSES.element);
@@ -1132,7 +1129,7 @@ function customSelect() {
     // ====================================================
     item: 'li',
     drop: 'ul',
-    arrow: 'li > a + em',
+    arrow: 'li > em',
 
     // Добавлять классы только на пункты
     // имеющие подпункты
@@ -1685,24 +1682,4 @@ $(document).ready(function () {
   toggleWidget();
 
   formValidation();
-
-  // Добавить список переключателей видео
-  $BODY.on('change', '.t-choose-video :radio', function () {
-    var curRadio = $(this);
-
-    var videoSrc = curRadio.attr('data-src'),
-        id = curRadio.attr('name');
-
-    var $video = $('video', $('#' + id));
-
-    $video.attr('src', videoSrc);
-    $video[0].load();
-
-    // Переключить раздел меню
-    $('.menu__item-js').filter('[data-for=' + id + ']').trigger('mouseenter');
-
-  }).on('click', '.t-choose-video__head', function () {
-    var $container = $('.t-choose-video');
-    $container.toggleClass('is-open', !$container.hasClass('is-open'));
-  });
 });

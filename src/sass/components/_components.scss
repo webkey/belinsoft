@@ -227,21 +227,15 @@
     width: $nav-height--mob;
   }
 
-  &::before,
-  &::after {
+  &::before {
     content: "";
+    position: relative;
     display: block;
+    pointer-events: none;
+    @include ratio(165, 142);
     background-repeat: no-repeat;
     background-position: 50%;
-    transition: opacity $animation-speed;
-    pointer-events: none;
-  }
-
-  &::before {
-    position: relative;
-    @include ratio(165, 142);
     background-image: url(../../img/logo.svg);
-
     transition: all $animation-speed;
 
     @include media('<desk-s') {
@@ -273,27 +267,6 @@
     //}
   }
 
-  &::after {
-    position: absolute;
-    left: 0;
-    top: 0;
-    height: 100%;
-    width: 100%;
-    background-image: url(../../img/logo-horizontal.svg);
-    background-size: 138px;
-    opacity: 0;
-
-    @include media('<desk-s') {
-      width: 120px;
-      background-size: 100px;
-    }
-
-    // Изменить вид лого при скролле.
-    //.page-scrolled & {
-    //  opacity: 1;
-    //}
-  }
-
   a, & > span {
     position: absolute;
     display: block;
@@ -305,45 +278,6 @@
     line-height: 0;
   }
 }
-
-/* Временно !!! */
-//.logo-alt {
-//  .logo {
-//    width: 369px;
-//    background-image: url(../../img/temp/logo2.png);
-//    background-size: auto;
-//
-//    &::before {
-//      content: "";
-//      position: relative;
-//      display: block;
-//      background: none;
-//      @include ratio(369, 75);
-//    }
-//
-//    &::after {
-//      content: none;
-//    }
-//  }
-//
-//  .h-search,
-//  .h-call,
-//  .lang {
-//    display: none !important;
-//  }
-//}
-
-.home-page {
-  .logo {
-    transition: none;
-
-    &::before {
-      transition: none;
-    }
-  }
-}
-
-/* Временно end !!! */
 
 /* logo end */
 
@@ -664,11 +598,13 @@
   height: $size;
   width: $size;
   margin-left: auto;
+  overflow: hidden;
+  text-indent: -9999px;
 
   &::before {
     content: "";
     display: block;
-    $size: 2.4rem;
+    $size: 1.8rem;
     height: $size;
     width: $size;
     position: absolute;
@@ -678,6 +614,7 @@
     background-repeat: no-repeat;
     background-position: 50%;
     background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSIjZmZmIj48cGF0aCBkPSJNMjMuOTU0IDIxLjAzbC05LjE4NC05LjA5NSA5LjA5Mi05LjE3NC0yLjgzMi0yLjgwNy05LjA5IDkuMTc5LTkuMTc2LTkuMDg4LTIuODEgMi44MSA5LjE4NiA5LjEwNS05LjA5NSA5LjE4NCAyLjgxIDIuODEgOS4xMTItOS4xOTIgOS4xOCA5LjF6Ii8+PC9zdmc+);
+    background-size: contain;
   }
 }
 
@@ -747,6 +684,7 @@
     // ------ бутерброд -----------------------------------------
     @include media("<tab") {
       padding: 0 1rem 0 0;
+      overflow: visible;
     }
   }
 
@@ -754,6 +692,12 @@
   a {
     color: inherit;
     text-decoration: none;
+
+    // ------ бутерброд -----------------------------------------
+    @include media('<tab') {
+      $width: calc(100% - #{$nav-arrow-size});
+      max-width: $width;
+    }
 
     &::before {
       content: "";
@@ -786,6 +730,11 @@
         duration: $animation-speed;
         //timing-function: ease-in-out;
         timing-function: cubic-bezier(0.65, 0.05, 0.36, 1);
+      }
+
+      // ------ бутерброд -----------------------------------------
+      @include media("<tab") {
+        content: none;
       }
     }
   }
@@ -846,6 +795,7 @@
       height: calc(100% - #{nth($intend, 1)} * 2);
       width: calc(100% - #{nth($intend, 2)} * 2);
       @include bg-news;
+      z-index: -1;
 
       // ------ бутерброд -----------------------------------------
       @include media("<tab") {
@@ -881,6 +831,11 @@
         margin-top: 0;
       }
     }
+  }
+
+  // Для текущей страницы
+  li.current > ul {
+    display: block;
   }
 
   // Показать подменю.
@@ -937,7 +892,6 @@
       width: $size;
       margin: -#{round-float($size / 2, 1)} 0 0 -#{round-float($size / 2, 1)};
       background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTciIGhlaWdodD0iMTAiIHZpZXdCb3g9IjAgMCAxNyAxMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMSAxLjIyMjY2TDguMjA5OTYgOC42MjEwOUwxNS40MTk5IDEuMjIyNjYiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz48L3N2Zz4=);
-      background-color: #1e917c;
       background-repeat: no-repeat;
       background-position: 50%;
       background-size: contain;
@@ -985,7 +939,48 @@
   // Current
   li {
     &.current {
-      // no styles
+      & > a,
+      & > span {
+        //@include font-bold;
+        position: relative;
+
+        &::after {
+          content: "";
+          position: absolute;
+          left: -1rem;
+          bottom: -0.5rem;
+          right: -1rem;
+          height: 2rem;
+          background-color: rgba($highlight-color, 0.5);
+
+          will-change: transform, opacity;
+          transition: transform $animation-speed * 1.5, opacity $animation-speed * 1.5;
+          transform-origin: 3rem center;
+
+          opacity: 0.5;
+          $scale: 0, 1;
+          transform: scale($scale);
+          transform: scale3d($scale, 1);
+
+          z-index: -1;
+
+          // ------ бутерброд -----------------------------------------
+          @include media("<tab") {
+            right: 0;
+            bottom: -0.3em;
+            height: 1em;
+            background-color: rgba(white, 0.5);
+          }
+
+          html.ready &,
+          html.no-js & {
+            opacity: 1;
+            $scale: 1, 1;
+            transform: scale($scale);
+            transform: scale3d($scale, 1);
+          }
+        }
+      }
     }
   }
 
@@ -1059,41 +1054,14 @@
     // Current
     &.current {
       & > a, & > span {
+        @include font-normal;
         overflow: visible;
         cursor: default;
         z-index: 1;
 
-        &::before {
-          content: none;
-        }
-
-        &::after {
-          content: "";
-          position: absolute;
-          left: -1rem;
-          bottom: -0.5rem;
-          right: -1rem;
-          height: 1.4em;
-          background-color: rgba($highlight-color, 0.5);
-
-          will-change: transform, opacity;
-          transition: transform $animation-speed * 1.5, opacity $animation-speed * 1.5;
-          transform-origin: 3rem center;
-
-          opacity: 0.5;
-          $scale: 0, 1;
-          transform: scale($scale);
-          transform: scale3d($scale, 1);
-
-          z-index: -1;
-
-          html.ready &,
-          html.no-js & {
-            opacity: 1;
-            $scale: 1, 1;
-            transform: scale($scale);
-            transform: scale3d($scale, 1);
-          }
+        // ------ бутерброд -----------------------------------------
+        @include media("<tab") {
+          @include font-bold;
         }
       }
     }
@@ -1586,6 +1554,16 @@
     left: auto;
     top: auto;
     transition: none;
+  }
+
+  @include media('<tab') {
+    font-size: 18rem;
+    left: 4rem;
+    top: 7.2rem;
+  }
+
+  .menu-item:first-child & {
+    top: 7.2 + $layout-page-top-space--mob - nth($layout-page-space--mob, 1);
   }
 
   & > span {
@@ -2257,35 +2235,6 @@
       }
     }
   }
-
-  // dama-v-maske
-  .bg-img {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    width: 50rem;
-    margin-left: -15vw;
-    background-repeat: no-repeat;
-    background-position: 50%;
-    background-image: url(../../img/dama-v-maske.png);
-    background-size: contain;
-    $translate: 0, -50%;
-    transform: translate($translate);
-    transform: translate3d($translate, 0);
-    z-index: 12;
-
-    @include media('<desk-s') {
-      width: 42rem;
-      margin-left: -8vw;
-    }
-
-    &::before {
-      content: "";
-      position: relative;
-      display: block;
-      @include ratio(569, 769);
-    }
-  }
 }
 
 .about-section__align {
@@ -2572,37 +2521,30 @@ $i-widget-space: 4rem;
   top: 50%;
   height: calc(32.9rem + #{$i-widget-space} * 2);
   width: calc(36rem + #{$i-widget-space} * 2);
-  margin-top: -200px;
+  //margin-top: -200px;
+  margin-top: -25rem;
   z-index: 25;
   transition: transform $animation-speed;
+
+  @include media('<lap-l') {
+    margin-top: -23rem;
+  }
 
   @include media('<tab') {
     display: none;
   }
 
-  .fp-viewing-section1 & {
-    $translate: 0, -12.5rem;
-    transform: translate($translate);
-    transform: translate3d($translate, 0);
-
-    @include media('<lap-l') {
-      $translate: 0, -2.5rem;
-      transform: translate($translate);
-      transform: translate3d($translate, 0);
-    }
-  }
-
-  &::before {
-    visibility: visible;
-    //content: "";
-    display: block;
-    position: absolute;
-    left: 82px;
-    top: 0;
-    width: 411px;
-    height: 396px;
-    background: url(../../img/temp/widget.png) no-repeat 2.2rem 0.8rem;
-  }
+  //.fp-viewing-section1 & {
+  //  $translate: 0, -12.5rem;
+  //  transform: translate($translate);
+  //  transform: translate3d($translate, 0);
+  //
+  //  @include media('<lap-l') {
+  //    $translate: 0, -2.5rem;
+  //    transform: translate($translate);
+  //    transform: translate3d($translate, 0);
+  //  }
+  //}
 
   & > * {
     visibility: visible;
@@ -2823,7 +2765,7 @@ $i-widget-space: 4rem;
   margin: 0 0 0 -#{round-float($size / 2, 1)};
 
   background-color: $highlight-color;
-  background-image: url(../../img/icon-angle.svg);
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTciIGhlaWdodD0iMTAiIHZpZXdCb3g9IjAgMCAxNyAxMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMSAxLjIyMjY2TDguMjA5OTYgOC42MjEwOUwxNS40MTk5IDEuMjIyNjYiIHN0cm9rZT0iIzEyMTIxMiIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz48L3N2Zz4=);
   background-repeat: no-repeat;
   background-position: 50%;
   border-radius: 2px;
@@ -4070,6 +4012,10 @@ $subs-btn-width: 4.5rem;
   @include media('<mob') {
     justify-content: flex-start;
   }
+
+  @include media('<mob-xs') {
+    display: block;
+  }
 }
 
 .subs-container {
@@ -4078,7 +4024,7 @@ $subs-btn-width: 4.5rem;
   justify-content: space-between;
   align-items: center;
 
-  @include media('<mob') {
+  @include media('<mob-s') {
     display: block;
   }
 }
@@ -4088,6 +4034,11 @@ $subs-btn-width: 4.5rem;
   font-size: 2rem;
   line-height: 2.4rem;
   margin: 0 4rem 0 0;
+
+  @include media('<mob-xs') {
+    display: block;
+    margin: 0 0 0.5em;
+  }
 }
 
 .subs-input {
@@ -4130,8 +4081,12 @@ $subs-btn-width: 4.5rem;
   position: relative;
   width: 32rem;
 
+  @include media('<mob') {
+    width: 30rem;
+  }
+
   @include media('<mob-xs') {
-    width: 26rem;
+    width: 100%;
   }
 
   .subs-success {
@@ -4160,6 +4115,12 @@ $subs-btn-width: 4.5rem;
     $scale: 0.9, 0.9;
     transform: translate($translate) scale($scale);
     transform: translate3d($translate, 0) scale($scale);
+
+    @include media('<mob-xs') {
+      padding: 0.6em 0;
+      font-size: 2.0rem;
+      text-align: right;
+    }
 
     .completed & {
       transition-delay: 0.35s;

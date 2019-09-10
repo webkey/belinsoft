@@ -24,10 +24,9 @@ $breakpoints: (
 // ====================================================
 $font-norm: "circe-regular", Helvetica, Arial, sans-serif !default
 $font-bold: "circe-bold", Helvetica, Arial, sans-serif !default
-$font-bold-italic: "gilroy-bold-italic", Helvetica, Arial, sans-serif !default
 $font-extra-bold: "circe-extra-bold", Helvetica, Arial, sans-serif !default
+$font-bold-italic: "gilroy-bold-italic", Helvetica, Arial, sans-serif !default
 $font-italic: "gilroy-italic", Helvetica, Arial, sans-serif !default
-$font-light: "circe-light", Helvetica, Arial, sans-serif !default
 $font-alt: Georgia, serif !default;
 
 // Main font
@@ -56,11 +55,6 @@ $font-alt: Georgia, serif !default;
   font-family: $font-bold-italic;
   font-weight: normal;
   font-style: normal;
-}
-
-@mixin font-light {
-  font-family: $font-light;
-  font-weight: normal;
 }
 
 // Alternative font
