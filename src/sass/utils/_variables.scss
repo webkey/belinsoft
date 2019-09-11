@@ -364,8 +364,8 @@ $form-bottom-space--mob: 2.5rem !default;
 // ====================================================
 $form-def-text-color: $text-color-muted !default;
 $form-def-placeholder-color: rgba($text-color-muted, 0.5) !default;
-$form-def-bg-color: rgba($bg-color-alt, 0.7) !default;
-$form-def-bg-color--focus: rgba($bg-color-alt, 0.9) !default;
+$form-def-bg-color: rgba($bg-color-alt, 0.85) !default;
+$form-def-bg-color--focus: rgba($bg-color-alt, 1) !default;
 $form-def-border-color: transparent !default;
 // ----------------------------------------------------
 $form-def-border-color--focus: transparent !default;

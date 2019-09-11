@@ -1479,7 +1479,7 @@ label mark {
   height: 4.8rem;
   width: 100%;
   padding: 1.1rem 1.8rem 1.1rem 1.8rem;
-  background-color: rgba(35, 35, 35, 0.7);
+  background-color: rgba(35, 35, 35, 0.85);
   transition: background-color 0.35s, color 0.35s, opacity 0.35s;
   box-shadow: none;
   border: 1px solid transparent;
@@ -1529,7 +1529,7 @@ select.form-def {
   height: 4.8rem;
   width: 100%;
   padding: 1.1rem 4rem 1.1rem 1.8rem;
-  background: rgba(35, 35, 35, 0.7);
+  background: rgba(35, 35, 35, 0.85);
   border: 1px solid transparent;
   border-radius: 5px;
   box-shadow: none;
@@ -1641,15 +1641,15 @@ select.form-def.has-arrow + .select-arrow {
 }
 
 .form-def:hover {
-  background-color: rgba(35, 35, 35, 0.9);
+  background-color: #232323;
 }
 
 .form-def:focus, .form-def.focused {
-  background-color: rgba(35, 35, 35, 0.9);
+  background-color: #232323;
 }
 
 .form-def.filled {
-  background-color: rgba(35, 35, 35, 0.9);
+  background-color: #232323;
 }
 
 .form-def.error {
@@ -1974,7 +1974,7 @@ select.form-def.has-arrow + .select-arrow {
   height: 4.8rem;
   width: 100%;
   padding: 1.1rem 4rem 1.1rem 1.8rem;
-  background: rgba(35, 35, 35, 0.7);
+  background: rgba(35, 35, 35, 0.85);
   border: 1px solid transparent;
   border-radius: 5px;
   box-shadow: none;
@@ -2209,11 +2209,11 @@ select.form-def.has-arrow + .select-arrow {
 }
 
 .select2-container--custom .select2-selection:hover {
-  background-color: rgba(35, 35, 35, 0.9);
+  background-color: #232323;
 }
 
 .select2-container--custom.select2-container--focus .select2-selection, .select2-container--custom.select2-container--open .select2-selection {
-  background-color: rgba(35, 35, 35, 0.9);
+  background-color: #232323;
 }
 
 .select2-container--custom.select2-container--open.select2-container--above .select2-selection {
@@ -2342,7 +2342,7 @@ select.form-def.has-arrow + .select-arrow {
 }
 
 .select2-container--custom .select2-results__option[aria-selected=true] {
-  background-color: rgba(61, 61, 61, 0.7);
+  background-color: rgba(61, 61, 61, 0.85);
 }
 
 .select2-container--custom .select2-results__option--highlighted[aria-selected] {
