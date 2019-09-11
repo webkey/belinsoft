@@ -154,7 +154,7 @@ function fullPageInitial() {
           });
         }
 
-        // Открывать автоматически виджет над секциех О КОМПАНИИ
+        // Открывать автоматически виджет над определенными секциями
         if ($infoWidget.length) {
           var dataIsActive = $infoWidget.data('is-active');
 
@@ -162,10 +162,22 @@ function fullPageInitial() {
             $infoWidget.removeClass('widget_active');
           }
 
-          if (dataIsActive === undefined && destination.index >= 1) {
+          // if (dataIsActive === undefined && destination.index >= 1) {
+          //   $infoWidget.addClass('widget_active');
+          // }
+
+          console.log("$(origin.item).hasClass('show-widget-js'): ", $(destination.item).hasClass('show-widget-js'));
+
+          if (dataIsActive === undefined && $(destination.item).hasClass('show-widget-js')) {
             $infoWidget.addClass('widget_active');
           }
         }
+      },
+      afterLoad: function(origin, destination, direction){
+        $('.logo').on('click', function (e) {
+          fullpage_api.moveTo(1);
+          e.preventDefault();
+        })
       },
     });
   }
@@ -176,7 +188,6 @@ function fullPageInitial() {
     }
     e.preventDefault();
   });
-
 }
 
 /**
@@ -1565,6 +1576,67 @@ function slidersInit() {
 
       reviewsSlider.on('init', function() {
         $curSlider.addClass('is-loaded');
+      });
+
+      reviewsSlider.init();
+    });
+  }
+
+  // Partners slider
+  var $partnersSlider = $('.partners-slider-js');
+
+  if($partnersSlider.length){
+    $partnersSlider.each(function () {
+      var $thisSlider = $(this),
+          $pagination = $thisSlider.find('.swiper-pagination');
+
+      var reviewsSlider = new Swiper ($thisSlider, {
+        init: false,
+        slidesPerView: 4,
+        slidesPerColumn: 2,
+        slidesPerGroup: 4,
+        spaceBetween: 0,
+        // loop: true,
+        watchSlidesVisibility: true,
+        autoplay: {
+          delay: 3000,
+        },
+        pagination: {
+          el: $pagination,
+          type: 'bullets',
+          clickable: true
+        },
+        breakpoints: {
+          1440: {
+            slidesPerView: 3,
+            slidesPerColumn: 2,
+            slidesPerGroup: 3,
+          },
+          991: {
+            slidesPerView: 2,
+            slidesPerColumn: 2,
+            slidesPerGroup: 2,
+          },
+          639: {
+            slidesPerView: 4,
+            slidesPerColumn: 2,
+            slidesPerGroup: 4,
+          },
+          479: {
+            slidesPerView: 3,
+            slidesPerColumn: 2,
+            slidesPerGroup: 3,
+          },
+          359: {
+            slidesPerView: 2,
+            slidesPerColumn: 2,
+            slidesPerGroup: 2,
+          },
+        }
+      });
+
+      reviewsSlider.on('init', function() {
+        $thisSlider.addClass('is-loaded');
       });
 
       reviewsSlider.init();

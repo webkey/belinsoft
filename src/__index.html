@@ -14,26 +14,26 @@
         <div class="video-cover">
           <div class="video-cover__item video-cover__item-js item_active" id="strategical">
             @@include("_tpl_video-cover-item.html", {
-            "videoSrc": "video/bg-tactical.mp4?v3",
-            "videoImg": "img/bg-mob-tactical.jpg"
-            })
-          </div>
-          <div class="video-cover__item video-cover__item-js" id="tactical">
-            @@include("_tpl_video-cover-item.html", {
             "videoSrc": "video/bg-strategical.mp4?v3",
             "videoImg": "img/bg-mob-strategical.jpg"
             })
           </div>
-          <div class="video-cover__item video-cover__item-js" id="homeland">
+          <div class="video-cover__item video-cover__item-js" id="tactical">
             @@include("_tpl_video-cover-item.html", {
-            "videoSrc": "video/bg-homeland.mp4?v3",
-            "videoImg": "img/bg-mob-homeland.jpg"
+            "videoSrc": "video/bg-tactical.mp4?v3",
+            "videoImg": "img/bg-mob-tactical.jpg"
             })
           </div>
           <div class="video-cover__item video-cover__item-js" id="cyber">
             @@include("_tpl_video-cover-item.html", {
             "videoSrc": "video/bg-cyber.mp4?v3",
             "videoImg": "img/bg-mob-cyber.jpg"
+            })
+          </div>
+          <div class="video-cover__item video-cover__item-js" id="homeland">
+            @@include("_tpl_video-cover-item.html", {
+            "videoSrc": "video/bg-homeland.mp4?v3",
+            "videoImg": "img/bg-mob-homeland.jpg"
             })
           </div>
         </div>
@@ -63,18 +63,6 @@
             "text": "We provide a full range of systems to ensure the security of state borders and perimeters. Our C4I solutions will allow you to plan, integrate and create unique border and perimeter protection systems with the management ability from a single Control Center."
             })
           </div>
-          <div class="menu-item menu__item menu__item-js menu__item_homeland" data-for="homeland" style="background-image:url(img/bg-mob-homeland.jpg);">
-            @@include("_tpl_menu-item.html", {
-            "class": "homeland",
-            "href": "inner.html",
-            "videoSrc": "video/bg-homeland.mp4",
-            "videoImg": "img/bg-mob-homeland.jpg",
-            "number": "03",
-            "title": "Homeland",
-            "subTitle": "Security",
-            "text": "We provide a full range of systems to ensure the security of state borders and perimeters. Our C4I solutions will allow you to plan, integrate and create unique border and perimeter protection systems with the management ability from a single Control Center."
-            })
-          </div>
           <div class="menu-item menu__item menu__item-js menu__item_cyber" data-for="cyber" style="background-image:url(img/bg-mob-cyber.jpg);">
             @@include("_tpl_menu-item.html", {
             "class": "cyber",
@@ -87,6 +75,18 @@
             "text": "We provide a full range of systems to ensure the security of state borders and perimeters. Our C4I solutions will allow you to plan, integrate and create unique border and perimeter protection systems with the management ability from a single Control Center."
             })
           </div>
+          <div class="menu-item menu__item menu__item-js menu__item_homeland" data-for="homeland" style="background-image:url(img/bg-mob-homeland.jpg);">
+            @@include("_tpl_menu-item.html", {
+            "class": "homeland",
+            "href": "inner.html",
+            "videoSrc": "video/bg-homeland.mp4",
+            "videoImg": "img/bg-mob-homeland.jpg",
+            "number": "03",
+            "title": "Homeland",
+            "subTitle": "Security",
+            "text": "We provide a full range of systems to ensure the security of state borders and perimeters. Our C4I solutions will allow you to plan, integrate and create unique border and perimeter protection systems with the management ability from a single Control Center."
+            })
+          </div>
         </div>
       </div>
 
@@ -95,7 +95,7 @@
       <a href="#" class="btn-next-section btn-next-section-js">Next section</a>
     </section>
 
-    <section class="about-section fp-section-js">
+    <section class="about-section fp-section-js show-widget-js">
       <div class="bg-video">
         <video autoplay muted loop data-autoplay>
           <source src="video/about.mp4">
@@ -115,7 +115,7 @@
       </div>
     </section>
 
-    <section class="m-news-section fp-section-js">
+    <section class="m-news-section fp-section-js show-widget-js">
       <div class="m-news-section__align">
         <h2>News</h2>
         <div class="m-news">
@@ -160,7 +160,7 @@
       </div>
     </section>
 
-    <section class="media-section fp-section-js">
+    <section class="media-section fp-section-js show-widget-js">
       <div class="media-section__align">
         <h2>World Media</h2>
         <div class="swiper-container news-slider news-slider-js">
@@ -239,11 +239,83 @@
       </div>
     </section>
 
-    <section class="about-section fp-section-js">
-      <div class="about-section__align">
-        <div class="about-section__content">
-          <h2>Partner</h2>
+    <section class="partners-section fp-section-js">
+      <div class="partners-section__description">
+        <div class="partners-section__content">
+          <h2><a href="inner.html">Partners</a></h2>
           <p>We provide a full range of systems to ensure the security of state borders and perimeters. Our C4I solutions will allow you to plan, integrate and create unique border and perimeter protection systems with the management ability from a single Control Center.</p>
+        </div>
+        <div class="about-section__footer">
+          <a href="inner.html" class="btn-def">Details</a>
+        </div>
+      </div>
+      <div class="partners-section__links">
+        <div class="swiper-container partners__list partners-slider-js">
+          <div class="swiper-wrapper">
+            <div class="partners__item swiper-slide">
+              @@include("_tpl_partners-el.html", {
+              "scrLogo": "img/logotype-agat.svg"
+              })
+            </div>
+            <div class="partners__item swiper-slide">
+              @@include("_tpl_partners-el.html", {
+              "scrLogo": "img/logotype-bsvt.png"
+              })
+            </div>
+            <div class="partners__item swiper-slide">
+              @@include("_tpl_partners-el.html", {
+              "scrLogo": "img/logotype-infowatch.svg"
+              })
+            </div>
+            <div class="partners__item swiper-slide">
+              @@include("_tpl_partners-el.html", {
+              "scrLogo": "img/logotype-kaspersky.svg"
+              })
+            </div>
+            <div class="partners__item swiper-slide">
+              @@include("_tpl_partners-el.html", {
+              "scrLogo": "img/logotype-positivetechnologies.png"
+              })
+            </div>
+            <div class="partners__item swiper-slide">
+              @@include("_tpl_partners-el.html", {
+              "scrLogo": "img/logotype-xorex.png"
+              })
+            </div>
+
+            <div class="partners__item swiper-slide">
+              @@include("_tpl_partners-el.html", {
+              "scrLogo": "img/logotype-kaspersky.svg"
+              })
+            </div>
+            <div class="partners__item swiper-slide">
+              @@include("_tpl_partners-el.html", {
+              "scrLogo": "img/logotype-bsvt.png"
+              })
+            </div>
+            <div class="partners__item swiper-slide">
+              @@include("_tpl_partners-el.html", {
+              "scrLogo": "img/logotype-infowatch.svg"
+              })
+            </div>
+            <div class="partners__item swiper-slide">
+              @@include("_tpl_partners-el.html", {
+              "scrLogo": "img/logotype-xorex.png"
+              })
+            </div>
+            <div class="partners__item swiper-slide">
+              @@include("_tpl_partners-el.html", {
+              "scrLogo": "img/logotype-agat.svg"
+              })
+            </div>
+            <div class="partners__item swiper-slide">
+              @@include("_tpl_partners-el.html", {
+              "scrLogo": "img/logotype-positivetechnologies.png"
+              })
+            </div>
+          </div>
+
+          <div class="swiper-pagination"></div>
         </div>
       </div>
     </section>

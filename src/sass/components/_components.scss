@@ -2256,6 +2256,7 @@
 
 .about-section__align {
   position: relative;
+  flex: 0 1 92rem;
   width: 92rem;
   max-width: calc(100% - 34rem);
   z-index: 15;
@@ -2292,6 +2293,254 @@
 
 /* about section */
 
+/* partners */
+// partners element
+.partners-el {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  font-size: 1.7rem;
+  line-height: 2.4rem;
+  text-align: center;
+  margin: 0 auto;
+  background-color: rgba($bg-color-alt, 0.85);
+  //box-shadow: 0 0 0 1px rgba(white, 0.1);
+  box-shadow: 0 0 0 1px black;
+  transition: background-color $animation-speed, box-shadow $animation-speed;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+
+  &::before {
+    content: "";
+    display: block;
+    @include ratio(1, 1);
+  }
+}
+
+.partners-el__figure {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  padding: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @include media('<mob') {
+    padding: 1.5rem;
+  }
+
+  img {
+    max-width: 100%;
+    max-height: 100%;
+    filter: grayscale(1) invert(1) contrast(1) opacity(0.5);
+    //opacity: 0.5;
+    transition: opacity $animation-speed, filter $animation-speed;
+  }
+}
+
+// States
+.partners-el {
+  .no-touchevents &:hover {
+    background-color: rgba($highlight-color, 0.3);
+    box-shadow: 0 0 0 1px rgba($highlight-color, 0.3);
+
+    .partners-el__figure {
+      img {
+        filter: grayscale(0) invert(0) contrast(1);
+        opacity: 1;
+      }
+    }
+  }
+}
+
+// partners
+.partners {
+  position: relative;
+}
+
+.partners__list {
+  padding: 0 0 5rem;
+
+  @include media('<tab-s') {
+    padding-bottom: 4rem;
+  }
+
+  .js &:not(.is-loaded) {
+    opacity: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+
+  .swiper-pagination {
+    text-align: right;
+  }
+}
+
+.partners__item {
+  padding: 0;
+}
+/* partners end */
+
+/* partners section */
+.partners-section {
+  position: relative;
+  $intend: nth($layout-page-space--lap, 2);
+  margin: 0 -#{$intend};
+  min-height: 100vh;
+  font-size: 2.0rem;
+  line-height: 3.2rem;
+  color: $text-color-muted;
+  display: flex;
+  align-items: center;
+
+  @include media('<desk-s') {
+    $intend: round-float(nth($layout-page-space--lap, 2) / 2, 1);
+    margin: 0 -#{$intend};
+    font-size: 1.6rem;
+    line-height: 2.6rem;
+  }
+
+  @include media('<lap-l') {
+    $intend: round-float(nth($layout-page-space--net, 2) / 2, 1);
+    margin: 0 -#{$intend};
+  }
+
+  @include media('<tab') {
+    height: auto !important;
+    min-height: 0;
+    $intend: round-float(nth($layout-page-space--tab, 2) / 2, 1);
+    margin: 0 -#{$intend};
+  }
+
+  @include media('<mob') {
+    display: block;
+    $intend: round-float(nth($layout-page-space--mob, 2) / 2, 1);
+    margin: 0 -#{$intend};
+  }
+
+  h2 {
+    @include font-extra-bold;
+    font-size: $font-size-h1;
+    line-height: $line-height-h1;
+    color: $title-color;
+    text-transform: uppercase;
+    margin-bottom: 3rem;
+
+    @include media('<lap-l') {
+      font-size: $font-size-h1--lap;
+      line-height: $line-height-h1--lap;
+      margin-bottom: 2rem;
+    }
+
+    @include media('<mob') {
+      font-size: $font-size-h1--mob;
+      line-height: $line-height-h1--mob;
+    }
+  }
+}
+
+.partners-section__description,
+.partners-section__links {
+  position: relative;
+  $intend: round-float(nth($layout-page-space, 2) / 2, 1);
+  padding: 0 #{$intend};
+  z-index: 15;
+
+  @include media('<desk-s') {
+    $intend: round-float(nth($layout-page-space--lap, 2) / 2, 1);
+    padding: 0 #{$intend};
+    font-size: 1.6rem;
+    line-height: 2.6rem;
+  }
+
+  @include media('<lap-l') {
+    $intend: round-float(nth($layout-page-space--net, 2) / 2, 1);
+    padding: 0 #{$intend};
+  }
+
+  @include media('<tab') {
+    height: auto !important;
+    min-height: 0;
+    $intend: round-float(nth($layout-page-space--tab, 2) / 2, 1);
+    padding: 0 #{$intend};
+  }
+
+  @include media('<mob') {
+    $intend: round-float(nth($layout-page-space--mob, 2) / 2, 1);
+    padding: 0 #{$intend};
+    max-width: none;
+    width: auto;
+  }
+}
+
+.partners-section__description {
+  $width: 40%;
+  flex: 0 1 $width;
+  width: $width;
+  max-width: $width;
+
+  @include media('<lap-l') {
+    $width: 50%;
+    flex-basis: $width;
+    width: $width;
+    max-width: $width;
+  }
+
+  @include media('<mob') {
+    max-width: none;
+    width: auto;
+    margin-bottom: $bottom-space--mob;
+  }
+}
+
+.partners-section__links {
+  $width: 60%;
+  flex: 0 1 $width;
+  width: $width;
+  max-width: $width;
+
+  @include media('<lap-l') {
+    $width: 50%;
+    flex-basis: $width;
+    width: $width;
+    max-width: $width;
+  }
+
+  @include media('<mob') {
+    max-width: none;
+    width: auto;
+  }
+}
+
+.partners-section__content {
+  margin-bottom: 5rem;
+
+  @include media('<lap-l') {
+    margin-bottom: 3rem;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  p {
+    margin-bottom: 1.5rem;
+
+    @include media('<lap-l') {
+      margin-bottom: 1.2rem;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+/* partners section */
+
 /* info widget */
 $i-widget-space: 4rem;
 
@@ -2300,8 +2549,14 @@ $i-widget-space: 4rem;
   line-height: 0;
   position: absolute;
   left: 386px;
-  top: 151px;
+  top: 133px;
+  $size: 40px;
+  height: $size;
+  width: $size;
   color: $text-color-alt;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   svg {
     display: inline-block;
@@ -2316,7 +2571,7 @@ $i-widget-space: 4rem;
 .weather-temp {
   position: absolute;
   left: 387px;
-  top: 168px;
+  top: 172px;
   font-size: 1.7rem;
   line-height: 2.5rem;
   color: $text-color-alt;
@@ -2638,19 +2893,19 @@ $i-widget-space: 4rem;
     }
 
     .weather-icon{
-      $translate: -200px, -138px;
+      $translate: -200px, -136px;
       transform: translate($translate);
       transform: translate3d($translate, 0);
     }
 
     .weather-temp {
-      $translate: -161px, -161px;
+      $translate: -161px, -166px;
       transform: translate($translate);
       transform: translate3d($translate, 0);
     }
 
     .weather-city {
-      $translate: -100px, -217px;
+      $translate: -99px, -217px;
       transform: translate($translate);
       transform: translate3d($translate, 0);
     }
