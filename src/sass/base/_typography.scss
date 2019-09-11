@@ -256,8 +256,8 @@ table {
 .typography {
   $typographyClass: &;
 
-  & > h2, & > .h2,
-  & > h3, & > .h3 {
+  h2, .h2,
+  h3, .h3 {
     position: relative;
     padding-left: 1.8em;
     text-transform: uppercase;
@@ -391,8 +391,8 @@ table {
   // list
   $list-space: 2.5rem;
 
-  & > ul,
-  & > ol {
+  ul,
+  ol {
     margin: 0 0 $bottom-space;
     padding: 0;
     list-style: none;
@@ -408,9 +408,9 @@ table {
     }
   }
 
-  & > ul,
-  & > ul ul,
-  & > ol ul {
+  ul,
+  ul ul,
+  ol ul {
     & > li {
       &::before {
         content: "";
@@ -437,7 +437,7 @@ table {
     }
   }
 
-  & > ol {
+  ol {
     counter-reset: section;
 
     & > li {
@@ -458,8 +458,8 @@ table {
     }
   }
 
-  & > ul,
-  & > ol {
+  ul,
+  ol {
     ul,
     ol {
       margin: round-float($bottom-space * 0.5, 1) 0;
@@ -467,77 +467,75 @@ table {
   }
 
   // images
-  &, & > p {
-    & > img,
-    & > .layout-text img,
-    & > .layout-flood img {
-      display: block;
-      text-align: center;
-      margin: 3rem auto 4rem;
-      max-width: 100%;
-      height: auto;
-      clear: both;
+  img,
+  .layout-text img,
+  .layout-flood img {
+    display: block;
+    text-align: center;
+    margin: 3rem auto 4rem;
+    max-width: 100%;
+    height: auto;
+    clear: both;
+
+    @include media("<tab") {
+      margin-top: 2.5rem;
+      margin-bottom: 3rem;
+    }
+
+    @include media("<mob") {
+      margin-top: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    &[align="left"], &.imgl {
+      float: left;
+      clear: left;
+      text-align: left;
+      max-width: 45%;
+      margin-top: 0;
+      margin-right: 3rem;
 
       @include media("<tab") {
-        margin-top: 2.5rem;
-        margin-bottom: 3rem;
+        margin-right: 2rem;
       }
 
       @include media("<mob") {
-        margin-top: 1.5rem;
-        margin-bottom: 2rem;
-      }
-
-      &[align="left"], &.imgl {
-        float: left;
-        clear: left;
+        float: none;
         text-align: left;
-        max-width: 45%;
-        margin-top: 0;
-        margin-right: 3rem;
+        max-width: none;
+        margin-right: auto;
+      }
+    }
 
-        @include media("<tab") {
-          margin-right: 2rem;
-        }
+    &[align="right"], &.imgr {
+      float: right;
+      clear: right;
+      text-align: right;
+      max-width: 45%;
+      margin-top: 0;
+      margin-left: 3rem;
 
-        @include media("<mob") {
-          float: none;
-          text-align: left;
-          max-width: none;
-          margin-right: auto;
-        }
+      @include media("<tab") {
+        margin-left: 2rem;
       }
 
-      &[align="right"], &.imgr {
-        float: right;
-        clear: right;
-        text-align: right;
-        max-width: 45%;
-        margin-top: 0;
-        margin-left: 3rem;
-
-        @include media("<tab") {
-          margin-left: 2rem;
-        }
-
-        @include media("<mob") {
-          float: none;
-          text-align: left;
-          max-width: none;
-          margin-left: auto;
-        }
+      @include media("<mob") {
+        float: none;
+        text-align: left;
+        max-width: none;
+        margin-left: auto;
       }
     }
   }
 
   // Дополнительный верхний отступ.
-  & > h1, & > .h1,
-  & > h2, & > .h2,
-  & > h3, & > .h3,
-  & > h4, & > .h4,
-  & > h5, & > .h5,
-  & > h6, & > .h6,
-  & > blockquote {
+  h1, .h1,
+  h2, .h2,
+  h3, .h3,
+  h4, .h4,
+  h5, .h5,
+  h6, .h6,
+  blockquote {
     margin-top: round-float(2.6 * $bottom-space, 1);
 
     @include media('<mob') {
@@ -546,6 +544,14 @@ table {
 
     &:first-child {
       margin-top: 0;
+    }
+  }
+
+  h1, .h1 {
+    margin-bottom: round-float(2.6 * $bottom-space, 1);
+
+    @include media('<mob') {
+      margin-bottom: round-float(2 * $bottom-space--mob, 1);
     }
   }
 }

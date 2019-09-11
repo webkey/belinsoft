@@ -254,7 +254,9 @@ $highlight-color--hover: darken($base-color, 10%) !default
 $bg-color: #0d0d0d !default;
 $bg-color-alt: #232323 !default;
 // ----------------------------------------------------
-$text-color: #fff !default;
+//$text-color: #fff !default;
+$text-color: #c5c5c5 !default;
+$text-color-alt: white !default; // Текст отдельных элементов, которые теоретичеки останутся белыми
 //$text-color-muted: #9f9f9f !default;
 $text-color-muted: #c5c5c5 !default;
 $text-color-light: #9d9d9d !default;

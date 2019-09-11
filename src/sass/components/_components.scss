@@ -641,6 +641,7 @@
   display: flex;
   flex-wrap: wrap;
   cursor: default;
+  color: $text-color-alt;
 
   // Все ul
   &, & ul {
@@ -702,21 +703,16 @@
     &::before {
       content: "";
       display: block;
-
       position: absolute;
       bottom: 0;
       left: 4px;
       width: calc(100% - 8px);
       height: 2px;
       border-radius: 50%;
-
-      background-color: $text-color;
-      //z-index: -2;
-
-      box-shadow: 0 0 3px rgba($text-color, 1);
+      background-color: currentColor;
+      box-shadow: 0 0 3px currentColor;
 
       transform-origin: 100% 100%;
-
       $scale: 0, 1;
       transform: scale($scale);
       transform: scale3d($scale, 1);
@@ -1073,12 +1069,12 @@
 /* ==================================== */
 .footer {
   position: relative;
-  padding: 0;
   border-top: 1px solid rgba($text-color-muted, 0.1);
   box-shadow: 0 -2px 33px rgba(0, 0, 0, 0.5);
-  padding-top: 2rem;
-  padding-bottom: 2rem;
-
+  padding: 2rem 0;
+  font-size: 1.4rem;
+  line-height: 1.48;
+  color: $text-color-muted;
   background: $bg-color;
 
   @include media('<tab') {
@@ -1094,8 +1090,6 @@
 /* footer bottom */
 .footer-bottom {
   position: relative;
-  font-size: 1.4rem;
-  color: $text-color-muted;
 
   // обрезать вытянутый маржинами по горизонтале дочерний элемент
   overflow: hidden;
@@ -1234,7 +1228,7 @@
   line-height: 1.8rem;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: $text-color;
+  color: $text-color-alt;
 
   li {
     margin: 0 3.5rem 1.5rem 0;
@@ -1633,7 +1627,7 @@
   font-size: 1.9rem;
   line-height: 2.7rem;
   text-transform: uppercase;
-  color: $text-color;
+  color: $text-color-alt;
 
   &::before {
     content: "";
@@ -1796,7 +1790,7 @@
   @include font-bold;
   font-size: 1.4rem;
   line-height: 2.0rem;
-  color: $text-color;
+  color: $text-color-alt;
   text-decoration: none;
   padding: 0 6.5rem 0 0;
   user-select: none;
@@ -1882,7 +1876,7 @@
   top: 0;
   font-size: 2.3rem;
   line-height: 3.4rem;
-  color: #fff;
+  color: $text-color-alt;
   text-transform: uppercase;
   transition: transform $animation-speed * 1.5;
 
@@ -1906,7 +1900,7 @@
   line-height: 2.0rem;
   letter-spacing: 0.21em;
   text-transform: uppercase;
-  color: $text-color;
+  color: $text-color-alt;
   transition: transform $animation-speed * 1.5;
 
   transform: translate(0, 1.5rem);
@@ -1927,7 +1921,6 @@
   font-size: 2.0rem;
   line-height: 3.2rem;
   text-shadow: 0 0 20px black;
-  //color: $text-color-muted;
   color: $text-color;
   width: 48rem;
   max-width: 100%;
@@ -2206,7 +2199,7 @@
     @include font-extra-bold;
     font-size: $font-size-h1;
     line-height: $line-height-h1;
-    color: $text-color;
+    color: $title-color;
     text-transform: uppercase;
     margin-bottom: 3rem;
 
@@ -2546,6 +2539,7 @@ $i-widget-space: 4rem;
   width: calc(36rem + #{$i-widget-space} * 2);
   //margin-top: -200px;
   margin-top: -25rem;
+  color: $text-color-alt;
   z-index: 25;
   transition: transform $animation-speed;
 
@@ -2700,7 +2694,7 @@ $i-widget-space: 4rem;
   line-height: 2.0rem;
   letter-spacing: 0.4em;
   text-transform: uppercase;
-  color: $text-color;
+  color: $text-color-alt;
   text-decoration: none;
   transform: rotate(90deg);
 
@@ -2926,7 +2920,7 @@ $i-widget-space: 4rem;
   @include font-extra-bold;
   font-size: 1.6rem;
   line-height: 2.4rem;
-  color: $text-color;
+  color: $title-color;
   text-transform: uppercase;
   margin-bottom: 2rem;
   transition: color $animation-speed;
@@ -3143,7 +3137,7 @@ $m-news-space--net: 2rem;
     line-height: 1.5rem;
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    color: $text-color;
+    color: $title-color;
     margin-bottom: 2rem;
     padding: 0 0 0 2rem;
     z-index: 5;
@@ -3229,7 +3223,7 @@ $m-news-space--net: 2rem;
     @include font-extra-bold;
     font-size: $font-size-h1;
     line-height: $line-height-h1;
-    color: $text-color;
+    color: $title-color;
     text-transform: uppercase;
     margin-bottom: 3rem;
 
@@ -3344,7 +3338,7 @@ $m-news-space--net: 2rem;
   @include font-bold;
   font-size: 1.8rem;
   line-height: 2.4rem;
-  color: $text-color;
+  color: $title-color;
   margin-bottom: 1.5rem;
   transition: color $animation-speed;
 
@@ -3553,6 +3547,7 @@ $m-news-space--net: 2rem;
   line-height: $line-height-h2;
   margin: 0 0 #{round-float($bottom-space * 1.2, 1)};
   padding-left: 1.8em;
+  color: $title-color;
   text-transform: uppercase;
 
   &::before {
@@ -3655,6 +3650,7 @@ $m-news-space--net: 2rem;
   @include font-bold;
   font-size: 1.4rem;
   line-height: 1.8rem;
+  color: $title-color;
   letter-spacing: 0.15em;
   text-transform: uppercase;
 
@@ -3785,7 +3781,7 @@ $m-news-space--net: 2rem;
     @include font-extra-bold;
     font-size: $font-size-h1;
     line-height: $line-height-h1;
-    color: $text-color;
+    color: $title-color;
     text-transform: uppercase;
     margin-bottom: 3rem;
 
@@ -3901,7 +3897,7 @@ $m-news-space--net: 2rem;
   @include font-extra-bold;
   font-size: 1.6rem;
   line-height: 2.4rem;
-  color: $text-color;
+  color: $title-color;
   text-transform: uppercase;
   margin-bottom: 2rem;
   transition: color $animation-speed;
@@ -3940,9 +3936,10 @@ $m-news-space--net: 2rem;
   display: inline-block;
   vertical-align: top;
   padding: 0.8rem 1.2rem;
-  border: 1px solid rgba(white, 0.3);
   border-radius: 5px;
   cursor: pointer;
+  color: $text-color-alt;
+  border: 1px solid rgba($text-color-alt, 0.3);
 
   transition: border-color $animation-speed;
 
@@ -4120,10 +4117,11 @@ $subs-btn-width: 4.5rem;
     left: 0;
     bottom: 100%;
     width: 100%;
+    padding: 0.5em 0;
     text-align: center;
     font-size: 2.4rem;
     line-height: 1;
-    padding: 0.5em 0;
+    color: $text-color-alt;
     pointer-events: none;
     z-index: -1;
 
@@ -4305,13 +4303,14 @@ $subs-btn-width: 4.5rem;
 // News source
 .news-source {
   margin-bottom: $bottom-space;
+  color: $text-color-alt;
 
   @include media('<mob') {
     margin-bottom: $bottom-space--mob;
   }
 
   a {
-    text-decoration: none;
+    text-decoration: underline;
     transition: color $animation-speed;
     color: $text-color-muted;
 
@@ -4326,9 +4325,9 @@ $subs-btn-width: 4.5rem;
   display: inline-block;
   vertical-align: top;
   text-decoration: none;
-  color: inherit;
   font-size: 1.6rem;
   line-height: 2.4rem;
+  color: $text-color-alt;
   background-repeat: no-repeat;
   max-width: 48rem;
 
