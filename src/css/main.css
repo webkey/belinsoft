@@ -520,7 +520,7 @@ body {
 }
 
 .layout-text {
-  max-width: 80rem;
+  max-width: 120rem;
   box-sizing: content-box;
   margin-left: auto;
   margin-right: auto;
@@ -539,7 +539,7 @@ body {
 }
 
 .layout-flood {
-  max-width: 80rem;
+  max-width: 120rem;
   box-sizing: content-box;
   margin-left: auto;
   margin-right: auto;
@@ -1242,13 +1242,13 @@ table td, table th {
 .article-content > table,
 .article-content > .table-auto,
 .article-content > .layout-text {
-  max-width: 80rem;
+  max-width: 120rem;
   margin-left: auto;
   margin-right: auto;
 }
 
 .article-content > .layout-flood {
-  max-width: 80rem;
+  max-width: 120rem;
   margin-left: auto;
   margin-right: auto;
 }
