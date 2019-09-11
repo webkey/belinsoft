@@ -395,8 +395,8 @@ $form-def-font-size: 1.6rem !default;
 $form-def-line-height: 2.4rem !default;
 $form-def-letter-spacing: null !default;
 // ------ mob -----------------------------------------
-$form-def-font-size--mob: 1.4rem !default;
-$form-def-line-height--mob: 1.8rem !default;
+$form-def-font-size--mob: 1.6rem !default;
+$form-def-line-height--mob: 2.0rem !default;
 $form-def-letter-spacing--mob: null !default;
 
 
@@ -522,7 +522,8 @@ $select-arrow-width--mob: 4.0rem !default;
   position: relative;
   height: $select-height;
   width: 100%;
-  padding: $select-space-vt $select-arrow-width $select-space-vb $select-space-h;
+  //padding: $select-space-vt $select-arrow-width $select-space-vb $select-space-h;
+  padding: $select-space-vt $select-arrow-width $select-space-vb $form-def-space-h;
   background: $select-bg-color;
   border: #{$select-border-width} solid #{$select-border-color};
   border-radius: 5px;
@@ -536,7 +537,8 @@ $select-arrow-width--mob: 4.0rem !default;
 // ------ mob -----------------------------------------
 @mixin select-common--mob() {
   height: $select-height--mob;
-  padding: $select-space-vt--mob $select-arrow-width--mob $select-space-vb--mob $select-space-h--mob;
+  //padding: $select-space-vt--mob $select-arrow-width--mob $select-space-vb--mob $select-space-h--mob;
+  padding: $select-space-vt--mob $select-arrow-width--mob $select-space-vb--mob $form-def-space-h--mob;
   border: #{$select-border-width--mob} solid #{$select-border-color};
 }
 

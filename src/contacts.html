@@ -128,23 +128,38 @@
           <div class="contacts-form">
             <form action="#" class="validate-js">
               <label for="contactFormFullName">Full name*</label>
-              <input class="form-def field-js" id="contactFormFullName" name="contactFormFullName" type="text" placeholder="Full name" required />
+              <input class="form-def field-js" id="contactFormFullName" name="contactFormFullName" type="text" required />
               <span class="error-feedback">Error feedback</span>
               <span class="success-feedback">Success feedback</span>
-              <label for="contactFormEmail">Your email*</label>
-              <input class="form-def field-js" id="contactFormEmail" name="contactFormEmail" type="email" placeholder="Your email*" required />
+              <label for="contactFormCompany">Company*</label>
+              <input class="form-def field-js" id="contactFormCompany" name="contactFormCompany" type="text" required />
               <span class="error-feedback">Error feedback</span>
               <span class="success-feedback">Success feedback</span>
-              <label for="contactFormPhone">Your phone*</label>
-              <input class="form-def field-js" id="contactFormPhone" name="contactFormPhone" type="text" placeholder="Your phone*" required />
+              <label for="contactFormCountry">Country*</label>
+              <input class="form-def field-js" id="contactFormCountry" name="contactFormCountry" type="text" required />
               <span class="error-feedback">Error feedback</span>
               <span class="success-feedback">Success feedback</span>
-              <label for="contactFormTopic">Topic*</label>
-              <input class="form-def field-js" id="contactFormTopic" name="contactFormTopic" type="text" placeholder="Topic*" required />
+              <label for="contactFormEmail">Email*</label>
+              <input class="form-def field-js" id="contactFormEmail" name="contactFormEmail" type="email" required />
               <span class="error-feedback">Error feedback</span>
               <span class="success-feedback">Success feedback</span>
-              <label for="contactFormYourRequest">Your request*</label>
-              <textarea class="form-def field-js" id="contactFormYourRequest" name="contactFormYourRequest" placeholder="Your request*" required></textarea>
+              <label for="contactFormPhone">Phone*</label>
+              <input class="form-def field-js" id="contactFormPhone" name="contactFormPhone" type="text" required />
+              <span class="error-feedback">Error feedback</span>
+              <span class="success-feedback">Success feedback</span>
+              <label for="contactFormPhone">Area of interest*</label>
+              <select class="cselect form-def field-js" id="contactFormPhone" name="contactFormPhone" required>
+                <!--Important! The first element must have a value of ""-->
+                <option value="">- Choose area -</option>
+                <option value="1">Topic name 1</option>
+                <option value="2">Topic name 2</option>
+                <option value="3">Topic name 3 we have to add a lot of text for testing to make sure the correctness of cutting this text</option>
+                <option value="2">Topic name 4</option>
+              </select>
+              <span class="error-feedback">Error feedback</span>
+              <span class="success-feedback">Success feedback</span>
+              <label for="contactFormRequest">Request*</label>
+              <textarea class="form-def field-js" id="contactFormRequest" name="contactFormRequest" required></textarea>
               <span class="error-feedback">Error feedback</span>
               <span class="success-feedback">Success feedback</span>
               <button class="btn-def">SEND NOW</button>

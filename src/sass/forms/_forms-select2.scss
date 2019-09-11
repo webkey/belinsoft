@@ -38,7 +38,7 @@
     // Текстовые стили одинаковые для single и multiple
     // Если будут отличаться, то задать раздельно ниже
     @include select-font;
-    transition: border $animation-speed;
+    transition: border $animation-speed, background-color $animation-speed;
 
     // ------ mob -----------------------------------------
     @include media($form-media--mob) {
@@ -146,6 +146,11 @@
 
       li {
         list-style: none;
+        padding-left: 0;
+
+        &::before {
+          content: none;
+        }
       }
     }
 
@@ -205,6 +210,7 @@
         font-family: inherit;
         font-size: inherit;
         line-height: inherit;
+        color: $form-def-text-color;
         padding: 0;
         background: transparent;
         border: none;
@@ -325,7 +331,7 @@
     overflow: hidden; // Если есть закругления, то нужно обрезать внутренние элементы
     border: $select-border-width solid $select-border-color--focus;
     border-radius: $select-border-radius;
-    background-color: $select-bg-color;
+    background-color: $bg-color-alt;
     z-index: 5; // Поднять выше стрелок соседних селектов
 
     // ------ mob -----------------------------------------
@@ -364,6 +370,18 @@
     .select2-search__field {
       padding: 0.5rem;
       border: 1px solid $select-border-color;
+      background-color: lighten($bg-color-alt, 10%);
+      font-family: inherit;
+      color: $form-def-text-color;
+      font-size: $form-def-font-size;
+      line-height: 1.4;
+      border-radius: 3px;
+
+      // ------ mob -----------------------------------------
+      @include media($form-media--mob) {
+        font-size: $form-def-font-size--mob;
+        border-radius: 2px;
+      }
 
       &:focus {
         border-color: $select-border-color--focus;
@@ -412,7 +430,7 @@
 
     // Active
     &[aria-selected=true] {
-      background-color: #ddd;
+      background-color: lighten($form-def-bg-color, 10%);
     }
 
     .select2-results__option {

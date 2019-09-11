@@ -1301,10 +1301,11 @@
   //max-width: calc(100% - 48rem);
   //width: 142.3rem; // Примерный размер
   z-index: -1;
+  opacity: 0.5;
 
-  @include media('<tab') {
-    opacity: 0.5;
-  }
+  //@include media('<tab') {
+  //  opacity: 0.5;
+  //}
 }
 
 .wbg__list {
@@ -2300,6 +2301,7 @@ $i-widget-space: 4rem;
   position: absolute;
   left: 386px;
   top: 151px;
+  color: $text-color-alt;
 
   svg {
     display: inline-block;
@@ -2317,6 +2319,7 @@ $i-widget-space: 4rem;
   top: 168px;
   font-size: 1.7rem;
   line-height: 2.5rem;
+  color: $text-color-alt;
 }
 
 .weather-city {
@@ -2393,6 +2396,7 @@ $i-widget-space: 4rem;
   font-size: 2rem;
   line-height: 2.4rem;
   margin-bottom: 1rem;
+  color: $title-color;
 
   &:last-child {
     margin-bottom: 0;
@@ -2539,7 +2543,6 @@ $i-widget-space: 4rem;
   width: calc(36rem + #{$i-widget-space} * 2);
   //margin-top: -200px;
   margin-top: -25rem;
-  color: $text-color-alt;
   z-index: 25;
   transition: transform $animation-speed;
 
@@ -4445,7 +4448,7 @@ $subs-btn-width: 4.5rem;
   padding: $grid-space;
   margin-left: -#{nth($grid-space, 2)};
   border-radius: 5px;
-  background-color: rgba($bg-color, 0.9);
+  //background-color: rgba($bg-color, 0.9);
 
   @include media('<tab') {
     padding: 2rem #{nth($layout-page-space--tab, 2)};
@@ -4456,6 +4459,10 @@ $subs-btn-width: 4.5rem;
     padding: 2rem #{nth($layout-page-space--mob, 2)};
     margin: -#{nth($layout-page-space--mob, 2)};
   }
+
+  //label {
+  //  display: none;
+  //}
 
   textarea {
     $lines: 6;

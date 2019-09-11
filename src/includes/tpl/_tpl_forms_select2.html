@@ -1,4 +1,4 @@
-<label for="@@id">@@label <mark>*</mark></label>
+<label for="@@id">@@label</label>
 <select
     class="cselect form-def@@if(context.class){ @@class} field-js"
     id="@@id"
@@ -9,6 +9,13 @@
     required
 >
   <!--Important! The first element must have a value of ""-->
+  @@if(context.options == "topic") {
+  <option value="">- Choose area -</option>
+  <option value="1">Topic name 1</option>
+  <option value="2">Topic name 2</option>
+  <option value="3">Topic name 3 we have to add a lot of text for testing to make sure the correctness of cutting this text</option>
+  <option value="2">Topic name 4</option>}
+  @@if(context.options != "topic") {
   <option value="">- Choose option -</option>
   <option value="1">Option 1</option>
   <option value="2"@@if(context.selected){ selected}>Option 2</option>
@@ -17,5 +24,5 @@
   <option value="5">Option 5</option>
   <option value="6">Option 6</option>
   <option value="7">Option 7</option>
-  <option value="8">Option 8</option>
+  <option value="8">Option 8</option>}
 </select>

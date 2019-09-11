@@ -32,33 +32,48 @@
             @@include("includes/tpl/_tpl_forms_valid.html")
 
             @@include("includes/tpl/_tpl_forms_input.html", {
-            "label": "Your email*",
+            "label": "Company*",
+            "id": "contactFormCompany",
+            "placeholder": "Company",
+            "type": "text"
+            })
+            @@include("includes/tpl/_tpl_forms_valid.html")
+
+            @@include("includes/tpl/_tpl_forms_input.html", {
+            "label": "Country*",
+            "id": "contactFormCountry",
+            "placeholder": "Country",
+            "type": "text"
+            })
+            @@include("includes/tpl/_tpl_forms_valid.html")
+
+            @@include("includes/tpl/_tpl_forms_input.html", {
+            "label": "Email*",
             "id": "contactFormEmail",
-            "placeholder": "Your email*",
+            "placeholder": "Email*",
             "type": "email"
             })
             @@include("includes/tpl/_tpl_forms_valid.html")
 
             @@include("includes/tpl/_tpl_forms_input.html", {
-            "label": "Your phone*",
+            "label": "Phone*",
             "id": "contactFormPhone",
-            "placeholder": "Your phone*",
+            "placeholder": "Phone*",
             "type": "text"
             })
             @@include("includes/tpl/_tpl_forms_valid.html")
 
-            @@include("includes/tpl/_tpl_forms_input.html", {
-            "label": "Topic*",
-            "id": "contactFormTopic",
-            "placeholder": "Topic*",
-            "type": "text"
+            @@include("includes/tpl/_tpl_forms_select2.html", {
+            "label": "Area of interest*",
+            "id": "contactFormPhone",
+            "options": "topic"
             })
             @@include("includes/tpl/_tpl_forms_valid.html")
 
             @@include("includes/tpl/_tpl_forms_textarea.html", {
-            "label": "Your request*",
-            "id": "contactFormYourRequest",
-            "placeholder": "Your request*"
+            "label": "Request*",
+            "id": "contactFormRequest",
+            "placeholder": "Request*"
             })
             @@include("includes/tpl/_tpl_forms_valid.html")
 

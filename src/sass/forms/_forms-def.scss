@@ -16,6 +16,12 @@ label {
   user-select: none;
   -webkit-tap-highlight-color: transparent !important;
 
+  // ------ mob -----------------------------------------
+  @include media($form-media--mob) {
+    font-size: $font-size--mob;
+    line-height: $line-height--mob;
+  }
+
   mark {
     background: none;
     color: $error-color;

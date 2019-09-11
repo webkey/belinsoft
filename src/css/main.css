@@ -1461,6 +1461,13 @@ label {
   -webkit-tap-highlight-color: transparent !important;
 }
 
+@media (max-width: 639px) {
+  label {
+    font-size: 1.8rem;
+    line-height: 2.8rem;
+  }
+}
+
 label mark {
   background: none;
   color: #dc3545;
@@ -1486,11 +1493,11 @@ label mark {
 @media (max-width: 639px) {
   .form-def {
     height: 4.2rem;
-    padding: 1.1rem 1.4rem 1.1rem 1.4rem;
+    padding: 1rem 1.4rem 1rem 1.4rem;
     border-radius: 5px;
     border-width: 1px;
-    font-size: 1.4rem;
-    line-height: 1.8rem;
+    font-size: 1.6rem;
+    line-height: 2rem;
     margin: 0 0 2.5rem;
   }
 }
@@ -1511,8 +1518,8 @@ textarea.form-def {
 
 @media (max-width: 639px) {
   textarea.form-def {
-    min-height: 7.2rem;
-    height: 7.2rem;
+    min-height: 8rem;
+    height: 8rem;
   }
 }
 
@@ -1521,7 +1528,7 @@ select.form-def {
   position: relative;
   height: 4.8rem;
   width: 100%;
-  padding: 1.1rem 4rem 1.1rem 1.4rem;
+  padding: 1.1rem 4rem 1.1rem 1.8rem;
   background: rgba(35, 35, 35, 0.7);
   border: 1px solid transparent;
   border-radius: 5px;
@@ -1545,10 +1552,10 @@ select.form-def {
 @media (max-width: 639px) {
   select.form-def {
     height: 4.2rem;
-    padding: 1.1rem 4rem 1.1rem 1rem;
+    padding: 1rem 4rem 1rem 1.4rem;
     border: 1px solid transparent;
-    font-size: 1.4rem;
-    line-height: 1.8rem;
+    font-size: 1.6rem;
+    line-height: 2rem;
   }
 }
 
@@ -1966,7 +1973,7 @@ select.form-def.has-arrow + .select-arrow {
   position: relative;
   height: 4.8rem;
   width: 100%;
-  padding: 1.1rem 4rem 1.1rem 1.4rem;
+  padding: 1.1rem 4rem 1.1rem 1.8rem;
   background: rgba(35, 35, 35, 0.7);
   border: 1px solid transparent;
   border-radius: 5px;
@@ -1982,16 +1989,16 @@ select.form-def.has-arrow + .select-arrow {
   font-size: 1.6rem;
   line-height: 2.4rem;
   color: #c5c5c5;
-  transition: border 0.35s;
+  transition: border 0.35s, background-color 0.35s;
 }
 
 @media (max-width: 639px) {
   .select2-container--custom .select2-selection {
     height: 4.2rem;
-    padding: 1.1rem 4rem 1.1rem 1rem;
+    padding: 1rem 4rem 1rem 1.4rem;
     border: 1px solid transparent;
-    font-size: 1.4rem;
-    line-height: 1.8rem;
+    font-size: 1.6rem;
+    line-height: 2rem;
   }
 }
 
@@ -2074,7 +2081,7 @@ select.form-def.has-arrow + .select-arrow {
 @media (max-width: 639px) {
   .select2-container--custom .select2-selection--multiple {
     min-height: 4.2rem;
-    padding: 0.7rem 1rem 0.7rem;
+    padding: 0.6rem 1rem 0.6rem;
   }
 }
 
@@ -2087,6 +2094,11 @@ select.form-def.has-arrow + .select-arrow {
 
 .select2-container--custom .select2-selection--multiple .select2-selection__rendered li {
   list-style: none;
+  padding-left: 0;
+}
+
+.select2-container--custom .select2-selection--multiple .select2-selection__rendered li::before {
+  content: none;
 }
 
 .select2-container--custom .select2-selection--multiple .select2-selection__placeholder {
@@ -2138,6 +2150,7 @@ select.form-def.has-arrow + .select-arrow {
   font-family: inherit;
   font-size: inherit;
   line-height: inherit;
+  color: #c5c5c5;
   padding: 0;
   background: transparent;
   border: none;
@@ -2244,7 +2257,7 @@ select.form-def.has-arrow + .select-arrow {
   overflow: hidden;
   border: 1px solid transparent;
   border-radius: 5px;
-  background-color: rgba(35, 35, 35, 0.7);
+  background-color: #232323;
   z-index: 5;
 }
 
@@ -2274,6 +2287,19 @@ select.form-def.has-arrow + .select-arrow {
 .select2-container--custom .select2-search--dropdown .select2-search__field {
   padding: 0.5rem;
   border: 1px solid transparent;
+  background-color: #3d3d3d;
+  font-family: inherit;
+  color: #c5c5c5;
+  font-size: 1.6rem;
+  line-height: 1.4;
+  border-radius: 3px;
+}
+
+@media (max-width: 639px) {
+  .select2-container--custom .select2-search--dropdown .select2-search__field {
+    font-size: 1.6rem;
+    border-radius: 2px;
+  }
 }
 
 .select2-container--custom .select2-search--dropdown .select2-search__field:focus {
@@ -2291,8 +2317,8 @@ select.form-def.has-arrow + .select-arrow {
 
 @media (max-width: 639px) {
   .select2-container--custom .select2-results > .select2-results__options {
-    font-size: 1.4rem;
-    line-height: 1.8rem;
+    font-size: 1.6rem;
+    line-height: 2rem;
   }
 }
 
@@ -2316,7 +2342,7 @@ select.form-def.has-arrow + .select-arrow {
 }
 
 .select2-container--custom .select2-results__option[aria-selected=true] {
-  background-color: #ddd;
+  background-color: rgba(61, 61, 61, 0.7);
 }
 
 .select2-container--custom .select2-results__option--highlighted[aria-selected] {
@@ -3700,12 +3726,7 @@ html.no-js
   height: 100%;
   width: 100%;
   z-index: -1;
-}
-
-@media (max-width: 991px) {
-  .wbg {
-    opacity: 0.5;
-  }
+  opacity: 0.5;
 }
 
 .wbg__list {
@@ -4790,6 +4811,7 @@ html.no-js
   position: absolute;
   left: 386px;
   top: 151px;
+  color: white;
 }
 
 .weather-icon svg {
@@ -4807,6 +4829,7 @@ html.no-js
   top: 168px;
   font-size: 1.7rem;
   line-height: 2.5rem;
+  color: white;
 }
 
 .weather-city {
@@ -4887,6 +4910,7 @@ html.no-js
   font-size: 2rem;
   line-height: 2.4rem;
   margin-bottom: 1rem;
+  color: white;
 }
 
 .ws-el__title:last-child {
@@ -5034,7 +5058,6 @@ html.no-js
   height: calc(32.9rem + 4rem * 2);
   width: calc(36rem + 4rem * 2);
   margin-top: -25rem;
-  color: white;
   z-index: 25;
   transition: transform 0.35s;
 }
@@ -7083,7 +7106,6 @@ html.no-js
   padding: 2.8rem 3rem;
   margin-left: -3rem;
   border-radius: 5px;
-  background-color: rgba(13, 13, 13, 0.9);
 }
 
 @media (max-width: 991px) {
@@ -7107,8 +7129,8 @@ html.no-js
 
 @media (max-width: 639px) {
   .contacts-form textarea {
-    min-height: 13.2rem;
-    height: 13.2rem;
+    min-height: 14rem;
+    height: 14rem;
   }
 }
 
