@@ -99,6 +99,11 @@ body {
   @include push-auto;
 }
 
+// Ограничение ширины форм
+.layout-form {
+  max-width: $layout-form-width;
+}
+
 // Прижать футер к низу страницы
 // На html, body необходимо задать высоту 100% (Задано в reset.sass)
 body {

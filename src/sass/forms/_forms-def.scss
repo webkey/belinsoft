@@ -215,4 +215,44 @@ label {
       color: $form-text-color--disabled !important;
     }
   }
+
+  // ====================================================
+  // FILE INPUT
+  // ====================================================
+
+  &.input-file {
+    overflow: hidden;
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    width: auto;
+    padding: 0;
+    height: auto;
+    font-size: inherit;
+    line-height: inherit;
+    color: white;
+    border-top: none;
+    border-bottom: 2px dashed currentColor;
+    background: none;
+    border-radius: 0;
+    cursor: pointer;
+    transition: color $animation-speed;
+
+    // Hide input
+    input {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 0;
+      opacity: 0;
+      cursor: pointer;
+      z-index: 2;
+    }
+
+    // Hover
+    .no-touchevents &:hover {
+      color: $highlight-color;
+    }
+  }
 }

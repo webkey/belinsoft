@@ -151,7 +151,7 @@
   top: 0;
   width: 100%;
   min-width: $layout-page-min-width;
-  z-index: 25;
+  z-index: 50;
 
   &::before {
     content: "";
@@ -426,7 +426,8 @@
 
 /* search end */
 
-/* call */
+/* contact popup */
+// Contact opener
 .h-call {
   position: relative;
   display: inline-block;
@@ -444,7 +445,193 @@
   margin-left: 1.6rem;
 }
 
-/* call end */
+// Social
+
+
+/* social */
+.contact-popup__social {
+  margin: 0 0 3rem;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.contact-popup__social-list {
+  margin: 0 -0.6rem -0.6rem;
+  cursor: default;
+}
+
+.contact-popup__social-item {
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  $size: 2rem;
+  height: $size;
+  width: $size;
+  margin: 0 0.6rem 0.6rem;
+  font-size: 1.4rem;
+  line-height: 1.8rem;
+  text-align: left;
+  color: $highlight-color;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color $animation-speed;
+
+  .no-touchevents &:hover {
+    color: $text-color-muted;
+  }
+
+  & > span {
+    @include hide-text;
+  }
+
+  svg {
+    $size: 2rem;
+    $int: round-float($size / 2, 1);
+    display: inline-block;
+    vertical-align: top;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: $size;
+    width: $size;
+    margin: -#{$int} 0 0 -#{$int};
+  }
+
+  path {
+    fill: currentColor;
+  }
+}
+
+/* social end */
+
+// Contact popup
+.contact-popup {
+  position: absolute;
+  right: 0;
+  top: 100%;
+  padding: 2rem 0 0;
+  width: 56rem;
+  cursor: default;
+  // transition
+  $prop: transform, opacity, visibility;
+  will-change: $prop;
+  transition: {
+    property: $prop;
+    duration: $animation-speed;
+    timing-function: ease-in-out;
+  }
+  // Hide
+  opacity: 0;
+  visibility: hidden;
+  $translate: 0, 2rem;
+  transform: translate($translate);
+  transform: translate3d($translate, 0);
+
+  &.is-open {
+    opacity: 1;
+    visibility: visible;
+    $translate: 0, 0;
+    transform: translate($translate);
+    transform: translate3d($translate, 0);
+  }
+
+  @include media('<mob') {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    padding: 2rem #{nth($layout-page-space--mob, 2)};
+    z-index: 50;
+  }
+}
+
+.contact-popup__holder {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  padding: 1.4rem;
+  background-color: $bg-color-alt;
+  box-shadow: 0 2px 33px rgba(0, 0, 0, 0.5);
+  border-radius: 1.2rem;
+
+  @include media('<mob-s') {
+    display: block;
+  }
+}
+
+.contact-popup__box {
+  $width: 50%;
+  flex: 0 1 $width;
+  max-width: $width;
+  padding: 1rem;
+  box-sizing: border-box;
+
+  @include media('<mob-s') {
+    max-width: none;
+  }
+}
+
+.contact-popup__list {
+  font-size: 1.6rem;
+  line-height: 2.0rem;
+  color: white;
+}
+
+.contact-popup__list-item  {
+  margin-bottom: 0.5rem;
+
+  a[href^="tel:"] {
+    color: inherit;
+    text-decoration: none;
+    transition: color $animation-speed;
+
+    .no-touchevents &:hover {
+      color: $highlight-color;
+    }
+  }
+}
+
+.contact-popup__note {
+  color: $text-color-light;
+  font-size: 1.4rem;
+  line-height: 1.8rem;
+}
+
+.contact-popup-close {
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  display: block;
+  $size: 2rem;
+  height: $size;
+  width: $size;
+  cursor: pointer;
+  overflow: hidden;
+  text-indent: -9999px;
+
+  &::before {
+    content: "";
+    display: block;
+    $size: 1.4rem;
+    height: $size;
+    width: $size;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSIjZmZmIj48cGF0aCBkPSJNMjMuOTU0IDIxLjAzbC05LjE4NC05LjA5NSA5LjA5Mi05LjE3NC0yLjgzMi0yLjgwNy05LjA5IDkuMTc5LTkuMTc2LTkuMDg4LTIuODEgMi44MSA5LjE4NiA5LjEwNS05LjA5NSA5LjE4NCAyLjgxIDIuODEgOS4xMTItOS4xOTIgOS4xOCA5LjF6Ii8+PC9zdmc+);
+    background-size: contain;
+  }
+}
+
+/* contact popup end */
 
 /* ==================================== */
 /* ============ NAVIGATION ============ */
@@ -650,6 +837,16 @@
     padding: 0;
     font-size: 1.4rem;
     line-height: 1.8rem;
+
+    @include media('<net') {
+      font-size: 1.3rem;
+      line-height: 1.7rem;
+    }
+
+    @include media('<tab') {
+      font-size: 1.4rem;
+      line-height: 1.8rem;
+    }
   }
 
   // ------ бутерброд -----------------------------------------
@@ -1005,6 +1202,10 @@
 
     @include media('<desk-s') {
       margin-right: 2rem;
+    }
+
+    @include media('<net') {
+      margin-right: 1.5rem;
     }
 
     // ------ бутерброд -----------------------------------------

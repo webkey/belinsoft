@@ -545,6 +545,10 @@ body {
   margin-right: auto;
 }
 
+.layout-form {
+  max-width: 60rem;
+}
+
 body {
   display: -ms-flexbox;
   display: flex;
@@ -1708,6 +1712,40 @@ select.form-def.has-arrow + .select-arrow {
   color: rgba(206, 212, 218, 0.1) !important;
 }
 
+.form-def.input-file {
+  overflow: hidden;
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  width: auto;
+  padding: 0;
+  height: auto;
+  font-size: inherit;
+  line-height: inherit;
+  color: white;
+  border-top: none;
+  border-bottom: 2px dashed currentColor;
+  background: none;
+  border-radius: 0;
+  cursor: pointer;
+  transition: color 0.35s;
+}
+
+.form-def.input-file input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.no-touchevents .form-def.input-file:hover {
+  color: #1e917c;
+}
+
 .form-unit {
   position: relative;
   margin-bottom: 3rem;
@@ -2672,7 +2710,7 @@ form .error + .select-arrow + .success-feedback + .error-feedback {
   top: 0;
   width: 100%;
   min-width: 32rem;
-  z-index: 25;
+  z-index: 50;
 }
 
 .header::before {
@@ -2952,7 +2990,7 @@ form .error + .select-arrow + .success-feedback + .error-feedback {
 }
 
 /* search end */
-/* call */
+/* contact popup */
 .h-call {
   position: relative;
   display: inline-block;
@@ -2968,7 +3006,205 @@ form .error + .select-arrow + .success-feedback + .error-feedback {
   margin-left: 1.6rem;
 }
 
-/* call end */
+/* social */
+.contact-popup__social {
+  margin: 0 0 3rem;
+}
+
+.contact-popup__social:last-child {
+  margin-bottom: 0;
+}
+
+.contact-popup__social-list {
+  margin: 0 -0.6rem -0.6rem;
+  cursor: default;
+}
+
+.contact-popup__social-item {
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  height: 2rem;
+  width: 2rem;
+  margin: 0 0.6rem 0.6rem;
+  font-size: 1.4rem;
+  line-height: 1.8rem;
+  text-align: left;
+  color: #1e917c;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.35s;
+}
+
+.no-touchevents .contact-popup__social-item:hover {
+  color: #c5c5c5;
+}
+
+.contact-popup__social-item > span {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+.contact-popup__social-item > span:active, .contact-popup__social-item > span:focus {
+  clip: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  position: static;
+  width: auto;
+}
+
+.contact-popup__social-item svg {
+  display: inline-block;
+  vertical-align: top;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 2rem;
+  width: 2rem;
+  margin: -1rem 0 0 -1rem;
+}
+
+.contact-popup__social-item path {
+  fill: currentColor;
+}
+
+/* social end */
+.contact-popup {
+  position: absolute;
+  right: 0;
+  top: 100%;
+  padding: 2rem 0 0;
+  width: 56rem;
+  cursor: default;
+  will-change: transform, opacity, visibility;
+  transition-property: transform, opacity, visibility;
+  transition-duration: 0.35s;
+  transition-timing-function: ease-in-out;
+  opacity: 0;
+  visibility: hidden;
+  -ms-transform: translate(0, 2rem);
+      transform: translate(0, 2rem);
+  transform: translate3d(0, 2rem, 0);
+}
+
+.contact-popup.is-open {
+  opacity: 1;
+  visibility: visible;
+  -ms-transform: translate(0, 0);
+      transform: translate(0, 0);
+  transform: translate3d(0, 0, 0);
+}
+
+@media (max-width: 639px) {
+  .contact-popup {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    padding: 2rem 1.5rem;
+    z-index: 50;
+  }
+}
+
+.contact-popup__holder {
+  position: relative;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: start;
+      align-items: flex-start;
+  -ms-flex-pack: start;
+      justify-content: flex-start;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  padding: 1.4rem;
+  background-color: #232323;
+  box-shadow: 0 2px 33px rgba(0, 0, 0, 0.5);
+  border-radius: 1.2rem;
+}
+
+@media (max-width: 479px) {
+  .contact-popup__holder {
+    display: block;
+  }
+}
+
+.contact-popup__box {
+  -ms-flex: 0 1 50%;
+      flex: 0 1 50%;
+  max-width: 50%;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+@media (max-width: 479px) {
+  .contact-popup__box {
+    max-width: none;
+  }
+}
+
+.contact-popup__list {
+  font-size: 1.6rem;
+  line-height: 2.0rem;
+  color: white;
+}
+
+.contact-popup__list-item {
+  margin-bottom: 0.5rem;
+}
+
+.contact-popup__list-item a[href^="tel:"] {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.35s;
+}
+
+.no-touchevents .contact-popup__list-item a[href^="tel:"]:hover {
+  color: #1e917c;
+}
+
+.contact-popup__note {
+  color: #9d9d9d;
+  font-size: 1.4rem;
+  line-height: 1.8rem;
+}
+
+.contact-popup-close {
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  display: block;
+  height: 2rem;
+  width: 2rem;
+  cursor: pointer;
+  overflow: hidden;
+  text-indent: -9999px;
+}
+
+.contact-popup-close::before {
+  content: "";
+  display: block;
+  height: 1.4rem;
+  width: 1.4rem;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -ms-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSIjZmZmIj48cGF0aCBkPSJNMjMuOTU0IDIxLjAzbC05LjE4NC05LjA5NSA5LjA5Mi05LjE3NC0yLjgzMi0yLjgwNy05LjA5IDkuMTc5LTkuMTc2LTkuMDg4LTIuODEgMi44MSA5LjE4NiA5LjEwNS05LjA5NSA5LjE4NCAyLjgxIDIuODEgOS4xMTItOS4xOTIgOS4xOCA5LjF6Ii8+PC9zdmc+);
+  background-size: contain;
+}
+
+/* contact popup end */
 /* ==================================== */
 /* ============ NAVIGATION ============ */
 /* ==================================== */
@@ -3164,6 +3400,20 @@ form .error + .select-arrow + .success-feedback + .error-feedback {
   padding: 0;
   font-size: 1.4rem;
   line-height: 1.8rem;
+}
+
+@media (max-width: 1199px) {
+  .nav__list, .nav__list ul {
+    font-size: 1.3rem;
+    line-height: 1.7rem;
+  }
+}
+
+@media (max-width: 991px) {
+  .nav__list, .nav__list ul {
+    font-size: 1.4rem;
+    line-height: 1.8rem;
+  }
 }
 
 @media (max-width: 991px) {
@@ -3498,6 +3748,12 @@ html.no-js
 @media (max-width: 1599px) {
   .nav__list > li {
     margin-right: 2rem;
+  }
+}
+
+@media (max-width: 1199px) {
+  .nav__list > li {
+    margin-right: 1.5rem;
   }
 }
 
