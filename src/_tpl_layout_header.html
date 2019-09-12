@@ -19,6 +19,9 @@
           </div>
           <nav class="nav">
             <ul class="nav__list nav-js">
+              @@if(context.currentItem == 'Home'){<li class="current"><span>Home</span></li>}
+              @@if(context.currentItem != 'Home'){<li><a href="index.html">Home</a></li>}
+
               @@if(context.currentItem == 'About Us'){<li class="current"><span>About Us</span></li>}
               @@if(context.currentItem != 'About Us'){<li><a href="inner.html">About Us</a></li>}
 

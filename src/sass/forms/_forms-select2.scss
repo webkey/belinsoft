@@ -129,13 +129,13 @@
     // Внутренние отступы поля выбора отличаются от single-селекта
     // По вертикали отступы должны быть меньше на расстояние между
     // активными опшинами мультиселекта + размер их бордера
-    padding: #{$select-space-vt - 0.4} $select-space-h #{$select-space-vb - 0.4};
+    padding: #{$select-space-vt - 0.4} #{$select-space-h + 2} #{$select-space-vb - 0.4} #{$select-space-h};
     cursor: text;
 
     // ------ mob -----------------------------------------
     @include media($form-media--mob) {
       min-height: $select-height--mob;
-      padding: #{$select-space-vt--mob - 0.4} $select-space-h--mob #{$select-space-vb--mob - 0.4};
+      padding: #{$select-space-vt--mob - 0.4} #{$select-space-h--mob + 1.5} #{$select-space-vb--mob - 0.4} #{$select-space-h--mob};
     }
 
     .select2-selection__rendered {
@@ -162,16 +162,27 @@
     // Clear button
     .select2-selection__clear {
       cursor: pointer;
-      float: right;
+      //float: right;
+      position: absolute;
+      right: 1.5rem;
+      top: 50%;
       font-weight: normal;
-      margin-top: 0.3rem;
+      $size: 2.4rem;
+      font-size: $size;
+      line-height: $size;
+      margin-top: -#{round-float($size / 2, 1)};
+
+      // ------ mob -----------------------------------------
+      @include media($form-media--mob) {
+        right: 1.2rem;
+      }
     }
 
     // Активные опшины
     .select2-selection__choice {
       float: left;
       padding: 0 0.5rem;
-      background-color: #e4e4e4;
+      background-color: lighten($bg-color-alt, 10%);
       border: 1px solid $select-border-color;
       border-radius: $select-border-radius;
       cursor: default;
@@ -233,9 +244,10 @@
       margin-right: 2px;
       color: #999;
       font-weight: normal; // Перебить стили
+      transition: color $animation-speed;
 
       &:hover {
-        color: #333;
+        color: white;
       }
     }
   }
@@ -411,7 +423,9 @@
 
   // Опшин
   .select2-results__option {
-    padding: 0.5rem $select-space-h;
+    position: relative;
+    padding: 0.5rem #{$select-space-h};
+    transition: background-color $animation-speed, color $animation-speed;
 
     // ------ mob -----------------------------------------
     @include media($form-media--mob) {
@@ -436,6 +450,69 @@
     .select2-results__option {
       // Группы опшинов
       // См. src/libs/select2/src/scss/theme/default/layout.scss
+    }
+  }
+
+  // Опшин мультиселекта (с чекбоксами)
+  .cselect-drop-multiple {
+    .select2-results__option {
+      position: relative;
+      padding: 0.5rem #{$select-space-h} 0.5rem #{$select-space-h + 2.5};
+
+      // ------ mob -----------------------------------------
+      @include media($form-media--mob) {
+        padding: 0.5rem $select-space-h--mob 0.5rem #{$select-space-h--mob + 2.5};;
+      }
+
+      &::before, &::after {
+        content: "";
+        display: block;
+        position: absolute;
+        will-change: opacity, border-color;
+        transition: border-color ease-in-out 0.2s;
+      }
+
+      &::before {
+        left: 10px;
+        top: 50%;
+        border: 1px solid #c5c5c5;
+        width: 18px;
+        height: 18px;
+        margin: -9px 0;
+        border-radius: 3px;
+      }
+
+      &::after {
+        opacity: 0;
+        left: 10px;
+        top: 50%;
+        height: 6px;
+        width: 10px;
+        margin: -4px 4px;
+        border: solid #c5c5c5;
+        border-width: 0 0 2px 2px;
+        transform: rotate(-30deg) scale(1.1, 1.1);
+        transform: rotate(-30deg) scale3d(1.1, 1.1, 1);
+        will-change: transform, opacity;
+        transition: transform cubic-bezier(0.45, -1.1, 0.45, 2.1) 0.22s, opacity ease-in-out 0.2s;
+      }
+
+      // Disabled
+      &[aria-disabled=true] {
+        background-color: $form-bg-color--disabled;
+        color: $form-text-color--disabled;
+      }
+
+      // Active
+      &[aria-selected=true] {
+        background-color: lighten($form-def-bg-color, 10%);
+
+        &::after {
+          opacity: 1;
+          transform: rotate(-45deg) scale(1, 1);
+          transform: rotate(-45deg) scale3d(1, 1, 1);
+        }
+      }
     }
   }
 
