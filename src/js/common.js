@@ -1509,7 +1509,7 @@ function slidersInit() {
         spaceBetween: 20,
         slidesPerView: 4,
         slidesPerGroup: 4,
-        loop: true,
+        // loop: true,
         watchSlidesVisibility: true,
         pagination: {
           el: $pagination,
