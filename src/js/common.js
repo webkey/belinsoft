@@ -2218,5 +2218,5 @@ $(document).ready(function () {
   toggleWidget();
   map();
   createUploadFileList();
-  subscribeForm();
+  // subscribeForm();
 });

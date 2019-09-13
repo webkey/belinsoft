@@ -1135,7 +1135,7 @@
   // li ПЕРВОГО уровня
   & > li {
     margin-right: 4rem;
-    @include font-bold;;
+    //@include font-bold;
     letter-spacing: 0.15em;
     text-transform: uppercase;
 
@@ -2468,7 +2468,8 @@
 // States
 .partners-el {
   .no-touchevents &:hover {
-    background-color: rgba($highlight-color, 0.3);
+    //background-color: rgba($highlight-color, 0.3);
+    background-color: $highlight-color;
     box-shadow: 0 0 0 1px rgba($highlight-color, 0.3);
 
     .partners-el__figure {
@@ -3284,7 +3285,7 @@ $i-widget-space: 4rem;
   line-height: 1.6rem;
   letter-spacing: 0.13em;
   color: $text-color-muted;
-  margin-bottom: 2rem;
+  margin-bottom: 1.3rem;
 
   @include media('<lap-l') {
     margin-bottom: 1.2rem;
@@ -3374,101 +3375,6 @@ $i-widget-space: 4rem;
 
 /* multi news element end */
 
-/* m-news main element */
-.m-news_main {
-  h3, .h3 {
-    &::before {
-      height: 5.7rem;
-    }
-  }
-
-  .m-news-el {
-    display: block;
-    padding: 0;
-
-    &::before {
-      content: none;
-    }
-  }
-
-  .m-news-el__figure {
-    position: relative;
-    margin: 0 -4.5rem -5.5rem;
-    max-width: none;
-    transform-origin: bottom center;
-
-    @include media('<desk-s') {
-      $intend: -3rem;
-      margin-left: $intend;
-      margin-right: $intend;
-    }
-
-    @include media('<lap-l') {
-      $intend: -1.5rem;
-      margin-left: $intend;
-      margin-right: $intend;
-      margin-bottom: -9.2rem;
-    }
-
-    &::before, &::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      width: 100%;
-      z-index: 2;
-    }
-
-    &::before {
-      height: 78%;
-      top: 0;
-
-      @include linear-gradient(to bottom, rgba(19, 19, 19, 0.8) 0%, rgba(0, 0, 0, 0) 81%);
-    }
-
-    &::after {
-      height: 66%;
-      bottom: 0;
-
-      @include linear-gradient(to top, rgba(19, 19, 19, 0.8) 0%, rgba(0, 0, 0, 0) 81%);
-    }
-
-    img {
-      width: 100%;
-    }
-  }
-
-  .m-news-el__content {
-    position: relative;
-    z-index: 5;
-  }
-
-  .m-news-el__title {
-    font-size: $font-size-h2;
-    line-height: $line-height-h2;
-    min-height: $line-height-h2;
-
-    @include media('<lap') {
-      font-size: $font-size-h2--lap;
-      line-height: $line-height-h2--lap;
-      min-height: $line-height-h2--lap * 2;
-    }
-  }
-
-  .m-news-el {
-    // Hover
-    .no-touchevents &:hover {
-      .m-news-el__figure {
-        $translate: 0, 0;
-        $scale: 1.05, 1.05;
-        transform: translate($translate) scale($scale);
-        transform: translate3d($translate, 0) scale3d($scale, 1);
-      }
-    }
-  }
-}
-
-/* m-news main element end */
-
 /* multi news */
 $m-news-space: 4rem;
 $m-news-space--net: 2rem;
@@ -3557,6 +3463,101 @@ $m-news-space--net: 2rem;
 
 /* multi news end */
 
+/* m-news main element */
+.m-news_main {
+  h3, .h3 {
+    &::before {
+      height: 5rem;
+    }
+  }
+
+  .m-news-el {
+    display: block;
+    padding: 0;
+
+    &::before {
+      content: none;
+    }
+  }
+
+  .m-news-el__figure {
+    position: relative;
+    margin: 0 -4.5rem -5rem;
+    max-width: none;
+    transform-origin: bottom center;
+
+    @include media('<desk-s') {
+      $intend: -3rem;
+      margin-left: $intend;
+      margin-right: $intend;
+    }
+
+    @include media('<lap-l') {
+      $intend: -1.5rem;
+      margin-left: $intend;
+      margin-right: $intend;
+      margin-bottom: -9.2rem;
+    }
+
+    &::before, &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      width: 100%;
+      z-index: 2;
+    }
+
+    &::before {
+      height: 78%;
+      top: 0;
+
+      @include linear-gradient(to bottom, rgba(19, 19, 19, 0.8) 0%, rgba(0, 0, 0, 0) 81%);
+    }
+
+    &::after {
+      height: 66%;
+      bottom: 0;
+
+      @include linear-gradient(to top, rgba(19, 19, 19, 0.8) 0%, rgba(0, 0, 0, 0) 81%);
+    }
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .m-news-el__content {
+    position: relative;
+    z-index: 5;
+  }
+
+  .m-news-el__title {
+    font-size: $font-size-h2;
+    line-height: $line-height-h2;
+    min-height: $line-height-h2;
+
+    @include media('<lap') {
+      font-size: $font-size-h2--lap;
+      line-height: $line-height-h2--lap;
+      min-height: $line-height-h2--lap * 2;
+    }
+  }
+
+  .m-news-el {
+    // Hover
+    .no-touchevents &:hover {
+      .m-news-el__figure {
+        $translate: 0, 0;
+        $scale: 1.05, 1.05;
+        transform: translate($translate) scale($scale);
+        transform: translate3d($translate, 0) scale3d($scale, 1);
+      }
+    }
+  }
+}
+
+/* m-news main element end */
+
 /* multi news list */
 .m-news-list {
   margin-bottom: 3.8rem;
@@ -3626,7 +3627,7 @@ $m-news-space--net: 2rem;
 .m-news-section__align {
   position: relative;
   z-index: 15;
-  width: 140rem;
+  width: 130rem;
   max-width: calc(100% - 32rem);
 
   @include media('<tab') {
@@ -3741,7 +3742,7 @@ $m-news-space--net: 2rem;
 }
 
 .news-el__text {
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   line-height: 2.4rem;
   color: $text-color-muted;
 
@@ -4185,7 +4186,7 @@ $m-news-space--net: 2rem;
 .media-section__align {
   position: relative;
   z-index: 15;
-  width: 140rem;
+  width: 130rem;
   max-width: calc(100% - 32rem);
 
   @include media('<tab') {

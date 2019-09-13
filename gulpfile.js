@@ -162,7 +162,7 @@ gulp.task('copyLibsScriptsToJs', ['copyJqueryToJs'], function () {
     'src/libs/jquery-smartresize/jquery.debouncedresize.js' // "умный" ресайз
     , 'src/libs/jquery-placeholder/jquery.placeholder.min.js' // поддержка плейсхолдера в старых браузерах
     , 'src/libs/jquery-form/dist/jquery.form.min.js' // ajax обработка форм
-    // , 'src/libs/jquery-validation/dist/jquery.validate.min.js' // валидация форм
+    , 'src/libs/jquery-validation/dist/jquery.validate.min.js' // валидация форм
     , 'src/libs/select2/dist/js/select2.full.min.js'
     , 'src/libs/select2/dist/js/i18n/ru.js'
     , 'node_modules/object-fit-images/dist/ofi.min.js'
