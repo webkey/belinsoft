@@ -1,4 +1,8 @@
 @import "../utils/mixins";
+// =============================================================================
+// Google Fonts
+// =============================================================================
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab:400,700|Roboto:400,400i,700,700i&subset=cyrillic');
 
 // =============================================================================
 // Font Face
@@ -7,5 +11,5 @@
 @include font-face("circe-bold", "../fonts/Circe-Bold", normal, normal, ttf);
 @include font-face("circe-extra-bold", "../fonts/Circe-ExtraBold", normal, normal, ttf);
 
-@include font-face("gilroy-bold-italic", "../fonts/gilroy/bold-italic/gilroy-bolditalic", normal, normal, ttf eot svg woff woff2);
-@include font-face("gilroy-italic", "../fonts/gilroy/italic/gilroy-regularitalic", normal, normal, ttf eot svg woff woff2);
+//@include font-face("gilroy-bold-italic", "../fonts/gilroy/bold-italic/gilroy-bolditalic", normal, normal, ttf eot svg woff woff2);
+//@include font-face("gilroy-italic", "../fonts/gilroy/italic/gilroy-regularitalic", normal, normal, ttf eot svg woff woff2);

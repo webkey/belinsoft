@@ -22,39 +22,35 @@ $breakpoints: (
 
 // Fonts style
 // ====================================================
-$font-norm: "circe-regular", Helvetica, Arial, sans-serif !default
-$font-bold: "circe-bold", Helvetica, Arial, sans-serif !default
-$font-extra-bold: "circe-extra-bold", Helvetica, Arial, sans-serif !default
-$font-bold-italic: "gilroy-bold-italic", Helvetica, Arial, sans-serif !default
-$font-italic: "gilroy-italic", Helvetica, Arial, sans-serif !default
-$font-alt: Georgia, serif !default;
+$font-norm: "Roboto", Helvetica, Arial, sans-serif !default;
+$font-bold: "Roboto", Helvetica, Arial, sans-serif !default;
+$font-bold-italic: "Roboto", Helvetica, Arial, sans-serif !default;
+$font-italic: "Roboto", Helvetica, Arial, sans-serif !default;
+
+$font-alt: "circe-regular", Helvetica, Arial, sans-serif !default;
+$font-alt-bold: "circe-bold", Helvetica, Arial, sans-serif !default;
+$font-alt-extra-bold: "circe-extra-bold", Helvetica, Arial, sans-serif !default;
 
 // Main font
 // ----------------------------------------------------
 @mixin font-normal {
   font-family: $font-norm;
-  //+font-reset
 }
 
 @mixin font-bold {
-  font-family: $font-bold;
-  font-weight: normal;
-}
-
-@mixin font-extra-bold {
-  font-family: $font-extra-bold;
-  font-weight: normal;
+  //font-family: $font-bold;
+  font-weight: 700;
 }
 
 @mixin font-italic {
-  font-family: $font-italic;
-  font-style: normal;
+  //font-family: $font-italic;
+  font-style: italic;
 }
 
 @mixin font-bold-italic {
-  font-family: $font-bold-italic;
-  font-weight: normal;
-  font-style: normal;
+  //font-family: $font-bold-italic;
+  font-weight: 700;
+  font-style: italic;
 }
 
 // Alternative font
@@ -64,14 +60,13 @@ $font-alt: Georgia, serif !default;
 }
 
 @mixin font-alt-bold {
-  font-family: $font-alt;
+  font-family: $font-alt-bold;
   font-weight: bold;
 }
 
-@mixin font-alt-bold-italic {
-  font-family: $font-alt;
-  font-weight: bold;
-  font-style: italic;
+@mixin font-alt-extra-bold {
+  font-family: $font-alt-extra-bold;
+  font-weight: normal;
 }
 
 

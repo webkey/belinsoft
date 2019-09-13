@@ -901,40 +901,6 @@
       $width: calc(100% - #{$nav-arrow-size});
       max-width: $width;
     }
-
-    &::before {
-      content: "";
-      display: block;
-      position: absolute;
-      bottom: 0;
-      left: 4px;
-      width: calc(100% - 8px);
-      height: 2px;
-      border-radius: 50%;
-      background-color: currentColor;
-      box-shadow: 0 0 3px currentColor;
-
-      transform-origin: 100% 100%;
-      $scale: 0, 1;
-      transform: scale($scale);
-      transform: scale3d($scale, 1);
-
-      // transition
-      backface-visibility: hidden;
-      $prop: transform, opacity;
-      will-change: $prop;
-      transition: {
-        property: $prop;
-        duration: $animation-speed;
-        //timing-function: ease-in-out;
-        timing-function: cubic-bezier(0.65, 0.05, 0.36, 1);
-      }
-
-      // ------ бутерброд -----------------------------------------
-      @include media("<tab") {
-        content: none;
-      }
-    }
   }
 
   // Пункты, в которых есть подменю
@@ -1029,6 +995,39 @@
         margin-top: 0;
       }
     }
+
+    a {
+      display: block;
+      transition: color $animation-speed;
+    }
+
+    // Hover
+    li {
+      // Класс .hover добавляется скриптом
+      &.hover,
+      .no-js &:hover {
+        & > a,
+        & > span {
+          color: $text-color-muted;
+        }
+      }
+    }
+
+    // Current
+    li.current {
+      & > a,
+      & > span {
+        color: $text-color-muted;
+      }
+    }
+
+    // Current Hover
+    li.current.hover {
+      & > a {
+        color: $text-color-light;
+      }
+    }
+  ;
   }
 
   // Для текущей страницы
@@ -1133,75 +1132,10 @@
     }
   }
 
-  // Пункт для текущей страницы
-  // Current
-  li {
-    &.current {
-      & > a,
-      & > span {
-        //@include font-bold;
-        position: relative;
-
-        &::after {
-          content: "";
-          position: absolute;
-          left: -1rem;
-          bottom: -0.5rem;
-          right: -1rem;
-          height: 2rem;
-          background-color: rgba($highlight-color, 0.5);
-
-          will-change: transform, opacity;
-          transition: transform $animation-speed * 1.5, opacity $animation-speed * 1.5;
-          transform-origin: 3rem center;
-
-          opacity: 0.5;
-          $scale: 0, 1;
-          transform: scale($scale);
-          transform: scale3d($scale, 1);
-
-          z-index: -1;
-
-          // ------ бутерброд -----------------------------------------
-          @include media("<tab") {
-            right: 0;
-            bottom: -0.3em;
-            height: 1em;
-            background-color: rgba(white, 0.5);
-          }
-
-          html.ready &,
-          html.no-js & {
-            opacity: 1;
-            $scale: 1, 1;
-            transform: scale($scale);
-            transform: scale3d($scale, 1);
-          }
-        }
-      }
-    }
-  }
-
-  // Hover
-  li {
-    // Класс .hover добавляется скриптом
-    &.hover,
-    .no-js &:hover {
-      & > a {
-        &::before {
-          transform-origin: 0 100%;
-
-          $scale: 1, 1;
-          transform: scale($scale);
-          transform: scale3d($scale, 1);
-        }
-      }
-    }
-  }
-
   // li ПЕРВОГО уровня
   & > li {
-    margin-right: 3rem;
+    margin-right: 4rem;
+    @include font-bold;;
     letter-spacing: 0.15em;
     text-transform: uppercase;
 
@@ -1239,7 +1173,39 @@
     // Все "a" и "span" первого уровня
     // "a" заменять на "span" в пункте текущей страницы
     & > a, & > span {
-      // no styles
+      &::before {
+        content: "";
+        display: block;
+        position: absolute;
+        bottom: 0;
+        left: 4px;
+        width: calc(100% - 8px);
+        height: 2px;
+        //border-radius: 50%;
+        background-color: currentColor;
+        //box-shadow: 0 0 3px currentColor;
+
+        transform-origin: 100% 100%;
+        $scale: 0, 1;
+        transform: scale($scale);
+        transform: scale3d($scale, 1);
+
+        // transition
+        backface-visibility: hidden;
+        $prop: transform, opacity;
+        will-change: $prop;
+        transition: {
+          property: $prop;
+          duration: $animation-speed;
+          //timing-function: ease-in-out;
+          timing-function: cubic-bezier(0.65, 0.05, 0.36, 1);
+        }
+
+        // ------ бутерброд -----------------------------------------
+        @include media("<tab") {
+          content: none;
+        }
+      }
     }
 
     // Стрелка для разворачивания подменю
@@ -1253,17 +1219,68 @@
       }
     }
 
+    // Hover
+    // Класс .hover добавляется скриптом
+    &.hover,
+    .no-js &:hover {
+      & > a {
+        &::before {
+          transform-origin: 0 100%;
+
+          $scale: 1, 1;
+          transform: scale($scale);
+          transform: scale3d($scale, 1);
+        }
+      }
+    }
+
+    // Пункт для текущей страницы
     // Current
     &.current {
-      & > a, & > span {
-        @include font-normal;
+      & > a,
+      & > span {
+        //@include font-bold;
+        position: relative;
+        z-index: 1;
         overflow: visible;
         cursor: default;
-        z-index: 1;
 
         // ------ бутерброд -----------------------------------------
         @include media("<tab") {
-          @include font-bold;
+          color: $text-color-muted;
+        }
+
+        &::after {
+          content: "";
+          position: absolute;
+          top: -21px;
+          left: 5px;
+          right: 5px;
+          height: 5px;
+          background-color: $highlight-color;
+
+          will-change: transform, opacity;
+          transition: transform $animation-speed * 1.5;
+          transform-origin: 3rem center;
+
+          $scale: 0, 1;
+          transform: scale($scale);
+          transform: scale3d($scale, 1);
+
+          z-index: -1;
+
+          html.ready &,
+          html.no-js & {
+            opacity: 1;
+            $scale: 1, 1;
+            transform: scale($scale);
+            transform: scale3d($scale, 1);
+          }
+
+          // ------ бутерброд -----------------------------------------
+          @include media("<tab") {
+            content: none;
+          }
         }
       }
     }
@@ -1278,6 +1295,7 @@
   border-top: 1px solid rgba($text-color-muted, 0.1);
   box-shadow: 0 -2px 33px rgba(0, 0, 0, 0.5);
   padding: 2rem 0;
+  @include font-alt;
   font-size: 1.4rem;
   line-height: 1.48;
   color: $text-color-muted;
@@ -1429,7 +1447,7 @@
   list-style: none;
   padding: 0;
   margin: 0;
-  @include font-bold;
+  @include font-alt-bold;
   font-size: 1.4rem;
   line-height: 1.8rem;
   letter-spacing: 0.15em;
@@ -1524,7 +1542,7 @@
   position: absolute;
   left: 0;
   top: 0;
-  @include font-extra-bold;
+  @include font-alt-extra-bold;
   font-size: calc(30vw - 170px);
   line-height: 1;
   color: #fff;
@@ -1652,7 +1670,7 @@
   position: absolute;
   left: -0.21em;
   top: -1em;
-  @include font-extra-bold;
+  @include font-alt-extra-bold;
   font-size: calc(36vw - 188px);
   line-height: 1;
   //color: #252525;
@@ -1731,7 +1749,7 @@
 
 .menu-item__preview-title {
   position: relative;
-  @include font-extra-bold;
+  @include font-alt-extra-bold;
   font-size: 1.9rem;
   line-height: 2.7rem;
   text-transform: uppercase;
@@ -1875,7 +1893,7 @@
 .menu-item__view-title {
   display: block;
   position: relative;
-  @include font-extra-bold;
+  @include font-alt-extra-bold;
   font-size: $font-size-h1;
   line-height: 1;
   color: $title-color;
@@ -1896,7 +1914,7 @@
   display: inline-block;
   vertical-align: top;
   position: relative;
-  @include font-bold;
+  @include font-alt-bold;
   font-size: 1.4rem;
   line-height: 2.0rem;
   color: $text-color-alt;
@@ -2303,7 +2321,7 @@
   }
 
   h2 {
-    @include font-extra-bold;
+    @include font-alt-extra-bold;
     font-size: $font-size-h1;
     line-height: $line-height-h1;
     color: $title-color;
@@ -2528,7 +2546,7 @@
   }
 
   h2 {
-    @include font-extra-bold;
+    @include font-alt-extra-bold;
     font-size: $font-size-h1;
     line-height: $line-height-h1;
     color: $title-color;
@@ -2753,7 +2771,7 @@ $i-widget-space: 4rem;
 }
 
 .ws-el__title {
-  @include font-bold;
+  @include font-alt-bold;
   font-size: 2rem;
   line-height: 2.4rem;
   margin-bottom: 1rem;
@@ -3282,7 +3300,7 @@ $i-widget-space: 4rem;
 }
 
 .m-news-el__title {
-  @include font-extra-bold;
+  @include font-alt-extra-bold;
   font-size: 1.6rem;
   line-height: 2.4rem;
   color: $title-color;
@@ -3497,7 +3515,7 @@ $m-news-space--net: 2rem;
 
   h3, .h3 {
     position: relative;
-    @include font-bold;
+    @include font-alt-bold;
     font-size: 1.3rem;
     line-height: 1.5rem;
     letter-spacing: 0.15em;
@@ -3585,7 +3603,7 @@ $m-news-space--net: 2rem;
   }
 
   h2 {
-    @include font-extra-bold;
+    @include font-alt-extra-bold;
     font-size: $font-size-h1;
     line-height: $line-height-h1;
     color: $title-color;
@@ -3701,7 +3719,7 @@ $m-news-space--net: 2rem;
 }
 
 .news-el__title {
-  @include font-bold;
+  @include font-alt-bold;
   font-size: 1.8rem;
   line-height: 2.4rem;
   color: $title-color;
@@ -3907,7 +3925,7 @@ $m-news-space--net: 2rem;
 }
 
 .similar-news__title {
-  @include font-extra-bold;
+  @include font-alt-extra-bold;
   position: relative;
   font-size: $font-size-h2;
   line-height: $line-height-h2;
@@ -4013,7 +4031,7 @@ $m-news-space--net: 2rem;
   position: relative;
   padding: 0 0 0 1.8em;
   margin-bottom: 2rem;
-  @include font-bold;
+  @include font-alt-bold;
   font-size: 1.4rem;
   line-height: 1.8rem;
   color: $title-color;
@@ -4144,7 +4162,7 @@ $m-news-space--net: 2rem;
   }
 
   h2 {
-    @include font-extra-bold;
+    @include font-alt-extra-bold;
     font-size: $font-size-h1;
     line-height: $line-height-h1;
     color: $title-color;
@@ -4260,7 +4278,7 @@ $m-news-space--net: 2rem;
 }
 
 .sol-el__title {
-  @include font-extra-bold;
+  @include font-alt-extra-bold;
   font-size: 1.6rem;
   line-height: 2.4rem;
   color: $title-color;

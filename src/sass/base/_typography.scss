@@ -22,7 +22,7 @@ h1, h2, h3, h4, h5, h6,
     margin: 0 0 #{round-float($bottom-space--mob * 1.2, 1)};
   }
 
-  @include font-extra-bold;
+  @include font-alt-extra-bold;
   color: $title-color;
 
   &:last-child {

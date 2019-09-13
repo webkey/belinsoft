@@ -1,4 +1,5 @@
 
+@import url("https://fonts.googleapis.com/css?family=Roboto+Slab:400,700|Roboto:400,400i,700,700i&subset=cyrillic");
 @font-face {
   font-family: "circe-regular";
   font-style: normal;
@@ -18,20 +19,6 @@
   font-style: normal;
   font-weight: normal;
   src: url("../fonts/Circe-ExtraBold.ttf") format("truetype");
-}
-
-@font-face {
-  font-family: "gilroy-bold-italic";
-  font-style: normal;
-  font-weight: normal;
-  src: url("../fonts/gilroy/bold-italic/gilroy-bolditalic.ttf") format("truetype"), url("../fonts/gilroy/bold-italic/gilroy-bolditalic.eot?") format("eot"), url("../fonts/gilroy/bold-italic/gilroy-bolditalic.svg#gilroy-bold-italic") format("svg"), url("../fonts/gilroy/bold-italic/gilroy-bolditalic.woff") format("woff"), url("../fonts/gilroy/bold-italic/gilroy-bolditalic.woff2") format("woff2");
-}
-
-@font-face {
-  font-family: "gilroy-italic";
-  font-style: normal;
-  font-weight: normal;
-  src: url("../fonts/gilroy/italic/gilroy-regularitalic.ttf") format("truetype"), url("../fonts/gilroy/italic/gilroy-regularitalic.eot?") format("eot"), url("../fonts/gilroy/italic/gilroy-regularitalic.svg#gilroy-italic") format("svg"), url("../fonts/gilroy/italic/gilroy-regularitalic.woff") format("woff"), url("../fonts/gilroy/italic/gilroy-regularitalic.woff2") format("woff2");
 }
 
 /* ==================================== */
@@ -460,7 +447,7 @@ html.css-scroll-fixed:not(.open-only-mob) {
 
 body {
   min-width: 32rem;
-  font-family: "circe-regular", Helvetica, Arial, sans-serif;
+  font-family: "Roboto", Helvetica, Arial, sans-serif;
   font-size: 2.1rem;
   line-height: 3.3rem;
   color: #c5c5c5;
@@ -750,22 +737,19 @@ table img {
 }
 
 b, strong, th {
-  font-family: "circe-bold", Helvetica, Arial, sans-serif;
-  font-weight: normal;
+  font-weight: 700;
 }
 
 i, em {
-  font-family: "gilroy-italic", Helvetica, Arial, sans-serif;
-  font-style: normal;
+  font-style: italic;
 }
 
 i b, i strong,
 em b, em strong,
 b i, b em,
 strong i, strong em {
-  font-family: "gilroy-bold-italic", Helvetica, Arial, sans-serif;
-  font-weight: normal;
-  font-style: normal;
+  font-weight: 700;
+  font-style: italic;
 }
 
 table {
@@ -838,8 +822,7 @@ table td, table th {
 }
 
 .tbl th, .tbl thead td, .tbl tfoot td {
-  font-family: "circe-bold", Helvetica, Arial, sans-serif;
-  font-weight: normal;
+  font-weight: 700;
   text-align: left;
   background: #232323;
   border-top-width: 1px;
@@ -987,7 +970,7 @@ table td, table th {
   display: block;
   margin: 0;
   padding: 0 0 1rem;
-  font-family: "circe-regular", Helvetica, Arial, sans-serif;
+  font-family: "Roboto", Helvetica, Arial, sans-serif;
   font-size: 1.25em;
   line-height: 1.48;
   color: #c5c5c5;
@@ -1503,7 +1486,7 @@ label mark {
   transition: background-color 0.35s, color 0.35s, opacity 0.35s;
   box-shadow: none;
   border: 1px solid transparent;
-  font-family: "circe-regular", Helvetica, Arial, sans-serif;
+  font-family: "Roboto", Helvetica, Arial, sans-serif;
   font-size: 1.6rem;
   line-height: 2.4rem;
   color: #c5c5c5;
@@ -1563,7 +1546,7 @@ select.form-def {
   overflow: hidden;
   text-overflow: clip;
   white-space: nowrap;
-  font-family: "circe-regular", Helvetica, Arial, sans-serif;
+  font-family: "Roboto", Helvetica, Arial, sans-serif;
   font-size: 1.6rem;
   line-height: 2.4rem;
   color: #c5c5c5;
@@ -2057,7 +2040,7 @@ select.form-def.has-arrow + .select-arrow {
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
-  font-family: "circe-regular", Helvetica, Arial, sans-serif;
+  font-family: "Roboto", Helvetica, Arial, sans-serif;
   font-size: 1.6rem;
   line-height: 2.4rem;
   color: #c5c5c5;
@@ -2396,7 +2379,7 @@ select.form-def.has-arrow + .select-arrow {
 .select2-container--custom .select2-results > .select2-results__options {
   max-height: 20rem;
   overflow-y: auto;
-  font-family: "circe-regular", Helvetica, Arial, sans-serif;
+  font-family: "Roboto", Helvetica, Arial, sans-serif;
   font-size: 1.6rem;
   line-height: 2.4rem;
   color: #c5c5c5;
@@ -2934,8 +2917,7 @@ form .error + .select-arrow + .success-feedback + .error-feedback {
 .lang {
   position: relative;
   width: 6rem;
-  font-family: "circe-bold", Helvetica, Arial, sans-serif;
-  font-weight: normal;
+  font-weight: 700;
   font-size: 2rem;
   line-height: 2rem;
   letter-spacing: 0.023em;
@@ -3570,41 +3552,6 @@ form .error + .select-arrow + .success-feedback + .error-feedback {
   }
 }
 
-.nav__list a::before {
-  content: "";
-  display: block;
-  position: absolute;
-  bottom: 0;
-  left: 4px;
-  width: calc(100% - 8px);
-  height: 2px;
-  border-radius: 50%;
-  background-color: currentColor;
-  box-shadow: 0 0 3px currentColor;
-  -webkit-transform-origin: 100% 100%;
-      -ms-transform-origin: 100% 100%;
-          transform-origin: 100% 100%;
-  -webkit-transform: scale(0, 1);
-      -ms-transform: scale(0, 1);
-          transform: scale(0, 1);
-  -webkit-transform: scale3d(0, 1, 1);
-          transform: scale3d(0, 1, 1);
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
-  will-change: transform, opacity;
-  transition-property: opacity, -webkit-transform;
-  transition-property: transform, opacity;
-  transition-property: transform, opacity, -webkit-transform;
-  transition-duration: 0.35s;
-  transition-timing-function: cubic-bezier(0.65, 0.05, 0.36, 1);
-}
-
-@media (max-width: 991px) {
-  .nav__list a::before {
-    content: none;
-  }
-}
-
 .nav__list li.has-sub > a,
 .nav__list li.has-sub > span {
   padding-right: 4rem;
@@ -3692,6 +3639,27 @@ form .error + .select-arrow + .success-feedback + .error-feedback {
 
 .nav__list ul li:first-child {
   margin-top: 0;
+}
+
+.nav__list ul a {
+  display: block;
+  transition: color 0.35s;
+}
+
+.nav__list ul li.hover > a,
+.nav__list ul li.hover > span,
+.no-js .nav__list ul li:hover > a,
+.no-js .nav__list ul li:hover > span {
+  color: #c5c5c5;
+}
+
+.nav__list ul li.current > a,
+.nav__list ul li.current > span {
+  color: #c5c5c5;
+}
+
+.nav__list ul li.current.hover > a {
+  color: #9d9d9d;
 }
 
 .nav__list li.current > ul {
@@ -3805,73 +3773,9 @@ li.hover > em {
   }
 }
 
-.nav__list li.current > a,
-.nav__list li.current > span {
-  position: relative;
-}
-
-.nav__list li.current > a::after,
-.nav__list li.current > span::after {
-  content: "";
-  position: absolute;
-  left: -1rem;
-  bottom: -0.5rem;
-  right: -1rem;
-  height: 2rem;
-  background-color: rgba(30, 145, 124, 0.5);
-  will-change: transform, opacity;
-  transition: opacity 0.525s, -webkit-transform 0.525s;
-  transition: transform 0.525s, opacity 0.525s;
-  transition: transform 0.525s, opacity 0.525s, -webkit-transform 0.525s;
-  -webkit-transform-origin: 3rem center;
-      -ms-transform-origin: 3rem center;
-          transform-origin: 3rem center;
-  opacity: 0.5;
-  -webkit-transform: scale(0, 1);
-      -ms-transform: scale(0, 1);
-          transform: scale(0, 1);
-  -webkit-transform: scale3d(0, 1, 1);
-          transform: scale3d(0, 1, 1);
-  z-index: -1;
-}
-
-@media (max-width: 991px) {
-  .nav__list li.current > a::after,
-  .nav__list li.current > span::after {
-    right: 0;
-    bottom: -0.3em;
-    height: 1em;
-    background-color: rgba(255, 255, 255, 0.5);
-  }
-}
-
-html.ready .nav__list li.current > a::after,
-html.no-js .nav__list li.current > a::after, html.ready
-.nav__list li.current > span::after,
-html.no-js
-.nav__list li.current > span::after {
-  opacity: 1;
-  -webkit-transform: scale(1, 1);
-      -ms-transform: scale(1, 1);
-          transform: scale(1, 1);
-  -webkit-transform: scale3d(1, 1, 1);
-          transform: scale3d(1, 1, 1);
-}
-
-.nav__list li.hover > a::before,
-.no-js .nav__list li:hover > a::before {
-  -webkit-transform-origin: 0 100%;
-      -ms-transform-origin: 0 100%;
-          transform-origin: 0 100%;
-  -webkit-transform: scale(1, 1);
-      -ms-transform: scale(1, 1);
-          transform: scale(1, 1);
-  -webkit-transform: scale3d(1, 1, 1);
-          transform: scale3d(1, 1, 1);
-}
-
 .nav__list > li {
-  margin-right: 3rem;
+  margin-right: 4rem;
+  font-weight: 700;
   letter-spacing: 0.15em;
   text-transform: uppercase;
 }
@@ -3906,6 +3810,39 @@ html.no-js
   margin-right: 0;
 }
 
+.nav__list > li > a::before, .nav__list > li > span::before {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 4px;
+  width: calc(100% - 8px);
+  height: 2px;
+  background-color: currentColor;
+  -webkit-transform-origin: 100% 100%;
+      -ms-transform-origin: 100% 100%;
+          transform-origin: 100% 100%;
+  -webkit-transform: scale(0, 1);
+      -ms-transform: scale(0, 1);
+          transform: scale(0, 1);
+  -webkit-transform: scale3d(0, 1, 1);
+          transform: scale3d(0, 1, 1);
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  will-change: transform, opacity;
+  transition-property: opacity, -webkit-transform;
+  transition-property: transform, opacity;
+  transition-property: transform, opacity, -webkit-transform;
+  transition-duration: 0.35s;
+  transition-timing-function: cubic-bezier(0.65, 0.05, 0.36, 1);
+}
+
+@media (max-width: 991px) {
+  .nav__list > li > a::before, .nav__list > li > span::before {
+    content: none;
+  }
+}
+
 .nav__list > li > em {
   display: none;
 }
@@ -3916,17 +3853,74 @@ html.no-js
   }
 }
 
-.nav__list > li.current > a, .nav__list > li.current > span {
-  font-family: "circe-regular", Helvetica, Arial, sans-serif;
+.nav__list > li.hover > a::before,
+.no-js .nav__list > li:hover > a::before {
+  -webkit-transform-origin: 0 100%;
+      -ms-transform-origin: 0 100%;
+          transform-origin: 0 100%;
+  -webkit-transform: scale(1, 1);
+      -ms-transform: scale(1, 1);
+          transform: scale(1, 1);
+  -webkit-transform: scale3d(1, 1, 1);
+          transform: scale3d(1, 1, 1);
+}
+
+.nav__list > li.current > a,
+.nav__list > li.current > span {
+  position: relative;
+  z-index: 1;
   overflow: visible;
   cursor: default;
-  z-index: 1;
 }
 
 @media (max-width: 991px) {
-  .nav__list > li.current > a, .nav__list > li.current > span {
-    font-family: "circe-bold", Helvetica, Arial, sans-serif;
-    font-weight: normal;
+  .nav__list > li.current > a,
+  .nav__list > li.current > span {
+    color: #c5c5c5;
+  }
+}
+
+.nav__list > li.current > a::after,
+.nav__list > li.current > span::after {
+  content: "";
+  position: absolute;
+  top: -21px;
+  left: 5px;
+  right: 5px;
+  height: 5px;
+  background-color: #1e917c;
+  will-change: transform, opacity;
+  transition: -webkit-transform 0.525s;
+  transition: transform 0.525s;
+  transition: transform 0.525s, -webkit-transform 0.525s;
+  -webkit-transform-origin: 3rem center;
+      -ms-transform-origin: 3rem center;
+          transform-origin: 3rem center;
+  -webkit-transform: scale(0, 1);
+      -ms-transform: scale(0, 1);
+          transform: scale(0, 1);
+  -webkit-transform: scale3d(0, 1, 1);
+          transform: scale3d(0, 1, 1);
+  z-index: -1;
+}
+
+html.ready .nav__list > li.current > a::after,
+html.no-js .nav__list > li.current > a::after, html.ready
+.nav__list > li.current > span::after,
+html.no-js
+.nav__list > li.current > span::after {
+  opacity: 1;
+  -webkit-transform: scale(1, 1);
+      -ms-transform: scale(1, 1);
+          transform: scale(1, 1);
+  -webkit-transform: scale3d(1, 1, 1);
+          transform: scale3d(1, 1, 1);
+}
+
+@media (max-width: 991px) {
+  .nav__list > li.current > a::after,
+  .nav__list > li.current > span::after {
+    content: none;
   }
 }
 
@@ -3938,6 +3932,7 @@ html.no-js
   border-top: 1px solid rgba(197, 197, 197, 0.1);
   box-shadow: 0 -2px 33px rgba(0, 0, 0, 0.5);
   padding: 2rem 0;
+  font-family: "circe-regular", Helvetica, Arial, sans-serif;
   font-size: 1.4rem;
   line-height: 1.48;
   color: #c5c5c5;
@@ -4109,7 +4104,7 @@ html.no-js
   padding: 0;
   margin: 0;
   font-family: "circe-bold", Helvetica, Arial, sans-serif;
-  font-weight: normal;
+  font-weight: bold;
   font-size: 1.4rem;
   line-height: 1.8rem;
   letter-spacing: 0.15em;
@@ -4670,7 +4665,7 @@ html.no-js
   vertical-align: top;
   position: relative;
   font-family: "circe-bold", Helvetica, Arial, sans-serif;
-  font-weight: normal;
+  font-weight: bold;
   font-size: 1.4rem;
   line-height: 2.0rem;
   color: white;
@@ -5649,7 +5644,7 @@ html.no-js
 
 .ws-el__title {
   font-family: "circe-bold", Helvetica, Arial, sans-serif;
-  font-weight: normal;
+  font-weight: bold;
   font-size: 2rem;
   line-height: 2.4rem;
   margin-bottom: 1rem;
@@ -5772,8 +5767,7 @@ html.no-js
   border-radius: 2.4rem;
   line-height: 2.4rem;
   font-size: 1.6rem;
-  font-family: "circe-bold", Helvetica, Arial, sans-serif;
-  font-weight: normal;
+  font-weight: 700;
   color: white;
   cursor: pointer;
   text-align: center;
@@ -6472,7 +6466,7 @@ html.no-js
 .m-news__col h3, .m-news__col .h3 {
   position: relative;
   font-family: "circe-bold", Helvetica, Arial, sans-serif;
-  font-weight: normal;
+  font-weight: bold;
   font-size: 1.3rem;
   line-height: 1.5rem;
   letter-spacing: 0.15em;
@@ -6709,7 +6703,7 @@ html.no-js
 
 .news-el__title {
   font-family: "circe-bold", Helvetica, Arial, sans-serif;
-  font-weight: normal;
+  font-weight: bold;
   font-size: 1.8rem;
   line-height: 2.4rem;
   color: white;
@@ -7080,7 +7074,7 @@ html.no-js
   padding: 0 0 0 1.8em;
   margin-bottom: 2rem;
   font-family: "circe-bold", Helvetica, Arial, sans-serif;
-  font-weight: normal;
+  font-weight: bold;
   font-size: 1.4rem;
   line-height: 1.8rem;
   color: white;
@@ -7995,7 +7989,7 @@ html.no-js
 .adr address {
   display: block;
   margin-bottom: 3.3rem;
-  font-family: "circe-regular", Helvetica, Arial, sans-serif;
+  font-family: "Roboto", Helvetica, Arial, sans-serif;
   font-style: normal;
 }
 
