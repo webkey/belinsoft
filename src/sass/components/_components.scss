@@ -118,7 +118,11 @@
 
 /* breadcrumbs end */
 
-.fp-section {
+.main-section,
+.about-section,
+.m-news-section,
+.media-section,
+.partners-section {
   padding: #{$layout-page-top-space} #{nth($layout-page-space, 2)} #{nth($layout-page-space, 3)};
 
   @include media('<desk-s') {
@@ -511,8 +515,9 @@
   position: absolute;
   right: 0;
   top: 100%;
-  padding: 2rem 0 0;
-  width: 56rem;
+  //padding: 2rem 0 0;
+  //width: 56rem;
+  width: 30rem;
   cursor: default;
   // transition
   $prop: transform, opacity, visibility;
@@ -565,7 +570,7 @@
 }
 
 .contact-popup__box {
-  $width: 50%;
+  $width: 100%;
   flex: 0 1 $width;
   max-width: $width;
   padding: 1rem;
@@ -1579,113 +1584,6 @@
 }
 
 /* words end */
-
-/* bg video */
-
-/*
-.video-bg {
-  overflow: hidden;
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  min-width: 100%;
-  min-height: 100%;
-  height: auto;
-  width: auto;
-  background-color: #eb2b3a;
-
-  video, img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    @include object-fit(cover)
-  }
-}
-*/
-
-/*.sect-text {
-  position: absolute;
-  left: 0;
-  top: 0;
-  height: 100%;
-  width: 100%;
-  @include font-extra-bold;
-  font-size: 20rem;
-  line-height: 1;
-  text-transform: uppercase;
-
-  .mask__shape {
-    fill: $text-color;
-  }
-
-  .shape--fill {
-    fill: $bg-color;
-  }
-
-  .text--transparent {
-    fill: transparent;
-  }
-
-  .box-with-text {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    transform: rotate(90deg);
-  }
-
-  .text-fill {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    //padding-top: 35vw;
-    //padding-left: 100%;
-    height: 100%;
-    width: 100%;
-    margin: auto;
-    overflow: hidden;
-    transform: translate(-50%, -50%);
-  }
-
-  .video {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    @include object-fit(cover);
-  }
-
-  !*@media (min-aspect-ratio: 1 / 2) {
-    .text-fill {
-      padding-top: 35vw;
-    }
-  }
-
-  @media (min-aspect-ratio: 2 / 1) {
-    .text-fill {
-      padding-top: 70vh;
-      padding-left: 190vh;
-    }
-  }*!
-
-  !* Other styles *!
-  .svg-defs {
-    width: 0;
-    height: 0;
-  }
-
-  .svg-inverted-mask {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-  }
-}*/
-
-/* bg video end */
 
 /* menu */
 // menu item
@@ -3331,6 +3229,7 @@ $i-widget-space: 4rem;
   min-width: $width;
   max-width: $width;
   transition: transform $animation-speed;
+  -webkit-overflow-scrolling: touch;
 
   @include media('<desk-s') {
     $width: 18rem;
@@ -3388,7 +3287,7 @@ $i-widget-space: 4rem;
   line-height: 2.4rem;
   color: $title-color;
   text-transform: uppercase;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
   transition: color $animation-speed;
 
   @include media('<desk-s') {
@@ -3758,6 +3657,7 @@ $m-news-space--net: 2rem;
   box-shadow: 0 23px 42px rgba(0, 0, 0, 0.20);
   will-change: transform;
   transition: transform $animation-speed;
+  -webkit-overflow-scrolling: touch;
 
   @include media('<lap-l') {
     margin-bottom: 2rem;

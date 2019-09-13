@@ -60,6 +60,18 @@ function animationElements() {
   }).start().reveal(1000, 500);
 }
 
+function loadVideoSrc() {
+  var bgv = $('.video-cover__item-js video');
+  if (window.innerWidth >= 992) {
+    $('source', bgv).each(function () {
+      var $el = $(this);
+      $el.attr('src', $el.data('csrc'));
+
+      $el.parents(bgv)[0].load();
+    });
+  }
+}
+
 /**
  * !Detect scroll page and transform header
  */
@@ -108,7 +120,6 @@ function eventsScrollPage() {
  * !Initial full page scroll plugin
  * */
 function fullPageInitial() {
-
   var $fpSections = $('.fp-sections-js'),
       fpSectionSelector = '.fp-section-js',
       $fpSection = $(fpSectionSelector),
@@ -397,7 +408,7 @@ function customSelect() {
       var self = this;
 
       function _toggleClass (e) {
-        if (self._classIsAdded) {
+        if (self._classIsAdded && e.handleObj.origType !== "mouseenter") {
           self.remove();
 
           e.preventDefault();
@@ -411,12 +422,12 @@ function customSelect() {
 
       if (self.config.selector) {
         $(self.element)
-            .off('click', self.config.selector)
-            .on('click', self.config.selector, _toggleClass);
+            .off(self.config.eventType, self.config.selector)
+            .on(self.config.eventType, self.config.selector, _toggleClass);
       } else {
         $(self.element)
-            .off('click')
-            .on('click', _toggleClass);
+            .off(self.config.eventType)
+            .on(self.config.eventType, _toggleClass);
       }
 
       $(self.config.toggleEl).on('click', _toggleClass);
@@ -543,6 +554,9 @@ function customSelect() {
   };
 
   $.fn.switchClass.defaultOptions = {
+    // Event type
+    eventType: 'click',
+
     // Remove existing classes
     // Set this to false if you do not need to stack multiple instances
     removeExisting: false,
@@ -603,8 +617,12 @@ function customSelect() {
 
 })(jQuery);
 
+/**
+ * !Contact popup
+ */
 function contactPopup() {
   $('.contact-popup-open-js').switchClass({
+    eventType: 'mouseenter touchend',
     switchClassTo: $('.contact-popup-js'),
     removeExisting: true,
     removeEl: $('.contact-popup-close-js'),
@@ -612,7 +630,6 @@ function contactPopup() {
       activeClass: 'is-open'
     }
   });
-
 }
 
 /**
@@ -2144,56 +2161,36 @@ function createUploadFileList() {
 }
 
 /**
- * !Form validation
+ * !Subscribe Form
  * */
-function formValidation() {
-  $.validator.setDefaults({
-    submitHandler: function(form, e) {
-      var $form = $(form);
-      if($form.hasClass('subs')) {
-        setTimeout(function () {
-          $form.addClass('completed');
-        }, 500);
+function subscribeForm(){
+  var success_class = 'success-form',
+      error_class = 'error-form';
 
-        return;
+  $('.subs-form').ajaxForm({
+    beforeSubmit: function (formData, $form, options) {
+      $form.find('.subs-success').hide();
+      $form.find('.subs-error').hide();
+
+      $form.find('button').prop("disabled", true);
+      return true;
+    },
+    success: function (data, statusText, xhr, $form) {
+      data = $.parseJSON(data);
+      // console.info(data);
+      if (data.result > 1) {
+        $form.find('.subs-success').show();
+        $('.subs-field input', $form).hide();
+        $('.subs-field button', $form).hide();
+        $form.addClass('completed');
+      } else {
+        $form.find('.subs-error').show();
+        $form.find('.subs-error').html(data.error);
       }
 
-      alert('Форма находится в тестовом режиме. Чтобы закрыть окно, нажмите ОК.');
-      return false;
+      $form.find('button').prop("disabled", false);
     }
   });
-
-  var $form = $('.validate-js');
-
-  if ($form.length) {
-    var changeClasses = function (elem, remove, add) {
-      elem
-          .removeClass(remove).addClass(add);
-      elem
-          .closest('form').find('label[for="' + elem.attr('id') + '"]')
-          .removeClass(remove).addClass(add);
-      elem
-          .closest('.input-wrap')
-          .removeClass(remove).addClass(add);
-    };
-
-    $.each($form, function (index, element) {
-      $(element).validate({
-        errorClass: "error",
-        validClass: "success",
-        errorElement: false,
-        errorPlacement: function (error, element) {
-          return true;
-        },
-        highlight: function (element, errorClass, successClass) {
-          changeClasses($(element), successClass, errorClass);
-        },
-        unhighlight: function (element, errorClass, successClass) {
-          changeClasses($(element), errorClass, successClass);
-        }
-      });
-    });
-  }
 }
 
 /**
@@ -2203,6 +2200,7 @@ function formValidation() {
 $(document).ready(function () {
   $HTML.addClass('ready');
 
+  loadVideoSrc();
   addTouchClasses();
   objectFitImages(); // object-fit-images initial
   eventsScrollPage();
@@ -2220,6 +2218,5 @@ $(document).ready(function () {
   toggleWidget();
   map();
   createUploadFileList();
-
-  formValidation();
+  subscribeForm();
 });
