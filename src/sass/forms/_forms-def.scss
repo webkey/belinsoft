@@ -10,6 +10,7 @@ label {
   display: inline-block;
   vertical-align: top;
   margin-bottom: 0.5em;
+  @include font-alt;
   font-size: $font-size;
   line-height: $line-height;
   color: $title-color;

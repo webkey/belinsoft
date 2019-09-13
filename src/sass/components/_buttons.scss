@@ -19,6 +19,7 @@
   cursor: pointer;
   margin: 0;
   padding: #{$btn-space-inner-vertical} #{$btn-space-inner-horizontal};
+  @include font-alt;
   font-size: $btn-font-size;
   line-height: $btn-line-height;
   letter-spacing: $btn-letter-spacing;
@@ -72,6 +73,7 @@
   cursor: pointer;
   margin: 0;
   padding: #{$btn-space-inner-vertical} #{$btn-space-inner-horizontal};
+  @include font-alt;
   font-size: $btn-font-size;
   line-height: $btn-line-height;
   letter-spacing: $btn-letter-spacing;
