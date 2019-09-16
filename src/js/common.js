@@ -61,7 +61,7 @@ function animationElements() {
 }
 
 function loadVideoSrc() {
-  var bgv = $('.video-cover__item-js video');
+  var bgv = $('.video-cover__item-js video, .bg-video video');
   if (window.innerWidth >= 992) {
     $('source', bgv).each(function () {
       var $el = $(this);
