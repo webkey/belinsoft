@@ -1428,9 +1428,7 @@
 }
 
 .h-main {
-  @include media('<tab') {
-    overflow: hidden;
-  }
+  overflow: hidden;
 }
 
 .content {
@@ -3079,66 +3077,53 @@ $i-widget-space: 4rem;
 /* to news */
 .btn-to-news {
   position: absolute;
-  right: -9rem;
-  bottom: 25rem;
-  padding: 0 6.5rem 0 0;
+  right: -1.2rem;
+  bottom: 11.7rem;
+  width: 11rem;
+  padding: 1.6rem 1.3rem;
+  @include font-alt;
   font-size: 1.4rem;
-  line-height: 2.0rem;
-  letter-spacing: 0.4em;
+  line-height: 1.6rem;
   text-transform: uppercase;
-  color: $text-color-alt;
   text-decoration: none;
-  transform: rotate(90deg);
+  color: $text-color-alt;
+  border-radius: 14px;
+  background-color: rgba(#2e2e2e, 0.8);
+  transition: $animation-speed background-color 0s, $animation-speed transform 0.6s;
+  $translate: 100%, 0;
+  transform: translate($translate);
+  transform: translate3d($translate, 0);
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
 
-  @include media('<desk-s') {
-    bottom: 15rem;
+  .fp-viewing-section1 & {
+    $translate: 0, 0;
+    transform: translate($translate);
+    transform: translate3d($translate, 0);
   }
 
-  @include media('<lap-l') {
-    font-size: 1.2rem;
-    letter-spacing: 0.2em;
-    bottom: 10rem;
-    right: -5rem;
-    padding-right: 4.5rem;
-  }
-
-  @include media('<tab') {
-    display: none;
-  }
-
-  &::before {
+  &::after {
     content: "";
-    display: block;
     position: absolute;
-    right: 0;
-    top: 50%;
-    height: 2.0rem;
-    width: 3.6rem;
-    margin-top: -1rem;
-    pointer-events: none;
+    top: 100%;
+    right: 3.2rem;
+    $size: 2.2rem;
+    height: $size;
+    width: $size;
+    margin: -0.8rem 0 0;
+    border-radius: $size;
+    background-color: $highlight-color;
     background-repeat: no-repeat;
-    background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzciIGhlaWdodD0iMjEiIHZpZXdCb3g9IjAgMCAzNyAyMSIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTI1LjcwNTIgMEwyNS4wMDAyIDAuNzA5MjUyTDM0LjAzOTggOS42OTQxTDAuMDUxMjY5NSA5LjgxNTM3VjExTDM0LjA1MDMgMTAuNzE3MkwyNS40NzEyIDIwLjEzNjdMMjYuMTc4MyAyMC44NDM4TDM1LjU2NDIgMTAuNzE1MUwzNi4wMjIgMTAuMjU0NEwzNi4wMDU5IDEwLjIzODRMMzYuMDIyIDEwLjIyMDlMMzUuNTY3NSA5LjgwMjU3TDI1LjcwNTIgMFoiIGZpbGw9IiMwMEZGQzciLz48L3N2Zz4=);
-    transition: transform $animation-speed;
+    background-position: 50%;
+    background-size: 1rem;
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTEiIGhlaWdodD0iNyIgdmlld0JveD0iMCAwIDExIDciIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTEuNTgwMDggMS42MDE1Nkw1Ljc5MDA0IDZMMTAgMS42MDE1NiIgc3Ryb2tlPSIjMTIxMjEyIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPjwvc3ZnPg==);
+    transition: background-color $animation-speed;
   }
 
   // Hover
   .no-touchevents &:hover {
-    &::before {
-      $translate: -1rem, 0;
-      transform: translate($translate);
-      transform: translate3d($translate, 0);
-    }
-  }
-
-  // :active
-  .no-touchevents &:active {
-    &::before {
-      transition-duration: $animation-speed / 2;
-
-      $translate: 0, 0;
-      transform: translate($translate);
-      transform: translate3d($translate, 0);
-    }
+    background-color: rgba(#4e4e4e, 0.8);
   }
 }
 

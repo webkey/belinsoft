@@ -4172,10 +4172,8 @@ html.no-js
   }
 }
 
-@media (max-width: 991px) {
-  .h-main {
-    overflow: hidden;
-  }
+.h-main {
+  overflow: hidden;
 }
 
 .section {
@@ -6123,76 +6121,63 @@ html.no-js
 /* to news */
 .btn-to-news {
   position: absolute;
-  right: -9rem;
-  bottom: 25rem;
-  padding: 0 6.5rem 0 0;
+  right: -1.2rem;
+  bottom: 11.7rem;
+  width: 11rem;
+  padding: 1.6rem 1.3rem;
+  font-family: "circe-regular", Helvetica, Arial, sans-serif;
   font-size: 1.4rem;
-  line-height: 2.0rem;
-  letter-spacing: 0.4em;
+  line-height: 1.6rem;
   text-transform: uppercase;
-  color: white;
   text-decoration: none;
-  -webkit-transform: rotate(90deg);
-      -ms-transform: rotate(90deg);
-          transform: rotate(90deg);
+  color: white;
+  border-radius: 14px;
+  background-color: rgba(46, 46, 46, 0.8);
+  -webkit-transition: 0.35s background-color 0s, 0.35s -webkit-transform 0.6s;
+  transition: 0.35s background-color 0s, 0.35s -webkit-transform 0.6s;
+  transition: 0.35s background-color 0s, 0.35s transform 0.6s;
+  transition: 0.35s background-color 0s, 0.35s transform 0.6s, 0.35s -webkit-transform 0.6s;
+  -webkit-transform: translate(100%, 0);
+      -ms-transform: translate(100%, 0);
+          transform: translate(100%, 0);
+  -webkit-transform: translate3d(100%, 0, 0);
+          transform: translate3d(100%, 0, 0);
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
 }
 
-@media (max-width: 1599px) {
-  .btn-to-news {
-    bottom: 15rem;
-  }
-}
-
-@media (max-width: 1439px) {
-  .btn-to-news {
-    font-size: 1.2rem;
-    letter-spacing: 0.2em;
-    bottom: 10rem;
-    right: -5rem;
-    padding-right: 4.5rem;
-  }
-}
-
-@media (max-width: 991px) {
-  .btn-to-news {
-    display: none;
-  }
-}
-
-.btn-to-news::before {
-  content: "";
-  display: block;
-  position: absolute;
-  right: 0;
-  top: 50%;
-  height: 2.0rem;
-  width: 3.6rem;
-  margin-top: -1rem;
-  pointer-events: none;
-  background-repeat: no-repeat;
-  background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzciIGhlaWdodD0iMjEiIHZpZXdCb3g9IjAgMCAzNyAyMSIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTI1LjcwNTIgMEwyNS4wMDAyIDAuNzA5MjUyTDM0LjAzOTggOS42OTQxTDAuMDUxMjY5NSA5LjgxNTM3VjExTDM0LjA1MDMgMTAuNzE3MkwyNS40NzEyIDIwLjEzNjdMMjYuMTc4MyAyMC44NDM4TDM1LjU2NDIgMTAuNzE1MUwzNi4wMjIgMTAuMjU0NEwzNi4wMDU5IDEwLjIzODRMMzYuMDIyIDEwLjIyMDlMMzUuNTY3NSA5LjgwMjU3TDI1LjcwNTIgMFoiIGZpbGw9IiMwMEZGQzciLz48L3N2Zz4=);
-  -webkit-transition: -webkit-transform 0.35s;
-  transition: -webkit-transform 0.35s;
-  transition: transform 0.35s;
-  transition: transform 0.35s, -webkit-transform 0.35s;
-}
-
-.no-touchevents .btn-to-news:hover::before {
-  -webkit-transform: translate(-1rem, 0);
-      -ms-transform: translate(-1rem, 0);
-          transform: translate(-1rem, 0);
-  -webkit-transform: translate3d(-1rem, 0, 0);
-          transform: translate3d(-1rem, 0, 0);
-}
-
-.no-touchevents .btn-to-news:active::before {
-  -webkit-transition-duration: 0.175s;
-          transition-duration: 0.175s;
+.fp-viewing-section1 .btn-to-news {
   -webkit-transform: translate(0, 0);
       -ms-transform: translate(0, 0);
           transform: translate(0, 0);
   -webkit-transform: translate3d(0, 0, 0);
           transform: translate3d(0, 0, 0);
+}
+
+.btn-to-news::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  right: 3.2rem;
+  height: 2.2rem;
+  width: 2.2rem;
+  margin: -0.8rem 0 0;
+  border-radius: 2.2rem;
+  background-color: #1e917c;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-size: 1rem;
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTEiIGhlaWdodD0iNyIgdmlld0JveD0iMCAwIDExIDciIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTEuNTgwMDggMS42MDE1Nkw1Ljc5MDA0IDZMMTAgMS42MDE1NiIgc3Ryb2tlPSIjMTIxMjEyIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPjwvc3ZnPg==);
+  -webkit-transition: background-color 0.35s;
+  transition: background-color 0.35s;
+}
+
+.no-touchevents .btn-to-news:hover {
+  background-color: rgba(78, 78, 78, 0.8);
 }
 
 /* to news end */

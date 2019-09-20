@@ -193,7 +193,15 @@ function fullPageInitial() {
 
   $('.btn-next-section-js').on('click', function (e) {
     if($fpSections.length) {
-      $.fn.fullpage.moveSectionDown();
+      fullpage_api.moveSectionDown();
+    }
+    e.preventDefault();
+  });
+
+  $('.btn-to-section-js').on('click', function (e) {
+    var $thisBtn = $(this);
+    if($fpSections.length) {
+      fullpage_api.moveTo($($thisBtn.attr('href')).index() + 1);
     }
     e.preventDefault();
   });
