@@ -2202,6 +2202,32 @@ function subscribeForm(){
 }
 
 /**
+ * !Scroll to top
+ * */
+$(function () {
+  var $btnToTop = $('.btn-to-top-js');
+
+  if ($btnToTop.length) {
+    var $page = $('html, body'),
+        minScrollTop = 500;
+
+    $(window).on('load scroll resizeByWidth', function () {
+      var currentScrollTop = $(window).scrollTop();
+
+      $btnToTop.toggleClass('btn-to-top--show', (currentScrollTop >= minScrollTop));
+    });
+
+    $btnToTop.on('click', function (e) {
+      e.preventDefault();
+
+      if (!$page.is(':animated')) {
+        $page.stop().animate({scrollTop: 0}, 300);
+      }
+    })
+  }
+});
+
+/**
  * =========== !ready document, load/resize window ===========
  */
 

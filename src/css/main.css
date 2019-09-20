@@ -6150,6 +6150,18 @@ html.no-js
   outline: none;
 }
 
+@media (max-width: 1439px) {
+  .btn-to-news {
+    bottom: 6rem;
+  }
+}
+
+@media (max-width: 991px) {
+  .btn-to-news {
+    display: none;
+  }
+}
+
 .fp-viewing-section1 .btn-to-news {
   -webkit-transform: translate(0, 0);
       -ms-transform: translate(0, 0);
@@ -8414,5 +8426,104 @@ html.no-js
 }
 
 /* contacts map end */
+/* button scroll to top */
+.btn-to-top {
+  position: fixed;
+  right: -1.2rem;
+  bottom: 6.8rem;
+  z-index: 998;
+  width: 9.5rem;
+  padding: 1.6rem 1.3rem;
+  font-family: "circe-regular", Helvetica, Arial, sans-serif;
+  font-size: 1.4rem;
+  line-height: 1.6rem;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: white;
+  border-radius: 14px;
+  background-color: rgba(46, 46, 46, 0.8);
+  -webkit-transition: 0.35s background-color 0s, 0.35s -webkit-transform 0.3s;
+  transition: 0.35s background-color 0s, 0.35s -webkit-transform 0.3s;
+  transition: 0.35s background-color 0s, 0.35s transform 0.3s;
+  transition: 0.35s background-color 0s, 0.35s transform 0.3s, 0.35s -webkit-transform 0.3s;
+  -webkit-transform: translate(100%, 0);
+      -ms-transform: translate(100%, 0);
+          transform: translate(100%, 0);
+  -webkit-transform: translate3d(100%, 0, 0);
+          transform: translate3d(100%, 0, 0);
+  box-shadow: 0 2px 33px rgba(0, 0, 0, 0.5);
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+}
+
+@media (max-width: 639px) {
+  .btn-to-top {
+    width: 8.4rem;
+    font-size: 1.2rem;
+    line-height: 1.4rem;
+    border-radius: 8px;
+    padding: 1.2rem 1rem;
+    bottom: 2.5rem;
+  }
+}
+
+.btn-to-top::after {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  right: 2.5rem;
+  height: 2.2rem;
+  width: 2.2rem;
+  margin: -0.8rem 0;
+  border-radius: 2.2rem;
+  background-color: #1e917c;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-size: 1rem;
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTEiIGhlaWdodD0iNyIgdmlld0JveD0iMCAwIDExIDciIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTkuNDE5OTIgNS4zOTg0NEw1LjIwOTk2IDFMMSA1LjM5ODQ0IiBzdHJva2U9IiMxMjEyMTIiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PC9zdmc+);
+  -webkit-transition: 0.35s opacity 0.3s, 0.5s -webkit-transform 0.3s;
+  transition: 0.35s opacity 0.3s, 0.5s -webkit-transform 0.3s;
+  transition: 0.5s transform 0.3s, 0.35s opacity 0.3s;
+  transition: 0.5s transform 0.3s, 0.35s opacity 0.3s, 0.5s -webkit-transform 0.3s;
+  opacity: 0;
+  -webkit-transform: translateZ(0) rotate(-180deg);
+          transform: translateZ(0) rotate(-180deg);
+}
+
+.btn-to-top.btn-to-top--show {
+  -webkit-transition: 0.35s background-color, 0.35s -webkit-transform 0s;
+  transition: 0.35s background-color, 0.35s -webkit-transform 0s;
+  transition: 0.35s background-color, 0.35s transform 0s;
+  transition: 0.35s background-color, 0.35s transform 0s, 0.35s -webkit-transform 0s;
+  -webkit-transform: translate(0, 0);
+      -ms-transform: translate(0, 0);
+          transform: translate(0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+}
+
+.btn-to-top.btn-to-top--show::after {
+  -webkit-transition: 0.35s opacity 0.2s, 0.5s -webkit-transform 0.2s;
+  transition: 0.35s opacity 0.2s, 0.5s -webkit-transform 0.2s;
+  transition: 0.5s transform 0.2s, 0.35s opacity 0.2s;
+  transition: 0.5s transform 0.2s, 0.35s opacity 0.2s, 0.5s -webkit-transform 0.2s;
+  opacity: 1;
+  -webkit-transform: translateZ(0) rotate(0);
+          transform: translateZ(0) rotate(0);
+}
+
+.no-touchevents .btn-to-top:hover {
+  background-color: rgba(78, 78, 78, 0.8);
+}
+
+.btn-to-top:active {
+  margin: 1px -1px -1px;
+}
+
+/* button scroll to top end */
 
 /*# sourceMappingURL=main.css.map */

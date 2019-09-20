@@ -3097,6 +3097,14 @@ $i-widget-space: 4rem;
   -webkit-tap-highlight-color: transparent;
   outline: none;
 
+  @include media('<lap-l') {
+    bottom: 6rem;
+  }
+
+  @include media('<tab') {
+    display: none;
+  }
+
   .fp-viewing-section1 & {
     $translate: 0, 0;
     transform: translate($translate);
@@ -4995,3 +5003,85 @@ $subs-btn-width: 4.5rem;
 }
 
 /* contacts map end */
+
+/* button scroll to top */
+.btn-to-top {
+  position: fixed;
+  right: -1.2rem;
+  bottom: 6.8rem;
+  z-index: 998;
+  width: 9.5rem;
+  padding: 1.6rem 1.3rem;
+  @include font-alt;
+  font-size: 1.4rem;
+  line-height: 1.6rem;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: $text-color-alt;
+  border-radius: 14px;
+  background-color: rgba(#2e2e2e, 0.8);
+  transition: $animation-speed background-color 0s, $animation-speed transform 0.3s;
+  $translate: 100%, 0;
+  transform: translate($translate);
+  transform: translate3d($translate, 0);
+  box-shadow: 0 2px 33px rgba(0, 0, 0, 0.5);
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+
+  @include media('<mob') {
+    width: 8.4rem;
+    font-size: 1.2rem;
+    line-height: 1.4rem;
+    border-radius: 8px;
+    padding: 1.2rem 1rem;
+    bottom: 2.5rem;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    right: 2.5rem;
+    $size: 2.2rem;
+    height: $size;
+    width: $size;
+    margin: -0.8rem 0;
+    border-radius: $size;
+    background-color: $highlight-color;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-size: 1rem;
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTEiIGhlaWdodD0iNyIgdmlld0JveD0iMCAwIDExIDciIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTkuNDE5OTIgNS4zOTg0NEw1LjIwOTk2IDFMMSA1LjM5ODQ0IiBzdHJva2U9IiMxMjEyMTIiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PC9zdmc+);
+    transition: 0.5s transform 0.3s, 0.35s opacity 0.3s;
+
+    opacity: 0;
+    transform: translateZ(0) rotate(-180deg);
+  }
+
+  // Active
+  &.btn-to-top--show {
+    transition: $animation-speed background-color, $animation-speed transform 0s;
+    $translate: 0, 0;
+    transform: translate($translate);
+    transform: translate3d($translate, 0);
+
+    &::after {
+      transition: 0.5s transform 0.2s, 0.35s opacity 0.2s;
+      opacity: 1;
+      transform: translateZ(0) rotate(0);
+    }
+  }
+
+  // Hover
+  .no-touchevents &:hover {
+    background-color: rgba(#4e4e4e, 0.8);
+  }
+
+  // Hover
+  &:active {
+    margin: 1px -1px -1px;
+  }
+}
+
+/* button scroll to top end */
