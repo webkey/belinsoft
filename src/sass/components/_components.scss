@@ -216,22 +216,15 @@
   height: 14.2rem;
   width: 16.5rem;
   margin: 0 2rem 0 0;
-  //background-color: rgba($base-color, 0.5);
-  //background-size: contain;
   @include linear-gradient(to bottom, rgba($base-color, 1) 0%, rgba($base-color, 0) 100%);
   background-size: 122px;
   text-indent: -9999px;
   z-index: 5;
-
-  transition: background $animation-speed;
+  transition: all $animation-speed;
 
   @include media('<desk-s') {
     width: 12rem;
     height: 10.4rem;
-  }
-
-  @include media('<lap-l') {
-    height: 8rem;
   }
 
   @include media('<mob') {
@@ -239,45 +232,42 @@
     width: $nav-height--mob;
   }
 
-  &::before {
+  &::before,
+  &::after {
     content: "";
-    position: relative;
     display: block;
-    pointer-events: none;
-    //@include ratio(165, 142);
+    position: absolute;
+    left: 0;
+    top: 0;
     height: 100%;
+    width: 100%;
+    pointer-events: none;
     background-repeat: no-repeat;
     background-position: 50%;
+    transition: opacity $animation-speed;
+  }
+
+  &::before {
     background-image: url(../../img/logo.svg);
-    transition: all $animation-speed;
 
     @include media('<desk-s') {
-      background-size: 100px;
+      background-size: 9rem;
     }
 
-    //@include media('<lap-l') {
-    //  @include ratio(165, 110);
-    //}
-
     @include media('<mob') {
-      //@include ratio(1, 1);
       background-image: url(../../img/logo-mob.svg);
       background-size: 3.2rem;
     }
+  }
 
-    // Изменить вид лого при скролле.
-    //.page-scrolled & {
-    //  @include ratio(165, 70);
-    //  opacity: 0;
-    //
-    //  @include media('<desk-s') {
-    //    @include ratio(165, 100);
-    //  }
-    //
-    //  @include media('<lap-l') {
-    //    @include ratio(165, 80);
-    //  }
-    //}
+  &::after {
+    background-position: 50% 45%;
+    background-image: url(../../img/logo-horizontal.svg);
+    opacity: 0;
+
+    @include media('<desk-s') {
+      background-size: 10rem;
+    }
   }
 
   a, & > span {
@@ -289,6 +279,34 @@
     width: 100%;
     font-size: 0;
     line-height: 0;
+  }
+
+  // Изменить вид лого при скролле
+  // на внутренних страницах
+  body:not(.home-page) & {
+    .page-scrolled & {
+      height: $nav-height;
+
+      @include media('<mob') {
+        height: $nav-height--mob;
+      }
+
+      &::before {
+        opacity: 0;
+
+        @include media('<mob') {
+          opacity: 1;
+        }
+      }
+
+      &::after {
+        opacity: 1;
+
+        @include media('<mob') {
+          opacity: 0;
+        }
+      }
+    }
   }
 }
 
@@ -1705,14 +1723,16 @@
     transition: none;
   }
 
-  @include media('<tab') {
+  @include media('<mob') {
     font-size: 18rem;
     left: 4rem;
     top: 7.2rem;
   }
 
   .menu-item:first-child & {
-    top: 7.2 + $layout-page-top-space--mob - nth($layout-page-space--mob, 1);
+    @include media('<mob') {
+      top: 7.2 + $layout-page-top-space--mob - nth($layout-page-space--mob, 1);
+    }
   }
 
   & > span {
@@ -2094,7 +2114,8 @@
 .menu__item_strategical {
   .menu-item__bg-text {
     margin-top: 8vh;
-    opacity: 0.08;
+    //opacity: 0.08;
+    opacity: 0.1;
 
     @include media('<tab') {
       margin-top: 0;
@@ -2118,7 +2139,8 @@
 .menu__item_tactical {
   .menu-item__bg-text {
     margin-top: -2vh;
-    opacity: 0.06;
+    //opacity: 0.06;
+    opacity: 0.08;
 
     @include media('<tab') {
       margin-top: 0;
@@ -2143,7 +2165,8 @@
 .menu__item_homeland {
   .menu-item__bg-text {
     margin-top: 20vh;
-    opacity: 0.04;
+    //opacity: 0.04;
+    opacity: 0.06;
 
     @include media('<tab') {
       margin-top: 0;
@@ -2167,7 +2190,8 @@
 .menu__item_cyber {
   .menu-item__bg-text {
     margin-top: 35vh;
-    opacity: 0.03;
+    //opacity: 0.03;
+    opacity: 0.04;
 
     @include media('<tab') {
       margin-top: 0;
@@ -2296,8 +2320,10 @@
   height: 100%;
   width: 100%;
   z-index: -1;
-  background-color: $bg-color;
-  opacity: 0.5;
+  background-color: rgba($bg-color, 0.5);
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgdmlld0JveD0iMCAwIDMwMCAzMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjE1MCIgaGVpZ2h0PSIxNTAiIGZpbGw9ImJsYWNrIi8+PHJlY3QgeD0iMTUwIiB5PSIxNTAiIHdpZHRoPSIxNTAiIGhlaWdodD0iMTUwIiBmaWxsPSJibGFjayIvPjwvc3ZnPg==);
+  background-size: 4px;
+  opacity: 0.8;
 
   @include media('<tab') {
     display: none;
@@ -3077,22 +3103,17 @@ $i-widget-space: 4rem;
 /* to news */
 .btn-to-news {
   position: absolute;
-  right: -1.2rem;
+  right: calc(-1.2rem - 11rem);
   bottom: 11.7rem;
   width: 11rem;
-  padding: 1.6rem 1.3rem;
   @include font-alt;
   font-size: 1.4rem;
   line-height: 1.6rem;
   text-transform: uppercase;
   text-decoration: none;
   color: $text-color-alt;
-  border-radius: 14px;
-  background-color: rgba(#2e2e2e, 0.8);
-  transition: $animation-speed background-color 0s, $animation-speed transform 0.6s;
-  $translate: 100%, 0;
-  transform: translate($translate);
-  transform: translate3d($translate, 0);
+  transition: $animation-speed transform 0.6s;
+  transform: translateX(0);
   user-select: none;
   -webkit-tap-highlight-color: transparent;
   outline: none;
@@ -3106,32 +3127,72 @@ $i-widget-space: 4rem;
   }
 
   .fp-viewing-section1 & {
-    $translate: 0, 0;
-    transform: translate($translate);
-    transform: translate3d($translate, 0);
+    transform: translateX(-100%);
   }
 
-  &::after {
-    content: "";
-    position: absolute;
-    top: 100%;
-    right: 3.2rem;
-    $size: 2.2rem;
-    height: $size;
-    width: $size;
-    margin: -0.8rem 0 0;
-    border-radius: $size;
-    background-color: $highlight-color;
-    background-repeat: no-repeat;
-    background-position: 50%;
-    background-size: 1rem;
-    background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTEiIGhlaWdodD0iNyIgdmlld0JveD0iMCAwIDExIDciIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTEuNTgwMDggMS42MDE1Nkw1Ljc5MDA0IDZMMTAgMS42MDE1NiIgc3Ryb2tlPSIjMTIxMjEyIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPjwvc3ZnPg==);
-    transition: background-color $animation-speed;
+  & > span {
+    display: block;
+    padding: 1.6rem 1.3rem;
+    border-radius: 14px;
+    //background-color: rgba(#2e2e2e, 0.8);
+    background-color: rgba($highlight-color, 0.8);
+    transition: $animation-speed background-color 0s;
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 100%;
+      right: 3.2rem;
+      $size: 2.2rem;
+      height: $size;
+      width: $size;
+      margin: -0.8rem 0 0;
+      border-radius: $size;
+      //background-color: $highlight-color;
+      background-color: white;
+      background-repeat: no-repeat;
+      background-position: 50%;
+      background-size: 1rem;
+      background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTEiIGhlaWdodD0iNyIgdmlld0JveD0iMCAwIDExIDciIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTEuNTgwMDggMS42MDE1Nkw1Ljc5MDA0IDZMMTAgMS42MDE1NiIgc3Ryb2tlPSIjMTIxMjEyIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPjwvc3ZnPg==);
+      transition: background-color $animation-speed;
+    }
+  }
+
+  // Дрожание кнопки
+  .fp-viewing-section1 &:not(:hover) > span {
+    animation: 2s tremor 1s ease-in-out infinite;
+  }
+
+  @mixin tremor () {
+    $intend: 8%;
+
+    0%, 25% {
+      transform: translateY(0);
+    }
+
+    5%, 15% {
+      transform: translateY($intend);
+    }
+
+    10%, 20% {
+      transform: translateY(-#{$intend});
+    }
+  }
+
+  @-webkit-keyframes tremor {
+    @include tremor;
+  }
+
+  @keyframes tremor {
+    @include tremor;
   }
 
   // Hover
   .no-touchevents &:hover {
-    background-color: rgba(#4e4e4e, 0.8);
+    & > span {
+      //background-color: rgba(#4e4e4e, 0.8);
+      background-color: rgba($highlight-color--hover, 0.8);
+    }
   }
 }
 

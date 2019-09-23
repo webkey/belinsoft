@@ -148,10 +148,31 @@ table {
 
   td, th {
     padding: 0.4em;
-    font-size: inherit;
-    line-height: inherit;
+    font-size: 0.85em;
+    line-height: 1.4;
+    vertical-align: top;
+    text-align: left;
     color: inherit;
     border-color: $text-color;
+
+    &:first-child {
+      padding-left: 0.8em;
+    }
+
+    &:last-child {
+      padding-right: 0.8em;
+    }
+  }
+
+  tbody tr:nth-child(odd) td {
+    background: $bg-color-alt;
+  }
+
+  th, thead td, tfoot td {
+    @include font-bold;
+    text-align: left;
+    background: $highlight-color;
+    color: $text-color-alt;
   }
 }
 
@@ -181,39 +202,23 @@ table {
   border: none;
 
   td, th {
-    font-size: inherit;
-    line-height: inherit;
+    font-size: 0.85em;
+    line-height: 1.4;
     color: $text-color;
-    border: 0 solid $border-color;
+    //border: 0 solid $border-color;
+    border-top: none;
     background-color: $bg-color;
-
-    &:first-child, &:first-child {
-      border-left-width: 1px;
-    }
-
-    &:last-child, &:last-child {
-      border-right-width: 1px;
-    }
   }
 
-  td {
-    border-top-width: 1px;
-  }
-
-  tbody tr:first-child td {
-    border-top-width: 0;
-  }
-
-  tbody tr:nth-child(even) td {
+  tbody tr:nth-child(odd) td {
     background: $bg-color-alt;
   }
 
   th, thead td, tfoot td {
     @include font-bold;
     text-align: left;
-    background: $bg-color-alt;
-    border-top-width: 1px;
-    border-bottom-width: 1px;
+    background: $highlight-color;
+    color: $text-color-alt;
   }
 }
 

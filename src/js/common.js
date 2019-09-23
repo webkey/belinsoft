@@ -98,7 +98,7 @@ function eventsScrollPage() {
   // Ready document
   var scrollTop = $WINDOW.scrollTop();
 
-  // toggleClassOnScroll(scrollTop);
+  toggleClassOnScroll(scrollTop);
 
   if (!$('.nav-opener-js').is(':visible')) {
     scrollBgWords(scrollTop);
@@ -108,7 +108,7 @@ function eventsScrollPage() {
   $WINDOW.on('debouncedresizeByWidth scroll', function () {
     var scrollTop = $WINDOW.scrollTop();
 
-    // toggleClassOnScroll(scrollTop);
+    toggleClassOnScroll(scrollTop);
 
     if (!$('.nav-opener-js').is(':visible')) {
       scrollBgWords(scrollTop);

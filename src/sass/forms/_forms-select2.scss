@@ -343,7 +343,7 @@
     overflow: hidden; // Если есть закругления, то нужно обрезать внутренние элементы
     border: $select-border-width solid $select-border-color--focus;
     border-radius: $select-border-radius;
-    background-color: $bg-color-alt;
+    background-color: lighten($bg-color-alt, 5%);
     z-index: 5; // Поднять выше стрелок соседних селектов
 
     // ------ mob -----------------------------------------

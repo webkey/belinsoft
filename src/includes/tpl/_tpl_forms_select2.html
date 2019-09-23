@@ -3,6 +3,7 @@
     class="cselect form-def@@if(context.class){ @@class} field-js"
     id="@@id"
     name="@@id"
+    @@if(!context.placeholder){ data-placeholder="" }
     @@if(context.placeholder){ data-placeholder="@@placeholder" }
     @@if(context.disabled){ disabled}
     @@if(context.multiple){ multiple}
