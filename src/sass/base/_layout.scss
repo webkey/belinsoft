@@ -38,6 +38,10 @@ body {
   .layout-page-spaces {
     @include padding-horizontal(nth($layout-page-space, 2));
 
+    @include media('<desk') {
+      @include padding-horizontal(nth($layout-page-space--desk, 2));
+    }
+
     @include media('<desk-s') {
       @include padding-horizontal(nth($layout-page-space--lap, 2));
     }

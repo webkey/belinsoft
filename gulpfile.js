@@ -135,6 +135,7 @@ gulp.task('mergeCssLibs', function () {
     , 'src/libs/select2/dist/css/select2.min.css'
     , 'src/libs/fullpage.js/dist/fullpage.min.css' // стили для плагина постраничной прокрутки
     , 'src/libs/swiper/dist/css/swiper.min.css'
+    , 'src/libs/fancybox/dist/jquery.fancybox.min.css'
   ])
       .pipe(concatCss("src/css/libs.css", {
         rebaseUrls: false
@@ -170,6 +171,7 @@ gulp.task('copyLibsScriptsToJs', ['copyJqueryToJs'], function () {
     , 'node_modules/baffle/dist/baffle.min.js'
     , 'src/libs/swiper/dist/js/swiper.min.js'
     , 'src/libs/page-scroll-to-id/jquery.malihu.PageScroll2id.js'
+    , 'src/libs/fancybox/dist/jquery.fancybox.min.js'
   ])
       .pipe(concat('libs.js'))
       .pipe(gulp.dest('src/js'))

@@ -1945,6 +1945,9 @@ function slidersInit() {
         loopedSlides: 10,
         direction: 'vertical',
         effect: 'coverflow',
+        autoplay: {
+          delay: 5000,
+        },
         coverflowEffect: {
           rotate: 0,
           stretch: $coverflowStretch,
@@ -2169,6 +2172,18 @@ function createUploadFileList() {
 }
 
 /**
+ * !Gallery initial
+ */
+function gallery() {
+  $('[data-fancybox*="gallery"]').fancybox({
+    caption : function( instance, item ) {
+      var caption = $(this).find('.gallery-el__title').html();
+      return caption;
+    }
+  });
+}
+
+/**
  * !Subscribe Form
  * */
 function subscribeForm(){
@@ -2252,5 +2267,6 @@ $(document).ready(function () {
   toggleWidget();
   map();
   createUploadFileList();
+  gallery();
   subscribeForm();
 });

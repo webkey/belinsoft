@@ -27,7 +27,8 @@
     "jquery-validation": "^1.17.0",
     "swiper": "^4.5.0",
     "fullpage.js": "^3.0.7",
-    "page-scroll-to-id": "^1.6.2"
+    "page-scroll-to-id": "^1.6.2",
+    "fancybox": "^3.5.7"
   },
   "devDependencies": {
     "mathsass": "^0.9.5"

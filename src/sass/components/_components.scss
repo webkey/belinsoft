@@ -9,13 +9,25 @@
   @include media('<mob') {
     margin-bottom: $bottom-space--mob;
   }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
 }
 
-.section-bottom-space {
+.bottom-section {
   margin-bottom: $bottom-section;
+
+  @include media('<desk-s') {
+    margin-bottom: $bottom-section--lap;
+  }
 
   @include media('<mob') {
     margin-bottom: $bottom-section--mob;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
   }
 }
 
@@ -81,6 +93,27 @@
 /* ==================================== */
 /* ======= NON CONTENT ELEMENTS ======= */
 /* ==================================== */
+/* fancybox */
+.fancybox-bg {
+  background-color: $bg-color;
+}
+
+.fancybox-button {
+  background-color: $base-color;
+  color: $text-color-alt;
+
+  &[disabled], &[disabled]:hover {
+    color: $text-color-alt;
+
+    &,
+    .fancybox-show-nav .fancybox-navigation & {
+      opacity: 0.5;
+    }
+  }
+}
+
+/* fancybox end */
+
 /* breadcrumbs */
 .breadcrumbs {
   color: $text-color-muted;
@@ -118,12 +151,20 @@
 
 /* breadcrumbs end */
 
+.fp-section {
+  will-change: transform;
+}
+
 .main-section,
 .about-section,
 .m-news-section,
 .media-section,
 .partners-section {
   padding: #{$layout-page-top-space} #{nth($layout-page-space, 2)} #{nth($layout-page-space, 3)};
+
+  @include media('<desk') {
+    padding: #{$layout-page-top-space--desk} #{nth($layout-page-space--desk, 2)} #{nth($layout-page-space--desk, 3)};
+  }
 
   @include media('<desk-s') {
     padding: #{$layout-page-top-space--lap} #{nth($layout-page-space--lap, 2)} #{nth($layout-page-space--lap, 3)};
@@ -145,6 +186,174 @@
     padding: #{nth($layout-page-space--mob, 1)} #{nth($layout-page-space--mob, 2)} #{nth($layout-page-space--mob, 3)};
   }
 }
+
+/* gallery element */
+.gallery-el {
+  $figure-el: &;
+  display: block;
+  position: relative;
+  padding: 0 3.1rem 4.2rem;
+
+  @include media('<lap-l') {
+    padding: 0 2rem 3rem;
+  }
+
+  @include media('<mob') {
+    padding: 0 1.5rem 2.5rem;
+  }
+
+  &::before {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 5rem;
+    bottom: 0;
+    width: 100%;
+    z-index: -1;
+    will-change: transform;
+    transition: transform $animation-speed;
+    transform-origin: top center;
+
+    @include bg-news;
+  }
+
+  @at-root {
+    a#{$figure-el} {
+      text-decoration: none;
+      color: inherit;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+      outline: none;
+    }
+  }
+}
+
+.gallery-el__figure {
+  position: relative;
+  margin: 0 0 2rem;
+  box-shadow: 0 23px 42px rgba(0, 0, 0, 0.20);
+  will-change: transform;
+  transition: transform $animation-speed;
+  -webkit-overflow-scrolling: touch;
+
+  @include media('<lap-l') {
+    margin-bottom: 1.5rem;
+  }
+
+  &::before {
+    @include img-mask;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  img {
+    height: auto;
+    max-width: none;
+    width: 100%;
+    margin: 0;
+  }
+}
+
+.gallery-el__title {
+  @include font-alt;
+  font-size: 1.8rem;
+  line-height: 2.4rem;
+  color: $title-color;
+  margin-bottom: 1.5rem;
+  transition: color $animation-speed;
+
+  @include media('<desk') {
+    font-size: 1.6rem;
+    line-height: 2.2rem;
+  }
+
+  @include media('<lap-l') {
+    margin-bottom: 1.5rem;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+// Hover
+.gallery-el {
+  .no-touchevents &:hover {
+    z-index: 1;
+
+    &::before {
+      $scale: 1.1, 1.1;
+      transform: scale($scale);
+      transform: scale3d($scale, 1);
+
+      @include media('<lap-l') {
+        $scale: 1.05, 1.05;
+        transform: scale($scale);
+        transform: scale3d($scale, 1);
+      }
+    }
+
+    .gallery-el__title {
+      color: $highlight-color;
+    }
+
+    .gallery-el__figure {
+      $translate: 0, -1rem;
+      transform: translate($translate);
+      transform: translate3d($translate, 0);
+    }
+  }
+}
+
+/* gallery element end */
+
+/* gallery */
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  margin: 0 -1.2rem $bottom-section;
+
+  @include media('<desk-s') {
+    margin: 0 -1.2rem $bottom-section--lap;
+  }
+
+  @include media('<mob') {
+    margin: 0 -0.6rem $bottom-section--mob;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.gallery__el {
+  $width: 33.33%;
+  flex: 0 1 $width;
+  max-width: $width;
+  padding: 0 1.2rem 4rem;
+
+  @include media('<tab-s') {
+    $width: 50%;
+    flex-basis: $width;
+    max-width: $width;
+  }
+
+  @include media('<mob') {
+    padding: 0 0.6rem 3rem;
+  }
+
+  @include media('<mob-xxs') {
+    $width: 100%;
+    flex-basis: $width;
+    max-width: $width;
+  }
+}
+
+/* gallery end */
 
 /* ==================================== */
 /* ============== HEADER ============== */
@@ -172,6 +381,10 @@
 
 .header-layout {
   padding: 0 3rem 0 #{nth($layout-page-space, 2)};
+
+  @include media('<desk') {
+    padding-left: nth($layout-page-space--desk, 2);
+  }
 
   @include media('<desk-s') {
     padding-left: nth($layout-page-space--lap, 2);
@@ -345,6 +558,7 @@
     padding: 0.3rem 0.5rem;
     color: white;
     text-decoration: none;
+    transition: color $animation-speed;
 
     &::before {
       content: "";
@@ -354,9 +568,7 @@
       left: 4px;
       width: calc(100% - 8px);
       height: 2px;
-      border-radius: 50%;
-      background-color: $text-color;
-      box-shadow: 0 0 3px rgba($text-color, 1);
+      background-color: currentColor;
 
       transform-origin: 100% 100%;
       $scale: 0, 1;
@@ -414,14 +626,20 @@
       }
     }
 
+    a {
+      &::before {
+        content: none;
+      }
+    }
+
+    .no-touchevents & a:hover {
+      color: $base-color;
+    }
+
     .active-item {
-      a, .no-touchevents a:hover {
+      a, .no-touchevents & a:hover {
         color: $text-color-muted;
         cursor: default;
-
-        &::before {
-          content: none;
-        }
       }
     }
   }
@@ -1341,9 +1559,6 @@
 /* footer bottom */
 .footer-bottom {
   position: relative;
-
-  // обрезать вытянутый маржинами по горизонтале дочерний элемент
-  overflow: hidden;
 }
 
 .footer-bottom__holder {
@@ -1351,30 +1566,31 @@
   display: flex;
   align-items: center;
   @include margin-horizontal(-#{round(nth($grid-space, 2) / 2)});
-  margin-bottom: -#{round(nth($grid-space, 1) / 2)};
 
   @include media('<mob') {
     display: block;
-    margin-bottom: -2rem;
   }
 }
 
 .footer-bottom__col {
   text-align: center;
   @include padding-horizontal(round(nth($grid-space, 2) / 2));
-  margin-bottom: #{round(nth($grid-space, 1) / 2)};
   $width: 33.33%;
   flex: 0 1 #{$width};
   max-width: $width;
 
   @include media('<mob') {
     max-width: none;
-    margin-bottom: 2rem;
+    margin-top: 2rem;
   }
 
   &:first-child {
     @include media(">=mob") {
       text-align: left;
+    }
+
+    @include media('<mob') {
+      margin-top: 0;
     }
   }
 
@@ -1399,17 +1615,75 @@
 /* developer */
 .developer {
   display: inline-block;
-
+  line-height: 1;
   a {
     text-decoration: none;
-    transition: color $animation-speed;
+    color: white;
+  }
+}
 
-    .no-touchevents &:hover {
+.developer__logo {
+  display: block;
+  position: relative;
+  margin-bottom: 0.2rem;
+  width: 13rem;
+  font-size: 0;
+  line-height: 0;
+
+  &::before {
+    content: "";
+    display: block;
+    @include ratio(247, 84);
+  }
+
+  &::after {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: url(../../img/logo-dev.png) no-repeat center center;
+    background-size: contain;
+    transition: filter $animation-speed;
+    filter: grayscale(1);
+  }
+}
+
+.developer__label {
+  font-size: 1.3rem;
+  line-height: 1.8rem;
+  letter-spacing: 0.1em;
+
+  a {
+    box-shadow: inset 0 0 0 currentColor;
+    text-decoration: none;
+    color: currentColor;
+  }
+}
+
+// Hover
+.developer {
+  .developer__label {
+    white-space: nowrap;
+
+    a {
       text-decoration: none;
-    }
+      transition: box-shadow $animation-speed;
 
-    .no-touchevents &:hover {
-      color: $highlight-color;
+      &:hover {
+        text-decoration: none;
+        box-shadow: inset 0 -1px 0 currentColor;
+      }
+    }
+  }
+
+  .developer__logo {
+    &:hover {
+      &::after {
+        filter: grayscale(0);
+      }
     }
   }
 }
@@ -1423,6 +1697,11 @@
   position: relative;
   padding-top: $layout-page-top-space;
   padding-bottom: nth($layout-page-space, 3);
+
+  @include media('<desk') {
+    padding-top: $layout-page-top-space--desk;
+    padding-bottom: nth($layout-page-space--desk, 3);
+  }
 
   @include media('<desk-s') {
     padding-top: $layout-page-top-space--lap;
@@ -1764,6 +2043,10 @@
   .menu__item:first-child & {
     left: nth($layout-page-space, 2);
 
+    @include media('<desk') {
+      left: nth($layout-page-space--desk, 2);
+    }
+
     @include media('<desk-s') {
       left: nth($layout-page-space--lap, 2);
     }
@@ -1845,6 +2128,10 @@
 
   .menu__item:first-child & {
     left: #{nth($layout-page-space, 2) + 4.2};
+
+    @include media('<desk') {
+      left: #{nth($layout-page-space--desk, 2) + 4.2};
+    }
 
     @include media('<desk-s') {
       left: #{nth($layout-page-space--lap, 2) + 4.2};
@@ -2332,6 +2619,148 @@
 
 /* video cover end */
 
+/* figure element */
+.m-figure-el {
+  $m-figure-el: &;
+  display: block;
+  position: relative;
+  padding: 0 1.5rem 2rem;
+  line-height: 1;
+
+  &::before {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 5rem;
+    bottom: 0;
+    width: 100%;
+    z-index: -1;
+    will-change: transform;
+    transition: transform $animation-speed;
+    transform-origin: top center;
+
+    @include bg-news;
+  }
+
+  @at-root {
+    a#{$m-figure-el} {
+      text-decoration: none;
+      color: inherit;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+      outline: none;
+    }
+  }
+}
+
+.m-figure-el__figure {
+  position: relative;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 23px 42px rgba(0, 0, 0, 0.20);
+  will-change: transform;
+  transition: transform $animation-speed;
+  -webkit-overflow-scrolling: touch;
+
+  &::before {
+    @include img-mask;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  img {
+    height: auto;
+    max-width: none;
+    width: 100%;
+    margin: 0;
+  }
+}
+
+.m-figure-el__title {
+  @include font-alt;
+  font-size: 1.5rem;
+  line-height: 2.1rem;
+  color: $title-color;
+  margin-bottom: 1.5rem;
+  transition: color $animation-speed;
+
+  @include media('<lap') {
+    font-size: 1.3rem;
+    line-height: 1.9rem;
+  }
+
+  @include media('<mob-xxs') {
+    font-size: inherit;
+    line-height: inherit;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+// Hover
+.m-figure-el {
+  .no-touchevents &:hover {
+    z-index: 1;
+
+    &::before {
+      $scale: 1.1, 1.1;
+      transform: scale($scale);
+      transform: scale3d($scale, 1);
+
+      @include media('<lap-l') {
+        $scale: 1.05, 1.05;
+        transform: scale($scale);
+        transform: scale3d($scale, 1);
+      }
+    }
+
+    .m-figure-el__title {
+      color: $highlight-color;
+    }
+
+    .m-figure-el__figure {
+      $translate: 0, -1rem;
+      transform: translate($translate);
+      transform: translate3d($translate, 0);
+    }
+  }
+}
+
+/* figure element end */
+
+/* figure list */
+.m-figure-list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  margin: 0 -0.8rem -3rem;
+}
+
+.m-figure-list__el {
+  $width: 33.33%;
+  flex: 0 1 $width;
+  max-width: $width;
+  padding: 0 0.8rem 3rem;
+
+  @include media('<mob-s') {
+    $width: 50%;
+    flex-basis: $width;
+    max-width: $width;
+  }
+
+  @include media('<mob-xxs') {
+    $width: 100%;
+    flex-basis: $width;
+    max-width: $width;
+  }
+}
+
+/* figure list end */
+
 /* about section */
 .about-section {
   position: relative;
@@ -2360,6 +2789,12 @@
     color: $title-color;
     text-transform: uppercase;
     margin-bottom: 3rem;
+
+    @include media('<desk') {
+      font-size: $font-size-h1--desk;
+      line-height: $line-height-h1--desk;
+      margin-bottom: 2.5rem;
+    }
 
     @include media('<lap-l') {
       font-size: $font-size-h1--lap;
@@ -2413,8 +2848,9 @@
 
 .about-section__align {
   position: relative;
-  flex: 0 1 92rem;
-  width: 92rem;
+  $width: 132rem;
+  flex: 0 1 #{$width};
+  width: $width;
   max-width: calc(100% - 34rem);
   z-index: 15;
 
@@ -2426,6 +2862,7 @@
 
 .about-section__content {
   margin-bottom: 5rem;
+  @include clear;
 
   @include media('<lap-l') {
     margin-bottom: 3rem;
@@ -2445,6 +2882,71 @@
     &:last-child {
       margin-bottom: 0;
     }
+  }
+}
+
+$about-section-figure-width: 50%;
+$about-section-figure-width--lap: 42rem;
+
+.about-section__description,
+.about-section__footer {
+  float: left;
+  min-height: 5rem;
+  width: 100% - $about-section-figure-width;
+  margin-bottom: 3rem;
+  clear: left;
+
+  @include media('<lap') {
+    width: calc(100% - #{$about-section-figure-width--lap});
+  }
+
+  @include media('<lap-s') {
+    float: none;
+    width: auto;
+    max-width: none;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.about-section__description {
+  @include media('<desk') {
+    font-size: $font-size--mob;
+    line-height: $line-height--mob;
+  }
+
+  @include media('<lap-s') {
+    font-size: 1.4rem;
+    line-height: 2.2rem;
+  }
+}
+
+.about-section__figure {
+  float: right;
+  min-height: 5rem;
+  width: $about-section-figure-width;
+  padding-left: 2rem;
+  margin-bottom: 3rem;
+  clear: right;
+
+  @include media('<lap') {
+    width: $about-section-figure-width--lap;
+  }
+
+  @include media('<lap-s') {
+    float: none;
+    padding: 0;
+    max-width: 100%;
+  }
+
+  @include media('<mob') {
+    width: auto;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
   }
 }
 
@@ -2554,6 +3056,11 @@
   display: flex;
   align-items: center;
 
+  @include media('<desk') {
+    $intend: round-float(nth($layout-page-space--desk, 2) / 2, 1);
+    margin: 0 -#{$intend};
+  }
+
   @include media('<desk-s') {
     $intend: round-float(nth($layout-page-space--lap, 2) / 2, 1);
     margin: 0 -#{$intend};
@@ -2587,6 +3094,12 @@
     text-transform: uppercase;
     margin-bottom: 3rem;
 
+    @include media('<desk') {
+      font-size: $font-size-h1--desk;
+      line-height: $line-height-h1--desk;
+      margin-bottom: 2.5rem;
+    }
+
     @include media('<lap-l') {
       font-size: $font-size-h1--lap;
       line-height: $line-height-h1--lap;
@@ -2606,6 +3119,11 @@
   $intend: round-float(nth($layout-page-space, 2) / 2, 1);
   padding: 0 #{$intend};
   z-index: 15;
+
+  @include media('<desk') {
+    $intend: round-float(nth($layout-page-space--desk, 2) / 2, 1);
+    padding: 0 #{$intend};
+  }
 
   @include media('<desk-s') {
     $intend: round-float(nth($layout-page-space--lap, 2) / 2, 1);
@@ -2848,7 +3366,7 @@ $i-widget-space: 4rem;
 
   .swiper-button-prev,
   .swiper-button-next {
-    $size: 2.2rem;
+    $size: 2.4rem;
     height: $size;
     width: $size;
     border-radius: $size;
@@ -2926,14 +3444,20 @@ $i-widget-space: 4rem;
   height: $size;
   width: $size;
   border-radius: $size;
-  line-height: $size;
-  font-size: 1.6rem;
-  @include font-bold;
   color: white;
   cursor: pointer;
+  @include font-bold;
+  line-height: $size;
+  font-size: 1.0rem;
   text-align: center;
   text-decoration: none;
+  overflow: hidden;
+  text-indent: -9999px;
   background-color: $highlight-color;
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMjMuOTU0IDIxLjAzbC05LjE4NC05LjA5NSA5LjA5Mi05LjE3NC0yLjgzMi0yLjgwNy05LjA5IDkuMTc5LTkuMTc2LTkuMDg4LTIuODEgMi44MSA5LjE4NiA5LjEwNS05LjA5NSA5LjE4NCAyLjgxIDIuODEgOS4xMTItOS4xOTIgOS4xOCA5LjF6Ii8+PC9zdmc+);
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-size: 1em;
   user-select: none;
   -webkit-tap-highlight-color: transparent;
   z-index: 5;
@@ -2991,13 +3515,8 @@ $i-widget-space: 4rem;
   .weather-city,
   .weather-time,
   .btn-widget-close {
-    $prop: transform, opacity, border-radius, box-shadow;
-    will-change: $prop;
-    transition: {
-      property: $prop;
-      duration: $animation-speed;
-      timing-function: ease-in-out;
-    }
+    will-change: transform, opacity;
+    transition: all $animation-speed ease-in-out, background-color 0.2s;
   }
 
   .btn-widget-close {
@@ -3040,7 +3559,8 @@ $i-widget-space: 4rem;
   // Show full view of widget (active)
   &.widget_active {
     .btn-widget-close {
-      transition-delay: $animation-speed;
+      transition-property: all, background-color;
+      transition-delay: $animation-speed, 0s;
       opacity: 1;
       pointer-events: auto;
     }
@@ -3112,7 +3632,7 @@ $i-widget-space: 4rem;
   text-transform: uppercase;
   text-decoration: none;
   color: $text-color-alt;
-  transition: $animation-speed transform 0.6s;
+  transition: transform $animation-speed 0.6s;
   transform: translateX(0);
   user-select: none;
   -webkit-tap-highlight-color: transparent;
@@ -3136,7 +3656,7 @@ $i-widget-space: 4rem;
     border-radius: 14px;
     //background-color: rgba(#2e2e2e, 0.8);
     background-color: rgba($highlight-color, 0.8);
-    transition: $animation-speed background-color 0s;
+    transition: background-color $animation-speed 0s;
 
     &::after {
       content: "";
@@ -3467,13 +3987,44 @@ $m-news-space--net: 2rem;
   max-width: $width;
   padding: 0 #{$m-news-space} #{$m-news-space};
 
+  @include media('<desk') {
+    $width: 65%;
+    flex-basis: $width;
+    max-width: $width;
+  }
+
   @include media('<lap-l') {
     padding: 0 #{$m-news-space--net} #{$m-news-space--net};
+  }
+
+  @include media('<net') {
+    $width: 60%;
+    flex-basis: $width;
+    max-width: $width;
   }
 
   @include media('<tab-s') {
     max-width: none;
     padding-bottom: 4rem;
+  }
+
+  &:first-child {
+    @include media('<desk') {
+      $width: 35%;
+      flex-basis: $width;
+      max-width: $width;
+    }
+
+    @include media('<net') {
+      $width: 40%;
+      flex-basis: $width;
+      max-width: $width;
+    }
+
+    @include media('<tab-s') {
+      max-width: none;
+      padding-bottom: 4rem;
+    }
   }
 
   &:last-child {
@@ -3549,6 +4100,10 @@ $m-news-space--net: 2rem;
     max-width: none;
     transform-origin: bottom center;
 
+    @include media('<desk') {
+      margin: 0 -3.5rem -7.2rem;
+    }
+
     @include media('<desk-s') {
       $intend: -3rem;
       margin-left: $intend;
@@ -3559,7 +4114,10 @@ $m-news-space--net: 2rem;
       $intend: -1.5rem;
       margin-left: $intend;
       margin-right: $intend;
-      margin-bottom: -9.2rem;
+    }
+
+    @include media('<lap-s') {
+      margin-bottom: -5.7rem;
     }
 
     &::before, &::after {
@@ -3594,15 +4152,25 @@ $m-news-space--net: 2rem;
     z-index: 5;
   }
 
+  .m-news-el__date {
+    color: #fff;
+  }
+
   .m-news-el__title {
     font-size: $font-size-h2;
     line-height: $line-height-h2;
     min-height: $line-height-h2;
 
-    @include media('<lap') {
+    @include media('<desk') {
       font-size: $font-size-h2--lap;
       line-height: $line-height-h2--lap;
       min-height: $line-height-h2--lap * 2;
+    }
+
+    @include media('<lap-s') {
+      font-size: 1.5rem;
+      line-height: 2.0rem;
+      min-height: 1.5rem * 2;
     }
   }
 
@@ -3674,6 +4242,12 @@ $m-news-space--net: 2rem;
     text-transform: uppercase;
     margin-bottom: 3rem;
 
+    @include media('<desk') {
+      font-size: $font-size-h1--desk;
+      line-height: $line-height-h1--desk;
+      margin-bottom: 2.5rem;
+    }
+
     @include media('<lap-l') {
       font-size: $font-size-h1--lap;
       line-height: $line-height-h1--lap;
@@ -3692,6 +4266,8 @@ $m-news-space--net: 2rem;
   z-index: 15;
   width: 130rem;
   max-width: calc(100% - 32rem);
+  backface-visibility: hidden;
+  @include antialiased;
 
   @include media('<tab') {
     max-width: none;
@@ -3791,8 +4367,8 @@ $m-news-space--net: 2rem;
   transition: color $animation-speed;
 
   @include media('<desk') {
-    font-size: 1.5rem;
-    line-height: 2.0rem;
+    font-size: 1.6rem;
+    line-height: 2.2rem;
   }
 
   @include media('<lap-l') {
@@ -4136,15 +4712,21 @@ $m-news-space--net: 2rem;
   padding: 6rem #{$intend - 3.1} 3.5rem;
   margin: -6rem -#{$intend} #{$bottom-section - 3.5};
 
+  @include media('<desk') {
+    $intend: nth($layout-page-space--desk, 2);
+    padding: 6rem #{$intend - 3.1} 2rem;
+    margin: -6rem -#{$intend} 0;
+  }
+
   @include media('<desk-s') {
     $intend: nth($layout-page-space--lap, 2);
-    padding: 6rem #{$intend - 3.1} 3.5rem;
+    padding: 6rem #{$intend - 3.1} 2rem;
     margin: -6rem -#{$intend} 0;
   }
 
   @include media('<lap-l') {
     $intend: nth($layout-page-space--net, 2);
-    padding: 6rem #{$intend - 2} 3rem;
+    padding: 6rem #{$intend - 2} 2rem;
     margin: -6rem -#{$intend} -2rem;
   }
 
@@ -4174,6 +4756,10 @@ $m-news-space--net: 2rem;
     right: #{nth($layout-page-space, 2) - 0.5};
     width: auto;
     padding: 0;
+
+    @include media('<desk') {
+      right: #{nth($layout-page-space--desk, 2) - 0.5};
+    }
 
     @include media('<desk-s') {
       right: #{nth($layout-page-space--lap, 2) - 0.5};
@@ -4232,6 +4818,12 @@ $m-news-space--net: 2rem;
     color: $title-color;
     text-transform: uppercase;
     margin-bottom: 3rem;
+
+    @include media('<desk') {
+      font-size: $font-size-h1--desk;
+      line-height: $line-height-h1--desk;
+      margin-bottom: 2.5rem;
+    }
 
     @include media('<lap-l') {
       font-size: $font-size-h1--lap;
@@ -5009,6 +5601,10 @@ $subs-btn-width: 4.5rem;
   width: calc(100% - #{$contacts-layout} - #{nth($layout-page-space, 2)} * 2);
   height: calc(100% + 2rem);
 
+  @include media('<desk') {
+    width: calc(100% - #{$contacts-layout} - #{nth($layout-page-space--desk, 2)} * 2);
+  }
+
   @include media('<desk-s') {
     width: calc(100% - #{$contacts-layout--lap} - #{nth($layout-page-space--lap, 2)} * 2);
   }
@@ -5046,6 +5642,10 @@ $subs-btn-width: 4.5rem;
 
   top: $layout-page-top-space;
 
+  @include media('<desk') {
+    top: $layout-page-top-space--desk;
+  }
+
   @include media('<desk-s') {
     top: $layout-page-top-space--lap;
   }
@@ -5069,7 +5669,8 @@ $subs-btn-width: 4.5rem;
 .btn-to-top {
   position: fixed;
   right: -1.2rem;
-  bottom: 6.8rem;
+  //bottom: 6.8rem;
+  bottom: 12.5rem;
   z-index: 998;
   width: 9.5rem;
   padding: 1.6rem 1.3rem;
@@ -5081,7 +5682,7 @@ $subs-btn-width: 4.5rem;
   color: $text-color-alt;
   border-radius: 14px;
   background-color: rgba(#2e2e2e, 0.8);
-  transition: $animation-speed background-color 0s, $animation-speed transform 0.3s;
+  transition: background-color $animation-speed 0s, transform $animation-speed 0.3s;
   $translate: 100%, 0;
   transform: translate($translate);
   transform: translate3d($translate, 0);
@@ -5114,21 +5715,20 @@ $subs-btn-width: 4.5rem;
     background-position: 50%;
     background-size: 1rem;
     background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTEiIGhlaWdodD0iNyIgdmlld0JveD0iMCAwIDExIDciIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTkuNDE5OTIgNS4zOTg0NEw1LjIwOTk2IDFMMSA1LjM5ODQ0IiBzdHJva2U9IiMxMjEyMTIiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PC9zdmc+);
-    transition: 0.5s transform 0.3s, 0.35s opacity 0.3s;
-
+    transition: transform 0.5s 0.3s, opacity 0.35s 0.3s;
     opacity: 0;
     transform: translateZ(0) rotate(-180deg);
   }
 
   // Active
   &.btn-to-top--show {
-    transition: $animation-speed background-color, $animation-speed transform 0s;
+    transition: background-color $animation-speed, transform $animation-speed 0s;
     $translate: 0, 0;
     transform: translate($translate);
     transform: translate3d($translate, 0);
 
     &::after {
-      transition: 0.5s transform 0.2s, 0.35s opacity 0.2s;
+      transition: transform 0.5s 0.2s, opacity 0.35s 0.2s;
       opacity: 1;
       transform: translateZ(0) rotate(0);
     }

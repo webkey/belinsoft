@@ -22,10 +22,14 @@ $breakpoints: (
 
 // Fonts style
 // ====================================================
-$font-norm: "Roboto", Helvetica, Arial, sans-serif !default;
-$font-bold: "Roboto", Helvetica, Arial, sans-serif !default;
-$font-bold-italic: "Roboto", Helvetica, Arial, sans-serif !default;
-$font-italic: "Roboto", Helvetica, Arial, sans-serif !default;
+//$font-norm: "Roboto", Helvetica, Arial, sans-serif !default;
+//$font-bold: "Roboto", Helvetica, Arial, sans-serif !default;
+//$font-bold-italic: "Roboto", Helvetica, Arial, sans-serif !default;
+//$font-italic: "Roboto", Helvetica, Arial, sans-serif !default;
+$font-norm: "roboto", Helvetica, Arial, sans-serif !default;
+$font-bold: "roboto-bold", Helvetica, Arial, sans-serif !default;
+$font-bold-italic: "roboto-bold-italic", Helvetica, Arial, sans-serif !default;
+$font-italic: "roboto-italic", Helvetica, Arial, sans-serif !default;
 
 $font-alt: "circe-regular", Helvetica, Arial, sans-serif !default;
 $font-alt-bold: "circe-bold", Helvetica, Arial, sans-serif !default;
@@ -33,24 +37,41 @@ $font-alt-extra-bold: "circe-extra-bold", Helvetica, Arial, sans-serif !default;
 
 // Main font
 // ----------------------------------------------------
+//@mixin font-normal {
+//  font-family: $font-norm;
+//}
+//
+//@mixin font-bold {
+//  font-weight: 700;
+//}
+//
+//@mixin font-italic {
+//  font-style: italic;
+//}
+//
+//@mixin font-bold-italic {
+//  font-weight: 700;
+//  font-style: italic;
+//}
+
 @mixin font-normal {
   font-family: $font-norm;
 }
 
 @mixin font-bold {
-  //font-family: $font-bold;
-  font-weight: 700;
+  font-family: $font-bold;
+  font-weight: normal;
 }
 
 @mixin font-italic {
-  //font-family: $font-italic;
-  font-style: italic;
+  font-family: $font-italic;
+  font-style: normal;
 }
 
 @mixin font-bold-italic {
-  //font-family: $font-bold-italic;
-  font-weight: 700;
-  font-style: italic;
+  font-family: $font-bold-italic;
+  font-weight: normal;
+  font-style: normal;
 }
 
 // Alternative font
@@ -85,6 +106,9 @@ $line-height--mob: 2.4rem !default;
 $font-size-h1: 7.3rem !default;
 $line-height-h1: 7.3rem !default;
 $line-height-h1-kef: $line-height-h1 / $font-size-h1;
+// ------ desk -----------------------------------------
+$font-size-h1--desk: 6rem !default;
+$line-height-h1--desk: round-float($font-size-h1--desk * $line-height-h1-kef, 1) !default; // Использовать рассчетное значение, если нет в дизайне
 // ------ lap -----------------------------------------
 $font-size-h1--lap: 5.2rem !default;
 $line-height-h1--lap: round-float($font-size-h1--lap * $line-height-h1-kef, 1) !default; // Использовать рассчетное значение, если нет в дизайне
@@ -222,6 +246,7 @@ $bottom-space: $line-height !default;
 // ------ mob -----------------------------------------
 $bottom-space--mob: $line-height--mob !default;
 
+// Section spaces
 $bottom-section: round-float($line-height * 3, 1) !default;
 // ------ lap -----------------------------------------
 $bottom-section--lap: round-float($line-height * 2, 1) !default;
@@ -272,13 +297,15 @@ $layout-page-min-width: 32rem !default;
 $layout-page-max-width: none !default;
 // Верхний отступ страницы с учетом фиксированной шапки
 $layout-page-top-space: 19rem !default;
+$layout-page-top-space--desk: 14rem !default; // media('<desk')
 $layout-page-top-space--lap: 14rem !default; // media('<desk-s')
 $layout-page-top-space--net: 12rem !default; // media('<lap-l')
 $layout-page-top-space--tab: 12rem !default; // media('<tab')
 $layout-page-top-space--mob: 9rem !default; // media('<mob')
 // Отступы для всего сайта
 $layout-page-space: 5rem 6.8rem 5rem !default;
-$layout-page-space--lap: 5rem 5rem 5rem !default; // media('<desk-s')
+$layout-page-space--desk: 5rem 5rem 5rem !default; // media('<desk')
+$layout-page-space--lap: 5rem 3.5rem 5rem !default; // media('<desk-s')
 $layout-page-space--net: 5rem 3rem 5rem !default; // media('<lap-l')
 $layout-page-space--tab: 4rem 2.5rem 4rem !default; // media('<tab')
 $layout-page-space--mob: 3rem 1.5rem 3rem !default; // media('<mob')

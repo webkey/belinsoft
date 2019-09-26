@@ -1,0 +1,6 @@
+<a href="@@img" class="gallery-el" data-fancybox="gallery" @@if(context.caption) {data-caption="@@caption"}>
+  <div class="gallery-el__figure">
+    <img src="@@img" alt="@@title" />
+  </div>
+  @@if(context.title) {<div class="gallery-el__title">@@title</div>}
+</a>
