@@ -321,7 +321,8 @@ $layout-content-width: calc(100% - 34rem) !default;
 // Layout text
 // ====================================================
 // Ширина текстового блока
-$layout-text-width: 120rem !default;
+//$layout-text-width: 120rem !default;
+$layout-text-width: 90rem !default;
 // Отступы текствого блока
 $layout-text-space: 2rem 3rem !default;
 // Максимальная ширина элементов выходящих за пределы текста

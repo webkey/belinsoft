@@ -90,6 +90,11 @@
   }
 }
 
+.clearfix {
+  @include clear;
+  margin: 0;
+}
+
 /* ==================================== */
 /* ======= NON CONTENT ELEMENTS ======= */
 /* ==================================== */
@@ -1580,6 +1585,7 @@
 /* ==================================== */
 .footer {
   position: relative;
+  overflow: hidden;
   border-top: 1px solid rgba($text-color-muted, 0.1);
   box-shadow: 0 -0.2rem 3.3rem rgba(0, 0, 0, 0.5);
   padding: 2rem 0;
@@ -1612,6 +1618,7 @@
 
   @include media('<mob') {
     display: block;
+    margin: 0;
   }
 }
 
@@ -1624,7 +1631,8 @@
 
   @include media('<mob') {
     max-width: none;
-    margin-top: 2rem;
+    margin: 2rem 0 0;
+    padding: 0;
   }
 
   &:first-child {
@@ -3159,7 +3167,7 @@
 .about-section__figure {
   flex: 0 1 auto;
   width: 29%;
-  margin-right: -2rem;
+  margin: -50% -2rem -50% 0;
 
   // <640px
   @include media("<mob") {
@@ -5781,22 +5789,25 @@ $subs-btn-width: 4.5rem;
 
 /* news article */
 .news-page {
-
   h1 {
-    font-size: 5.2rem;
-    line-height: 5.8rem;
-    text-transform: none;
     margin-top: 0;
+    text-transform: none;
 
-    @include media("<tab") {
-      font-size: 4.8rem;
-      line-height: 5.2rem;
+    // >=992px
+    @include media(">=tab") {
+      font-size: $font-size-h1--lap;
+      line-height: $line-height-h1--lap;
     }
 
-    @include media("<mob") {
-      font-size: 3.8rem;
-      line-height: 4.4rem;
-    }
+    //@include media("<tab") {
+    //  font-size: 4.8rem;
+    //  line-height: 5.2rem;
+    //}
+    //
+    //@include media("<mob") {
+    //  font-size: 3.8rem;
+    //  line-height: 4.4rem;
+    //}
   }
 }
 
@@ -6205,6 +6216,10 @@ $subs-btn-width: 4.5rem;
     transform: translateZ(0) rotate(-180deg);
   }
 
+  span {
+    display: block;
+  }
+
   // Active
   &.btn-to-top--show {
     transition: background-color $animation-speed, transform $animation-speed 0s;
@@ -6226,7 +6241,11 @@ $subs-btn-width: 4.5rem;
 
   // Hover
   &:active {
-    margin: 1px -1px -1px;
+    //margin: 1px -1px -1px;
+
+    span {
+      transform: scale(0.85);
+    }
   }
 }
 

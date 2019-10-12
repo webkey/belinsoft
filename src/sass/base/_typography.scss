@@ -20,6 +20,10 @@ h1, h2, h3, h4, h5, h6,
 
   @include media('<mob') {
     margin: 0 0 #{round-float($bottom-space--mob * 1.2, 1)};
+    //word-break: break-all;
+    //word-wrap: break-word;
+    //white-space: pre;
+    //white-space: pre-wrap;
   }
 
   @include font-alt-extra-bold;
@@ -37,6 +41,11 @@ h1, h2, h3, h4, h5, h6,
     &:hover {
       color: $link-color;
     }
+  }
+
+  mark {
+    background: none;
+    color: $base-color;
   }
 }
 
@@ -74,6 +83,11 @@ p, pre {
 
   &:last-child {
     margin-bottom: 0;
+  }
+
+  mark {
+    background: none;
+    color: $base-color;
   }
 }
 
@@ -256,6 +270,71 @@ table {
     column-count: 1;
   }
 }
+
+.figure {
+  @include clear;
+  line-height: 2.6;
+
+  // <1366px
+  @include media("<lap") {
+    line-height: inherit;
+  }
+}
+
+/* entry-heading */
+.entry-heading {
+  margin-bottom: 4rem;
+}
+
+/* entry-heading end */
+
+/* entry */
+.entry {
+  position: relative;
+  padding: 4rem 0;
+  margin-bottom: 4rem;
+  background-repeat: no-repeat;
+  background-position: 100% 50%;
+  background-size: cover;
+  z-index: 5;
+}
+
+.entry-mask {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 70%;
+  height: 100%;
+  z-index: -1;
+  @include linear-gradient(to right, rgba($bg-color, 0.9) 0%, rgba($bg-color, 0.5) 70%, rgba($bg-color, 0) 100%);
+
+  // <768px
+  @include media("<tab-s") {
+    width: 85%;
+  }
+}
+
+.entry__title {
+  text-transform: uppercase;
+  margin-bottom: 3rem;
+
+  // <1600px
+  @include media("<desk-s") {
+    margin-bottom: 2rem;
+  }
+}
+
+.entry__title,
+.entry__content {
+  width: 55%;
+
+  // <768px
+  @include media("<tab-s") {
+    width: 75%;
+  }
+}
+
+/* entry end */
 
 /* typography elements */
 .typography {
@@ -533,16 +612,12 @@ table {
       text-align: left;
       max-width: 45%;
       margin-top: 0;
-      margin-right: 3rem;
-
-      @include media("<tab") {
-        margin-right: 2rem;
-      }
+      margin-right: 5%;
 
       @include media("<mob") {
         float: none;
         text-align: left;
-        max-width: none;
+        max-width: 100%;
         margin-right: auto;
       }
     }
@@ -553,16 +628,12 @@ table {
       text-align: right;
       max-width: 45%;
       margin-top: 0;
-      margin-left: 3rem;
-
-      @include media("<tab") {
-        margin-left: 2rem;
-      }
+      margin-left: 5%;
 
       @include media("<mob") {
         float: none;
         text-align: left;
-        max-width: none;
+        max-width: 100%;
         margin-left: auto;
       }
     }
@@ -572,7 +643,8 @@ table {
 /* typography elements end */
 
 /* article content */
-.article-content {
+.article-content,
+.news-content {
   & > p,
   & > hr,
   & > mark,
@@ -590,13 +662,13 @@ table {
   & > .layout-text {
     max-width: $layout-text-width;
 
-    @include push-auto;
+    //@include push-auto;
   }
 
   & > .layout-flood {
     max-width: $layout-text-width;
 
-    @include push-auto;
+    //@include push-auto;
   }
 }
 
