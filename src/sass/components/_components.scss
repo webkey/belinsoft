@@ -156,6 +156,326 @@
 
 /* breadcrumbs end */
 
+/* pagination */
+// pagination
+$pagination-hspace: 1.2rem;
+$pagination-vspace: 0.4rem;
+$pagination-font-size: 1.6rem;
+$pagination-height: 4rem;
+$pagination-width: $pagination-height;
+$pagination-border-width: 0;
+
+.pagination {
+  @include font-bold;
+  @include clear-spacing;
+  color: inherit;
+  text-align: center;
+  cursor: default;
+  margin: 0 auto #{$bottom-section};
+  @include clear;
+
+  // <1600px
+  @include media("<desk-s") {
+    margin-bottom: $bottom-section--lap;
+  }
+
+  @include media("<mob") {
+    position: relative;
+    margin-bottom: $bottom-section--mob;
+    padding-bottom: $pagination-height + $pagination-vspace * 2;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.pg-left {
+  float: left;
+
+  @include media("<mob") {
+    float: none;
+    position: absolute;
+    bottom: 0;
+    right: 50%;
+  }
+}
+
+.pg-right {
+  float: right;
+
+  @include media("<mob") {
+    float: none;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: -0.1rem;
+    width: 0;
+    height: 2rem;
+    margin-top: -1rem;
+    border-left: 0.2rem solid;
+
+    display: none;
+
+    @include media("<mob") {
+      display: block;
+    }
+  }
+}
+
+.pg-first-arr,
+.pg-last-arr,
+.pg-prev-arr,
+.pg-next-arr {
+  //display: none
+  position: absolute;
+  top: 50%;
+  left: 0;
+  height: 0.2rem;
+  width: 1.2rem;
+  margin-top: -0.1rem;
+  letter-spacing: 0;
+  border-top: 0.2rem solid $text-color;
+  transition: border-color $animation-speed;
+
+  &::before, &::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    $size: 0.8rem;
+    height: $size;
+    width: $size;
+    margin-top: -0.1rem;
+    border: 0 solid $text-color;
+    backface-visibility: hidden;
+    transition: border-color $animation-speed;
+  }
+}
+
+.pg-first-arr,
+.pg-prev-arr {
+  &::before,
+  &::after {
+    transform: rotate(-45deg);
+    transform-origin: left top;
+    left: 0;
+    margin-left: -0.1rem;
+    border-width: 0.2rem 0 0 0.2rem;
+  }
+}
+
+.pg-last-arr,
+.pg-next-arr {
+  left: auto;
+  right: 0;
+
+  &::before,
+  &::after {
+    right: 0;
+    margin-right: -0.1rem;
+    transform-origin: top right;
+    transform: rotate(45deg);
+    border-width: 0.2rem 0.2rem 0 0;
+  }
+}
+
+.pg-first-arr,
+.pg-last-arr {
+  width: 1.8rem;
+}
+
+.pg-first-arr {
+  &::after {
+    margin-left: 0.6rem;
+  }
+}
+
+.pg-last-arr {
+  &::after {
+    margin-right: 0.6rem;
+  }
+}
+
+.pg-prev-arr,
+.pg-next-arr {
+  &::after {
+    display: none;
+  }
+}
+
+.pg-first,
+.pg-last,
+.pg-prev,
+.pg-next {
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  @if $pagination-border-width != 0 {
+    margin: 0 0 0 -#{$pagination-border-width};
+  } @else {
+    margin: #{$pagination-vspace} #{$pagination-hspace};
+  }
+  color: inherit;
+  text-decoration: none;
+  transition: color $animation-speed;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+
+  span {
+    $space: 2rem;
+    padding-left: $space;
+    padding-right: $space;
+  }
+
+  &.disabled {
+    opacity: 0.5;
+    cursor: default;
+    pointer-events: none;
+  }
+
+  .no-touchevents &:not(.disabled):hover {
+    color: $base-color;
+
+    [class*="-arr"] {
+      &, &::before,
+      &::after {
+        border-color: $base-color;
+      }
+    }
+  }
+}
+
+//&:not(.disabled):active
+// margin-top: 1px
+
+.pg-first,
+.pg-last {
+  display: none;
+
+  span {
+    $space: 2.6rem;
+    padding-left: $space;
+    padding-right: $space;
+  }
+
+  @include media("<mob") {
+    display: none;
+  }
+}
+
+.pg-first,
+.pg-prev {
+  span {
+    padding-right: 0;
+  }
+}
+
+.pg-last,
+.pg-next {
+  span {
+    padding-left: 0;
+  }
+}
+
+.pg-list {
+  & {
+    display: inline-block;
+    vertical-align: middle;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      margin: #{$pagination-vspace} 4px;
+      padding: 0;
+      @include media("<mob-s") {
+        @include margin-horizontal(0);
+      }
+
+      &:before {
+        content: none;
+      }
+    }
+
+    li {
+      display: inline-block;
+      vertical-align: top;
+      text-align: center;
+
+      a,
+      & > span {
+        display: inline-block;
+        vertical-align: top;
+        color: inherit;
+        background: transparent;
+        min-width: $pagination-width;
+        padding: 0 0.2rem;
+        border-radius: 0.5rem;
+      }
+
+      a {
+        text-decoration: none;
+        cursor: pointer;
+        transition: color $animation-speed;
+        user-select: none;
+        -webkit-tap-highlight-color: transparent;
+
+        .no-touchevents &:hover {
+          color: $base-color;
+        }
+      }
+
+      &.active > span,
+      &.active a,
+      .no-touchevents &.active a:hover {
+        color: white;
+        background-color: $base-color;
+        @if $pagination-border-width != 0 {
+          border: {
+            top-color: $base-color;
+            bottom-color: $base-color;
+          };
+        }
+      }
+    }
+  }
+}
+
+// шрифт для элементов пагинации
+.pg-first,
+.pg-last,
+.pg-prev,
+.pg-next,
+.pg-list a,
+.pg-list li > span {
+  height: $pagination-height;
+  font-size: $pagination-font-size;
+  line-height: $pagination-height - $pagination-border-width * 2;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  @if $pagination-border-width != 0 {
+    border: #{$pagination-border-width} solid #{$border-color};
+  }
+
+  @include media("<mob-s") {
+    font-size: 14px;
+  }
+}
+
+.pg-list a,
+.pg-list li > span {
+  letter-spacing: normal;
+}
+
+/* pagination end */
+
 .fp-section {
   will-change: transform;
 }
@@ -4651,6 +4971,11 @@ $m-news-space--net: 2rem;
     padding: 0 1.5rem;
   }
 
+  // <640px
+  @include media("<mob") {
+    padding-bottom: 2rem;
+  }
+
   &::before {
     content: "";
     display: block;
@@ -4666,6 +4991,12 @@ $m-news-space--net: 2rem;
     transform-origin: top center;
 
     @include bg-news;
+
+    // <640px
+    @include media("<mob") {
+      height: auto;
+      bottom: 0;
+    }
   }
 }
 
@@ -4820,6 +5151,8 @@ $m-news-space--net: 2rem;
 
 /* news list */
 .news {
+  display: inline-block;
+  width: 100%;
   position: relative;
   margin-bottom: round-float($bottom-section * 0.75, 1);
 
