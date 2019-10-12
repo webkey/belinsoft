@@ -11,15 +11,16 @@ var $WINDOW = $(window),
  * */
 var HIDDEN_SCROLL = Modernizr.hiddenscroll;
 var NO_HIDDEN_SCROLL = !HIDDEN_SCROLL;
+var TOUCHEVENTS = ("ontouchstart" in document.documentElement);
 
 /**
  * !Add touchscreen classes
  * */
 function addTouchClasses() {
-  if (!("ontouchstart" in document.documentElement)) {
-    document.documentElement.className += " no-touchevents";
-  } else {
+  if (TOUCHEVENTS) {
     document.documentElement.className += " touchevents";
+  } else {
+    document.documentElement.className += " no-touchevents";
   }
 }
 
@@ -127,7 +128,7 @@ function fullPageInitial() {
       parallaxValue = 0.8,
       duration = 600,
       breakpointWidth = 992,
-      breakpointHeight = 590;
+      breakpointHeight = 400;
 
   // Information widget
   var $infoWidget = $('.i-widget-js');
@@ -145,6 +146,7 @@ function fullPageInitial() {
   if($fpSections.length) {
     $fpSections.fullpage({
       css3: true,
+      licenseKey: '11111111-11111111-11111111-11111111',
       verticalCentered: false,
       anchors: historyAnchors(),
       recordHistory: false,
@@ -1845,10 +1847,16 @@ function menuEvents() {
   });
 
   if ($menu.length) {
-    $menu.on('mouseenter', '.menu__item', function (e) {
+    $menu.on('mouseenter touchend', '.menu__item-js', function (e) {
       if (window.innerWidth < 992) return;
 
       var $this = $(this);
+
+      if (e.handleObj.origType === 'touchend') {
+        if (!$this.hasClass('item_active')) {
+          e.preventDefault();
+        }
+      }
 
       var activeClass = 'item_active';
       if ($this.hasClass(activeClass)) return;
@@ -1859,6 +1867,14 @@ function menuEvents() {
       $this.addClass(activeClass);
 
       $this.closest($menu).find('.video-cover__item-js').removeClass(activeClass);
+
+      $(".video-cover__item video").each(function () { $(this).removeAttr('autoplay'); this.pause() });
+      //$('.video-cover__item video').removeAttr('autoplay');
+      //$('.video-cover__item video')[0].stop();
+
+      $('#' + id + ' video').attr('autoplay', 'autoplay');
+      $('#' + id + ' video')[0].play();
+
       $('#' + id).addClass(activeClass);
 
       var $title = $this.find('.menu-item__view-title');
@@ -1869,7 +1885,76 @@ function menuEvents() {
       baffle('.active .menu-item__view-title', {
         characters: titleText
       }).start().reveal(2000, 300);
-    })
+    });
+  }
+}
+
+/**
+ * Main menu form mobile
+ */
+function menuMobile() {
+  var $menu = $('.menu-mob-js');
+
+  if($menu.length){
+    $menu.each(function () {
+      var $thisEl = $(this),
+          $titles = $thisEl.find('.m-titles-js'),
+          $descriptions = $thisEl.find('.m-description-js'),
+          $backgrounds = $thisEl.find('.m-bg-js'),
+          $pagination = $thisEl.find('.swiper-pagination');
+
+      var titles = new Swiper($titles, {
+        direction: 'vertical',
+        slidesPerView: $titles.find('.swiper-slide').length,
+        allowTouchMove: false,
+        watchSlidesVisibility: true,
+        watchSlidesProgress: true,
+        parallax: true
+      });
+
+      var backgrounds = new Swiper ($backgrounds, {
+        effect: 'fade',
+        fadeEffect: {
+          crossFade: true
+        },
+        speed: 600,
+        allowTouchMove: false,
+      });
+
+      var descriptions = new Swiper ($descriptions, {
+        init: false,
+        effect: 'fade',
+        fadeEffect: {
+          crossFade: true
+        },
+        // autoplay: {
+        //   delay: 6000,
+        // },
+        autoHeight: false,
+        allowTouchMove: false,
+        thumbs: {
+          swiper: titles
+        },
+        on: {
+          // slideChange: function () {
+          transitionStart: function () {
+            console.log("descriptions.realIndex: ", descriptions.realIndex);
+            backgrounds.slideTo(descriptions.realIndex);
+          }
+        }
+      });
+
+      descriptions.on('init', function() {
+        $thisEl.addClass('is-loaded');
+      });
+
+      descriptions.init();
+
+      $WINDOW.on('debouncedresize', function () {
+        $(titles.slides).css('height', '');
+        titles.update();
+      })
+    });
   }
 }
 
@@ -1883,7 +1968,9 @@ function slidersInit() {
   if($newsSlider.length){
     $newsSlider.each(function () {
       var $thisSlider = $(this),
-          $pagination = $thisSlider.find('.swiper-pagination');
+          $parentContainer = $thisSlider.parent(),
+          $prevEl = $parentContainer.find('.news-slider__button-prev'),
+          $nextEl = $parentContainer.find('.news-slider__button-next');
 
       var curSlider = new Swiper ($thisSlider, {
         init: false,
@@ -1892,10 +1979,14 @@ function slidersInit() {
         slidesPerGroup: 4,
         // loop: true,
         watchSlidesVisibility: true,
-        pagination: {
-          el: $pagination,
-          type: 'bullets',
-          clickable: true
+        // pagination: {
+        //   el: $pagination,
+        //   type: 'bullets',
+        //   clickable: true
+        // },
+        navigation: {
+          prevEl: $prevEl,
+          nextEl: $nextEl,
         },
         breakpoints: {
           1365: {
@@ -1984,7 +2075,8 @@ function slidersInit() {
   if($partnersSlider.length){
     $partnersSlider.each(function () {
       var $thisSlider = $(this),
-          $pagination = $thisSlider.find('.swiper-pagination');
+          $prevEl = $thisSlider.find('.partners-slider__button-prev'),
+          $nextEl = $thisSlider.find('.partners-slider__button-next');
 
       var curSlider = new Swiper ($thisSlider, {
         init: false,
@@ -1997,11 +2089,15 @@ function slidersInit() {
         autoplay: {
           delay: 3000,
         },
-        pagination: {
-          el: $pagination,
-          type: 'bullets',
-          clickable: true
+        navigation: {
+          prevEl: $prevEl,
+          nextEl: $nextEl,
         },
+        // pagination: {
+        //   el: $pagination,
+        //   type: 'bullets',
+        //   clickable: true
+        // },
         breakpoints: {
           1440: {
             slidesPerView: 3,
@@ -2100,13 +2196,27 @@ function map() {
   if ($('#' + container).length) {
     mapboxgl.accessToken = "pk.eyJ1IjoibWFyMmdpbiIsImEiOiJjazBkcnFzbnowYWFxM2NscXJ1MWk0ZWRtIn0.nq6yC_YGtDtpX_Vyo-PjYg";
 
+    // var zoomVal;
+    // if (window.innerWidth > 2560) {
+    //   zoomVal = 7;
+    // } else if (window.innerWidth > 1920) {
+    //   zoomVal = 5;
+    // } else {
+    //   zoomVal = 3;
+    // }
+
+    var zoomVal = (window.innerWidth > 1920) ? 5 : 3;
+
     /* Map: This represents the map on the page. */
     var map = new mapboxgl.Map({
       container: container,
       style: "mapbox://styles/mapbox/dark-v10",
-      zoom: 10,
+      zoom: zoomVal,
       center: [27.4441,53.9277]
     });
+
+    // var language = new MapboxLanguage({ defaultLanguage: 'ru'});
+    // map.addControl( language );
 
     map.on("load", function () {
       /* Image: An image is loaded and added to the map. */
@@ -2243,12 +2353,47 @@ $(function () {
 });
 
 /**
+ * !Weather widget
+ */
+function outTimeInWidjet(){
+  $.ajax({
+    type: 'POST',
+    url: '/local/ajax/datetime.php',
+    timeout: 30000,
+    success: function(data) {
+      $(".weather-time").html(data);
+      window.setTimeout(outTimeInWidjet, 30000);
+    }
+  });
+}
+
+/**
  * =========== !ready document, load/resize window ===========
  */
 
+/**! удалить после программирования **/
+$(window).on('load', function () {
+
+  function trimmedText(elem, llength) {
+    $.each(elem, function () {
+      var $this = $(this);
+      var val = $this.text();
+      var letterLength = val.length,
+          shortVal = val.substring(llength, 0),
+          hideVal = val.substring(llength);
+      if (letterLength > llength) {
+        $this.html(shortVal + '<span class="character"> ...</span><span style="display: none">' + hideVal + '</span>');
+      }
+      $this.addClass('trimmed');
+    });
+  }
+
+  trimmedText($('.news-el__title'), 80);
+  trimmedText($('.news-el__text'), 120);
+});
+
 $(document).ready(function () {
   $HTML.addClass('ready');
-
   loadVideoSrc();
   addTouchClasses();
   objectFitImages(); // object-fit-images initial
@@ -2262,6 +2407,7 @@ $(document).ready(function () {
   mainNavigation();
   toggleLang();
   menuEvents();
+  menuMobile();
   slidersInit();
   scrollNavigation();
   toggleWidget();
@@ -2269,4 +2415,5 @@ $(document).ready(function () {
   createUploadFileList();
   gallery();
   subscribeForm();
+  // outTimeInWidjet();
 });

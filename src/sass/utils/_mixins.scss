@@ -944,8 +944,8 @@
 @mixin bg-news {
   //@include linear-gradient(180deg, #1d1d1d 0%, #111111 100%);
   @include linear-gradient(180deg, #3c3c3c 0%, #101010 100%);
-  box-shadow: 0 2px 33px rgba(0, 0, 0, 0.5);
-  border-radius: 2px;
+  box-shadow: 0 0.2rem 3.3rem rgba(0, 0, 0, 0.5);
+  border-radius: 0.2rem;
 }
 
 /// Color image mask for news etc.
@@ -960,6 +960,36 @@
   $color: #0b2d51;
   @include linear-gradient(to bottom, rgba($color, 0.1) 0%, rgba($color, 1) 100%);
   opacity: 0.5;
+}
+
+// Перенос строк
+// ====================================================
+@mixin hyphens {
+  -webkit-hyphens: auto;
+  -webkit-hyphenate-limit-before: 3;
+  -webkit-hyphenate-limit-after: 3;
+  -webkit-hyphenate-limit-chars: 6 3 3;
+  -webkit-hyphenate-limit-lines: 2;
+  -webkit-hyphenate-limit-last: always;
+  -webkit-hyphenate-limit-zone: 8%;
+
+  -moz-hyphens: auto;
+  -moz-hyphenate-limit-chars: 6 3 3;
+  -moz-hyphenate-limit-lines: 2;
+  -moz-hyphenate-limit-last: always;
+  -moz-hyphenate-limit-zone: 8%;
+
+  -ms-hyphens: auto;
+  -ms-hyphenate-limit-chars: 6 3 3;
+  -ms-hyphenate-limit-lines: 2;
+  -ms-hyphenate-limit-last: always;
+  -ms-hyphenate-limit-zone: 8%;
+
+  hyphens: auto;
+  hyphenate-limit-chars: 6 3 3;
+  hyphenate-limit-lines: 2;
+  hyphenate-limit-last: always;
+  hyphenate-limit-zone: 8%;
 }
 
 

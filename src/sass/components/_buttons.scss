@@ -11,7 +11,7 @@
   $btn-border-width: 2px;
   $btn-space-inner-vertical: round-float(($btn-height - $btn-line-height - px-to-rem($btn-border-width) * 2) / 2, 1);
   $btn-space-inner-horizontal: $btn-space-inner-vertical * 2;
-  $btn-border-radius: 5px;
+  $btn-border-radius: 0.5rem;
 
   display: inline-block;
   vertical-align: top;
@@ -65,7 +65,7 @@
   $btn-border-width: 2px;
   $btn-space-inner-vertical: round-float(($btn-height - $btn-line-height - px-to-rem($btn-border-width) * 2) / 2, 1);
   $btn-space-inner-horizontal: $btn-space-inner-vertical * 2;
-  $btn-border-radius: 5px;
+  $btn-border-radius: 0.5rem;
 
   display: inline-block;
   vertical-align: top;

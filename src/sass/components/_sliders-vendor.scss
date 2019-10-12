@@ -51,7 +51,7 @@ $swp-space--mob: 0.8rem;
     //left: 50%;
     //top: 50%;
     left: 0;
-    top: 0;
+    top: 0.6rem;
   }
 
   &::before {
@@ -110,10 +110,105 @@ $swp-space--mob: 0.8rem;
 
     .swiper-pagination-bullet {
       margin: $swp-space;
+      padding: 0.8rem 0;
 
       @include media('<mob') {
         margin: $swp-space--mob;
       }
+    }
+  }
+}
+
+// Slider arrows wide
+// ----------------------------------------------------
+.slider-arrow-wide-prev,
+.slider-arrow-wide-next {
+  position: relative;
+  $size: 6rem;
+  height: $size;
+  width: $size;
+  cursor: pointer;
+  background-image: none;
+  opacity: 0.6;
+  transition: opacity $animation-speed, filter $animation-speed;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+
+  // <1280px
+  @include media("<lap-s") {
+    $size: 4.2rem;
+    height: $size;
+    width: $size;
+  }
+
+  &::before {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    $size: 4.8rem;
+    height: $size;
+    width: $size;
+    margin: -#{$size / 2} 0 0 -#{$size / 2};
+    pointer-events: none;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-size: 100%;
+    transition: transform 0.05s;
+
+    // <1280px
+    @include media("<lap-s") {
+      $size: 4.2rem;
+      height: $size;
+      width: $size;
+      margin: -#{$size / 2} 0 0 -#{$size / 2};
+    }
+  }
+
+  // Disabled
+  &.swiper-button-disabled {
+    pointer-events: none;
+    opacity: 0.3;
+    filter: grayscale(1);
+  }
+
+  // Hover
+  .no-touchevents &:hover {
+    //filter: brightness(2);
+    opacity: 1;
+  }
+}
+
+.slider-arrow-wide-prev {
+  &::before {
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBmaWxsPSIjMWU5MTdjIiBkPSJNNC4yNTgzNmUtMDcgMTIuMTI5TDUgMTdMNSAxNEwyNCAxNEwyNCAxMEw1IDEwTDUgN0w0LjI1ODM2ZS0wNyAxMi4xMjlaIi8+PC9zdmc+);
+  }
+
+  // :active
+  &:active {
+    &::before {
+      transition-duration: 0.05s;
+
+      $translate: -0.2rem, 0;
+      transform: translate($translate);
+      transform: translate3d($translate, 0);
+    }
+  }
+}
+
+.slider-arrow-wide-next {
+  &::before {
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBmaWxsPSIjMWU5MTdjIiBkPSJNMjQgMTEuODcxbC01LTQuODcxdjNoLTE5djRoMTl2M3oiLz48L3N2Zz4=);
+  }
+
+  // :active
+  &:active {
+    &::before {
+      $translate: 0.2rem, 0;
+      transform: translate($translate);
+      transform: translate3d($translate, 0);
     }
   }
 }

@@ -4,6 +4,7 @@
 // Media query
 // ====================================================
 $breakpoints: (
+    "desk-xl": 3840px,
     "desk-l": 2560px,
     "desk": 1920px,
     "desk-s": 1600px,
@@ -107,7 +108,7 @@ $font-size-h1: 7.3rem !default;
 $line-height-h1: 7.3rem !default;
 $line-height-h1-kef: $line-height-h1 / $font-size-h1;
 // ------ desk -----------------------------------------
-$font-size-h1--desk: 6rem !default;
+$font-size-h1--desk: 5.8rem !default;
 $line-height-h1--desk: round-float($font-size-h1--desk * $line-height-h1-kef, 1) !default; // Использовать рассчетное значение, если нет в дизайне
 // ------ lap -----------------------------------------
 $font-size-h1--lap: 5.2rem !default;
@@ -116,14 +117,14 @@ $line-height-h1--lap: round-float($font-size-h1--lap * $line-height-h1-kef, 1) !
 $font-size-h1--tab: 4.8rem !default;
 $line-height-h1--tab: round-float($font-size-h1--tab * $line-height-h1-kef, 1) !default; // Использовать рассчетное значение, если нет в дизайне
 // ------ mob -----------------------------------------
-$font-size-h1--mob: 3.8rem !default;
+$font-size-h1--mob: 3.2rem !default;
 $line-height-h1--mob: round-float($font-size-h1--mob * $line-height-h1-kef, 1) !default; // Использовать рассчетное значение, если нет в дизайне
 // ----------------------------------------------------
 @mixin font-h1() {
   font-size: $font-size-h1;
   line-height: $line-height-h1;
 
-  @include media("<desk-s") {
+  @include media("<desk") {
     font-size: $font-size-h1--lap;
     line-height: $line-height-h1--lap;
   }
@@ -293,11 +294,11 @@ $mark-color: $info-color !default;
 // Минимальная ширина сайта
 $layout-page-min-width: 32rem !default;
 // Максимальная ширина сайта
-//$layout-page-max-width: 192rem !default;
-$layout-page-max-width: none !default;
+$layout-page-max-width: 192rem !default;
+//$layout-page-max-width: none !default;
 // Верхний отступ страницы с учетом фиксированной шапки
 $layout-page-top-space: 19rem !default;
-$layout-page-top-space--desk: 14rem !default; // media('<desk')
+$layout-page-top-space--desk: 18rem !default; // media('<desk')
 $layout-page-top-space--lap: 14rem !default; // media('<desk-s')
 $layout-page-top-space--net: 12rem !default; // media('<lap-l')
 $layout-page-top-space--tab: 12rem !default; // media('<tab')
@@ -554,7 +555,7 @@ $select-arrow-width--mob: 4.0rem !default;
   padding: $select-space-vt $select-arrow-width $select-space-vb $form-def-space-h;
   background: $select-bg-color;
   border: #{$select-border-width} solid #{$select-border-color};
-  border-radius: 5px;
+  border-radius: 0.5rem;
   box-shadow: none;
   text-indent: 0;
   outline: none;
@@ -622,6 +623,15 @@ $animation-speed-mouseleave: 0.35s !default;
 // ====================================================
 $nav-height: 7rem !default;
 $nav-height--mob: 6rem !default;
+
+
+// Main section
+// ====================================================
+//$section-content-width: 142.3rem !default;
+$section-content-width: 142.3rem !default;
+$content-space-right: 48rem !default;
+$content-space-right--lap: 28rem !default;
+//$section-content-max-width--lap: calc(100% - 28rem) !default;
 
 
 // Footer

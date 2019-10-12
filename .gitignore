@@ -4,6 +4,7 @@
 *.iml
 *.ipr
 node_modules
+**/local
 **/libs
 **/npm-debug.log
 

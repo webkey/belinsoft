@@ -42,6 +42,8 @@ var path = {
   // 'dist': '1'
 };
 
+var pathLocal = 'local/templates/.default/assets/';
+
 /**
  * @description Таск формирует ДОМ страниц
  */

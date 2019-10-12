@@ -261,6 +261,19 @@ table {
 .typography {
   $typographyClass: &;
 
+  h1, .h1 {
+    margin-bottom: round-float(2.6 * $bottom-space, 1);
+
+    // <1920px
+    @include media("<desk") {
+      margin-bottom: round-float(2 * $bottom-space, 1);
+    }
+
+    @include media('<mob') {
+      margin-bottom: round-float(2 * $bottom-space--mob, 1);
+    }
+  }
+
   h2, .h2,
   h3, .h3 {
     position: relative;
@@ -276,6 +289,30 @@ table {
       height: 1em;
       width: 1em;
       background-color: $base-color;
+    }
+  }
+
+  // Дополнительный верхний отступ.
+  h1, .h1,
+  h2, .h2,
+  h3, .h3,
+  h4, .h4,
+  h5, .h5,
+  h6, .h6,
+  blockquote {
+    margin-top: round-float(2.6 * $bottom-space, 1);
+
+    // <1920px
+    @include media("<desk") {
+      margin-top: round-float(2 * $bottom-space, 1);
+    }
+
+    @include media('<mob') {
+      margin-top: round-float(2 * $bottom-space--mob, 1);
+    }
+
+    &:first-child {
+      margin-top: 0;
     }
   }
 
@@ -528,33 +565,6 @@ table {
         max-width: none;
         margin-left: auto;
       }
-    }
-  }
-
-  // Дополнительный верхний отступ.
-  h1, .h1,
-  h2, .h2,
-  h3, .h3,
-  h4, .h4,
-  h5, .h5,
-  h6, .h6,
-  blockquote {
-    margin-top: round-float(2.6 * $bottom-space, 1);
-
-    @include media('<mob') {
-      margin-top: round-float(2 * $bottom-space--mob, 1);
-    }
-
-    &:first-child {
-      margin-top: 0;
-    }
-  }
-
-  h1, .h1 {
-    margin-bottom: round-float(2.6 * $bottom-space, 1);
-
-    @include media('<mob') {
-      margin-bottom: round-float(2 * $bottom-space--mob, 1);
     }
   }
 }

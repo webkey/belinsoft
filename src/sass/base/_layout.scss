@@ -5,6 +5,15 @@
 html {
   font-size: 62.5%;
 
+  @include media(">desk","height>1080px") {
+    font-size: 75%;
+  }
+
+  // >2560px
+  @include media(">desk-l") {
+    font-size: 100%;
+  }
+
   // Блокировать скролла
   &.css-scroll-fixed:not(.open-only-mob) {
     @include scroll-blocked;
@@ -64,7 +73,7 @@ body {
 // Выравнивание основных элементов и их максимальная ширина
 .layout-page {
   max-width: $layout-page-max-width;
-  box-sizing: content-box;
+  //box-sizing: content-box;
 
   @include push-auto;
 }
