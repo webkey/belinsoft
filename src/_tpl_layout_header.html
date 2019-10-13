@@ -15,6 +15,8 @@
         <!--navigation-->
         <div class="nav-wrap" id="mainNav">
           <div class="nav-header">
+            @@if(context.currentItem != 'Home'){<a href="index.html" class="logo-nav" title="Bel in soft">Bel in soft</a>}
+            @@if(context.currentItem == 'Home'){<span class="logo-nav">Bel in soft</span>}
             <a href="#" class="nav-close-btn nav-close-btn-js">Close menu</a>
           </div>
           <nav class="nav">

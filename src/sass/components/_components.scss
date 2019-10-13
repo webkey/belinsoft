@@ -751,7 +751,7 @@ $pagination-border-width: 0;
   max-width: $layout-page-max-width;
   //box-sizing: content-box;
   @include push-auto;
-  padding: 0 3rem 0 #{nth($layout-page-space, 2)};
+  padding: 0 4rem 0 #{nth($layout-page-space, 2)};
 
   @include media('<desk') {
     padding-left: nth($layout-page-space--desk, 2);
@@ -817,7 +817,14 @@ $pagination-border-width: 0;
 
   @include media('<mob') {
     height: $nav-height--mob;
-    width: $nav-height--mob;
+    margin-right: 0;
+    //width: $nav-height--mob;
+    width: 16rem;
+  }
+
+  // <360px
+  @include media("<mob-xxs") {
+    width: 13rem;
   }
 
   &::before,
@@ -844,8 +851,10 @@ $pagination-border-width: 0;
     }
 
     @include media('<mob') {
-      background-image: url(../../img/logo-mob.svg);
-      background-size: 3.2rem;
+      //background-image: url(../../img/logo-mob.svg);
+      background-image: url(../../img/logo-horizontal.svg);
+      //background-size: 3.2rem;
+      background-size: 85%;
     }
   }
 
@@ -916,7 +925,8 @@ $pagination-border-width: 0;
 
 .lang {
   position: relative;
-  width: 6rem;
+  //width: 6rem;
+  width: 4rem;
   @include font-bold;
   font-size: 2rem;
   line-height: 2rem;
@@ -924,8 +934,16 @@ $pagination-border-width: 0;
   text-align: center;
   margin-left: 4rem;
 
+  @include media('<lap-l') {
+    margin-left: 3rem;
+  }
+
   @include media('<lap-s') {
     margin-left: 2rem;
+  }
+
+  @include media('<tab') {
+    margin-left: 1.5rem;
   }
 
   a {
@@ -977,10 +995,10 @@ $pagination-border-width: 0;
 
   ul {
     position: absolute;
-    left: 0;
+    left: 50%;
     top: 100%;
-    width: 100%;
-    margin: 0;
+    width:6rem;
+    margin: 0 0 0 -3rem;
     padding: 1.5rem 0;
 
     &::before {
@@ -1388,16 +1406,31 @@ $pagination-border-width: 0;
 // Navigation header (for mobile)
 .nav-header {
   position: relative;
-  display: flex;
+  //display: flex;
   align-items: center;
-  padding: 0 0 0 1.5rem;
+  justify-content: space-between;
+  //padding: 0 0 0 1.5rem;
   border-bottom: 0.1rem solid rgba(white, 0.5);
 
   display: none;
 
   @include media('<tab') {
-    display: block;
+    display: flex;
   }
+}
+
+// Logo in nav
+.logo-nav {
+  display: block;
+  position: relative;
+  height: 4rem;
+  width: 16rem;
+  font-size: 0;
+  line-height: 0;
+  background-image: url(../../img/logo-horizontal.svg);
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-size: 85%;
 }
 
 // Navigation close button
@@ -3510,6 +3543,8 @@ $pagination-border-width: 0;
     height: auto;
     max-width: 100%;
     width: 20rem;
+    margin-left: auto;
+    margin-right: auto;
     //margin: -6rem -2rem -5rem 0;
     pointer-events: none;
   }
