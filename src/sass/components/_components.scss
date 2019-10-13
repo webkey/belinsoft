@@ -519,6 +519,7 @@ $pagination-border-width: 0;
 .section-layout {
   flex: 1 0 100%;
   width: 100%;
+  max-width: 100%;
   $space: #{nth($layout-page-space, 2)};
   padding-left: $space;
   padding-right: $space;
@@ -2979,7 +2980,7 @@ $pagination-border-width: 0;
   display: inline-block;
   text-decoration: none;
   color: inherit;
-  mix-blend-mode: multiply;
+  cursor: pointer;
 
   & > em {
     display: block;
@@ -3493,7 +3494,8 @@ $pagination-border-width: 0;
   @include media("<mob") {
     max-width: 100%;
     width: 20rem;
-    margin-bottom: 4rem;
+    margin: -6rem -2rem -5rem 0;
+    pointer-events: none;
   }
 
   img {
@@ -4421,7 +4423,7 @@ $i-widget-space: 4rem;
 
   // <992px
   @include media("<tab") {
-    padding: 0;
+    padding-right: 0;
   }
 
   @include media('<mob-s') {
@@ -4537,7 +4539,8 @@ $i-widget-space: 4rem;
 .m-news-el__title {
   @include font-alt-extra-bold;
   font-size: 1.6rem;
-  line-height: 2.4rem;
+  //line-height: 2.4rem;
+  line-height: 1.5;
   color: $title-color;
   text-transform: uppercase;
   margin-bottom: 1.5rem;
@@ -4545,7 +4548,7 @@ $i-widget-space: 4rem;
 
   @include media('<desk-s') {
     font-size: 1.5rem;
-    line-height: 2.0rem;
+    //line-height: 2.0rem;
   }
 
   @include media('<lap-l') {
@@ -4555,7 +4558,12 @@ $i-widget-space: 4rem;
   // <1280px
   @include media("<lap-s") {
     font-size: 1.4rem;
-    line-height: 1.8rem;
+    //line-height: 1.8rem;
+  }
+
+  // <992px
+  @include media("<tab") {
+    font-size: 1.6rem;
   }
 
   &:last-child {
@@ -4565,19 +4573,25 @@ $i-widget-space: 4rem;
 
 .m-news-el__text {
   font-size: 1.5rem;
-  line-height: 2.4rem;
+  //line-height: 2.4rem;
+  line-height: 1.5;
   margin-bottom: 2rem;
   color: $text-color-muted;
 
   @include media('<desk-s') {
     font-size: 1.4rem;
-    line-height: 2.0rem;
+    //line-height: 2.0rem;
   }
   
   // <1280px
   @include media("<lap-s") {
     font-size: 1.3rem;
-    line-height: 1.9rem;
+    //line-height: 1.9rem;
+  }
+
+  // <992px
+  @include media("<tab") {
+    font-size: 1.4rem;
   }
 
   &:last-child {
@@ -4838,23 +4852,30 @@ $m-news-space--net: 2rem;
   .m-news-el__title {
     font-size: $font-size-h2;
     line-height: $line-height-h2;
-    min-height: $line-height-h2;
+    //min-height: $line-height-h2;
 
     @include media('<desk') {
       font-size: 2.0rem;
       line-height: 2.6rem;
-      min-height: 2.6rem * 2;
+      //min-height: 2.6rem * 2;
     }
 
     @include media('<lap-s') {
       font-size: 1.4rem;
-      line-height: 1.8rem;
-      min-height: 1.8rem * 2;
+      line-height: 2.1rem;
+      //min-height: 2.1rem * 2;
+    }
+
+    // <992px
+    @include media("<tab") {
+      font-size: 1.6rem;
+      line-height: 2.4rem;
+      //min-height: 2.1rem * 2;
     }
   }
 
+  // Hover
   .m-news-el {
-    // Hover
     .no-touchevents &:hover {
       .m-news-el__figure {
         $translate: 0, 0;
@@ -4879,6 +4900,11 @@ $m-news-space--net: 2rem;
 
 .m-news-list__item {
   margin-bottom: 2rem;
+
+  // <1280px
+  @include media("<lap-s") {
+    margin-bottom: 3rem;
+  }
 
   &:last-child {
     margin-bottom: 0;
@@ -5003,7 +5029,7 @@ $m-news-space--net: 2rem;
 .news-el__figure {
   position: relative;
   overflow: hidden;
-  margin-bottom: -3rem;
+  margin-bottom: 2rem;
   max-width: 27.7rem;
   box-shadow: 0 2.3rem 4.2rem rgba(0, 0, 0, 0.20);
   will-change: transform;
@@ -5025,17 +5051,6 @@ $m-news-space--net: 2rem;
   }
 }
 
-//.news-el__img {
-//  position: absolute;
-//  left: 0;
-//  top: 0;
-//  height: 100%;
-//  width: 100%;
-//  background-repeat: no-repeat;
-//  background-position: 50%;
-//  background-size: cover;
-//}
-
 .news-el__img {
   position: absolute;
   left: 0;
@@ -5054,19 +5069,8 @@ $m-news-space--net: 2rem;
   font-size: 1.2rem;
   line-height: 1.6rem;
   letter-spacing: 0.13em;
-  //color: $text-color-muted;
-  color: $text-color-alt;
-  padding: 0 2rem;
-  margin-bottom: 4rem;
-
-  @include media('<lap-l') {
-    margin-bottom: 3.5rem;
-  }
-
-  // <1280px
-  @include media("<lap-s") {
-    padding: 0 1.5rem;
-  }
+  color: $text-color-muted;
+  margin-bottom: 1.5rem;
 
   &:last-child {
     margin-bottom: 0;
@@ -5083,7 +5087,7 @@ $m-news-space--net: 2rem;
 
   @include media('<desk') {
     font-size: 1.6rem;
-    line-height: 2.2rem;
+    line-height: 1.375;
   }
 
   @include media('<lap-l') {
@@ -5093,7 +5097,12 @@ $m-news-space--net: 2rem;
   // <1280px
   @include media("<lap-s") {
     font-size: 1.4rem;
-    line-height: 1.9rem;
+    //line-height: 1.9rem;
+  }
+
+  // <992px
+  @include media("<tab") {
+    font-size: 1.6rem;
   }
 
   &:last-child {
@@ -5103,18 +5112,24 @@ $m-news-space--net: 2rem;
 
 .news-el__text {
   font-size: 1.5rem;
-  line-height: 2.4rem;
+  //line-height: 2.4rem;
+  line-height: 1.5;
   color: $text-color-muted;
 
   @include media('<desk') {
     font-size: 1.4rem;
-    line-height: 2.0rem;
+    //line-height: 2.0rem;
   }
 
   // <1280px
   @include media("<lap-s") {
     font-size: 1.3rem;
-    line-height: 1.9rem;
+    //line-height: 1.9rem;
+  }
+
+  // <992px
+  @include media("<tab") {
+    font-size: 1.4rem;
   }
 }
 
@@ -5522,6 +5537,47 @@ $m-news-space--net: 2rem;
   &.swiper-slide-visible {
     opacity: 1;
     pointer-events: auto;
+  }
+
+  .news-el {
+    &::before {
+      // <640px
+      @include media("<mob") {
+        bottom: auto;
+        height: 21rem;
+      }
+    }
+  }
+
+  .news-el__figure {
+    margin-bottom: -3rem;
+
+    // <992px
+    @include media("<tab") {
+      margin-bottom: 2rem;
+    }
+  }
+
+  .news-el__date {
+    color: $text-color-alt;
+    padding: 0 2rem;
+    margin-bottom: 3.5rem;
+
+    // <1280px
+    @include media("<lap-s") {
+      padding: 0 1.5rem;
+    }
+
+    // <992px
+    @include media("<tab") {
+      padding: 0;
+      margin-bottom: 1.2rem;
+      color: $text-color-muted;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 }
 
@@ -6319,24 +6375,13 @@ $subs-btn-width: 4.5rem;
 
 /* contacts form */
 .contacts-form {
-  //padding: $grid-space;
-  //margin: -#{nth($grid-space, 2)};
   border-radius: 0.5rem;
-  //background-color: rgba($bg-color, 0.9);
 
-  //@include media('<tab') {
-  //  padding: 2rem #{nth($layout-page-space--tab, 2)};
-  //  margin: -#{nth($layout-page-space--tab, 2)};
-  //}
-  //
-  //@include media('<mob') {
-  //  padding: 2rem #{nth($layout-page-space--mob, 2)};
-  //  margin: -#{nth($layout-page-space--mob, 2)};
-  //}
-
-  //label {
-  //  display: none;
-  //}
+  // <992px
+  @include media("<tab") {
+    width: 48rem;
+    max-width: 100%;
+  }
 
   textarea {
     $lines: 6;
@@ -6408,35 +6453,40 @@ $subs-btn-width: 4.5rem;
   right: 0;
   left: calc(#{$contacts-layout} + #{nth($layout-page-space, 2)} * 2);
   //width: calc(100% - #{$contacts-layout} - #{nth($layout-page-space, 2)} * 2);
-  height: calc(100% + 2rem);
+  //height: calc(100% + 2rem);
+  height: 100%;
 
   @include media(">desk") {
     left: calc(50% - #{$layout-page-max-width / 2} + #{$contacts-layout} + #{nth($layout-page-space, 2)} * 2);
   }
 
   @include media('<desk') {
-    width: calc(100% - #{$contacts-layout} - #{nth($layout-page-space--desk, 2)} * 2);
+    left: calc(#{$contacts-layout} + #{nth($layout-page-space--desk, 2)} * 2);
+    //width: calc(100% - #{$contacts-layout} - #{nth($layout-page-space--desk, 2)} * 2);
   }
 
   @include media('<desk-s') {
-    width: calc(100% - #{$contacts-layout--lap} - #{nth($layout-page-space--lap, 2)} * 2);
+    left: calc(#{$contacts-layout--lap} + #{nth($layout-page-space--lap, 2)} * 2);
+    //width: calc(100% - #{$contacts-layout--lap} - #{nth($layout-page-space--lap, 2)} * 2);
   }
 
   @include media('<lap-l') {
-    width: calc(100% - #{$contacts-layout--net} - #{nth($layout-page-space--net, 2)} * 2);
+    left: calc(#{$contacts-layout--net} + #{nth($layout-page-space--net, 2)} * 2);
+    //width: calc(100% - #{$contacts-layout--net} - #{nth($layout-page-space--net, 2)} * 2);
   }
 
   @include media('<tab') {
     position: relative;
     top: auto;
     right: auto;
-    width: auto;
+    left: auto;
+    //width: auto;
     height: 40rem;
     margin: 0 -#{nth($layout-page-space--tab, 2)} -#{nth($layout-page-space--tab, 3)};
   }
 
   @include media('<mob') {
-    height: 24rem;
+    height: 28rem;
     margin: 0 -#{nth($layout-page-space--mob, 2)} -#{nth($layout-page-space--mob, 3)};
   }
 }
