@@ -521,38 +521,38 @@ $pagination-border-width: 0;
   width: 100%;
   max-width: 100%;
   $space: #{nth($layout-page-space, 2)};
-  padding-left: $space;
-  padding-right: $space;
+  //padding-left: $space;
+  //padding-right: $space;
 
-  @include media('<desk') {
-    $space: nth($layout-page-space, 2);
-    padding-left: $space;
-    padding-right: $space;
-  }
-
-  @include media('<desk-s') {
-    $space: nth($layout-page-space--lap, 2);
-    padding-left: $space;
-    padding-right: $space;
-  }
-
-  @include media('<lap-l') {
-    $space: nth($layout-page-space--net, 2);
-    padding-left: $space;
-    padding-right: $space;
-  }
-
-  @include media('<tab') {
-    $space: nth($layout-page-space--tab, 2);
-    padding-left: $space;
-    padding-right: $space;
-  }
-
-  @include media('<mob') {
-    $space: nth($layout-page-space--mob, 2);
-    padding-left: $space;
-    padding-right: $space;
-  }
+  //@include media('<desk') {
+  //  $space: nth($layout-page-space, 2);
+  //  padding-left: $space;
+  //  padding-right: $space;
+  //}
+  //
+  //@include media('<desk-s') {
+  //  $space: nth($layout-page-space--lap, 2);
+  //  padding-left: $space;
+  //  padding-right: $space;
+  //}
+  //
+  //@include media('<lap-l') {
+  //  $space: nth($layout-page-space--net, 2);
+  //  padding-left: $space;
+  //  padding-right: $space;
+  //}
+  //
+  //@include media('<tab') {
+  //  $space: nth($layout-page-space--tab, 2);
+  //  padding-left: $space;
+  //  padding-right: $space;
+  //}
+  //
+  //@include media('<mob') {
+  //  $space: nth($layout-page-space--mob, 2);
+  //  padding-left: $space;
+  //  padding-right: $space;
+  //}
 }
 
 /* gallery element */
@@ -807,6 +807,8 @@ $pagination-border-width: 0;
   text-indent: -999rem;
   z-index: 5;
   transition: all $animation-speed;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
 
   @include media('<desk-s') {
     width: 12rem;
@@ -1499,6 +1501,8 @@ $pagination-border-width: 0;
     position: relative;
     overflow: hidden;
     padding: 0.5rem;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
 
     // ------ бутерброд -----------------------------------------
     @include media("<tab") {
@@ -2086,6 +2090,7 @@ $pagination-border-width: 0;
   }
 
   @include media('<tab') {
+    overflow: hidden; // Обрезать выступающие за контент элементы
     padding-top: $layout-page-top-space--tab;
     padding-bottom: nth($layout-page-space--tab, 3);
   }
@@ -2143,6 +2148,8 @@ $pagination-border-width: 0;
     text-decoration: none;
     color: inherit;
     transition: color $animation-speed;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
   }
 
   li.current > a,
@@ -3488,18 +3495,38 @@ $pagination-border-width: 0;
 .about-section__figure {
   flex: 0 1 auto;
   width: 29%;
-  margin: -50% -2rem -50% 0;
+  height: 10rem;
+  //margin: -50% -2rem -50% 0;
+  margin: 0 -2rem 0 0;
+
+  // <992px
+  @include media("<tab") {
+    width: 30%;
+    margin: 0;
+  }
 
   // <640px
   @include media("<mob") {
+    height: auto;
     max-width: 100%;
     width: 20rem;
-    margin: -6rem -2rem -5rem 0;
+    //margin: -6rem -2rem -5rem 0;
     pointer-events: none;
   }
 
   img {
     width: 100%;
+    position: relative;
+    top: 50%;
+    backface-visibility: hidden;
+    transform: translate(0, -50%);
+
+    // <640px
+    @include media("<mob") {
+      top: auto;
+      margin: -6rem 0 -5rem;
+      transform: none;
+    }
   }
 }
 
@@ -4508,6 +4535,10 @@ $i-widget-space: 4rem;
     min-width: $width;
     max-width: $width;
   }
+
+  img {
+    width: 100%;
+  }
 }
 
 .m-news-el__content {
@@ -4960,7 +4991,6 @@ $m-news-space--net: 2rem;
   width: 130rem;
   max-width: calc(100% - 32rem);
   backface-visibility: hidden;
-  @include antialiased;
 
   // <1200px
   @include media("<net") {
@@ -5369,15 +5399,15 @@ $m-news-space--net: 2rem;
   padding: 0 1.2rem 4rem;
   flex-grow: 1;
   flex-shrink: 0;
-  $width: 25%;
+  $width: 33.33%;
   flex-basis: $width;
   max-width: $width;
 
-  @include media('<desk-s') {
-    $width: 33.3%;
-    flex-basis: $width;
-    max-width: $width;
-  }
+  //@include media('<desk-s') {
+  //  $width: 33.3%;
+  //  flex-basis: $width;
+  //  max-width: $width;
+  //}
 
   @include media('<net') {
     $width: 50%;
@@ -5555,6 +5585,16 @@ $m-news-space--net: 2rem;
     // <992px
     @include media("<tab") {
       margin-bottom: 2rem;
+    }
+
+    &::after {
+      // >=992px
+      @include media(">=tab") {
+        opacity: 1;
+        $color: #0b2d51;
+        //$color: red;
+        @include linear-gradient(to bottom, rgba($color, 0.1) 0%, rgba($color, 0.7) 70%, rgba($color, 0.9) 80%, rgba($color, 1) 100%);
+      }
     }
   }
 
@@ -5831,8 +5871,9 @@ $m-news-space--net: 2rem;
   cursor: pointer;
   color: $text-color-alt;
   border: 1px solid rgba($text-color-alt, 0.3);
-
   transition: border-color $animation-speed;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
 
   &:hover {
     border-color: $highlight-color;
@@ -6230,6 +6271,33 @@ $subs-btn-width: 4.5rem;
       font-size: 2.8rem;
       line-height: 3.7rem;
     }
+  }
+}
+
+// News divider
+.news-hr {
+  position: relative;
+  overflow: hidden;
+  width: 35%;
+  margin-bottom: $bottom-section;
+
+  // <1600px
+  @include media("<desk-s") {
+    margin-bottom: $bottom-section--lap;
+  }
+
+  // <640px
+  @include media("<mob") {
+    margin-bottom: $bottom-section--mob;
+  }
+
+  &::before {
+    content: "";
+    display: block;
+    position: relative;
+    height: 0.5rem;
+    width: 100%;
+    background-color: $highlight-color;
   }
 }
 

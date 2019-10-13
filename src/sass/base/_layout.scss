@@ -73,9 +73,10 @@ body {
 // Выравнивание основных элементов и их максимальная ширина
 .layout-page {
   max-width: $layout-page-max-width;
-  //box-sizing: content-box;
+  margin-left: auto;
+  margin-right: auto;
 
-  @include push-auto;
+  //outline: 1px solid greenyellow;
 }
 
 // Отступы по бокам текстовых элементов
@@ -89,14 +90,20 @@ body {
 .layout-text {
   max-width: $layout-text-width;
   box-sizing: content-box;
+  margin-left: auto;
+  margin-right: auto;
 
-  @include push-auto;
+  //outline: 1px solid hotpink;
 }
 
-// Выравнивание текстовых элементов и их максимальная ширина
+// Выравнивание контента
 .layout-content {
-  max-width: $layout-content-width;
-  width: 140rem;
+  max-width: $layout-content-max-width;
+  width: $layout-content-width;
+
+  margin-left: auto;
+  margin-right: auto;
+  //outline: 1px solid royalblue;
 
   @include media('<tab') {
     width: 100%;

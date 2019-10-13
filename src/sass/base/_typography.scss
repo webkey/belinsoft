@@ -37,6 +37,8 @@ h1, h2, h3, h4, h5, h6,
     text-decoration: none;
     color: inherit;
     transition: color $animation-speed;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
 
     &:hover {
       color: $link-color;
@@ -271,9 +273,9 @@ table {
   }
 }
 
-.figure {
+.figure-d {
   @include clear;
-  line-height: 2.6;
+  //line-height: 2.6;
 
   // <1366px
   @include media("<lap") {
@@ -292,6 +294,7 @@ table {
 .entry {
   position: relative;
   padding: 4rem 0;
+  min-height: 50rem ;
   margin-bottom: 4rem;
   background-repeat: no-repeat;
   background-position: 100% 50%;
@@ -643,8 +646,7 @@ table {
 /* typography elements end */
 
 /* article content */
-.article-content,
-.news-content {
+.article-content {
   & > p,
   & > hr,
   & > mark,

@@ -315,7 +315,8 @@ $layout-page-space--mob: 3rem 1.5rem 3rem !default; // media('<mob')
 // Layout content
 // ====================================================
 // Ширина текстового блока
-$layout-content-width: calc(100% - 34rem) !default;
+$layout-content-width: 140rem !default;
+$layout-content-max-width: calc(100% - 34rem) !default;
 
 
 // Layout text

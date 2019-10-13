@@ -1,0 +1,58 @@
+@@include("_tpl_layout_head.html", {
+  "title": "About Us - Bel In Soft",
+  "pageClass": "about-page"
+})
+
+@@include("_tpl_layout_header.html", { "currentItem": "About Us" })
+
+<!--MAIN-->
+<main class="main">
+  <div class="content">
+    <div class="layout-page layout-page-spaces">
+      <div class="entry-heading layout-content">
+        <h1>About Us</h1>
+      </div>
+    </div>
+    <div class="entry" style="background-image:url(img/img-about.jpg);">
+      <div class="entry-mask"></div>
+      <div class="layout-page layout-page-spaces">
+        <div class="layout-content">
+          <div class="entry__title h2">All you need to know about <mark>bel in soft</mark></div>
+          <div class="entry__content">
+            <p>By the decree №91 of the President of the Republic of Belarus joint close company BEL IN SOFT has the rights of a special exporter in the field of foreign trade, mediation for technical, cryptographic protection of information, means of undercover information obtaining related to specific goods (works, services). The main export products of the company are<a href="#">tactical</a> and <a href="#">strategic data interception systems</a>, cybersecurity products, security systems for critical national infrastructure.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="layout-page layout-page-spaces">
+      <div class="layout-content typography">
+        <h2>The advantage of <mark>cjsc «bel in soft»</mark> is to create individual integrated «turn-key» solutions in the field of national and public security</h2>
+        <div class="figure">
+          <p>
+            <img src="img/img-about-c.jpg" class="imgl" alt="bel in soft" />
+          </p>
+          <p>The company's products are a new direction of military-technical cooperation, development and integration of high-end technologies in special areas of activity, organization of experimental design and research works. On September 9, 2019, the Company founded the Association for the Development of an Information Security Market «Cyber Industry», the founders of which were CJSC «Bel In Soft» and LLC «Innoteh Solutions». The purpose of the Association is to contribute to the development of a coherent policy in the field of information security of state authorities, management and private business, interaction on these issues with international specialized organizations, as well as the representation and protection of the common interests of Association members  in state and other departments and organizations, including international.</p>
+        </div>
+        <h2><mark>09/19/2019</mark> THE COMPANY WAS AUDITED FOR COMPLIANCE WITH INTERNATIONAL STANDARDS ISO 9001:2015 AND ISO / IEC 27001:2013</h2>
+        <div class="gallery">
+          <div class="gallery__el">
+            @@include("_tpl_gallery-el.html", { "img": "img/cert1.jpg", "title": "State registration of the «Industry»  Association" })
+          </div>
+          <div class="gallery__el">
+            @@include("_tpl_gallery-el.html", { "img": "img/cert2-en.jpg", "title": "Company Compliance ISO 9001: 2015" })
+          </div>
+          <div class="gallery__el">
+            @@include("_tpl_gallery-el.html", { "img": "img/cert3-en.jpg", "title": "Company Compliance ISO 27001: 2013" })
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+<!--MAIN end-->
+<!--button scroll to top-->
+<a href="#" class="btn-to-top btn-to-top-js"><span>Scroll top</span></a>
+
+
+@@include("_tpl_layout_footer.html")
+@@include("_tpl_layout_foot.html")
